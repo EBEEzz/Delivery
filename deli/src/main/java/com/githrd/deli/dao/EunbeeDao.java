@@ -33,17 +33,18 @@ public class EunbeeDao {
 		eSQL = new EunbeeSQL();
 	}
 	
-	public EunbeeVO getId(String mail) {
-		EunbeeVO eVO = new EunbeeVO();
+	public String getId(String mail) {
+		String mid = null;
 		con = db.getCon();
 		String sql = eSQL.getSQL(eSQL.SEL_ID);
 		pstmt = db.getPSTMT(con, sql);
 		try {
 			pstmt.setString(1, mail);
 			rs = pstmt.executeQuery();
-			rs.next();
+			if(rs.next()) {
+				mid = rs.getString("id");
+			}
 			
-			eVO.setId(rs.getString("id"));
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -51,7 +52,7 @@ public class EunbeeDao {
 			db.close(pstmt);
 			db.close(con);
 		}
-		return eVO;
+		return mid;
 	}
 	
 	

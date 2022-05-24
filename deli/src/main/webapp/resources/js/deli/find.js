@@ -8,11 +8,11 @@ $(document).ready(function() {
 		$(location).attr('href',  '/deli/member/login.dlv');
 	});
 	
-	$('#jbtn').click(function() {
+	$('.jbtn').click(function() {
 		$(location).attr('href',  '/deli/member/join.dlv');
 	});
 	
-	$('#pwbtn').click(function() {
+	$('.pwbtn').click(function() {
 		$(location).attr('href',  '/deli/find/pwFind.dlv');
 	});
 	
@@ -20,9 +20,14 @@ $(document).ready(function() {
 		var smail = $('#fmail').val();
 		if(!smail) {
 			$('#fmail').focus();
+			alert('이메일을 입력해주세요.');
 			return;
 		}
-		//$('#frm').submit();
-		alert(smail);
+		$('#frm').submit();
+		//alert(smail);
+	});
+	
+	$('.bbtn').click(function() {
+		$(location).attr('href',  '/deli/find/idFind.dlv');
 	});
 });

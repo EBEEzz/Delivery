@@ -1,37 +1,24 @@
 package com.githrd.deli.controller.eunbee;
 
-import java.io.*;
-
-/**
- * 아이디 찾기 페이지 보기 요청을 처리
- * @author 	AnEunbee
- * @since	2022.05.24
- * @version	v.1.0
- * 
- * 			작업이력)
- * 				2022.05.24	-	담당자 : 안은비
- * 								내용 : 클래스 제작
- */
+import java.io.IOException;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 
 import com.githrd.deli.controller.*;
 import com.githrd.deli.dao.*;
-import com.githrd.deli.vo.*;
 
-public class IdFind implements DeliInter {
-	
+public class IdFindResult implements DeliInter {
+
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String view = "/find/idFind";
+		String view = "/find/idFindResult";
 		String mail = req.getParameter("fmail");
 		
 		EunbeeDao eDao = new EunbeeDao();
 		String fid = eDao.getId(mail);
 		
 		req.setAttribute("FID", fid);
-		
 		return view;
 	}
 

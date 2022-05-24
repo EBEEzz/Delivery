@@ -38,21 +38,32 @@
       		<h3 class="w3-margin-right"><strong>아이디 찾기</strong></h3>
     	</div>
     	<div class="w3-container w3-white w3-padding-16 mgt20">
-      		<form method="POST" action="/deli/find/idFindResult.dlv" name="frm" id="frm">
+      		<form method="POST" name="idfrm" id="idfrm">
         		<div class="w3-row-padding" style="margin:0 -16px;">
-          			<div class="w3-margin-bottom pb20">
-            			<label class="inblock" style="width: 20%; text-align: right;">E-Mail : </label>
-            			<input class="inblock w3-input w3-border w3-round-large w3-light-grey" style="width: 70%; text-align: left;"
-            					type="text" placeholder="회원가입에 사용한 이메일을 입력해주세요." name="fmail" id="fmail">
+<c:if test="${FID ne null}">
+          			<div class="w3-margin-bottom pb20 w3-center">
+            			<h4 class="clsbold">회원님의 아이디는<br>${FID} 입니다.</h4>
           			</div>
-        		</div>
-      		</form>
        		<div class="h20 ft12">
         		<div class="w3-quarter w3-button w3-round-large w3-grey w3-margin-top jbtn">회원가입</div>
+        		<div class="w3-quarter w3-button w3-round-large w3-dark-grey w3-margin-top libtn">로그인</div>
+        		<div class="w3-quarter w3-button w3-round-large w3-dark-grey w3-margin-top pwbtn">비밀번호 찾기</div>
+        		<div class="w3-quarter w3-button w3-round-large w3-grey w3-margin-top bbtn">돌아가기</div>
+       		</div>
+</c:if>
+<c:if test="${FID eq null}">
+          			<div class="w3-margin-bottom pb20 w3-center">
+            			<h4 class="clsbold">일치하는 아이디가<br>존재하지 않습니다.</h4>
+          			</div>
+       		<div class="h20 ft12">
+        		<div class="w3-quarter w3-button w3-round-large w3-dark-grey w3-margin-top jbtn">회원가입</div>
         		<div class="w3-quarter w3-button w3-round-large w3-grey w3-margin-top libtn">로그인</div>
         		<div class="w3-quarter w3-button w3-round-large w3-grey w3-margin-top pwbtn">비밀번호 찾기</div>
-        		<div class="w3-quarter w3-button w3-round-large w3-dark-grey w3-margin-top" id="idbtn">아이디 찾기</div>
+        		<div class="w3-quarter w3-button w3-round-large w3-dark-grey w3-margin-top bbtn">돌아가기</div>
        		</div>
+</c:if>
+        		</div>
+      		</form>
     	</div>
   	</div>
 </body>
