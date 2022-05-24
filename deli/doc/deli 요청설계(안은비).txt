@@ -1,0 +1,6 @@
+# 아이디 찾기 페이지 보기 요청
+요청내용	:	/deli/find/idFind.dlv
+파라미터	:	mail
+컨트롤러	:	com.githrd.deli.controller.eunbee.IdFind
+뷰			:	/WEB-INF/views/find/idFind.jsp
+----------------------------------------------------------------------------------

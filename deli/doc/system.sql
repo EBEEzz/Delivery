@@ -1,4 +1,4 @@
-ALTER USER delivery IDENTIFIED BY 12345 ACCOUNT UNLOCK;
+CREATE USER delivery IDENTIFIED BY 12345 ACCOUNT UNLOCK;
 GRANT resource, connect To delivery;
 GRANT UNLIMITED TABLESPACE, CREATE SESSION, connect, resource TO delivery;
 ALTER USER delivery DEFAULT TABLESPACE USERs;
@@ -484,6 +484,7 @@ VALUES(
 
 commit;
 
+-------------------------------------------------------------------------------
 CREATE TABLE menu (
     foodtype VARCHAR2(10 CHAR)
         CONSTRAINT MENU_TYPE_PK PRIMARY KEY,
@@ -576,3 +577,165 @@ ALTER TABLE menu
 RENAME TO menucategory;
 
 commit;
+---------------------------------형준씨 작업 -------
+CREATE TABLE restaurant(
+    rno NUMBER(6)
+        CONSTRAINT RS_NO_PK PRIMARY KEY,
+    rname VARCHAR2(20 CHAR)
+        CONSTRAINT RS_NAME_NN NOT NULL,
+    cname VARCHAR2(20 CHAR)
+        CONSTRAINT RS_CTG_FK REFERENCES menucategory(foodtype)
+        CONSTRAINT RS_CTG_NN NOT NULL,
+    addr VARCHAR2(60 CHAR)
+        CONSTRAINT RS_ADDR_NN NOT NULL,
+    tel VARCHAR2(13 CHAR)
+        CONSTRAINT RS_TEL_UK UNIQUE
+        CONSTRAINT RS_TEL_NN NOT NULL,
+    rtime DATE
+        CONSTRAINT RS_RTIME_NN NOT NULL,
+    esti NUMBER(2, 1) DEFAULT 0
+        CONSTRAINT RS_ESTI_NN NOT NULL,
+    isshow CHAR(1) DEFAULT 'Y'
+        CONSTRAINT RS_SHOW_CK CHECK (isshow IN('Y','N'))
+        CONSTRAINT RS_SHOW_NN NOT NULL
+);
+
+
+
+CREATE TABLE menuimg(
+    mino NUMBER(4)
+        CONSTRAINT MI_NO_PK PRIMARY KEY,
+    miname VARCHAR2(20CHAR)
+        CONSTRAINT MI_INAME_NN NOT NULL,
+    sname VARCHAR2(20 CHAR)
+        CONSTRAINT MI_SNAME_NN NOT NULL,
+    dir VARCHAR2(60 CHAR)
+        CONSTRAINT MI_DIR_NN NOT NULL
+);
+
+CREATE TABLE menu(
+    mno NUMBER(4)
+        CONSTRAINT MN_MNO_PK PRIMARY KEY,
+    rno NUMBER(4)
+        CONSTRAINT MN_RNO_FK REFERENCES restaurant(rno)
+        CONSTRAINT MN_RNO_NN NOT NULL,
+    mname VARCHAR2(20CHAR)
+        CONSTRAINT MN_MNAME_NN NOT NULL,
+    mprice NUMBER(6)
+        CONSTRAINT MN_PR_NN NOT NULL,
+    mintro VARCHAR2(60 CHAR)
+        CONSTRAINT MN_INTRO_NN NOT NULL,
+    mimg NUMBER(4)
+        CONSTRAINT MN_IMG_FK REFERENCES menuimg(mino)
+        CONSTRAINT MN_IMG_NN NOT NULL,
+    isshow CHAR(1) DEFAULT 'Y'
+        CONSTRAINT MN_SHOW_CK CHECK (isshow IN('Y','N'))
+        CONSTRAINT MN_SHOW_NN NOT NULL
+);
+
+CREATE TABLE ordertask(
+    ono NUMBER(6)
+        CONSTRAINT OD_ONO_PK PRIMARY KEY,
+    mno NUMBER(4)
+        CONSTRAINT OD_MNO_FK REFERENCES member(mno)
+        CONSTRAINT OD_MNO_NN NOT NULL
+);
+
+CREATE TABLE orderlist(
+    olno NUMBER(6)
+        CONSTRAINT OL_OLNO_PK PRIMARY KEY,
+    ono NUMBER(6)
+        CONSTRAINT OL_ONO_FK REFERENCES ordertask(ono)
+        CONSTRAINT OL_ONO_NN NOT NULL,
+    rno NUMBER(4)
+        CONSTRAINT OL_RNO_FK REFERENCES restaurant(rno)
+        CONSTRAINT OL_MNO_NN NOT NULL,
+    odate DATE DEFAULT sysdate
+        CONSTRAINT OL_DATE_NN NOT NULL,
+    oprice NUMBER(6)
+        CONSTRAINT OL_PR_NN NOT NULL,
+    paym VARCHAR2(10CHAR)
+        CONSTRAINT OL_PM_NN NOT NULL,
+    requests VARCHAR2(100CHAR)  
+);
+
+CREATE TABLE ordermenu(
+    omno NUMBER(6)
+        CONSTRAINT OM_OMNO_PK PRIMARY KEY,
+    olno NUMBER(6)
+        CONSTRAINT OM_ONO_FK REFERENCES orderlist(olno)
+        CONSTRAINT OM_ONO_NN NOT NULL,
+    omenu VARCHAR2(20 CHAR)
+        CONSTRAINT OM_MENU_NN NOT NULL,
+    omprice NUMBER(6)
+        CONSTRAINT OM_OMPR_NN NOT NULL,
+    quantity NUMBER(4)
+        CONSTRAINT OM_QT_NN NOT NULL
+);
+
+INSERT INTO
+    member(mno, name, id, kakaoid, pw, mail, tel, avt, addr)
+VALUES(
+    (SELECT NVL(MAX(mno) + 1, 1001) FROM member), '이용현', 'YHLEE', 'YHLEE12', '12345', 'YH@githrd.com', '010-0000-0000', '11', '서울시 영등포구 신길동'
+);
+
+
+INSERT INTO
+    member(mno, name, id, kakaoid, pw, mail, tel, avt, addr)
+VALUES(
+    (SELECT NVL(MAX(mno) + 1, 1001) FROM member), '둘리', 'dool', 'dool12', '12345', 'dool@githrd.com', '010-1111-1111', '12', '서울시 종로구 사직동'
+);
+INSERT INTO
+    member(mno, name, id, kakaoid, pw, mail, tel, avt, addr)
+VALUES(
+    (SELECT NVL(MAX(mno) + 1, 1001) FROM member), '희동이', 'hui', 'hui12', '12345', 'hui@githrd.com', '010-2222-2222', '13', '서울시 종로구 무악동'
+);
+INSERT INTO
+    member(mno, name, id, kakaoid, pw, mail, tel, avt, addr)
+VALUES(
+    (SELECT NVL(MAX(mno) + 1, 1001) FROM member), '홍길동', 'HONG', 'HONG', '12345', 'HONG@githrd.com', '010-3333-3333', '12', '서울시 중구 소공동'
+);
+INSERT INTO
+    member(mno, name, id, kakaoid, pw, mail, tel, avt, addr)
+VALUES(
+    (SELECT NVL(MAX(mno) + 1, 1001) FROM member), '마이콜', 'call', 'call12', '12345', 'call@githrd.com', '010-4444-4444', '14', '서울시 용산구 후암동'
+);
+INSERT INTO
+    member(mno, name, id, kakaoid, pw, mail, tel, avt, addr)
+VALUES(
+    (SELECT NVL(MAX(mno) + 1, 1001) FROM member), '제니', 'jennie', 'jennie12', '12345', 'jennie@githrd.com', '010-5555-5555', '16', '서울시 중구 다산동'
+);
+
+-------------------------------------------------------게시글데이터
+INSERT INTO
+    board(bno, bmno, title, body, larea, marea, sarea, end, category)
+VALUES(
+    (SELECT NVL(MAX(bno) + 1, 1) FROM board), 1001, '족발먹을사람', '족발먹을사람 구해요', '서울특별시', '종로구', '사직동', 8, '족발·보쌈'
+);
+INSERT INTO
+    board(bno, bmno, title, body, larea, marea, sarea, end, category)
+VALUES(
+    (SELECT NVL(MAX(bno) + 1, 1) FROM board), 1003, '치킨먹자', '오늘밤 치킨먹자', '서울특별시', '중구', '소공동', 4, '치킨'
+);
+INSERT INTO
+    board(bno, bmno, title, body, larea, marea, sarea, end, category)
+VALUES(
+    (SELECT NVL(MAX(bno) + 1, 1) FROM board), 1005, '오늘밤엔피맥해요', '배달료 비싼데 같이 피자 먹을사람 구해요', '서울특별시', '중구', '청구동', 2, '피자'
+);
+INSERT INTO
+    board(bno, bmno, title, body, larea, marea, sarea, end, category)
+VALUES(
+    (SELECT NVL(MAX(bno) + 1, 1) FROM board), 1002, '떡볶이순대튀김', '오늘같은 날엔 떡볶이와 순대와 튀김 아니겠어요 저희 같이 공동구매해서 배달료 아끼고 맛있게 먹어요', '서울특별시', '용산구', '후암동', 2, '분식'
+);
+INSERT INTO
+    board(bno, bmno, title, body, larea, marea, sarea, end, category)
+VALUES(
+    (SELECT NVL(MAX(bno) + 1, 1) FROM board), 1004, '갈비인가 통닭인가 수원 왕갈비 통닭', '영화보는데 너무 맛있어보여서 급히 생각나서 글 올려봐요 같이 시키실분 계신가요', '서울특별시', '중구', '신당동', 1, '치킨'
+);
+commit;
+
+alter table delivery.restaurant drop constraint rs_ctg_fk;
+alter table restaurant modify cname NUMBER(4);
+
+alter table delivery.restaurant add constraint rs_ctg_fk FOREIGN KEY(cname) REFERENCES MENUCATEGORY(code) on delete cascade;
+

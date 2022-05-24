@@ -26,11 +26,11 @@ public class MemberDao {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	
-	private MemberSQL mSQL;
+	private EunbeeSQL mSQL;
 
 	public MemberDao() {
 		db = new DeliDBCP();
-		mSQL = new MemberSQL();
+		mSQL = new EunbeeSQL();
 	}
 
 }
