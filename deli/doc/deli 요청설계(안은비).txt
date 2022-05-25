@@ -10,3 +10,21 @@
 컨트롤러	:	com.githrd.deli.controller.eunbee.IdFindResult
 뷰			:	/WEB-INF/views/find/idFindResult.jsp
 ----------------------------------------------------------------------------------
+# 비밀번호 찾기 페이지 보기 요청
+요청내용	:	/deli/find/pwFind.dlv
+파라미터	:	무
+컨트롤러	:	com.githrd.deli.controller.eunbee.PwFind
+뷰			:	/WEB-INF/views/find/pwFind.jsp
+----------------------------------------------------------------------------------
+# 비밀번호 찾기 페이지 보기 요청
+요청내용	:	/deli/find/pwFindResult.dlv
+파라미터	:	id, mail
+컨트롤러	:	com.githrd.deli.controller.eunbee.PwFindResult
+뷰			:	/WEB-INF/views/find/pwFindResult.jsp
+----------------------------------------------------------------------------------
+
+
+
+
+
+

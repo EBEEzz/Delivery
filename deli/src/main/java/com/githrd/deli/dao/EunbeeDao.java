@@ -55,6 +55,30 @@ public class EunbeeDao {
 		return mid;
 	}
 	
+	public String getMail(String id, String mail) {
+		String mmail = null;
+		con = db.getCon();
+		String sql = eSQL.getSQL(eSQL.SEL_MAIL);
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			pstmt.setString(1, id);
+			pstmt.setString(2, mail);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				mmail = rs.getString("mail");
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(rs);
+			db.close(pstmt);
+			db.close(con);
+		}
+		
+		
+		return mmail;
+	}
+	
 	
 
 }
