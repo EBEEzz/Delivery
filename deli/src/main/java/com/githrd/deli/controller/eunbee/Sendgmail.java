@@ -12,8 +12,8 @@ public class Sendgmail {
 	}
 	
 	public static void gmailSend() {
-        String user = "dksdmsql320@gmail.com"; // 네이버일 경우 네이버 계정, gmail경우 gmail 계정
-        String password = "Dms3ql2dks0!"; 	// 패스워드
+        String user = ""; // gmail 계정 입력
+        String password = ""; 	// gmail 패스워드 입력
 
         // SMTP 서버 정보를 설정한다.
         Properties prop = new Properties();
@@ -54,9 +54,9 @@ public class Sendgmail {
     }
 	
 	public static void naverMailSend() {
-        String host = "smtp.naver.com"; // 네이버일 경우 네이버 계정, gmail경우 gmail 계정
-        String user = "320aeb@naver.com"; // 패스워드
-        String password = "xlswmdhsxkq0710";
+        String host = "smtp.naver.com"; 
+        String user = "";	// 네이버 계정
+        String password = "";	// 네이버 패스워드
 
         // SMTP 서버 정보를 설정한다.
         Properties props = new Properties();
