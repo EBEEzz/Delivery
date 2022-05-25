@@ -79,6 +79,24 @@ public class EunbeeDao {
 		return mmail;
 	}
 	
+	public int editPw(String pw, String id) {
+		int cnt = 0;
+		con = db.getCon();
+		String sql = eSQL.getSQL(eSQL.EDIT_PASSWORD);
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			pstmt.setString(1, pw);
+			pstmt.setString(2, id);
+			cnt = pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(pstmt);
+			db.close(con);
+		}
+		return cnt;
+	}
+	
 	
 
 }

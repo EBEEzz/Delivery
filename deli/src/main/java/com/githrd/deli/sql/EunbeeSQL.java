@@ -4,6 +4,8 @@ public class EunbeeSQL {
 	public final int SEL_ID			= 1001;
 	public final int SEL_MAIL		= 1002;
 	
+	public final int EDIT_PASSWORD	= 2001;
+	
 	public String getSQL(int code) {
 		StringBuffer buff = new StringBuffer();
 		switch(code) {
@@ -25,6 +27,16 @@ public class EunbeeSQL {
 			buff.append("    isshow = 'Y' ");
 			buff.append("    AND id = ? ");
 			buff.append("    AND mail = ? ");
+			break;
+		case EDIT_PASSWORD:
+			buff.append("UPDATE ");
+			buff.append("	member ");
+			buff.append("SET ");
+			buff.append("	pw = ? ");
+			buff.append("WHERE ");
+			buff.append("	isshow = 'Y' ");
+			buff.append("	AND id = ? ");
+			break;
 		}
 		return buff.toString();
 	}

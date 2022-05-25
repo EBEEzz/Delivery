@@ -8,11 +8,11 @@ import javax.mail.internet.*;
 public class Sendgmail {
 	
 	public Sendgmail() {
-		gmailSend();
+		naverMailSend();
 	}
 	
 	public static void gmailSend() {
-        String user = ""; // gmail 계정 입력
+        String user = "dksdmsql320@gmail.com"; // gmail 계정 입력
         String password = ""; 	// gmail 패스워드 입력
 
         // SMTP 서버 정보를 설정한다.
@@ -55,14 +55,17 @@ public class Sendgmail {
 	
 	public static void naverMailSend() {
         String host = "smtp.naver.com"; 
-        String user = "";	// 네이버 계정
-        String password = "";	// 네이버 패스워드
+        String user = "320aeb@naver.com";	// 네이버 계정
+        String password = "xlswmdhsxkq0710";	// 네이버 패스워드
 
         // SMTP 서버 정보를 설정한다.
         Properties props = new Properties();
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.ssl.protocols", "TLSv1.2");
         props.put("mail.smtp.host", host);
         props.put("mail.smtp.port", 587);
         props.put("mail.smtp.auth", "true");
+        
         
         Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
@@ -73,7 +76,7 @@ public class Sendgmail {
         try {
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(user));
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress("ktko@ktko.com"));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress("dksdmsql320@gmail.com"));
 
             // 메일 제목
             message.setSubject("KTKO SMTP TEST1111");
