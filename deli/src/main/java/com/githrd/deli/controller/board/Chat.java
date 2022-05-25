@@ -12,23 +12,21 @@ import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
 
-@ServerEndpoint("/deliChat")
+@ServerEndpoint("/main.dlv")
 public class Chat {
 
 	private static List<Session> sessionUsers = Collections.synchronizedList(new ArrayList<>());
 	private static Pattern pattern = Pattern.compile("^\\{\\{.*?\\}\\}");
 	@OnOpen
 	public void handleOpen(Session userSession) {
-	// 클라이언트가 접속하면 WebSocket세션을 리스트에 저장한다.
 		sessionUsers.add(userSession);
-// 콘솔에 접속 로그를 출력한다.
-		System.out.println("client is now connected...");
+		System.out.println("## 접속중");
 	}
-// WebSocket으로 메시지가 오면 요청되는 함수
+
 	@OnMessage
 	public void handleMessage(String message, Session userSession) throws Exception {
 		System.out.println(message);
-		String name = "anonymous";
+		String name = "";
 		Matcher matcher = pattern.matcher(message);
 		if (matcher.find()) {
 			name = matcher.group();
@@ -40,7 +38,7 @@ public class Chat {
 			return;
 		}
 		try {
-		session.getBasicRemote().sendText(username + " => " + msg);
+		session.getBasicRemote().sendText(username + " : " + msg);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -50,7 +48,7 @@ public class Chat {
 	@OnClose
 	public void handleClose(Session userSession) {
 	sessionUsers.remove(userSession);
-	System.out.println("client is now disconnected...");
+	System.out.println("## 접속해제");
 	}
 }
 

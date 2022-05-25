@@ -48,18 +48,22 @@ textarea {
 <c:if test="${not empty SID}">
 		<button class="w3-right-align mg0 w3-right mg0 pdAll0 w3-button mgt10 member">로그아웃</button>
 </c:if>
+		<form method="POST" action="/deli/boardList.dlv" id="frm" name="frm">
+			<input type="hidden" id="city" name="city" value="">
+		
 		<div class="w3-col mgt0">
 			<h1 class="mgb10 w3-border pdAll10"><strong>Delivery Project</strong></h1>
 			<hr>
-			<button class="w3-button w3-left w33" id="sbtn">서울</button>
-			<button class="w3-button w3-left w33" disabled>경기도</button>
-			<button class="w3-button w3-left w33" disabled>강원도</button>
-			<button class="w3-button w3-left w33" disabled>충청도</button>
-			<button class="w3-button w3-left w33" disabled>경상도</button>
-			<button class="w3-button w3-left w33" disabled>전라도</button>
-			<button class="w3-button w3-left w33" disabled>제주도</button>
+			<button class="w3-button w3-left w33" id="sbtn" value="seoul">서울</button>
+			<button class="w3-button w3-left w33" value="gyeonggi">경기도</button>
+			<button class="w3-button w3-left w33" disabled value="gangwon">강원도</button>
+			<button class="w3-button w3-left w33" disabled value="chungcheong">충청도</button>
+			<button class="w3-button w3-left w33" value="gyeongsang">경상도</button>
+			<button class="w3-button w3-left w33" disabled value="jeolla">전라도</button>
+			<button class="w3-button w3-left w33" disabled value="jeju">제주도</button>
 		<hr class="w3-col mg0 w3-card-2">
 		</div>
+		</form>
 		<div class="w3-col w3-center mgt20">
 			<div class="w3-col m9">
 
@@ -78,21 +82,7 @@ textarea {
 
 
 				
-				<div class="w3-col w3-border">
-					<div class="w3-col">
-						<button class="w3-third w3-button w3-border-right w3-border-bottom">서울</button>
-						<button class="w3-third w3-button w3-border-right w3-border-bottom" disabled>경기도</button>
-						<button class="w3-third w3-button w3-border-bottom" disabled>강원도</button>
-					</div>
-					<div class="w3-col">
-						<button class="w3-third w3-button w3-border-right w3-border-bottom" disabled>충청도</button>
-						<button class="w3-third w3-button w3-border-right w3-border-bottom" disabled>경상도</button>
-						<button class="w3-third w3-button w3-border-bottom" disabled>전라도</button>
-					</div>
-				</div>
-				<div class="w3-col">
-					<button class="w3-third w3-button w3-border-right w3-border-left w3-border-bottom" disabled>제주도</button>
-				</div>
+
 			</div>
 <c:if test="${empty SID}">
 			<div class="w3-col m3">

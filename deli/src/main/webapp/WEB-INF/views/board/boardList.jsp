@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.net.URLEncoder"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,85 +12,108 @@
 <link rel="stylesheet" type="text/css" href="/deli/resources/css/user.css">
 <link rel="stylesheet" type="text/css" href="/deli/resources/css/w3.css">
 <script type="text/javascript" src="/deli/resources/boardList.js"></script>
+<style type="text/css">
+.w33 {
+	width: 14.285%;
+}
+.h500 {
+	height: 500px;
+	padding-left: 10px;
+	padding-right: 10px;
+	overflow: auto;
+}
+.member {
+	text-size: 8px;
+	border: 0px;
+	background-color: white;
+}
+.w230 {
+	width: 230px;
+	margin-bottom: 3px;
+}
+textarea {
+	resize: none;
+	height: 500px;
+}
+</style>
 </head>
 <body>
 	<div class="mxw800 w3-content w3-center">
 	<button class="w3-right-align mg0 w3-left mg0 pdAll0 w3-button mgt10 member" id="hbtn">HOME</button>
 <c:if test="${not empty SID}">
-		<button class="w3-right-align mg0 w3-right mg0 pdAll0 w3-button mgt10 member" id="obtn">·Î±×¾Æ¿ô</button>
+		<button class="w3-right-align mg0 w3-right mg0 pdAll0 w3-button mgt10 member" id="obtn">ë¡œê·¸ì•„ì›ƒ</button>
 </c:if>
 <c:if test="${empty SID}">
-		<button class="w3-right-align mg0 w3-right mg0 pdAll0 w3-button mgt10 member" id="lbtn">·Î±×ÀÎ</button>
+		<button class="w3-right-align mg0 w3-right mg0 pdAll0 w3-button mgt10 member" id="lbtn">ë¡œê·¸ì¸</button>
 </c:if>
+		<form method="POST" action="/deli/boardList.dlv" id="frm" name="frm">
+			<input type="hidden" id="maincity" name="city" value="${param.city}">
+		
 		<div class="w3-col mgt0">
 			<h1 class="mgb10 w3-border pdAll10"><strong>Delivery Project</strong></h1>
 			<hr>
-			<button class="w3-button w3-left w33" id="sbtn">¼­¿ï</button>
-			<button class="w3-button w3-left w33" disabled>°æ±âµµ</button>
-			<button class="w3-button w3-left w33" disabled>°­¿øµµ</button>
-			<button class="w3-button w3-left w33" disabled>ÃæÃ»µµ</button>
-			<button class="w3-button w3-left w33" disabled>°æ»óµµ</button>
-			<button class="w3-button w3-left w33" disabled>Àü¶óµµ</button>
-			<button class="w3-button w3-left w33" disabled>Á¦ÁÖµµ</button>
+			<button class="w3-button w3-left w33" id="sbtn" value="seoul">ì„œìš¸</button>
+			<button class="w3-button w3-left w33" value="gyeonggi">ê²½ê¸°ë„</button>
+			<button class="w3-button w3-left w33" disabled value="gangwon">ê°•ì›ë„</button>
+			<button class="w3-button w3-left w33" disabled value="chungcheong">ì¶©ì²­ë„</button>
+			<button class="w3-button w3-left w33" value="gyeongsang">ê²½ìƒë„</button>
+			<button class="w3-button w3-left w33" disabled value="jeolla">ì „ë¼ë„</button>
+			<button class="w3-button w3-left w33" disabled value="jeju">ì œì£¼ë„</button>
 		<hr class="w3-col mg0 w3-card-2">
 		</div>
+		</form>
 
 		<div class="w3-col w3-white w3-padding w3-card-4 mgt20">
 			
 			<div class="w3-col w3-light-grey w3-center w3-border">
 				<div class="w3-col m3">
-					<div class="w3-col m4 w3-border-right">Ä«Å×°í¸®</div>
-					<div class="w3-col m3 w3-border-right">±Û¹øÈ£</div>
-					<div class="w3-col m5 w3-border-right">ÀÛ¼ºÀÚ</div>
+					<div class="w3-col m4 w3-border-right">ì¹´í…Œê³ ë¦¬</div>
+					<div class="w3-col m3 w3-border-right">ê¸€ë²ˆí˜¸</div>
+					<div class="w3-col m5 w3-border-right">ì‘ì„±ì</div>
 				</div>
-				<div class="w3-col m4 w3-border-right">±ÛÁ¦¸ñ</div>
-				<div class="w3-col m3 w3-border-right">ÀÛ¼ºÀÏ</div>
-				<div class="w3-col m1 w3-border-right">Á¶È¸¼ö</div>
-				<div class="w3-col m1">Áö¿ª</div>
+				<div class="w3-col m4 w3-border-right">ê¸€ì œëª©</div>
+				<div class="w3-col m3 w3-border-right">ì‘ì„±ì¼</div>
+				<div class="w3-col m1 w3-border-right">ì¡°íšŒìˆ˜</div>
+				<div class="w3-col m1">ì§€ì—­</div>
 			</div>
 			
+<c:forEach var="data" items="${LIST}">	
 			<div class="w3-col w3-white w3-center w3-border-bottom w3-border-left w3-border-right">
 				<div class="w3-col m3">
-					<div class="w3-col m4 w3-border-right">Ä¡Å²Á·¹ß</div>
-					<div class="w3-col m3 w3-border-right">±Û¹øÈ£</div>
-					<div class="w3-col m5 w3-border-right">ÀÛ¼ºÀÚ</div>
+					<div class="w3-col m4 w3-border-right">${data.category}</div>
+					<div class="w3-col m3 w3-border-right">${data.bno}</div>
+					<div class="w3-col m5 w3-border-right">${data.id}</div>
 				</div>
-				<div class="w3-col m4 w3-border-right">±ÛÁ¦¸ñ</div>
-				<div class="w3-col m3 w3-border-right">ÀÛ¼ºÀÏ</div>
-				<div class="w3-col m1 w3-border-right">Å¬¸¯¼ö</div>
-				<div class="w3-col m1">Á¾·Î±¸</div>
+				<div class="w3-col m4 w3-border-right">${data.title}</div>
+				<div class="w3-col m3 w3-border-right">${data.sdate}</div>
+				<div class="w3-col m1 w3-border-right">${data.click}</div>
+				<div class="w3-col m1">${data.marea}</div>
 			</div>
-			<div class="w3-col w3-white w3-center w3-border-bottom w3-border-left w3-border-right">
-				<div class="w3-col m3">
-					<div class="w3-col m4 w3-border-right">Ä¡Å²Á·¹ß</div>
-					<div class="w3-col m3 w3-border-right">±Û¹øÈ£</div>
-					<div class="w3-col m5 w3-border-right">ÀÛ¼ºÀÚ</div>
-				</div>
-				<div class="w3-col m4 w3-border-right">±ÛÁ¦¸ñ</div>
-				<div class="w3-col m3 w3-border-right">ÀÛ¼ºÀÏ</div>
-				<div class="w3-col m1 w3-border-right">Å¬¸¯¼ö</div>
-				<div class="w3-col m1">Á¾·Î±¸</div>
-			</div>
-			<div class="w3-col w3-white w3-center w3-border-bottom w3-border-left w3-border-right">
-				<div class="w3-col m3">
-					<div class="w3-col m4 w3-border-right">Ä¡Å²Á·¹ß</div>
-					<div class="w3-col m3 w3-border-right">±Û¹øÈ£</div>
-					<div class="w3-col m5 w3-border-right">ÀÛ¼ºÀÚ</div>
-				</div>
-				<div class="w3-col m4 w3-border-right">±ÛÁ¦¸ñ</div>
-				<div class="w3-col m3 w3-border-right">ÀÛ¼ºÀÏ</div>
-				<div class="w3-col m1 w3-border-right">Å¬¸¯¼ö</div>
-				<div class="w3-col m1">Á¾·Î±¸</div>
-			</div>
+</c:forEach>					
 			
+		</div>
+
+		<div class="w3-button w3-right w3-border w3-margin-top">ê¸€ì‘ì„±</div> 
+		<div class="w3-col w3-center">
+			<form method="post" action="/deli/boardList.dlv" id="sfrm" name="sfrm">
+				<select name="check" id="check">
+					<option id="0" value="title">ì œëª©
+					<option id="2" value="writer">ì‘ì„±ì
+					<option id="3" value="body">ë‚´ìš©
+					<option id="3" value="city">ì§€ì—­
+				</select>
+			
+				<input type="text" class="w3-border w250" id="search" name="search">
+				<input type="hidden" id="searchcity" name="city" value="${param.city}">
+				<button id="searchbtn">ê²€ìƒ‰</button>
+			</form>
 		</div>
 
 
 
 
-
-				<!-- ÆäÀÌÁö Ã³¸® ½ÃÀÛ -->
-		<div class="w3-center">
+				
+		<div class="w3-col w3-center">
 			<div class="w3-bar w3-border w3-round-medium w3-card w3-margin-top w3-margin-bottom">
 	<c:if test="${PAGE.startPage eq 1}">
 				<div class="w3-bar-item w3-light-grey">&laquo;</div>
@@ -113,7 +137,13 @@
 			</c:if>
 			</div>
 		</div>
-		<!-- ÆäÀÌÁö Ã³¸® ÅÂ±× ³¡ -->
+	
+		<form method="POST" action="/deli/boardList.dlv" id="pageFrm" name="pageFrm">
+			<input type="hidden" name="nowPage" id="nowPage" value="${PAGE.nowPage}">
+			<input type="hidden" name="city" id="city" value="${param.city}">
+			<input type="hidden" name="search" id="search" value="${param.search}">
+			<input type="hidden" name="check" id="check" value="${param.check}">
+		</form>
 		
 	</div>
 </body>
