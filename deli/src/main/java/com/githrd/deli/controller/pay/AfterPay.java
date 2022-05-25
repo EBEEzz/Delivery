@@ -7,7 +7,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.githrd.deli.controller.DeliInter;
-
+/**
+ * 
+ * @author 이형준
+ * @since  2022.05.24
+ * @version  v.1.0
+ * 		
+ * 					작업이력 )
+ * 						2022.05.24	-	담당자 : 이형준
+ * 										내용   : 클래스 제작
+ */
 public class AfterPay implements DeliInter {
 
 	@Override

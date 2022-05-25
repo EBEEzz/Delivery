@@ -7,22 +7,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.githrd.deli.controller.DeliInter;
-/**
- * 
- * @author 이형준
- * @since  2022.05.24
- * @version  v.1.0
- * 		
- * 					작업이력 )
- * 						2022.05.24	-	담당자 : 이형준
- * 										내용   : 클래스 제작
- */
-public class BeforePay implements DeliInter {
+
+public class InsertInfo implements DeliInter {
 
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String view = "/payment/beforePay";
-
+		String view = "/payment/afterPay";
+		req.setAttribute("isRedirect", true);
+		/*
+		// String sid = req.getSession().getAttribute("SID");
+		if(sid == null) {
+			return "/member/login.dlv";
+		}
+		*/
+		
+		
 		return view;
 	}
 
