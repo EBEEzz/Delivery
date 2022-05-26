@@ -1,9 +1,11 @@
+--system에서 진행
 CREATE USER delivery IDENTIFIED BY 12345 ACCOUNT UNLOCK;
 GRANT resource, connect To delivery;
 GRANT UNLIMITED TABLESPACE, CREATE SESSION, connect, resource TO delivery;
 ALTER USER delivery DEFAULT TABLESPACE USERs;
 
 
+--delivery에서 진행
 CREATE TABLE member(
     mno NUMBER(4)
         CONSTRAINT MEMBER_MNO_PK PRIMARY KEY,
@@ -739,3 +741,101 @@ alter table restaurant modify cname NUMBER(4);
 
 alter table delivery.restaurant add constraint rs_ctg_fk FOREIGN KEY(cname) REFERENCES MENUCATEGORY(code) on delete cascade;
 
+INSERT INTO
+    largearea
+VALUES(
+    '경상도', 2
+);
+
+INSERT INTO
+    largearea
+VALUES(
+    '경기도', 3
+);
+
+
+
+
+INSERT INTO
+    middlearea
+VALUES(
+    '금정구', 2, 100
+);
+
+
+INSERT INTO
+    middlearea
+VALUES(
+    '강화군', 3, 200
+);
+
+
+INSERT INTO
+    smallarea
+VALUES(
+    '강화읍', 3, 200, 1000
+);
+
+INSERT INTO
+    smallarea
+VALUES(
+    '서제1동', 2, 100, 500
+);
+
+INSERT INTO
+    board(bno, bmno, title, body, larea, marea, sarea, end, category)
+VALUES(
+    (SELECT NVL(MAX(bno) + 1, 1) FROM board), 1006, '테스트입니다.', '무엇을 먹어야할지 생각하는 테스트입니다.', '서울특별시', '중구', '신당동', 1, '치킨'
+);
+commit;
+
+INSERT INTO
+    board(bno, bmno, title, body, larea, marea, sarea, end, category)
+VALUES(
+    (SELECT NVL(MAX(bno) + 1, 1) FROM board), 1001, '먹자.', '밥먹자.', '서울특별시', '종로구', '사직동', 2, '치킨'
+);
+
+INSERT INTO
+    board(bno, bmno, title, body, larea, marea, sarea, end, category)
+VALUES(
+    (SELECT NVL(MAX(bno) + 1, 1) FROM board), 1003, '먹세먹세 젊어서 먹세.', '다먹자.', '서울특별시', '종로구', '삼청동', 2, '치킨'
+);
+
+
+INSERT INTO
+    board(bno, bmno, title, body, larea, marea, sarea, end, category)
+VALUES(
+    (SELECT NVL(MAX(bno) + 1, 1) FROM board), 1004, '배고파요', '파스타 시키실분 계신가요', '경기도', '강화군', '강화읍', 3, '양식'
+);
+
+INSERT INTO
+    board(bno, bmno, title, body, larea, marea, sarea, end, category)
+VALUES(
+    (SELECT NVL(MAX(bno) + 1, 1) FROM board), 1006, '피자먹자피자피자', '피자피자피피자피자', '경상도', '금정구', '서제1동', 3, '피자'
+);
+INSERT INTO
+    board(bno, bmno, title, body, larea, marea, sarea, end, category)
+VALUES(
+    (SELECT NVL(MAX(bno) + 1, 1) FROM board), 1002, '치킨이요', '치킨먹고싶어요', '경상도', '금정구', '서제1동', 3, '치킨'
+);
+INSERT INTO
+    board(bno, bmno, title, body, larea, marea, sarea, end, category)
+VALUES(
+    (SELECT NVL(MAX(bno) + 1, 1) FROM board), 1003, '삼겹살먹자', '삼겹살 고고', '경상도', '금정구', '서제1동', 3, '고기·구이'
+);
+INSERT INTO
+    board(bno, bmno, title, body, larea, marea, sarea, end, category)
+VALUES(
+    (SELECT NVL(MAX(bno) + 1, 1) FROM board), 1004, '스테이크', '빕스or아웃백', '경상도', '금정구', '서제1동', 3, '양식'
+);
+
+alter table menu modify rno number(6);
+
+INSERT INTO
+    member(mno, name, id, kakaoid, pw, mail, tel, avt, addr)
+VALUES(
+    1007, '안은비', 'aeb320', '320aeb', 12345, 'dksdmsql320@gmail.com',
+    010-3232-3232, 12, '서울시 영등포구 신길동'
+);
+
+commit;

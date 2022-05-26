@@ -2,6 +2,18 @@ package com.githrd.deli.controller.eunbee;
 
 import java.util.*;
 
+/**
+ * 메일 보내기 연습 클래스
+ * @author	안은비
+ * @since	2022.05.25
+ * @version	v.1.0
+ * 
+ * 			작업이력 ]
+ * 				2022.05.25	-	클래스제작
+ * 									담당자 ] 안은비
+ *
+ */
+
 import javax.mail.*;
 import javax.mail.internet.*;
 
@@ -56,7 +68,7 @@ public class Sendgmail {
 	public static void naverMailSend() {
         String host = "smtp.naver.com"; 
         String user = "320aeb@naver.com";	// 네이버 계정
-        String password = "xlswmdhsxkq0710";	// 네이버 패스워드
+        String password = "";	// 네이버 패스워드
 
         // SMTP 서버 정보를 설정한다.
         Properties props = new Properties();
