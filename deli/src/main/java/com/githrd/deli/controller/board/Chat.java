@@ -1,15 +1,10 @@
 package com.githrd.deli.controller.board;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javax.websocket.OnClose;
-import javax.websocket.OnMessage;
-import javax.websocket.OnOpen;
-import javax.websocket.Session;
+
 import javax.websocket.server.ServerEndpoint;
+import java.util.ArrayList;
+import java.util.regex.*;
+import javax.websocket.*;
+import java.util.*;
 
 
 @ServerEndpoint("/main.dlv")
@@ -18,7 +13,7 @@ public class Chat {
 	private static List<Session> sessionUsers = Collections.synchronizedList(new ArrayList<>());
 	private static Pattern pattern = Pattern.compile("^\\{\\{.*?\\}\\}");
 	@OnOpen
-	public void handleOpen(Session userSession) {
+	public void ChatStart(Session userSession) {
 		sessionUsers.add(userSession);
 		System.out.println("## 접속중");
 	}
@@ -46,7 +41,7 @@ public class Chat {
 	}
 
 	@OnClose
-	public void handleClose(Session userSession) {
+	public void ChatEnd(Session userSession) {
 	sessionUsers.remove(userSession);
 	System.out.println("## 접속해제");
 	}

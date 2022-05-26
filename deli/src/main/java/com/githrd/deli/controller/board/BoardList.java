@@ -30,11 +30,10 @@ public class BoardList implements DeliInter {
 		
 		String view = "/board/boardList";
 
-
 		String scity = req.getParameter("city");
 		String check = req.getParameter("check");
 		String search = req.getParameter("search");
-		System.out.println(search);
+
 		String city = "";
 		switch(scity) {
 		case "seoul" :
@@ -66,8 +65,8 @@ public class BoardList implements DeliInter {
 			nowPage = Integer.parseInt(spage);
 		}
 		YonghyunDao yDao = new YonghyunDao();
-		
-		if(check == null) {
+	
+		if(check == null || check == "") {
 	
 
 			int total = yDao.getTotalCount(city);
@@ -75,13 +74,12 @@ public class BoardList implements DeliInter {
 			PageUtil page = new PageUtil(nowPage, total);
 			
 			ArrayList<YonghyunVO> list = yDao.getBoardList(city, page);
-	
+
 			
 			req.setAttribute("LIST", list);
 			req.setAttribute("PAGE", page);
-			req.setAttribute("CITY", scity);
-			
-		} else if(check.equals("title") || search != null) {
+
+		} else if(check.equals("title") && search != null) {
 			int total = yDao.getTitleCount(city, search);
 			
 			PageUtil page = new PageUtil(nowPage, total);
@@ -90,8 +88,37 @@ public class BoardList implements DeliInter {
 			
 			req.setAttribute("LIST", list);
 			req.setAttribute("PAGE", page);
-			req.setAttribute("CITY", scity);
+
+		} else if(check.equals("body") && search != null) {
+			int total = yDao.getBodyCount(city, search);
 			
+			PageUtil page = new PageUtil(nowPage, total);
+			
+			ArrayList<YonghyunVO> list = yDao.getBoardBody(city, search, page);
+			
+			req.setAttribute("LIST", list);
+			req.setAttribute("PAGE", page);
+	
+		} else if(check.equals("writer") && search != null) {
+			int total = yDao.getIdCount(city, search);
+			
+			PageUtil page = new PageUtil(nowPage, total);
+			
+			ArrayList<YonghyunVO> list = yDao.getBoardId(city, search, page);
+			
+			req.setAttribute("LIST", list);
+			req.setAttribute("PAGE", page);
+	
+		} else if(check.equals("city") && search != null) {
+			int total = yDao.getMareaCount(city, search);
+			
+			PageUtil page = new PageUtil(nowPage, total);
+			
+			ArrayList<YonghyunVO> list = yDao.getBoardMarea(city, search, page);
+			
+			req.setAttribute("LIST", list);
+			req.setAttribute("PAGE", page);
+	
 		}
 		
 		

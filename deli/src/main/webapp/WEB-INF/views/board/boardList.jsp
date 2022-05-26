@@ -13,6 +13,10 @@
 <link rel="stylesheet" type="text/css" href="/deli/resources/css/w3.css">
 <script type="text/javascript" src="/deli/resources/boardList.js"></script>
 <style type="text/css">
+.mxw980 {
+	max-width: 980px;
+	min-width: 980px;
+}
 .w33 {
 	width: 14.285%;
 }
@@ -38,8 +42,8 @@ textarea {
 </style>
 </head>
 <body>
-	<div class="mxw800 w3-content w3-center">
-	<button class="w3-right-align mg0 w3-left mg0 pdAll0 w3-button mgt10 member" id="hbtn">HOME</button>
+	<div class="mxw980 w3-content w3-center">
+		<button class="w3-right-align mg0 w3-left mg0 pdAll0 w3-button mgt10 member" id="hbtn">HOME</button>
 <c:if test="${not empty SID}">
 		<button class="w3-right-align mg0 w3-right mg0 pdAll0 w3-button mgt10 member" id="obtn">로그아웃</button>
 </c:if>
@@ -65,7 +69,7 @@ textarea {
 
 		<div class="w3-col w3-white w3-padding w3-card-4 mgt20">
 			
-			<div class="w3-col w3-light-grey w3-center w3-border">
+			<div class="w3-col w3-grey w3-center w3-border w3-text-white">
 				<div class="w3-col m3">
 					<div class="w3-col m4 w3-border-right">카테고리</div>
 					<div class="w3-col m3 w3-border-right">글번호</div>
@@ -76,9 +80,13 @@ textarea {
 				<div class="w3-col m1 w3-border-right">조회수</div>
 				<div class="w3-col m1">지역</div>
 			</div>
-			
-<c:forEach var="data" items="${LIST}">	
-			<div class="w3-col w3-white w3-center w3-border-bottom w3-border-left w3-border-right">
+			<form method="POST" action="/deli/boardForm.dlv" id="brdfrm" name="brdfrm">
+				<input type="hidden" name="nowPage" value="${PAGE.nowPage}">
+				<input type="hidden" name="bno">
+			</form>
+<c:forEach var="data" items="${LIST}">
+	<c:if test="${data.endalert < 0}">
+			<div class="w3-col w3-light-gray w3-center w3-border-bottom w3-border-left w3-border-right brdList" id="${data.bno}">
 				<div class="w3-col m3">
 					<div class="w3-col m4 w3-border-right">${data.category}</div>
 					<div class="w3-col m3 w3-border-right">${data.bno}</div>
@@ -89,7 +97,23 @@ textarea {
 				<div class="w3-col m1 w3-border-right">${data.click}</div>
 				<div class="w3-col m1">${data.marea}</div>
 			</div>
-</c:forEach>					
+	</c:if>			
+				
+
+	<c:if test="${data.endalert > 0}">
+			<div class="w3-col w3-white w3-center w3-border-bottom w3-border-left w3-border-right brdList w3-orange" id="${data.bno}">
+				<div class="w3-col m3">
+					<div class="w3-col m4 w3-border-right">${data.category}</div>
+					<div class="w3-col m3 w3-border-right">${data.bno}</div>
+					<div class="w3-col m5 w3-border-right">${data.id}</div>
+				</div>
+				<div class="w3-col m4 w3-border-right">${data.title}</div>
+				<div class="w3-col m3 w3-border-right">${data.sdate}</div>
+				<div class="w3-col m1 w3-border-right">${data.click}</div>
+				<div class="w3-col m1">${data.marea}</div>
+			</div>
+	</c:if>			
+</c:forEach>				
 			
 		</div>
 
@@ -98,8 +122,8 @@ textarea {
 			<form method="post" action="/deli/boardList.dlv" id="sfrm" name="sfrm">
 				<select name="check" id="check">
 					<option id="0" value="title">제목
+					<option id="1" value="body">내용
 					<option id="2" value="writer">작성자
-					<option id="3" value="body">내용
 					<option id="3" value="city">지역
 				</select>
 			
