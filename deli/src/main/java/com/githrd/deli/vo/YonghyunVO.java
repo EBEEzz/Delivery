@@ -109,7 +109,7 @@ public class YonghyunVO {
 		this.endtime = endtime;
 	}
 	public void setEndtime() {
-		SimpleDateFormat form1 = new SimpleDateFormat("yyyy년 MM월 dd일 ");
+		SimpleDateFormat form1 = new SimpleDateFormat("yyyy/MM/dd ");
 		SimpleDateFormat form2 = new SimpleDateFormat("HH:mm:ss");
 		endtime = form1.format(wenddate) + form2.format(wendtime);
 	}

@@ -80,10 +80,7 @@ textarea {
 				<div class="w3-col m1 w3-border-right">조회수</div>
 				<div class="w3-col m1">지역</div>
 			</div>
-			<form method="POST" action="/deli/boardForm.dlv" id="brdfrm" name="brdfrm">
-				<input type="hidden" name="nowPage" value="${PAGE.nowPage}">
-				<input type="hidden" name="bno">
-			</form>
+
 <c:forEach var="data" items="${LIST}">
 	<c:if test="${data.endalert < 0}">
 			<div class="w3-col w3-light-gray w3-center w3-border-bottom w3-border-left w3-border-right brdList" id="${data.bno}">
@@ -167,6 +164,7 @@ textarea {
 			<input type="hidden" name="city" id="city" value="${param.city}">
 			<input type="hidden" name="search" id="search" value="${param.search}">
 			<input type="hidden" name="check" id="check" value="${param.check}">
+			<input type="hidden" name="bno">
 		</form>
 		
 	</div>

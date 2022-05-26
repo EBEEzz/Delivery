@@ -12,8 +12,11 @@ public class YonghyunSQL {
 	public final int SEL_BOARD_MAREA = 1009;
 	public final int SEL_TOTALMAREA = 1010;
 	public final int SEL_BOARD_FORM = 1011;
+	public final int SEL_REGI_COUNT = 1012;
+	public final int SEL_REGI_MEMBER = 1013;
 		
 	public final int UPDATE_CLICK = 2001;
+	public final int UPDATE_REGI = 2002;
 	
 	public String getSQL(int code) {
 		StringBuffer buff = new StringBuffer();
@@ -193,6 +196,23 @@ public class YonghyunSQL {
 				buff.append("    bmno = mno ");
 				buff.append("    AND bno = ? ");
 				break;
+			case SEL_REGI_COUNT :
+				buff.append("SELECT ");
+				buff.append("    COUNT(*) cnt ");
+				buff.append("FROM ");
+				buff.append("    regimem ");
+				buff.append("WHERE ");
+				buff.append("    aid = ? ");
+				buff.append("    AND abno = ? ");
+				break;
+			case SEL_REGI_MEMBER :
+				buff.append("SELECT ");
+				buff.append("    aid ");
+				buff.append("FROM ");
+				buff.append("    regimem ");
+				buff.append("WHERE ");
+				buff.append("    abno = ? ");
+				break;
 			case UPDATE_CLICK :
 				buff.append("UPDATE ");
 				buff.append("    board ");
@@ -200,6 +220,13 @@ public class YonghyunSQL {
 				buff.append("    click = click + 1 ");
 				buff.append("WHERE ");
 				buff.append("    bno = ? ");
+				break;
+			case UPDATE_REGI :
+				buff.append("INSERT INTO ");
+				buff.append("    regimem ");
+				buff.append("VALUES( ");
+				buff.append("    ?, ? ");
+				buff.append(") ");
 				break;
 		}
 		

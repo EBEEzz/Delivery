@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -18,15 +19,31 @@ public class BoardForm implements DeliInter {
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String view = "/board/boardForm";
+		
+		
+		
 		String no = req.getParameter("bno");
 		int bno = Integer.parseInt(no);
+		String result = req.getParameter("result");
+
 
 		YonghyunDao yDao = new YonghyunDao();
-		int cnt = yDao.UpClick(bno);
-		YonghyunVO yVO = yDao.getBoardForm(bno);
-		if(cnt != 1) {
-			System.out.println("조회수 업데이트 실패");
+		
+		if(result == null) {
+			int cnt = yDao.UpClick(bno);
+			if(cnt != 1) {
+				System.out.println("조회수 업데이트 실패");
+			}
 		}
+System.out.println("체크1");
+		ArrayList<YonghyunVO> list = yDao.getRegiMember(bno);
+for(YonghyunVO i : list) {
+	System.out.println(i.getId());
+}
+System.out.println("체크2");
+		req.setAttribute("MEMBER", list);
+		req.setAttribute("RESULT", result);
+		YonghyunVO yVO = yDao.getBoardForm(bno);
 		req.setAttribute("MAIN", yVO);
 		return view;
 	} 
