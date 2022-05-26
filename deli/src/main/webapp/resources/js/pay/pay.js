@@ -13,12 +13,42 @@ $(document).ready(function(){
 		}
 		*/
 		
-		let m_email = $("#m_email").val();
-		let s_name = $("#s_name").val();
-		let s_addr = $("#roadFullAddr").val();
-		let s_phone = $("#s_phone").val();
-		let s_msg = $("#s_msg").val();
-		let s_zipNo = $("#s_zipNo").val();
+		
+		
+		/*		
+		let m_email = 'aaa@aaa.com';
+		let s_name = 'aaa';
+		let s_id = $('#id').val();
+		let menu = '짜장면';
+		let price = 6000;
+		let s_addr = 'aaaaaa222aaa';
+		let s_phone = '123-4567-8910';
+		let s_msg = 'x';
+		let s_zipNo = '12345';
+		let rno = $('#rno').val();
+		let mno = $('#mno').val();
+		let omprice = $('#ompirce').val();
+		let omenu = $('#menu').val();
+		let odate = dateString + ' ' + timeString;
+		let quantity = $('#quantity').val();
+		let request = $('#rq').val();
+		*/
+		
+		let m_email = 'aaa@aaa.com';
+		let s_name = 'aaa';
+		let s_id = 'aaa';
+		let menu = '짜장면';
+		let price = 6000;
+		let s_addr = 'aaaaaa222aaa';
+		let s_phone = '123-4567-8910';
+		let s_zipNo = '12345';
+		let rno = 1;
+		let mno = 1001;
+		let omprice = 6000;
+		let omenu = '짜장면';
+		let quantity = 1;
+		let request = '반반무많이';
+		
 		//alert(m_email +s_name +s_addr +s_phone +s_msg +s_zipNo);
 			
 		var IMP = window.IMP; // 생략가능
@@ -27,9 +57,9 @@ $(document).ready(function(){
 	  	IMP.request_pay({
 	  		pg: 'kakaopay',
 			pay_method: 'card',
-			merchant_uid: 'merchant_' + new Date().getTime(),	//	주문자 id
-			name: '주문명 : 짜장면 테스트',
-			amount: 6000,	//테스트 완료 후 가격정보 넣기
+			merchant_uid: 'merchant_' + new Date().getTime(),	//	주문번호
+			name: menu,
+			amount: price,	//테스트 완료 후 가격정보 넣기
 			buyer_email: m_email,
 			buyer_name: s_name,
 			buyer_tel: s_phone,
@@ -44,27 +74,29 @@ $(document).ready(function(){
 					msg += '상점 거래ID : ' + rsp.merchant_uid;
 					msg += '결제 금액 : ' + rsp.paid_amount;
 					msg += '카드 승인번호 : ' + rsp.apply_num;
-					let purchaseVo = {
+					let payVo = {
 						m_email: m_email,
-						s_name: s_name,
-						s_addr: s_addr,
-						s_phone: s_phone,
-						s_msg: s_msg,
-						s_zipNo: s_zipNo,
-						o_shipno: rsp.merchant_uid,
-						o_paidAmount: rsp.paid_amount,
-						o_paytype: rsp.pay_method
+						r_rno : rno,
+						s_id: s_id,
+						ono: rsp.merchant_uid,
+						oprice: rsp.paid_amount,
+						ompirce : omprice,
+						paym: rsp.pay_method,
+						m_mno : mno,
+						omenu : omenu,
+						quantity : quantity,
+						request : request
 						}
 					// 컨트롤러에 데이터를 전달하여 DB에 입력하는 로직
 	                		// 결제내역을 사용자에게 보여주기 위해 필요함.
 	               			$.ajax({
-						url : "/payment/beforePay",
-						type : "get",
-						data : purchaseVo,
-						dataType : "text",
+						url : "/deli/payment/payProc.dlv",
+						type : "post",
+						data : payVo,
+						dataType : "json",
 						success : function(result){
 							if(result == "y") {
-								alert(msg);
+								alert('proc 성공!!!');
 								location.href = "/payment/afterPay"; 
 							}else{
 								alert("디비입력실패");

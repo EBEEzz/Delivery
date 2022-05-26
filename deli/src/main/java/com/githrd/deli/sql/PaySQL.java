@@ -12,8 +12,8 @@ public class PaySQL {
 			buff.append("INSERT INTO ");
 			buff.append("    ordertask(ono, mno) ");
 			buff.append("VALUES( ");
-			buff.append("    (SELECT NVL(MAX(ono) +1, 1) FROM ordertask), ? ");
-			buff.append("); ");
+			buff.append("    ?, ? ");
+			buff.append(") ");
 			break;
 		case INSERT_ODL:
 			buff.append("INSERT INTO ");
@@ -21,15 +21,16 @@ public class PaySQL {
 			buff.append("VALUES( ");
 			buff.append("    (SELECT NVL(MAX(olno) +1, 1) FROM orderlist),  ");
 			buff.append("  ?, ?, ?, ?, ? ");
-			buff.append("); ");			
+			buff.append(" ) ");			
 			break;
 		case INSERT_ODM:
 			buff.append("INSERT INTO ");
-			buff.append("    ordermenu(omno, olno, omenu, omprice, quantity) ");
+			buff.append("    ordermenu(omno, olno, omenu, omprice, quantity, ono) ");
 			buff.append("VALUES( ");
 			buff.append("    (SELECT NVL(MAX(omno) + 1, 1) FROM ordermenu),  ");
+			buff.append(" 	 (SELECT olno FROM orderlist WHERE ono = ? ), ");
 			buff.append(" ?, ?, ?, ? ");
-			buff.append("); ");				
+			buff.append(") ");				
 			break;
 		}
 		return buff.toString();
