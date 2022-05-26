@@ -120,7 +120,7 @@ public class BoardList implements DeliInter {
 			req.setAttribute("PAGE", page);
 	
 		}
-		
+	
 		
 		return view;
 	}

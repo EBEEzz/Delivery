@@ -29,6 +29,6 @@ public class BoardForm implements DeliInter {
 		}
 		req.setAttribute("MAIN", yVO);
 		return view;
-	}
+	} 
 
 }
