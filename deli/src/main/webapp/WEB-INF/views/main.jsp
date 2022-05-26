@@ -2,7 +2,6 @@
 작성자 태그 작성
 실시간채팅 input 회원 아이디 받아오는 id value 수정
  -->
-
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -10,7 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Delivery Project Main</title>
-<script type="text/javascript" src="/deli/resources/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="/deli/resources/js/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/deli/resources/css/base.css">
 <link rel="stylesheet" type="text/css" href="/deli/resources/css/user.css">
 <link rel="stylesheet" type="text/css" href="/deli/resources/css/w3.css">
@@ -46,7 +45,7 @@ textarea {
 <body>
 	<div class="mxw800 w3-content w3-center">
 <c:if test="${not empty SID}">
-		<button class="w3-right-align mg0 w3-right mg0 pdAll0 w3-button mgt10 member">로그아웃</button>
+		<button class="w3-right-align mg0 w3-right mg0 pdAll0 w3-button mgt10 member" id="obtn">로그아웃</button>
 </c:if>
 		<form method="POST" action="/deli/boardList.dlv" id="frm" name="frm">
 			<input type="hidden" id="city" name="city" value="">

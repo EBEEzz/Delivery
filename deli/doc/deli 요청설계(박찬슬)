@@ -1,0 +1,48 @@
+-------------------------------------------------------------
+# 회원가입 폼보기 요청 
+요청내용	: 	/deli/member/join.dlv
+파라미터	:	무
+컨트롤러	: 	com.githrd.deli.controller.pcs.DeliJoin
+뷰			:	/WEB-INF/views/whistle/member/join.jsp
+기타		: 	로그인 된 경우 ]
+					redirect : /deli/main.dlv
+--------------------------------------------------------------
+# 로그인 폼보기 요청 
+요청내용	: 	/deli/member/login.dlv
+파라미터	:	무
+컨트롤러	: 	com.githrd.deli.controller.pcs.DeliLogin
+뷰			:	/WEB-INF/views/whistle/member/login.jsp
+기타		: 	로그인 된 경우 ]
+					redirect : /deli/main.dlv
+--------------------------------------------------------------
+# 로그인 처리 요청 
+요청내용	: 	/deli/member/loginProc.dlv
+파라미터	:	무
+컨트롤러	: 	com.githrd.deli.controller.pcs.DeliLoginProc
+뷰			:	
+				redirect ]
+					성공 : /deli/main.dlv
+					실패 : /deli/member/login.dlv
+--------------------------------------------------------------
+# 로그아웃 처리 요청 
+요청내용	: 	/deli/member/logout.dlv
+파라미터	:	무
+컨트롤러	: 	com.githrd.deli.controller.pcs.DeliLogout
+뷰			:	
+				redirect ] /deli/main.dlv
+--------------------------------------------------------------
+# 내정보 폼보기 요청 
+요청내용	: 	/deli/member/myInfo.dlv
+파라미터	:	무
+컨트롤러	: 	com.githrd.deli.controller.pcs.DeliMyInfo
+뷰			:	/WEB-INF/views/deli/member/memberInfo.jsp
+--------------------------------------------------------------
+# 회원 탈퇴 처리 요청 
+요청내용	: 	/deli/member/dleInfo.dlv
+파라미터	:	무
+컨트롤러	: 	com.githrd.deli.controller.pcs.DeliDelInfo
+뷰			:	
+				redirect ] 
+					성공 :	/deli/main.dlv
+					실패 :	/deli/member/myInfo.dlv
+--------------------------------------------------------------

@@ -46,8 +46,11 @@ $(document).ready(function(){
 
 	});
 	
+	$('#obtn').click(function(){
+		$(location).attr('href', '/deli/member/logout.dlv');
+	});
 	$('#lbtn').click(function(){
-		$(location).attr('href', '/deli/member/login.dlv')
+		$(location).attr('href', '/deli/member/login.dlv');
 	});
 
 });
