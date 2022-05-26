@@ -43,6 +43,7 @@ public class PwFindResult implements DeliInter {
 		String fmail = eDao.getMail(id, mail);
 		
 		req.setAttribute("FMAIL", fmail);
+		req.setAttribute("NPW", npw);
 		
 		
 		if(fmail != null) {

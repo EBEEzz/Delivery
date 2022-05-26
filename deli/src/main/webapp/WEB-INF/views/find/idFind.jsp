@@ -30,11 +30,11 @@
 	  	</div>
 	</div>
 	
-	<div class="mw800 w3-display-middle border3px" style="position: relative; top: 95px;">
+	<div class="w80p w3-display-middle border3px" style="position: relative; top: 95px;">
 		<h1 class="w3-center"><b>Delivery Project</b></h1>
 	</div>
 	
-	<div class="w3-display-middle w3-border w3-padding w3-col l5 m8">
+	<div class="w3-display-middle w3-border w3-padding w3-col m6">
     	<div class="w3-container mgt10 mgb20 w3-black">
       		<h3 class="w3-margin-right"><strong>아이디 찾기</strong></h3>
     	</div>
