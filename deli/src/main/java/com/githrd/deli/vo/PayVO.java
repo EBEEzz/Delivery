@@ -5,8 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class PayVO {
-	private int mno, rno, mimg, mprice, mino, olno, ono, oprice, omprice, quantity, esti, cname;
-	private String mname, mintro, miname, sname, dir, omenu, rname, addr, tel, stime, sdate;
+	private int mno, rno, mimg, mprice, mino, olno,  oprice, omprice, quantity, esti, cname, omno;
+	private String mname, mintro, miname, sname, dir, omenu, rname, addr, tel, stime, ono, sdate, paym, request;
 	private Time rtime;
 	private Date rdate;
 	
@@ -46,10 +46,10 @@ public class PayVO {
 	public void setOlno(int olno) {
 		this.olno = olno;
 	}
-	public int getOno() {
+	public String getOno() {
 		return ono;
 	}
-	public void setOno(int ono) {
+	public void setOno(String ono) {
 		this.ono = ono;
 	}
 	public int getOprice() {
@@ -168,23 +168,45 @@ public class PayVO {
 	public void setRdate(Date rdate) {
 		this.rdate = rdate;
 	}
+	public String getPaym() {
+		return paym;
+	}
+	public void setPaym(String paym) {
+		this.paym = paym;
+	}
+	public String getRequest() {
+		return request;
+	}
+	public void setRequest(String request) {
+		this.request = request;
+	}
+	public int getOmno() {
+		return omno;
+	}
+	public void setOmno(int omno) {
+		this.omno = omno;
+	}
 	@Override
 	public String toString() {
 		return "PayVO [mno=" + mno + ", rno=" + rno + ", mimg=" + mimg + ", mprice=" + mprice + ", mino=" + mino
-				+ ", olno=" + olno + ", ono=" + ono + ", oprice=" + oprice + ", omprice=" + omprice + ", quantity="
-				+ quantity + ", esti=" + esti + ", cname=" + cname + ", mname=" + mname + ", mintro=" + mintro
+				+ ", olno=" + olno + ", oprice=" + oprice + ", omprice=" + omprice + ", quantity=" + quantity
+				+ ", esti=" + esti + ", cname=" + cname + ", omno=" + omno + ", mname=" + mname + ", mintro=" + mintro
 				+ ", miname=" + miname + ", sname=" + sname + ", dir=" + dir + ", omenu=" + omenu + ", rname=" + rname
-				+ ", addr=" + addr + ", tel=" + tel + ", stime=" + stime + ", sdate=" + sdate + ", rtime=" + rtime
-				+ ", rdate=" + rdate + ", getMno()=" + getMno() + ", getRno()=" + getRno() + ", getMimg()=" + getMimg()
-				+ ", getMprice()=" + getMprice() + ", getMino()=" + getMino() + ", getOlno()=" + getOlno()
-				+ ", getOno()=" + getOno() + ", getOprice()=" + getOprice() + ", getOmprice()=" + getOmprice()
-				+ ", getQuantity()=" + getQuantity() + ", getEsti()=" + getEsti() + ", getCname()=" + getCname()
-				+ ", getMname()=" + getMname() + ", getMintro()=" + getMintro() + ", getMiname()=" + getMiname()
-				+ ", getSname()=" + getSname() + ", getDir()=" + getDir() + ", getOmenu()=" + getOmenu()
-				+ ", getRname()=" + getRname() + ", getAddr()=" + getAddr() + ", getTel()=" + getTel() + ", getRtime()="
-				+ getRtime() + ", getStime()=" + getStime() + ", getSdate()=" + getSdate() + ", getRdate()="
-				+ getRdate() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
-				+ super.toString() + "]";
+				+ ", addr=" + addr + ", tel=" + tel + ", stime=" + stime + ", ono=" + ono + ", sdate=" + sdate
+				+ ", paym=" + paym + ", request=" + request + ", rtime=" + rtime + ", rdate=" + rdate + ", getMno()="
+				+ getMno() + ", getRno()=" + getRno() + ", getMimg()=" + getMimg() + ", getMprice()=" + getMprice()
+				+ ", getMino()=" + getMino() + ", getOlno()=" + getOlno() + ", getOno()=" + getOno() + ", getOprice()="
+				+ getOprice() + ", getOmprice()=" + getOmprice() + ", getQuantity()=" + getQuantity() + ", getEsti()="
+				+ getEsti() + ", getCname()=" + getCname() + ", getMname()=" + getMname() + ", getMintro()="
+				+ getMintro() + ", getMiname()=" + getMiname() + ", getSname()=" + getSname() + ", getDir()=" + getDir()
+				+ ", getOmenu()=" + getOmenu() + ", getRname()=" + getRname() + ", getAddr()=" + getAddr()
+				+ ", getTel()=" + getTel() + ", getRtime()=" + getRtime() + ", getStime()=" + getStime()
+				+ ", getSdate()=" + getSdate() + ", getRdate()=" + getRdate() + ", getPaym()=" + getPaym()
+				+ ", getRequest()=" + getRequest() + ", getOmno()=" + getOmno() + ", getClass()=" + getClass()
+				+ ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
 	}
+	
+	
+	
 	
 }

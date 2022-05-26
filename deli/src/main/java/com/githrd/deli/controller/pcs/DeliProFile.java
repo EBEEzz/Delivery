@@ -1,4 +1,4 @@
-package com.githrd.deli.controller.pay;
+package com.githrd.deli.controller.pcs;
 
 import java.io.IOException;
 
@@ -8,20 +8,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.githrd.deli.controller.DeliInter;
 
-public class InsertInfo implements DeliInter {
+public class DeliProFile implements DeliInter {
 
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String view = "/payment/afterPay";
-		req.setAttribute("isRedirect", true);
-		/*
-		// String sid = req.getSession().getAttribute("SID");
-		if(sid == null) {
-			return "/member/login.dlv";
-		}
-		*/
-		
-		
+		String view = "/member/profile";
 		return view;
 	}
 

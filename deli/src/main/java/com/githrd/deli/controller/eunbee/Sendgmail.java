@@ -2,18 +2,30 @@ package com.githrd.deli.controller.eunbee;
 
 import java.util.*;
 
+/**
+ * 메일 보내기 연습 클래스
+ * @author	안은비
+ * @since	2022.05.25
+ * @version	v.1.0
+ * 
+ * 			작업이력 ]
+ * 				2022.05.25	-	클래스제작
+ * 									담당자 ] 안은비
+ *
+ */
+
 import javax.mail.*;
 import javax.mail.internet.*;
 
 public class Sendgmail {
 	
 	public Sendgmail() {
-		gmailSend();
+		naverMailSend();
 	}
 	
 	public static void gmailSend() {
-        String user = "dksdmsql320@gmail.com"; // 네이버일 경우 네이버 계정, gmail경우 gmail 계정
-        String password = "Dms3ql2dks0!"; 	// 패스워드
+        String user = "dksdmsql320@gmail.com"; // gmail 계정 입력
+        String password = ""; 	// gmail 패스워드 입력
 
         // SMTP 서버 정보를 설정한다.
         Properties prop = new Properties();
@@ -54,15 +66,18 @@ public class Sendgmail {
     }
 	
 	public static void naverMailSend() {
-        String host = "smtp.naver.com"; // 네이버일 경우 네이버 계정, gmail경우 gmail 계정
-        String user = "320aeb@naver.com"; // 패스워드
-        String password = "xlswmdhsxkq0710";
+        String host = "smtp.naver.com"; 
+        String user = "320aeb@naver.com";	// 네이버 계정
+        String password = "";	// 네이버 패스워드
 
         // SMTP 서버 정보를 설정한다.
         Properties props = new Properties();
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.ssl.protocols", "TLSv1.2");
         props.put("mail.smtp.host", host);
         props.put("mail.smtp.port", 587);
         props.put("mail.smtp.auth", "true");
+        
         
         Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
@@ -73,7 +88,7 @@ public class Sendgmail {
         try {
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(user));
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress("ktko@ktko.com"));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress("dksdmsql320@gmail.com"));
 
             // 메일 제목
             message.setSubject("KTKO SMTP TEST1111");

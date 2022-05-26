@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.githrd.deli.controller.DeliInter;
+import com.githrd.deli.dao.PayDao;
 /**
  * 
  * @author 이형준
@@ -22,7 +23,15 @@ public class BeforePay implements DeliInter {
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String view = "/payment/beforePay";
-
+		/*
+		String sid = (String)req.getSession().getAttribute("SID");
+		if(sid == null) {
+			return "/member/login";
+		}
+		*/
+		
+		
+		
 		return view;
 	}
 

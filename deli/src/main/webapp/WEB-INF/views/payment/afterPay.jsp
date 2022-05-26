@@ -19,7 +19,7 @@
 <link rel="stylesheet" type="text/css" href="/deli/resources/css/user.css">
 <link rel="stylesheet" type="text/css" href="/deli/resources/css/w3.css">
 <script type="text/javascript" src="/deli/resources/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="/deli/resources/js/pay/payTest.js?ver=1"></script>
+<script type="text/javascript" src="/deli/resources/js/pay/pay.js"></script>
 <!-- jQuery -->
 	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <!-- iamport.payment.js -->
@@ -31,20 +31,20 @@
 </head>
 <body>
 	<div class="mxw700 w3-content w3-center">
-		<form>
+		<form method="POST" action="/deli/payment/InsertInfo.dlv" id="frm" name="frm">
 			<input type="hidden" id="ono" name="ono" value="${DATA.ono}">
 			<input type="hidden" id="tel" name="tel" value="${DATA.tel}">
-		<h1 class="w3-teal w3-padding" style="margin-bottom: 5px;">홈페이지 이름</h1>
+		<h1 class="w3-teal w3-padding" style="margin-bottom: 5px;">Delivery Project</h1>
 		<div class="w3-col w3-light-grey">
 			<div class="w3-col w3-border-bottom mgl10" align="left">
 				<h3>결제가 완료되었습니다.</h3>
-				<h4>배달 장소 : <span id="addr">${DATA.addr}</span></h4>
+				<h4 class="w3-left">배달 장소 : <span id="addr">${DATA.addr}</span></h4>
 			</div>
 <c:forEach var="data" items="${LIST}">
 			<div class="w3-col w3-border-bottom mgl10" align="left" >
-				<h4 id="g1">${data.member} 님이 선택하신 메뉴</h4><br>
-				<p><span id="menu">${data.menu} </span><span id="mprice">${data.mprice}</span></p><br>
-				<h4 id="rq">요청 사항 : <span>${data.rq}</span></h4><br>
+				<h4 id="mid">${data.mid} 님이 선택하신 메뉴</h4><br>
+				<p><span id="menu">${data.menu} </span><span id="omprice" value="${data.omprice}">${data.omprice}</span><span id="quantity">${data.quantity}</span></p><br>
+				<h4 id="rq">요청 사항 : <span id="rq" name="rq" value="${data.rq}">${data.rq}</span></h4><br>
 				<h4>가격 : <span id="tmprice">${data.tmprice}</span></h4>
 			</div>
 </c:forEach>
@@ -60,14 +60,14 @@
 </c:forEach>
 				<h4>배달비  : <span id="dc"> ${data.dc} </span></h4><br>
 				<h4>총합    : <span>${data.mtmoney}</span></h4><br>
-				<h4 >A님이 지불하실 금액  : <span id="tmoney">${data.tmoney}</span></h4>
+				<h4 >A님이 지불하실 금액  : <span id="tmoney" value="${data.tmoney}">${data.tmoney}</span></h4>
 			</div>
 		</div>
 		</form>
-		</div>
 		<div class="w3-col w3-margin-top w3-card-4 w3-center" >
 			<div class="w3-half w3-button w3-green" id="pbtn">결제</div>
 			<div class="w3-half w3-button w3-deep-orange" id="cbtn">취소</div>
+		</div>
 		</div>
 	
 </body>

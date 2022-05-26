@@ -4,6 +4,10 @@ $(document).ready(function() {
 		$(location).attr('href',  '/deli/main.dlv');
 	});
 	
+	$('.hbtn').click(function() {
+		$(location).attr('href',  '/deli/main.dlv');
+	});
+	
 	$('.libtn').click(function() {
 		$(location).attr('href',  '/deli/member/login.dlv');
 	});
@@ -44,6 +48,7 @@ $(document).ready(function() {
 			alert('이메일을 입력해주세요.');
 			return;
 		}
+		$('#randomPw').val(randomPassword);
 		
 		$('#frm').submit();
 	});

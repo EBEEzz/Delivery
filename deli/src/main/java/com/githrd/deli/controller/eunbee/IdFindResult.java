@@ -33,5 +33,4 @@ public class IdFindResult implements DeliInter {
 		req.setAttribute("FID", fid);
 		return view;
 	}
-
 }

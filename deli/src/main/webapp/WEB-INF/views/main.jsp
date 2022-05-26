@@ -46,53 +46,42 @@ textarea {
 <body>
 	<div class="mxw800 w3-content w3-center">
 <c:if test="${not empty SID}">
-		<button class="w3-right-align mg0 w3-right mg0 pdAll0 w3-button mgt10 member">로그아웃</button>
+		<button class="w3-right-align mg0 w3-right mg0 pdAll0 w3-button mgt10 member" id="obtn">로그아웃</button>
 </c:if>
-		<div class="w3-col mgt0">
-			<h1 class="mgb10 w3-border pdAll10"><strong>Delivery Project</strong></h1>
-			<hr>
-			<button class="w3-button w3-left w33" id="sbtn">서울</button>
-			<button class="w3-button w3-left w33" disabled>경기도</button>
-			<button class="w3-button w3-left w33" disabled>강원도</button>
-			<button class="w3-button w3-left w33" disabled>충청도</button>
-			<button class="w3-button w3-left w33" disabled>경상도</button>
-			<button class="w3-button w3-left w33" disabled>전라도</button>
-			<button class="w3-button w3-left w33" disabled>제주도</button>
-		<hr class="w3-col mg0 w3-card-2">
-		</div>
+		<form method="POST" action="/deli/boardList.dlv" id="frm" name="frm">
+			<input type="hidden" id="city" name="city" value="">
+		
+			<div class="w3-col mgt0">
+				<h1 class="mgb10 w3-border pdAll10"><strong>Delivery Project</strong></h1>
+				<hr>
+				<button class="w3-button w3-left w33" id="sbtn" value="seoul">서울</button>
+				<button class="w3-button w3-left w33" value="gyeonggi">경기도</button>
+				<button class="w3-button w3-left w33" disabled value="gangwon">강원도</button>
+				<button class="w3-button w3-left w33" disabled value="chungcheong">충청도</button>
+				<button class="w3-button w3-left w33" value="gyeongsang">경상도</button>
+				<button class="w3-button w3-left w33" disabled value="jeolla">전라도</button>
+				<button class="w3-button w3-left w33" disabled value="jeju">제주도</button>
+			<hr class="w3-col mg0 w3-card-2">
+			</div>
+		</form>
 		<div class="w3-col w3-center mgt20">
 			<div class="w3-col m9">
 
-				
-	<!-- 콘솔 메시지의 역할을 하는 로그 텍스트 에리어.(수신 메시지도 표시한다.) -->
-	<textarea id="chatbox" rows="10" cols="70"></textarea>
-				
-	<form class="w3-margin-bottom">
-		<!-- 유저 명을 입력하는 텍스트 박스(기본 값은 anonymous(익명)) -->
-		<input id="id" type="text" value="YHLEE" disabled>
-		<!-- 송신 메시지를 작성하는 텍스트 박스 -->
-		<input id="textMessage" type="text">
-		<!-- 메세지를 송신하는 버튼 -->
-		<input value="Send" type="button" id="sendbtn">
-	</form>
+
+			<textarea id="chatbox" rows="10" cols="70"></textarea>
+						
+			<form class="w3-margin-bottom">
+		
+				<input id="id" type="text" value="${SID}" disabled> <!-- 여기에 로그인시 받아온 아이디 작성!!!!! -->
+		
+				<input id="textMessage" type="text">
+		
+				<input value="Send" type="button" id="sendbtn">
+			</form>
 
 
 				
-				<div class="w3-col w3-border">
-					<div class="w3-col">
-						<button class="w3-third w3-button w3-border-right w3-border-bottom">서울</button>
-						<button class="w3-third w3-button w3-border-right w3-border-bottom" disabled>경기도</button>
-						<button class="w3-third w3-button w3-border-bottom" disabled>강원도</button>
-					</div>
-					<div class="w3-col">
-						<button class="w3-third w3-button w3-border-right w3-border-bottom" disabled>충청도</button>
-						<button class="w3-third w3-button w3-border-right w3-border-bottom" disabled>경상도</button>
-						<button class="w3-third w3-button w3-border-bottom" disabled>전라도</button>
-					</div>
-				</div>
-				<div class="w3-col">
-					<button class="w3-third w3-button w3-border-right w3-border-left w3-border-bottom" disabled>제주도</button>
-				</div>
+
 			</div>
 <c:if test="${empty SID}">
 			<div class="w3-col m3">

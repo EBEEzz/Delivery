@@ -18,9 +18,15 @@
 ----------------------------------------------------------------------------------
 # 비밀번호 찾기 페이지 보기 요청
 요청내용	:	/deli/find/pwFindResult.dlv
-파라미터	:	id, mail
+파라미터	:	id, mail, pw
 컨트롤러	:	com.githrd.deli.controller.eunbee.PwFindResult
 뷰			:	/WEB-INF/views/find/pwFindResult.jsp
+----------------------------------------------------------------------------------
+# 후기 작성 페이지 보기 요청
+요청내용	:	/deli/review/rvWrite.dlv
+파라미터	:	무
+컨트롤러	:	com.githrd.deli.controller.eunbee.RvWrite
+뷰			:	/WEB-INF/views/review/rvWrite.jsp
 ----------------------------------------------------------------------------------
 
 

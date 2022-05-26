@@ -1,7 +1,7 @@
 package com.githrd.deli.vo;
 
 public class EunbeeVO {
-	private String id, mail;
+	private String id, mail, pw;
 
 	public String getId() {
 		return id;
@@ -19,9 +19,17 @@ public class EunbeeVO {
 		this.mail = mail;
 	}
 
+	public String getPw() {
+		return pw;
+	}
+
+	public void setPw(String pw) {
+		this.pw = pw;
+	}
+
 	@Override
 	public String toString() {
-		return "EunbeeVO [id=" + id + ", mail=" + mail + "]";
+		return "EunbeeVO [id=" + id + ", mail=" + mail + ", pw=" + pw + "]";
 	}
 
 	public String getJson() {

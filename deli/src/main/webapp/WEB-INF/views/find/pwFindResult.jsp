@@ -19,7 +19,7 @@
 	<div class="w3-top">
 	  	<div class="w3-row w3-padding w3-black">
 		    <div class="w3-col s2">
-		    	<div class="w3-button w3-block w3-black" id="hbtn">HOME</div>
+		    	<div class="w3-button w3-block w3-black hbtn">HOME</div>
 		    </div>
 		    <div class="w3-col s8">
 		      	<div class="w3-block w3-black w3-center">&nbsp;</div>
@@ -46,10 +46,8 @@
             			<h4 class="clsbold">입력하신 이메일<br>${FMAIL}로<br>임시비밀번호를 발송하였습니다.</h4>
           			</div>
           	<div class="h20 ft12">
-        		<div class="w3-quarter w3-button w3-round-large w3-dark-grey w3-margin-top jbtn">회원가입</div>
-        		<div class="w3-quarter w3-button w3-round-large w3-grey w3-margin-top libtn">로그인</div>
-        		<div class="w3-quarter w3-button w3-round-large w3-grey w3-margin-top idbtn">아이디 찾기</div>
-        		<div class="w3-quarter w3-button w3-round-large w3-dark-grey w3-margin-top pbbtn">돌아가기</div>
+        		<div class="w3-quarter w3-left w3-button w3-round-large w3-grey w3-margin-top hbtn">홈</div>
+        		<div class="w3-quarter w3-right w3-button w3-round-large w3-dark-grey w3-margin-top libtn">로그인</div>
        		</div>
 </c:if>
 <c:if test="${FMAIL eq null}">
