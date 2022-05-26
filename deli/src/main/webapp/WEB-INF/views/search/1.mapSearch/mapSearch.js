@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded",
         //현재 위치의 위도, 경도 추출해주는 api
         navigator.geolocation.getCurrentPosition(function (position) {
             getLocation(position);//현재 위치 추출
-            
+
 
         })
     });
@@ -15,8 +15,8 @@ function getLocation(position) {
 
     let latitud = position.coords.latitude;
     let longitude = position.coords.longitude;
-           document.getElementById("here_lat").textContent = latitud;
-            document.getElementById("here_lon").textContent = longitude;
+
+
     let mapContainer = document.getElementById('map'),    // 지도를 표시할 DIV
         mapOption = {
             center: new kakao.maps.LatLng(latitud, longitude)    // 지도의 중심좌표
@@ -28,7 +28,7 @@ function getLocation(position) {
     let map = new kakao.maps.Map(mapContainer, mapOption);
     var markerPosition = new kakao.maps.LatLng(latitud, longitude);
 
- 		
+
 
 
     // 마커를 생성합니다
@@ -61,8 +61,10 @@ function getLocation(position) {
             }
         }
     }
-   
-    
+
+    var zoomControl = new kakao.maps.ZoomControl();
+    map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+
 
 }
 ;

@@ -13,6 +13,6 @@
    double dist = cal.disCal(here_lat, here_lon, lat, lon);
  
    response.sendRedirect("../form/insertForm2.jsp?here_lat="+here_lat+"&here_lon="+here_lon+"&lat="+lat+"&lon="+lon+"&dist="+dist);
-
+  
 
 %>

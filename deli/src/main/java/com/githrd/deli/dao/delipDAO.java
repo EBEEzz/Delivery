@@ -30,11 +30,12 @@ public class delipDAO {
 			rs = stmt.executeQuery(db.setString(db.SELECT));
 			list = new ArrayList<delipVO>();
 			while (rs.next()) {
-				delipVO vo = new delipVO();
+				delipVO vo = new delipVO();	
 				vo.setNo(rs.getInt("no"));
 				vo.setName(rs.getString("name"));
 				vo.setDist(rs.getDouble("dist"));
-
+				vo.setLat(rs.getDouble("lat"));
+				vo.setLon(rs.getDouble("lon"));
 				list.add(vo);
 			}
 		} catch (Exception e) {
@@ -90,7 +91,7 @@ public class delipDAO {
 			pstmt = con.prepareStatement(db.setString(db.INSERT));
 			pstmt.setString(1, vo.getName());
 			pstmt.setDouble(2, vo.getHere_lat());
-			pstmt.setDouble(3, vo.getHere_Lon());
+			pstmt.setDouble(3, vo.getHere_lon());
 			pstmt.setDouble(4, vo.getLat());
 			pstmt.setDouble(5, vo.getLon());
 			pstmt.setDouble(6, vo.getDist());

@@ -25,7 +25,10 @@ $(document).ready(function(){
 	
 	$('.brdList').click(function(){
 		var pno = $(this).attr('id');
-		$(document.brdfrm.bno).val(pno);
-		$('#brdfrm').submit();
+		$(document.pageFrm.bno).val(pno);
+		$('#pageFrm').attr('action', '/deli/boardForm.dlv');
+		$('#pageFrm').submit();
 	})
+	
+	
 });

@@ -432,4 +432,70 @@ public class YonghyunDao {
 		return cnt;
 	}
 	
+	// 공구 신청 접수 확인 함수
+	public int getRegiCount(String id, int bno) {
+		int cnt = 0;
+		con = db.getCon();
+		String sql = ySQL.getSQL(ySQL.SEL_REGI_COUNT);
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			pstmt.setString(1, id);
+			pstmt.setInt(2, bno);
+			rs = pstmt.executeQuery();
+			rs.next();
+			cnt = rs.getInt("cnt");
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(rs);
+			db.close(pstmt);
+			db.close(con);
+		}
+		return cnt;
+	}
+	
+	// 공구 신청 접수 함수
+	public int UpRegi(int bno, String id) {
+		int cnt = 0;
+		con = db.getCon();
+		String sql = ySQL.getSQL(ySQL.UPDATE_REGI);
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			pstmt.setInt(1, bno);
+			pstmt.setString(2, id);
+			
+			cnt = pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(pstmt);
+			db.close(con);
+		}
+		return cnt;
+	}
+	
+	// 공구 신청 접수 멤버 확인 함수
+	public ArrayList<YonghyunVO> getRegiMember(int bno) {
+		ArrayList<YonghyunVO> list = new ArrayList<YonghyunVO>();
+		con = db.getCon();
+		String sql = ySQL.getSQL(ySQL.SEL_REGI_MEMBER);
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			pstmt.setInt(1, bno);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+			YonghyunVO yVO = new YonghyunVO();
+			yVO.setId(rs.getString("aid"));
+			
+			list.add(yVO);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(rs);
+			db.close(pstmt);
+			db.close(con);
+		}
+		return list;
+	}
 }

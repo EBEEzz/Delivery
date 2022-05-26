@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -10,7 +10,10 @@
 <link rel="stylesheet" type="text/css" href="/deli/resources/css/base.css">
 <link rel="stylesheet" type="text/css" href="/deli/resources/css/user.css">
 <link rel="stylesheet" type="text/css" href="/deli/resources/css/w3.css">
-<script type="text/javascript" src="/deli/resources/boardList.js"></script><!-- ¼öÁ¤ÇÊ¿ä!!!!!!!!!!!!!!!!!!!! -->
+<script type="text/javascript" src="/deli/resources/boardForm.js"></script>
+<script type="text/javascript">
+
+</script>
 <style type="text/css">
 .mxw980 {
 	max-width: 980px;
@@ -40,16 +43,37 @@
 .area {
 	color: green;
 }
+.subbtn {
+	padding : 0px;
+	margin : 0px 5px 0px 0px;
+}
+#regimem {
+	position: relative;
+	top: -12px;
+	display: none;
+}
+.regimember{
+	margin: 0px;
+}
 </style>
 </head>
 <body>
+<c:if test="${RESULT eq 0}">
+	<input type="hidden" id="result" value="success">
+</c:if>
+<c:if test="${RESULT eq 2}">
+	<input type="hidden" id="result" value="fail">
+</c:if>
+<c:if test="${RESULT eq 1}">
+	<input type="hidden" id="result" value="false">
+</c:if>
 	<div class="mxw980 w3-content w3-center">
 		<button class="w3-right-align mg0 w3-left mg0 pdAll0 w3-button mgt10 member" id="hbtn">HOME</button>
 <c:if test="${not empty SID}">
-		<button class="w3-right-align mg0 w3-right mg0 pdAll0 w3-button mgt10 member" id="obtn">·Î±×¾Æ¿ô</button>
+		<button class="w3-right-align mg0 w3-right mg0 pdAll0 w3-button mgt10 member" id="obtn">ë¡œê·¸ì•„ì›ƒ</button>
 </c:if>
 <c:if test="${empty SID}">
-		<button class="w3-right-align mg0 w3-right mg0 pdAll0 w3-button mgt10 member" id="lbtn">·Î±×ÀÎ</button>
+		<button class="w3-right-align mg0 w3-right mg0 pdAll0 w3-button mgt10 member" id="lbtn">ë¡œê·¸ì¸</button>
 </c:if>
 		<form method="POST" action="/deli/boardList.dlv" id="frm" name="frm">
 			<input type="hidden" id="maincity" name="city" value="${param.city}">
@@ -57,29 +81,76 @@
 		<div class="w3-col mgt0">
 			<h1 class="mgb10 w3-border pdAll10"><strong>Delivery Project</strong></h1>
 			<hr>
-			<button class="w3-button w3-left w33" id="sbtn" value="seoul">¼­¿ï</button>
-			<button class="w3-button w3-left w33" value="gyeonggi">°æ±âµµ</button>
-			<button class="w3-button w3-left w33" disabled value="gangwon">°­¿øµµ</button>
-			<button class="w3-button w3-left w33" disabled value="chungcheong">ÃæÃ»µµ</button>
-			<button class="w3-button w3-left w33" value="gyeongsang">°æ»óµµ</button>
-			<button class="w3-button w3-left w33" disabled value="jeolla">Àü¶óµµ</button>
-			<button class="w3-button w3-left w33" disabled value="jeju">Á¦ÁÖµµ</button>
+			<button class="w3-button w3-left w33" id="sbtn" value="seoul">ì„œìš¸</button>
+			<button class="w3-button w3-left w33" value="gyeonggi">ê²½ê¸°ë„</button>
+			<button class="w3-button w3-left w33" disabled value="gangwon">ê°•ì›ë„</button>
+			<button class="w3-button w3-left w33" disabled value="chungcheong">ì¶©ì²­ë„</button>
+			<button class="w3-button w3-left w33" value="gyeongsang">ê²½ìƒë„</button>
+			<button class="w3-button w3-left w33" disabled value="jeolla">ì „ë¼ë„</button>
+			<button class="w3-button w3-left w33" disabled value="jeju">ì œì£¼ë„</button>
 		<hr class="w3-col mg0 w3-card-2">
 		</div>
 		</form>
-		
-		<div class="w3-col w3-padding w3-left-align w3-border w3-card-4 w3-margin-top">
-			<div>
-				<div class="w3-left maintext area"><small>&it; ${MAIN.marea} &gt;</small></div>
-				<div class="w3-right">¸¶°¨ : ${MAIN.endtime}</div>
+<c:if test="${MAIN.endalert > 0}">		
+		<div class="w3-col w3-padding w3-left-align w3-border w3-card-4 w3-margin-top ctdw" id="${MAIN.endtime}">
+			<div class="count" id="count">
+				<div class="w3-col">
+					<div class="w3-left maintext area"><small>&it; ${MAIN.marea} &gt;</small></div>
+					<div class="w3-col w3-button w3-border subbtn m1 w3-right" id="conbtn">ì‹ ì²­í˜„í™©</div>
+					<div class="w3-col w3-button w3-border subbtn m1 w3-right" id="subbtn">ì‹ ì²­</div>
+					<div class="w3-right w3-margin-right" id="id"></div>
+				</div>
 			</div>
-			<h1 class="w3-col maintext">${MAIN.title}</h1>
-			<div class="w3-col maintext">${MAIN.id}</div>
-			<div class="w3-col maintext"><small>${MAIN.sdate}&nbsp;&nbsp;&nbsp;Á¶È¸¼ö : ${MAIN.click}</small></div>
+			<div class="w3-col m8">
+				<h1 class="w3-col maintext">${MAIN.title}</h1>
+				<div class="w3-col maintext">${MAIN.id}</div>
+				<div class="w3-col maintext"><small>${MAIN.sdate}&nbsp;&nbsp;&nbsp;ì¡°íšŒìˆ˜ : ${MAIN.click}</small></div>
+			</div>
+			
+			<div class="w3-col w3-right m1 w3-margin-top" id="regimem">
+<c:forEach var="data" items="${MEMBER}">		
+				<h6 class="w3-col regimember"><small>${data.id}</small></h6>
+</c:forEach>			
+			</div>
+			
 			<hr class="w3-col mgt0">
 			<div class="w3-col">${MAIN.body}</div>
 		</div>
-		
+</c:if>		
+<c:if test="${MAIN.endalert < 0}">		
+		<div class="w3-col w3-padding w3-left-align w3-border w3-card-4 w3-margin-top">
+			<div>
+				<div class="w3-col">
+					<div class="w3-left maintext area"><small>&it; ${MAIN.marea} &gt;</small></div>
+					<div class="w3-col w3-button w3-border subbtn m1 w3-right" id="conbtn">ì‹ ì²­í˜„í™©</div>
+					<div class="w3-right w3-margin-right">ë§ˆê°ì‹œê°„ : ${MAIN.endtime}</div>
+				</div>
+			</div>
+			<div class="w3-col m8">
+				<h1 class="w3-col maintext">${MAIN.title}</h1>
+				<div class="w3-col maintext">${MAIN.id}</div>
+				<div class="w3-col maintext"><small>${MAIN.sdate}&nbsp;&nbsp;&nbsp;ì¡°íšŒìˆ˜ : ${MAIN.click}</small></div>
+			</div>
+			
+			<div class="w3-col w3-right m1 w3-margin-top" id="regimem">
+<c:forEach var="data" items="${MEMBER}">		
+				<h6 class="w3-col regimember"><small>${data.id}</small></h6>
+</c:forEach>			
+			</div>
+			
+			
+			<hr class="w3-col mgt0">
+			<div class="w3-col">${MAIN.body}</div>
+		</div>
+</c:if>		
 	</div>
+	
+	<form method="POST" action="/deli/applyProc.dlv" id="pageFrm" name="pageFrm">
+		<input type="hidden" name="nowPage" id="nowPage" value="${param.nowPage}">
+		<input type="hidden" name="city" id="city" value="${param.city}">
+		<input type="hidden" name="search" id="search" value="${param.search}">
+		<input type="hidden" name="check" id="check" value="${param.check}">
+		<input type="hidden" name="bno" id="bno" value="${MAIN.bno}">
+	</form>
 </body>
 </html>

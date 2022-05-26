@@ -20,21 +20,19 @@
 	
 	<table border = 1px;>
 	<tr>
-	<th>번호</th>
 	<th>장소명</th>
 	<th>거리</th>
 	<th>선택(클릭)</th>
 	</tr>
 	<tr>
 	<c:forEach items = "${list}" var = "list" >
-	<th>${list.no}</th><br>
 	<th>${list.name}</th><br>
 	<th>${list.dist}</th><br>
 	<th><a href = "#">선택</a></th><br>
 	</tr>
 	</c:forEach>
 	</table>
-	
+	<a href = "../../index.jsp"><button>뒤로가기</button></a>
 	</center>
 	
 	
