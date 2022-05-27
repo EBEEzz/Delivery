@@ -5,8 +5,8 @@ import java.sql.Time;
 import java.util.Date;
 
 public class PcsVO {
-	private int mno, esti, img;
-	private String id, name, kakaoid, pw, mail, tel, addr, sdate, oriname;
+	private int mno, esti;
+	private String id, name, kakaoid, pw, mail, tel, addr, sdate, oriname, dir, savename;
 	private Date jdate;
 	private Time jtime;
 	public int getMno() {
@@ -20,12 +20,6 @@ public class PcsVO {
 	}
 	public void setEsti(int esti) {
 		this.esti = esti;
-	}
-	public int getImg() {
-		return img;
-	}
-	public void setImg(int img) {
-		this.img = img;
 	}
 	public String getId() {
 		return id;
@@ -99,15 +93,24 @@ public class PcsVO {
 	public void setOriname(String oriname) {
 		this.oriname = oriname;
 	}
+	public String getDir() {
+		return dir;
+	}
+	public void setDir(String dir) {
+		this.dir = dir;
+	}
+	public String getSavename() {
+		return savename;
+	}
+	public void setSavename(String savename) {
+		this.savename = savename;
+	}
 	@Override
 	public String toString() {
-		return "PcsVO [mno=" + mno + ", esti=" + esti + ", img=" + img + ", id=" + id + ", name=" + name + ", kakaoid="
-				+ kakaoid + ", pw=" + pw + ", mail=" + mail + ", tel=" + tel + ", addr=" + addr + ", sdate=" + sdate
-				+ ", oriname=" + oriname + ", jdate=" + jdate + ", jtime=" + jtime + "]";
+		return "PcsVO [mno=" + mno + ", esti=" + esti + ", id=" + id + ", name=" + name + ", kakaoid=" + kakaoid
+				+ ", pw=" + pw + ", mail=" + mail + ", tel=" + tel + ", addr=" + addr + ", sdate=" + sdate
+				+ ", oriname=" + oriname + ", dir=" + dir + ", savename=" + savename + ", jdate=" + jdate + ", jtime="
+				+ jtime + "]";
 	}
-	
 
-	
-	
-	
 }

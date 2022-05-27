@@ -46,3 +46,19 @@
 					성공 :	/deli/main.dlv
 					실패 :	/deli/member/myInfo.dlv
 --------------------------------------------------------------
+# 내정보 수정 폼보기 요청 
+요청내용	: 	/deli/member/editInfo.dlv
+파라미터	:	무
+컨트롤러	: 	com.githrd.deli.controller.pcs.DeliEditInfo
+뷰			:	/WEB-INF/views/deli/member/editInfo.jsp
+--------------------------------------------------------------
+# 회원 수정 처리 요청 
+요청내용	: 	/deli/member/editProc.dlv
+파라미터	:	mno, pw, mail, tel, ano 
+컨트롤러	: 	com.githrd.deli.controller.pcs.DeliEditProc
+뷰			:	
+				redirect ]
+					성공 :	/deli/member/myInfo.dlv
+					실패 :  /deli/member/editInfo.dlv
+					
+--------------------------------------------------------------

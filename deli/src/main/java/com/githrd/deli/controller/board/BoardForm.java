@@ -19,8 +19,8 @@ public class BoardForm implements DeliInter {
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String view = "/board/boardForm";
-		
-		
+		String id = (String) req.getSession().getAttribute("SID");
+
 		
 		String no = req.getParameter("bno");
 		int bno = Integer.parseInt(no);
@@ -35,16 +35,23 @@ public class BoardForm implements DeliInter {
 				System.out.println("조회수 업데이트 실패");
 			}
 		}
-System.out.println("체크1");
+
 		ArrayList<YonghyunVO> list = yDao.getRegiMember(bno);
-for(YonghyunVO i : list) {
-	System.out.println(i.getId());
-}
-System.out.println("체크2");
+		
+		for(YonghyunVO i : list) {
+			if(id.equals(i.getId())) {
+				req.setAttribute("PAY", i.getId());
+			}
+		}
+		
+		ArrayList<YonghyunVO> menu = yDao.getMenu(bno);
+		
 		req.setAttribute("MEMBER", list);
+		req.setAttribute("MENU", menu);
 		req.setAttribute("RESULT", result);
 		YonghyunVO yVO = yDao.getBoardForm(bno);
 		req.setAttribute("MAIN", yVO);
+
 		return view;
 	} 
 

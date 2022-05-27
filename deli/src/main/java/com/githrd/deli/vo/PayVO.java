@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class PayVO {
-	private int mno, rno, mimg, mprice, mino, olno,  oprice, omprice, quantity, esti, cname, omno;
+	private int mno, rno, mimg, mprice, mino, olno,  oprice, omprice, quantity, esti, cname, omno, gorder;
 	private String mname, mintro, miname, sname, dir, omenu, rname, addr, tel, stime, ono, sdate, paym, request;
 	private Time rtime;
 	private Date rdate;
@@ -186,24 +186,34 @@ public class PayVO {
 	public void setOmno(int omno) {
 		this.omno = omno;
 	}
+	
+	
+	public int getGorder() {
+		return gorder;
+	}
+	public void setGorder(int gorder) {
+		this.gorder = gorder;
+	}
+	
 	@Override
 	public String toString() {
 		return "PayVO [mno=" + mno + ", rno=" + rno + ", mimg=" + mimg + ", mprice=" + mprice + ", mino=" + mino
 				+ ", olno=" + olno + ", oprice=" + oprice + ", omprice=" + omprice + ", quantity=" + quantity
-				+ ", esti=" + esti + ", cname=" + cname + ", omno=" + omno + ", mname=" + mname + ", mintro=" + mintro
-				+ ", miname=" + miname + ", sname=" + sname + ", dir=" + dir + ", omenu=" + omenu + ", rname=" + rname
-				+ ", addr=" + addr + ", tel=" + tel + ", stime=" + stime + ", ono=" + ono + ", sdate=" + sdate
-				+ ", paym=" + paym + ", request=" + request + ", rtime=" + rtime + ", rdate=" + rdate + ", getMno()="
-				+ getMno() + ", getRno()=" + getRno() + ", getMimg()=" + getMimg() + ", getMprice()=" + getMprice()
-				+ ", getMino()=" + getMino() + ", getOlno()=" + getOlno() + ", getOno()=" + getOno() + ", getOprice()="
-				+ getOprice() + ", getOmprice()=" + getOmprice() + ", getQuantity()=" + getQuantity() + ", getEsti()="
-				+ getEsti() + ", getCname()=" + getCname() + ", getMname()=" + getMname() + ", getMintro()="
-				+ getMintro() + ", getMiname()=" + getMiname() + ", getSname()=" + getSname() + ", getDir()=" + getDir()
-				+ ", getOmenu()=" + getOmenu() + ", getRname()=" + getRname() + ", getAddr()=" + getAddr()
-				+ ", getTel()=" + getTel() + ", getRtime()=" + getRtime() + ", getStime()=" + getStime()
-				+ ", getSdate()=" + getSdate() + ", getRdate()=" + getRdate() + ", getPaym()=" + getPaym()
-				+ ", getRequest()=" + getRequest() + ", getOmno()=" + getOmno() + ", getClass()=" + getClass()
-				+ ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+				+ ", esti=" + esti + ", cname=" + cname + ", omno=" + omno + ", gorder=" + gorder + ", mname=" + mname
+				+ ", mintro=" + mintro + ", miname=" + miname + ", sname=" + sname + ", dir=" + dir + ", omenu=" + omenu
+				+ ", rname=" + rname + ", addr=" + addr + ", tel=" + tel + ", stime=" + stime + ", ono=" + ono
+				+ ", sdate=" + sdate + ", paym=" + paym + ", request=" + request + ", rtime=" + rtime + ", rdate="
+				+ rdate + ", getMno()=" + getMno() + ", getRno()=" + getRno() + ", getMimg()=" + getMimg()
+				+ ", getMprice()=" + getMprice() + ", getMino()=" + getMino() + ", getOlno()=" + getOlno()
+				+ ", getOno()=" + getOno() + ", getOprice()=" + getOprice() + ", getOmprice()=" + getOmprice()
+				+ ", getQuantity()=" + getQuantity() + ", getEsti()=" + getEsti() + ", getCname()=" + getCname()
+				+ ", getMname()=" + getMname() + ", getMintro()=" + getMintro() + ", getMiname()=" + getMiname()
+				+ ", getSname()=" + getSname() + ", getDir()=" + getDir() + ", getOmenu()=" + getOmenu()
+				+ ", getRname()=" + getRname() + ", getAddr()=" + getAddr() + ", getTel()=" + getTel() + ", getRtime()="
+				+ getRtime() + ", getStime()=" + getStime() + ", getSdate()=" + getSdate() + ", getRdate()="
+				+ getRdate() + ", getPaym()=" + getPaym() + ", getRequest()=" + getRequest() + ", getOmno()="
+				+ getOmno() + ", getGorder()=" + getGorder() + ", getClass()=" + getClass() + ", hashCode()="
+				+ hashCode() + ", toString()=" + super.toString() + "]";
 	}
 	
 	

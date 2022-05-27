@@ -31,6 +31,9 @@
 <c:if test="${not empty RESULT}">
 		<input type="hidden" name="result" value="${RESULT}">
 </c:if>
+<c:if test="${not empty CANCLERESULT}">
+		<input type="hidden" id="cancleresult" name="cancleresult" value="${CANCLERESULT}">
+</c:if>
 
 		
 	</form>

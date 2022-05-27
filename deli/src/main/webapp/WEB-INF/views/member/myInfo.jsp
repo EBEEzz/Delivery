@@ -23,7 +23,7 @@
 			
 			<div class="w3-center"><br>
         		<span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Close Modal">×</span>
-        		<img src="/deli/resources/img/avatar/${DATA.oriname}" alt="profile" style="width:30%" class="w3-circle w3-margin-top w3-border">
+        		<img src="/deli${DATA.dir}/${DATA.oriname}" alt="profile" style="width:30%" class="w3-circle w3-margin-top w3-border">
       		</div>
       
 			<div class="w3-container">

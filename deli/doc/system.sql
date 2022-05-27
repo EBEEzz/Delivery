@@ -839,3 +839,248 @@ VALUES(
 );
 
 commit;
+
+alter table orderlist drop constraint ol_ono_fk;
+
+alter table orderlist modify ono VARCHAR2(40CHAR);
+
+alter table delivery.ordermenu drop constraint om_ono_fk;
+
+alter table delivery.ordermenu add constraint om_olno_fk FOREIGN KEY(olno) REFERENCES orderlist(olno) on delete cascade;
+
+alter table ordertask drop primary key;
+
+alter table ordertask modify ono VARCHAR2(40CHAR);
+
+alter table ordertask add constraint od_ono_pk primary key(ono);
+
+alter table orderlist add constraint ol_ono_fk foreign key(ono) references ordertask(ono) on delete cascade;
+
+alter table ordermenu add ono VARCHAR2(40CHAR) not null;
+
+ALTER table ordermenu add constraint om_ono_fk foreign key(ono) references ordertask(ono) on delete cascade;
+
+alter table ordermenu modify ono not null;
+
+alter table ordermenu rename constraint om_ono_nn to om_olno_nn;
+
+alter table ordermenu rename constraint sys_c007330 to om_ono_nn;
+
+--  sys_c007103 은 임시로 정해진 not null 제약조건의 이름이라 수정했습니다.
+--  rename 시 제약조건을 확인해 주세요
+
+alter table restaurant add delpay number(6);
+
+alter table restaurant modify delpay not null;
+
+alter table restaurant rename constraint sys_c007332 to rs_del_nn;
+
+--  sys_c007381 은 임시로 정해진 not null 제약조건의 이름이라 수정했습니다.
+--  rename 시 제약조건을 확인해 주세요
+
+commit;
+
+INSERT INTO
+    board(bno, bmno, title, body, larea, marea, sarea, end, category)
+VALUES(
+    (SELECT NVL(MAX(bno) + 1, 1) FROM board), 1004, '맛있는거 먹고싶지 않아요?.', '지금 딱히 생각나는 음식은 없지만 8시간 뒤 치킨이 먹고싶을거 같아요.', '서울특별시', '종로구', '사직동', 8, '치킨'
+);
+
+INSERT INTO
+    board(bno, bmno, title, body, larea, marea, sarea, end, category)
+VALUES(
+    (SELECT NVL(MAX(bno) + 1, 1) FROM board), 1005, '테스트용', '테스트 해보자 얼른.', '서울특별시', '종로구', '사직동', 6, '치킨'
+);
+
+INSERT INTO
+    board(bno, bmno, title, body, larea, marea, sarea, end, category)
+VALUES(
+    (SELECT NVL(MAX(bno) + 1, 1) FROM board), 1006, 'ㅋㅋㅋㅋㅋㅋㅋㅋ', '좀더 빨리 해라', '서울특별시', '종로구', '사직동', 2, '도시락'
+);
+
+INSERT INTO
+    board(bno, bmno, title, body, larea, marea, sarea, end, category)
+VALUES(
+    (SELECT NVL(MAX(bno) + 1, 1) FROM board), 1002, '이번엔 고기다', '고기먹자', '서울특별시', '종로구', '사직동', 1, '고기·구이'
+);
+
+CREATE TABLE avatar(
+    ano NUMBER(5)
+        CONSTRAINT AVATAT_FNO_PK PRIMARY KEY,
+    aname VARCHAR2(100 CHAR)
+        CONSTRAINT AVATAR_FNAME_NN NOT NULL,
+    oriname VARCHAR2(20 CHAR)
+        CONSTRAINT AVATAR_ANAME_NN NOT NULL,
+    savename VARCHAR2(100 CHAR)
+        CONSTRAINT AVATAR_SNAME_UK UNIQUE
+        CONSTRAINT AVATAR_SNAME_NN NOT NULL,
+    dir VARCHAR2(100 CHAR)
+        CONSTRAINT AVATAR_DIR_NN NOT NULL,
+    isShow CHAR(1) DEFAULT 'N'
+        CONSTRAINT AVATAR_ISSHOW_NN NOT NULL
+        CONSTRAINT AVATAR_ISSHOW_CK CHECK (isShow IN('Y', 'N'))
+        
+);
+
+
+INSERT INTO
+    avatar    
+VALUES(
+    10, 'noimage', 'noimage.jpg', 'noimage.jpg', '/img/avatar/', 'Y'
+);
+
+INSERT INTO
+    avatar    
+VALUES(
+    11, 'man1', 'img_avatar1.png', 'img_avatar1.png', '/img/avatar/', 'Y'
+);
+
+INSERT INTO
+    avatar    
+VALUES(
+    12, 'man2', 'img_avatar2.png', 'img_avatar2.png', '/img/avatar/', 'Y'
+);
+
+INSERT INTO
+    avatar    
+VALUES(
+    13, 'man3', 'img_avatar3.png', 'img_avatar3.png', '/img/avatar/', 'Y'
+);
+
+INSERT INTO
+    avatar    
+VALUES(
+    14, 'woman1', 'img_avatar4.png', 'img_avatar4.png', '/img/avatar/', 'Y'
+);
+
+INSERT INTO
+    avatar    
+VALUES(
+    15, 'woman2', 'img_avatar5.png', 'img_avatar5.png', '/img/avatar/', 'Y'
+);
+
+INSERT INTO
+    avatar    
+VALUES(
+    16, 'woman3', 'img_avatar6.png', 'img_avatar6.png', '/img/avatar/', 'Y'
+);
+
+CREATE TABLE regimem (
+    abno NUMBER(4)
+        CONSTRAINT REGIMEM_ABNO_NN NOT NULL
+        CONSTRAINT REGIMEM_ABNO_FK REFERENCES board(bno),
+    aid VARCHAR2(10 CHAR)
+        CONSTRAINT REGIMEM_AID_NN NOT NULL
+        CONSTRAINT REGIMEM_AID_FK REFERENCES member(id)
+);
+
+CREATE TABLE grouporder (
+    gno NUMBER(6)
+        CONSTRAINT GO_GNO_PK PRIMARY KEY
+);
+
+ALTER TABLE
+    orderlist
+ADD
+    gorder NUMBER(6)
+        CONSTRAINT OL_GR_FK REFERENCES grouporder(gno)
+        CONSTRAINT OL_GR_NN NOT NULL
+;
+
+commit;
+
+alter table restaurant modify rtime VARCHAR2(20CHAR);
+
+alter table restaurant rename COLUMN rtime to rctime;
+
+alter table restaurant add rotime VARCHAR2(20CHAR) NOT NULL;
+
+ALTER TABLE restaurant rename constraint sys_c007348 to rs_rotime_nn;
+-- sys 파일은 임시파일이므로 확인 후 변경
+ALTER TABLE restaurant rename constraint rs_rtime_nn to rs_rctime_nn;
+
+alter table restaurant add (minprice NUMBER(6) default 0 not null);
+
+alter table restaurant rename constraint sys_c007349 to rs_minp_nn;
+-- sys 파일은 임시파일이므로 확인 후 변경
+commit;
+
+alter table restaurant modify delpay default 0;
+
+commit;
+
+alter table member modify esti default 2.5;
+
+UPDATE
+    member
+SET
+    esti = 2.5
+WHERE
+    isshow = 'Y'
+;
+
+commit;
+
+alter table delivery.member drop constraint member_esti_nn;
+
+UPDATE
+    member
+SET
+    esti = null
+WHERE
+    isshow = 'Y'
+;
+
+alter table member modify esti NUMBER(3,2);
+
+alter table member modify esti default 2.5;
+
+UPDATE
+    member
+SET
+    esti = 2.5
+WHERE
+    isshow = 'Y'
+;
+
+alter table member modify esti NOT NULL;
+
+alter table member rename constraint SYS_C007350 to member_esti_nn;
+-- sys 파일은 임시파일이므로 확인 후 변경
+
+commit;
+
+INSERT INTO
+    board(bno, bmno, title, body, larea, marea, sarea, end, category)
+VALUES(
+    (SELECT NVL(MAX(bno) + 1, 1) FROM board), 1001, '배고프다', '삼겹살 콜?', '서울특별시', '종로구', '사직동', 12, '고기·구이'
+);
+commit;
+
+
+ALTER TABLE regimem
+ADD(
+    isshow CHAR(1) DEFAULT 'Y'
+        CONSTRAINT REGIMEM_ISSHOW_NN NOT NULL
+        CONSTRAINT REGIMEM_ISSHOW_CK CHECK(isshow IN('Y','N'))
+);
+
+UPDATE
+    regimem
+SET
+    isshow = 'N'
+WHERE
+    isshow = 'Y'
+    AND ABNO = 1
+    AND AID = 'YHLEE';
+    
+ALTER TABLE regimem
+ADD(
+    wdate DATE DEFAULT sysdate
+        CONSTRAINT REGIMEM_wdate_NN NOT NULL
+);
+ALTER TABLE regimem
+ADD(
+    ddate DATE DEFAULT sysdate
+        CONSTRAINT REGIMEM_DDATE_NN NOT NULL
+);

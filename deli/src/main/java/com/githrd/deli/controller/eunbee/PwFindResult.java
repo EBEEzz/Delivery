@@ -35,6 +35,11 @@ public class PwFindResult implements DeliInter {
 	public String exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String view = "/find/pwFindResult";
 		
+		if(req.getSession().getAttribute("SID") != null) {
+			req.setAttribute("isRedirect", true);
+			view = "/deli/main.dlv";
+		}
+		
 		String mail = req.getParameter("fmail");
 		String id = req.getParameter("fid");
 		String npw = req.getParameter("randomPw");
@@ -43,6 +48,7 @@ public class PwFindResult implements DeliInter {
 		String fmail = eDao.getMail(id, mail);
 		
 		req.setAttribute("FMAIL", fmail);
+		req.setAttribute("NPW", npw);
 		
 		
 		if(fmail != null) {
@@ -84,6 +90,7 @@ public class PwFindResult implements DeliInter {
 				e.printStackTrace();
 			}
 		}
+		
 		return view;
 	}
 }

@@ -15,12 +15,13 @@ public class applyProc implements DeliInter {
 	public String exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String id = (String) req.getSession().getAttribute("SID");
 		String view = "/board/redirect";
-		/*
+/*로그인 후 해당 페이지로 돌아오게 수정 필요 **********/
 		if( id == null) {
-			
-			return view;
+			req.setAttribute("isRedirect", true);
+			return "/deli/member/login.dlv";
 		}
-		*/
+
+		
 		String no = req.getParameter("bno");
 		int bno = Integer.parseInt(no);
 		
@@ -44,22 +45,50 @@ public class applyProc implements DeliInter {
 		if(check != null) {
 			req.setAttribute("CHECK", check);
 		}
-		YonghyunDao yDao = new YonghyunDao();
-		int cnt = yDao.getRegiCount(id, bno);
-		if(cnt != 1) {
-			int regi = yDao.UpRegi(bno, id);
-			if(regi == 1) {
-				req.setAttribute("RESULT", 0);
-
-			} else {
-				req.setAttribute("RESULT", 2);
-				
-			}
-		} else {
-			req.setAttribute("RESULT", 1);
-
-		}
 		
+		YonghyunDao yDao = new YonghyunDao();
+		
+		
+		String cancle = req.getParameter("cancle");
+
+		if(cancle == "") {
+
+			int cnt = yDao.getRegiCount(id, bno);
+			if(cnt != 1) {
+
+				int regi = yDao.UpRegi(bno, id);
+				if(regi == 1) {
+					req.setAttribute("RESULT", 0);
+	
+				} else {
+					req.setAttribute("RESULT", 2);
+					
+				}
+			} else {
+				req.setAttribute("RESULT", 1);
+			}
+		} else if(cancle.equals("cancle")) {
+			int cnt = yDao.getRegiCount(id, bno);
+
+			if(cnt == 1) {
+				// 취소 가능
+				int cancleregi = yDao.DelRegi(bno, id);
+
+				if(cancleregi == 1) {
+					// 취소 성공
+					req.setAttribute("CANCLERESULT", 0);
+
+				} else {
+					// 취소 실패
+					req.setAttribute("CANCLERESULT", 2);
+			
+				}
+			} else {
+				// 신청자가 아니라 접수 불가능
+				req.setAttribute("CANCLERESULT", 1);
+
+			}
+		}
 		return view;
 	}
 

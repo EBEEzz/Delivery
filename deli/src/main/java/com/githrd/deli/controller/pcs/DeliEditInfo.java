@@ -9,28 +9,27 @@ import com.githrd.deli.controller.*;
 import com.githrd.deli.dao.*;
 import com.githrd.deli.vo.*;
 
-public class DeliMyInfo implements DeliInter {
+public class DeliEditInfo implements DeliInter {
 
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String view = "/member/editInfo";
+		// 로그인 체크
 		HttpSession session = req.getSession();
 		String sid = (String) session.getAttribute("SID");
-		String view = "/member/myInfo";
-		
 		if(sid == null) {
+			view = "/deli/member/login.dlv";
 			req.setAttribute("isRedirect", true);
-			view="/deli/member/login.dlv";
 			return view;
 		}
 		
-			
-		PcsDao mDao = new PcsDao();
-		PcsVO pVO = mDao.getIdInfo(sid);
+		// 데이터베이스에서 내정보 꺼내오고
+		PcsDao pDao = new PcsDao();
+		PcsVO pVO = pDao.getIdInfo(sid);
 		
+		// 데이터를 심고
 		req.setAttribute("DATA", pVO);
-
 		return view;
 	}
 
-	
 }

@@ -37,6 +37,10 @@ public class IdFind implements DeliInter {
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String view = "/find/idFind";
+		if(req.getSession().getAttribute("SID") != null) {
+			req.setAttribute("isRedirect", true);
+			view = "/deli/main.dlv";
+		}
 		
 		return view;
 	}
