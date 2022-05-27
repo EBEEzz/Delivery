@@ -44,7 +44,7 @@ $(document).ready(function(){
 <c:forEach var="data" items="${MENU}" var="memb" items="${MEMBER}">
 <c:if test="${SID eq memb.id }">
 			<div class="w3-col w3-border-bottom mgl10" align="left" >
-				<h4 id="mid">${data.mid} 님이 선택하신 메뉴</h4><br>
+				<h4 id="mid">${data.mid} 님이 선택하신 메뉴</h4><br> 
 				<p><span id="mymenu">${data.menu} </span><span id="mymprice" >${data.mprice}</span><span id="myquantity">${data.quantity}</span></p><br>
 				<h4>요청 사항 : </h4><br>
 				<input id="rq" name="rq" class="w3-border-grey">
