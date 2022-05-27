@@ -85,6 +85,7 @@ public class PcsDao {
 			// 꺼내서 VO에 담고
 			rs.next();
 			pVO.setMno(rs.getInt("mno"));
+			pVO.setName(rs.getString("name"));
 			pVO.setId(rs.getString("id"));
 			pVO.setEsti(rs.getInt("esti"));
 			pVO.setMail(rs.getString("mail"));
@@ -92,6 +93,7 @@ public class PcsDao {
 			pVO.setTel(rs.getString("tel"));
 			pVO.setOriname(rs.getString("oriname"));
 			pVO.setDir(rs.getString("dir"));
+			pVO.setAddr(rs.getString("addr"));
 	
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -213,6 +215,63 @@ public class PcsDao {
 			db.close(con);
 		}
 		// 데이터 반환하고
+		return cnt;
+	}
+	
+	// 회원정보수정 데이터베이스 작업 전담 처리함수
+	public int editMyInfo(int mno, String esql) {
+		// 반환값 변수
+		int cnt = 0;
+		// 커넥션
+		con = db.getCon();
+		// 질의명령
+		String sql = pSQL.getSQL(pSQL.EDIT_MEMBER);
+		// 질의명령 수정하고
+		sql = sql.replace("###", esql);
+		
+		// 명령 전달도구
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			// 질의명령 완성하고
+			pstmt.setInt(1, mno);
+			// 질의명령 보내고 결과받고
+			cnt = pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(pstmt);
+			db.close(con);
+		}
+		
+		// 결과 반환하고
+		return cnt;
+	}
+	
+	public int editProFile(String id, String fsql) {
+		// 반환값 변수
+		int cnt = 0;
+		// 커넥션
+		con = db.getCon();
+		// 질의명령
+		String sql = pSQL.getSQL(pSQL.EDIT_PROFILE);
+		// 질의명령 수정하고
+		sql = sql.replace("###", fsql);
+		
+		// 명령 전달도구
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			// 질의명령 완성하고
+			pstmt.setString(1, id);
+			// 질의명령 보내고 결과받고
+			cnt = pstmt.executeUpdate();
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(pstmt);
+			db.close(con);
+		}
+		// 결과 반환하고
 		return cnt;
 	}
 	

@@ -6,6 +6,8 @@ public class PcsSQL {
 	public final int SEL_ID_CNT 		= 1003;
 	
 	public final int DEL_MEMBER 		= 2001;
+	public final int EDIT_MEMBER		= 2002;
+	public final int EDIT_PROFILE		= 2003;
 	
 	public final int ADD_MEMBER			= 3001;
 	public final int ADD_PROFILE 		= 3002;
@@ -27,7 +29,7 @@ public class PcsSQL {
 			break;
 		case SEL_MEMBER_INFO:
 			buff.append("SELECT ");
-			buff.append("	mno, id, esti, mail, kakaoid, tel, oriname, dir ");
+			buff.append("	mno, name, id, esti, mail, kakaoid, tel, oriname, dir, addr ");
 			buff.append("FROM ");
 			buff.append("	member m, imgfile ");
 			buff.append("WHERE ");
@@ -68,6 +70,24 @@ public class PcsSQL {
 			buff.append("	member ");
 			buff.append("WHERE ");
 			buff.append("	id = ? ");
+			break;
+		case EDIT_MEMBER:
+			buff.append("UPDATE ");
+			buff.append("	member ");
+			buff.append("SET ");
+			buff.append("	### ");
+			buff.append("WHERE ");
+			buff.append("	isshow = 'Y' ");
+			buff.append("	AND mno = ? ");
+			break;
+		case EDIT_PROFILE:
+			buff.append("UPDATE ");
+			buff.append("    imgfile ");
+			buff.append("SET ");
+			buff.append("    ### ");
+			buff.append("WHERE ");
+			buff.append("    isshow = 'Y' ");
+			buff.append("    AND amno = (SELECT mno FROM member WHERE id = ?) ");
 			break;
 		}
 		return buff.toString();

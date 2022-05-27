@@ -2,6 +2,10 @@ $(document).ready(function(){
 	$('#hbtn').click(function(){
 		$(location).attr('href','/deli/main.dlv')
 	});
+	$('#rbtn').click(function(){
+		document.frm.reset();
+	});
+
 	
 	$('#id').change(function(){
 		var sid = $('#id').val();
@@ -64,7 +68,7 @@ $(document).ready(function(){
 	
 	$('#proimg').change(function(e){
 		var sfile = $(this).val();
-		var path = '/deli/resources/img/avatar/noimage.jpg';
+		var path = '/deli/resources/upload/noimage.jpg';
 		if(sfile){
 			var path = URL.createObjectURL(e.target.files[0]);
 		}
