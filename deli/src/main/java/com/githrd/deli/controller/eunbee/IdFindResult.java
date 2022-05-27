@@ -31,6 +31,12 @@ public class IdFindResult implements DeliInter {
 		String fid = eDao.getId(mail);
 		
 		req.setAttribute("FID", fid);
+		
+		if(req.getSession().getAttribute("SID") != null) {
+			req.setAttribute("isRedirect", true);
+			view = "/deli/main.dlv";
+		}
+		
 		return view;
 	}
 }

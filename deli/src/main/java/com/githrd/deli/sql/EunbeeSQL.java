@@ -3,6 +3,8 @@ package com.githrd.deli.sql;
 public class EunbeeSQL {
 	public final int SEL_ID			= 1001;
 	public final int SEL_MAIL		= 1002;
+	public final int SEL_ABNO		= 1003;
+	public final int SEL_ESTIINFO		= 1004;
 	
 	public final int EDIT_PASSWORD	= 2001;
 	
@@ -36,6 +38,27 @@ public class EunbeeSQL {
 			buff.append("WHERE ");
 			buff.append("	isshow = 'Y' ");
 			buff.append("	AND id = ? ");
+			break;
+		case SEL_ABNO:
+			buff.append("SELECT ");
+			buff.append("    abno ");
+			buff.append("FROM ");
+			buff.append("    regimem ");
+			buff.append("WHERE ");
+			buff.append("    aid = ? ");
+			break;
+		case SEL_ESTIINFO:
+			buff.append("SELECT ");
+			buff.append("    aid, avt, esti, savename ");
+			buff.append("FROM ");
+			buff.append("    regimem r, member m, avatar a ");
+			buff.append("WHERE ");
+			buff.append("    r.aid = m.id ");
+			buff.append("    AND m.avt = a.ano ");
+			buff.append("    AND r.isshow = 'Y' ");
+			buff.append("    AND m.isshow = 'Y' ");
+			buff.append("    AND abno = ? ");
+			buff.append("    AND aid != ? ");
 			break;
 		}
 		return buff.toString();
