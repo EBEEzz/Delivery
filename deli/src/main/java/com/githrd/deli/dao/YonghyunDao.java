@@ -486,7 +486,7 @@ public class YonghyunDao {
 			while(rs.next()) {
 			YonghyunVO yVO = new YonghyunVO();
 			yVO.setId(rs.getString("aid"));
-			
+			yVO.setMno(rs.getInt("mno"));
 			list.add(yVO);
 			}
 		} catch(Exception e) {
@@ -591,4 +591,134 @@ public class YonghyunDao {
 		return list;
 	}
 	
+	// 내가 등록한 친구 정보보기
+	public ArrayList<YonghyunVO> getFriend(int bno, int fno) {
+		ArrayList<YonghyunVO> list = new ArrayList<YonghyunVO>();
+		con = db.getCon();
+		String sql = ySQL.getSQL(ySQL.SEL_FRIEND);
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			pstmt.setInt(1, bno);
+			pstmt.setInt(2, fno);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				YonghyunVO yVO = new YonghyunVO();
+				yVO.setFrino(rs.getInt("frino"));
+				yVO.setId(rs.getString("id"));
+
+				list.add(yVO);
+			}
+			
+			} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(rs);
+			db.close(pstmt);
+			db.close(con);
+		}
+		return list;
+	}
+	
+	// 친구 등록 함수
+	public int UpFriend(int bno, int fno) {
+		int cnt = 0;
+		con = db.getCon();
+		String sql = ySQL.getSQL(ySQL.UPDATE_FRIEND);
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			pstmt.setInt(1, bno);
+			pstmt.setInt(2, fno);
+			
+			cnt = pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(pstmt);
+			db.close(con);
+		}
+		return cnt;
+	}
+	
+	// 친구 삭제 함수
+	public int DelFriend(int bno, int fno) {
+		int cnt = 0;
+		con = db.getCon();
+		String sql = ySQL.getSQL(ySQL.DEL_FRIEND);
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			pstmt.setInt(1, bno);
+			pstmt.setInt(2, fno);
+			
+			cnt = pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(pstmt);
+			db.close(con);
+		}
+		return cnt;
+	}
+	
+	// 친구 수락시 상대방에게도 친구 추가기능
+	public int UpFriendAgree(int fno, int bno) {
+		int cnt = 0;
+		con = db.getCon();
+		String sql = ySQL.getSQL(ySQL.UPDATE_FRIEND_AGREE);
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			pstmt.setInt(1, fno);
+			pstmt.setInt(2, bno);
+			
+			cnt = pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(pstmt);
+			db.close(con);
+		}
+		return cnt;
+	}
+	// 친구 수락 함수
+	public int UpFriendToo(int bno, int fno) {
+		int cnt = 0;
+		con = db.getCon();
+		String sql = ySQL.getSQL(ySQL.UPDATE_FRIEND_TOO);
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			pstmt.setInt(1, bno);
+			pstmt.setInt(2, fno);
+			
+			cnt = pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(pstmt);
+			db.close(con);
+		}
+		return cnt;
+	}
+	
+	// 회원번호 불러오는 함수
+	public YonghyunVO getMno(String id) {
+		YonghyunVO yVO = new YonghyunVO();
+		con = db.getCon();
+		String sql = ySQL.getSQL(ySQL.SEL_MNO);
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			rs.next();
+			yVO.setMno(rs.getInt("mno"));
+
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(rs);
+			db.close(pstmt);
+			db.close(con);
+		}
+		return yVO;
+	}
 }

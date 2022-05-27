@@ -8,7 +8,7 @@ import java.time.LocalTime;
 import java.util.Date;
 
 public class YonghyunVO {
-	private int rno, bno, bmno, click, end, restno, mprice;
+	private int rno, bno, bmno, click, end, restno, mprice, fno, myno, frino, mno;
 	private double endalert;
 	private String title, body, sdate, larea, marea, sarea, category, id, endtime, rname, mname;
 	private Date wdate, wenddate;
@@ -54,6 +54,30 @@ public class YonghyunVO {
 	}
 	public void setMprice(int mprice) {
 		this.mprice = mprice;
+	}
+	public int getFno() {
+		return fno;
+	}
+	public void setFno(int fno) {
+		this.fno = fno;
+	}
+	public int getMyno() {
+		return myno;
+	}
+	public void setMyno(int myno) {
+		this.myno = myno;
+	}
+	public int getFrino() {
+		return frino;
+	}
+	public void setFrino(int frino) {
+		this.frino = frino;
+	}
+	public int getMno() {
+		return mno;
+	}
+	public void setMno(int mno) {
+		this.mno = mno;
 	}
 	public double getEndalert() {
 		return endalert;

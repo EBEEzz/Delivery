@@ -16,11 +16,18 @@ public class YonghyunSQL {
 	public final int SEL_REGI_MEMBER = 1013;
 	public final int SEL_HOT_CLICK = 1014;
 	public final int SEL_REST_TYPE = 1015;
+	public final int SEL_FRIEND = 1016;
+	public final int SEL_MNO = 1017;
 		
 	public final int UPDATE_CLICK = 2001;
 	public final int UPDATE_REGI = 2002;
+	public final int UPDATE_FRIEND = 2003;
+	public final int UPDATE_FRIEND_AGREE = 2004;
+	public final int UPDATE_FRIEND_TOO = 2005;
 	
 	public final int DEL_REGI = 3001;
+	public final int DEL_FRIEND = 3002;
+	
 	
 	public String getSQL(int code) {
 		StringBuffer buff = new StringBuffer();
@@ -212,12 +219,13 @@ public class YonghyunSQL {
 				break;
 			case SEL_REGI_MEMBER :
 				buff.append("SELECT ");
-				buff.append("    aid ");
+				buff.append("    aid, mno ");
 				buff.append("FROM ");
-				buff.append("    regimem ");
+				buff.append("    regimem r, member m ");
 				buff.append("WHERE ");
 				buff.append("    abno = ? ");
-				buff.append("    AND isshow = 'Y' ");
+				buff.append("    AND r.isshow = 'Y' ");
+				buff.append("    AND aid = id ");
 				break;
 			case SEL_HOT_CLICK :
 				buff.append("SELECT ");
@@ -250,6 +258,26 @@ public class YonghyunSQL {
 				buff.append("    AND m.rno = r.restno ");
 				buff.append("    AND bno = ? ");
 				break;
+			case SEL_FRIEND : // 실제 등록된 친구 조회
+				buff.append("SELECT ");
+				buff.append("    frino, id ");
+				buff.append("FROM ");
+				buff.append("    friend f, member m ");
+				buff.append("WHERE ");
+				buff.append("    myno = ? ");
+				buff.append("    AND frino = ? ");
+				buff.append("    AND frino = mno ");
+				buff.append("    AND f.isshow = 'Y' ");
+				buff.append("    AND agree = 'Y' ");
+				break;
+			case SEL_MNO :
+				buff.append("SELECT ");
+				buff.append("    mno ");
+				buff.append("FROM ");
+				buff.append("    member ");
+				buff.append("WHERE ");
+				buff.append("    id = ? ");
+				break;
 			case UPDATE_CLICK :
 				buff.append("UPDATE ");
 				buff.append("    board ");
@@ -265,6 +293,30 @@ public class YonghyunSQL {
 				buff.append("    ?, ? ");
 				buff.append(") ");
 				break;
+			case UPDATE_FRIEND : // 친구 신청 버튼
+				buff.append("INSERT INTO ");
+				buff.append("    friend(fno, myno, frino) ");
+				buff.append("VALUES( ");
+				buff.append("    (SELECT NVL(MAX(fno) +1, 1) FROM friend), ?, ? ");
+				buff.append(") ");
+				break;
+			case UPDATE_FRIEND_AGREE : // 친구 수락시 상대방에게도 친구 추가기능 // 앞에 친구번호 뒤에 내번호
+				buff.append("INSERT INTO ");
+				buff.append("    friend(fno, myno, frino, agree, adate) ");
+				buff.append("VALUES( ");
+				buff.append("    (SELECT NVL(MAX(fno) +1, 1) FROM friend), ?, ?, 'Y', sysdate ");
+				buff.append(") ");
+				break;
+			case UPDATE_FRIEND_TOO : // 친구 수락버튼 // 앞에 내번호 뒤에 친구번호
+				buff.append("UPDATE ");
+				buff.append("    friend ");
+				buff.append("SET ");
+				buff.append("    agree = 'Y', ");
+				buff.append("    adate = sysdate ");
+				buff.append("WHERE ");
+				buff.append("    myno = ? ");
+				buff.append("    AND frino = ? ");
+				break;
 			case DEL_REGI :
 				buff.append("UPDATE ");
 				buff.append("    regimem ");
@@ -276,6 +328,18 @@ public class YonghyunSQL {
 				buff.append("    AND ABNO = ? ");
 				buff.append("    AND AID = ? ");
 				break;
+			case DEL_FRIEND : // 등록된 친구 삭제 버튼
+				buff.append("UPDATE ");
+				buff.append("    friend ");
+				buff.append("SET ");
+				buff.append("    isshow = 'N', ");
+				buff.append("    ddate = sysdate ");
+				buff.append("WHERE ");
+				buff.append("    myno = ? ");
+				buff.append("    AND frino = ? ");
+				buff.append("    AND agree = 'Y' ");
+				break;
+				// 친구 수락버튼 필요
 		}
 		
 		

@@ -22,72 +22,10 @@
 컨트롤러	:	com.githrd.deli.controller.board.applyProc
 뷰			:	성공 / 실패 ] redirect 사용하여 본래 게시글로 이동
 ----------------------------------------------------------------------------------
+# 친구 추가 신청
+요청내용	:	/deli/friend.dlv
+파라미터	:	mno
+컨트롤러	:	com.githrd.deli.controller.board.FriendProc
+뷰			:	-
+----------------------------------------------------------------------------------
 
-
-
-
-SELECT
-    rno, bno, bmno, id, title, body, wdate, click, larea, marea, sarea, end, category
-FROM
-    (SELECT
-        rownum rno, bno, bmno, id, title, body, wdate, click, larea, marea, sarea, end, category
-    FROM
-        (SELECT
-            bno, bmno, id, title, body, wdate, click, larea, marea, sarea, end, category
-        FROM
-            board b, member m
-        WHERE
-            larea = '서울특별시'
-            AND b.isshow = 'Y'
-            AND bmno = mno
-        )
-    )
-WHERE
-    rno BETWEEN 1 AND 3
-    
-
-
-
-SELECT
-    rno, bno, bmno, id, title, body, wdate, click, larea, marea, sarea, end, category
-FROM
-    (SELECT
-        rownum rno, bno, bmno, id, title, body, wdate, click, larea, marea, sarea, end, category
-    FROM
-        (SELECT
-            bno, bmno, id, title, body, wdate, click, larea, marea, sarea, end, category
-        FROM
-            board b, member m
-        WHERE
-            larea = ?
-            AND b.isshow = 'Y'
-            AND bmno = mno
-            AND title LIKE '%?%'
-        ORDER BY
-            wdate desc
-        )
-    )
-WHERE
-    rno BETWEEN ? AND ?
-    
-    
-    
-    
-    
-SELECT
-    bno, bmno, id, title, body, wdate, click, larea, marea, sarea, end, category
-FROM
-    board b, member m
-WHERE
-    bmno = mno
-    AND bno = 3
-    
-    
-    
-UPDATE
-    board
-SET
-    click = click + 1
-WHERE
-    bno = 1
-;

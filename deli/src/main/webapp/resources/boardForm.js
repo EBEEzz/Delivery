@@ -112,4 +112,26 @@ $(document).ready(function(){
 		$(location).attr('href', '/deli/member/login.dlv');
 	});
 	
+	var price = 0;
+	var subprice = 0;
+	$('.pricebtn1').click(function(){
+		
+		if(confirm('을 빼시겠습니까?')) {
+			var mprice = 0;
+			mprice = $(this).attr('id');
+			price = price - mprice;
+			alert(price);
+		}
+	});
+	
+	$('.pricebtn2').click(function(){
+		if(confirm('을 추가하시겠습니까?')) {
+			var mprice = 0;
+			mprice = $(this).attr('id');
+			price = price -(- mprice);
+			alert(price);
+		}
+	});
+	
+	
 });

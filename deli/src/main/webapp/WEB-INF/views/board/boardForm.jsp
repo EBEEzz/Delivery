@@ -56,6 +56,16 @@
 .regimember{
 	margin: 0px;
 }
+.fbtn {
+	padding: 4px;  
+}
+.pricebtn1 {
+	padding: 0px 10px;
+}
+.pricebtn2 {
+	padding: 0px 10px;
+}
+
 </style>
 </head>
 <body>
@@ -123,7 +133,7 @@
 			
 			
 <c:forEach var="data" items="${MEMBER}">
-				<h6 class="w3-col regimember" id="${data.id}"><small id="alertmember">${data.id}</small></h6>
+				<h6 class="w3-col regimember" id="${data.id}"><small id="alertmember">${data.id}<button class="w3-white w3-button fbtn" id="${data.mno}"> + </button></small></h6>
 </c:forEach>	
 			</div>
 			
@@ -133,11 +143,14 @@
 			<div>
 				<div class="w3-col m8">${MAIN.body}</div>
 				<div class="w3-col m4"> 
-				<div class="w3-center">식당정보</div>
+					<div class="w3-center">식당정보</div>
 <c:forEach var="menu" items="${MENU}">	
-				<div class="w3-right">${menu.rname}</div>
-					<div id="menu${menu.mno}">${menu.mname} : ${menu.mprice}</div>		
-</c:forEach>
+					<div>
+						<div class="w3-right" id="restname">${menu.rname}</div>
+						<div id="${menu.mprice}">${menu.mname} : ${menu.mprice}<div class="w3-button w3-right pricebtn1" id="${menu.mprice}">-</div><div class="w3-button w3-right pricebtn2" id="${menu.mprice}">+</div></div>
+					</div>
+</c:forEach>	
+					<input type="hidden" id="price" name="price">
 				</div>				
 			</div>
 		</div>
@@ -164,10 +177,11 @@
 			
 			<div class="w3-col w3-right m1 w3-margin-top" id="regimem">
 			
-			
+				
 <c:forEach var="data" items="${MEMBER}">
-				<h6 class="w3-col regimember" id="${data.id}"><small id="alertmember">${data.id}</small></h6>
-</c:forEach>			
+				<h6 class="w3-col regimember" id="${data.id}"><small id="alertmember">${data.id}<button class="w3-white w3-button fbtn" id="${data.mno}"> + </button></small></h6>
+</c:forEach>	
+						
 			</div>
 			
 			
