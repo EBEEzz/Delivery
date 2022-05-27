@@ -19,7 +19,7 @@
 <link rel="stylesheet" type="text/css" href="/deli/resources/css/user.css">
 <link rel="stylesheet" type="text/css" href="/deli/resources/css/w3.css">
 <script type="text/javascript" src="/deli/resources/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="/deli/resources/js/pay/pay.js?ver=2"></script>
+<script type="text/javascript" src="/deli/resources/js/pay/pay.js?ver=3"></script>
 <!-- jQuery -->
 	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <!-- iamport.payment.js -->

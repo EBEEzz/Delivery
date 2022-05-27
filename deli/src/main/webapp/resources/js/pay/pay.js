@@ -95,9 +95,10 @@ $(document).ready(function(){
 						data : payVo,
 						dataType : "json",
 						success : function(result){
-							if(result == "y") {
+							if(result.result == "y") {
 								alert('proc 성공!!!');
-								location.href = "/payment/afterPay"; 
+								$('#frm').attr('action','/deli/payment/afterPay.dlv');
+								$('#frm').submit();
 							}else{
 								alert("디비입력실패");
 								return false;

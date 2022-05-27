@@ -64,10 +64,10 @@
 			</div>
 		</div>
 		</form>
-		</div>
 		<div class="w3-col w3-margin-top w3-card-4 w3-center" >
 			<div class="w3-half w3-button w3-green" id="pbtn">결제</div>
 			<div class="w3-half w3-button w3-deep-orange" id="cbtn">취소</div>
+		</div>
 		</div>
 	
 </body>

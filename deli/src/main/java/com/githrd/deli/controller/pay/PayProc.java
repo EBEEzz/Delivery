@@ -16,7 +16,7 @@ public class PayProc implements DeliInter {
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String view = "/payment/afterPay";
-		req.setAttribute("isRedirect", true);
+		req.setAttribute("isRedirect", null);
 		/*
 		String sid = (String) req.getSession().getAttribute("SID");
 		if(sid == null) {
@@ -60,7 +60,7 @@ public class PayProc implements DeliInter {
 		
 		int odmcnt = pDao.InsertOdm(pVO);
 		
-		
+		String msg = "{\"result\" : \"y\"}";
 		if(odtcnt != 1) {
 			System.out.println("ordertask에 문제가 생겼습니다.");
 			return "/payment/beforePay";
@@ -72,13 +72,13 @@ public class PayProc implements DeliInter {
 			return "/payment/beforePay";
 		} else {
 			System.out.println("proc성공2");
-			req.setAttribute("isRedirect", false);
-			view = "{\"result\" : \"y\"}";
+			req.setAttribute("isRedirect", null);
+			msg = "{\"result\" : \"y\"}";
 		}
 		
 		System.out.println("proc성공");
 		
-		return view;
+		return msg;
 	}
 
 }
