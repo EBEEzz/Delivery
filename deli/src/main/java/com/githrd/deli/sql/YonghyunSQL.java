@@ -14,9 +14,12 @@ public class YonghyunSQL {
 	public final int SEL_BOARD_FORM = 1011;
 	public final int SEL_REGI_COUNT = 1012;
 	public final int SEL_REGI_MEMBER = 1013;
+	public final int SEL_HOT_CLICK = 1014;
 		
 	public final int UPDATE_CLICK = 2001;
 	public final int UPDATE_REGI = 2002;
+	
+	public final int DEL_REGI = 3001;
 	
 	public String getSQL(int code) {
 		StringBuffer buff = new StringBuffer();
@@ -204,6 +207,7 @@ public class YonghyunSQL {
 				buff.append("WHERE ");
 				buff.append("    aid = ? ");
 				buff.append("    AND abno = ? ");
+				buff.append("    AND isshow = 'Y' ");
 				break;
 			case SEL_REGI_MEMBER :
 				buff.append("SELECT ");
@@ -212,6 +216,28 @@ public class YonghyunSQL {
 				buff.append("    regimem ");
 				buff.append("WHERE ");
 				buff.append("    abno = ? ");
+				buff.append("    AND isshow = 'Y' ");
+				break;
+			case SEL_HOT_CLICK :
+				buff.append("SELECT ");
+				buff.append("    rno, bno, bmno, id, title, body, wdate, click, larea, marea, sarea, end, category, endalert ");
+				buff.append("FROM ");
+				buff.append("    (SELECT ");
+				buff.append("       rownum rno, bno, bmno, id, title, body, wdate, click, larea, marea, sarea, end, category, endalert ");
+				buff.append("    FROM ");
+				buff.append("        (SELECT ");
+				buff.append("            bno, bmno, id, title, body, wdate, click, larea, marea, sarea, end, category, ((wdate + (end/24)) - sysdate) endalert ");
+				buff.append("       FROM ");
+				buff.append("           board b, member m ");
+				buff.append("        WHERE ");
+				buff.append("            b.isshow = 'Y' ");
+				buff.append("            AND bmno = mno ");
+				buff.append("       ORDER BY ");
+				buff.append("            click desc ");
+				buff.append("        ) ");
+				buff.append("    ) ");
+				buff.append("WHERE ");
+				buff.append("    rno BETWEEN 1 AND 5 ");
 				break;
 			case UPDATE_CLICK :
 				buff.append("UPDATE ");
@@ -223,10 +249,21 @@ public class YonghyunSQL {
 				break;
 			case UPDATE_REGI :
 				buff.append("INSERT INTO ");
-				buff.append("    regimem ");
+				buff.append("    regimem(abno, aid) ");
 				buff.append("VALUES( ");
 				buff.append("    ?, ? ");
 				buff.append(") ");
+				break;
+			case DEL_REGI :
+				buff.append("UPDATE ");
+				buff.append("    regimem ");
+				buff.append("SET ");
+				buff.append("    isshow = 'N', ");
+				buff.append("    wdate = wdate ");
+				buff.append("WHERE ");
+				buff.append("    isshow = 'Y' ");
+				buff.append("    AND ABNO = ? ");
+				buff.append("    AND AID = ? ");
 				break;
 		}
 		

@@ -7,6 +7,15 @@ $(document).ready(function(){
 	} else if(res == 'fail') {
 		alert('접수에 실패하였습니다.');
 	}
+	var canres = $('#cancleresult').val();
+
+	if(canres == 'success') {
+		alert('접수 취소되었습니다.');
+	} else if (canres == 'fail') {
+		alert('접수 취소에 실패하였습니다.');
+	} else if (canres == 'false') {
+		alert('지원자가 아닙니다.');
+	} 
 	
 	$('#hbtn').click(function(){
 		$(location).attr('href', '/deli/main.dlv');
@@ -60,7 +69,7 @@ $(document).ready(function(){
 	        var hours = Math.floor((distance % _day) / _hour);
 	        var minutes = Math.floor((distance % _hour) / _minute);
 	        var seconds = Math.floor((distance % _minute) / _second);
-	        document.getElementById(id).innerHTML = '마감시간 : ' + days + '일 ';
+	        document.getElementById(id).innerHTML = '마감까지 : ' + days + '일 ';
 	        document.getElementById(id).innerHTML += hours + '시간 ';
 	        document.getElementById(id).innerHTML += minutes + '분 ';
 	        document.getElementById(id).innerHTML += seconds + '초';
@@ -76,20 +85,31 @@ $(document).ready(function(){
 	}
 
 	$('#subbtn').click(function(){
-		//var npage = $('.nowpage').attr('id');
+		$('#cancle').val('');
 		$('#pageFrm').submit();
 	});
 	
-	$('#conbtn').mouseenter(function(){
-	alert($('#regimember').attr('id'))
+	$('#conbtn').click(function(){
 	
-	if(alert($('#regimember').attr('id')) == null)
-			$('#regimem').slideToggle();
+		if($('#alertmember').html() == undefined) {
+			alert('지원자가 없습니다.');
+		}
 		
-	})
-	$('#conbtn').mouseleave(function(){
-
 		$('#regimem').slideToggle();
-	})
+
+	});
+	
+	$('#canclebtn').click(function(){
+		$('#cancle').val('cancle');
+		$('#pageFrm').submit();
+	});
+	
+	$('#obtn').click(function(){
+		$(location).attr('href', '/deli/member/logout.dlv');
+	});
+	
+	$('#lbtn').click(function(){
+		$(location).attr('href', '/deli/member/login.dlv');
+	});
 	
 });

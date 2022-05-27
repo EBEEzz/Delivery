@@ -30,5 +30,11 @@ $(document).ready(function(){
 		$('#pageFrm').submit();
 	})
 	
+	$('#obtn').click(function(){
+		$(location).attr('href', '/deli/member/logout.dlv');
+	});
 	
+	$('#lbtn').click(function(){
+		$(location).attr('href', '/deli/member/login.dlv');
+	});
 });

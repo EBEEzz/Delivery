@@ -498,4 +498,67 @@ public class YonghyunDao {
 		}
 		return list;
 	}
+	
+	
+	// 공구 신청 취소 요청 함수
+	public int DelRegi(int bno, String id) {
+		int cnt = 0;
+		con = db.getCon();
+		String sql = ySQL.getSQL(ySQL.DEL_REGI);
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			pstmt.setInt(1, bno);
+			pstmt.setString(2, id);
+			
+			cnt = pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(pstmt);
+			db.close(con);
+		}
+		return cnt;
+	}
+	
+	// 메인페이지 조회수 높은 게시글 보여주는 함수
+	public ArrayList<YonghyunVO> getHotClick() {
+		ArrayList<YonghyunVO> list = new ArrayList<YonghyunVO>();
+		con = db.getCon();
+		String sql = ySQL.getSQL(ySQL.SEL_HOT_CLICK);
+		stmt = db.getSTMT(con);
+		try {
+			rs = stmt.executeQuery(sql);
+			while(rs.next()) {
+				YonghyunVO yVO = new YonghyunVO();
+				yVO.setRno(rs.getInt("rno"));
+				yVO.setBno(rs.getInt("bno"));
+				yVO.setBmno(rs.getInt("bmno"));
+				yVO.setId(rs.getString("id"));
+				yVO.setTitle(rs.getString("title"));
+				yVO.setBody(rs.getString("body"));
+				yVO.setWdate(rs.getDate("wdate"));
+				yVO.setWtime(rs.getTime("wdate"));
+				yVO.setClick(rs.getInt("click"));
+				yVO.setLarea(rs.getString("larea"));
+				yVO.setMarea(rs.getString("marea"));
+				yVO.setSarea(rs.getString("sarea"));
+				yVO.setEnd(rs.getInt("end"));
+				yVO.setCategory(rs.getString("category"));
+				yVO.setSdate();
+				yVO.setEndalert(rs.getDouble("endalert"));
+				
+				
+				list.add(yVO);
+			}
+			
+			} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(rs);
+			db.close(pstmt);
+			db.close(con);
+		}
+		return list;
+	}
+	
 }

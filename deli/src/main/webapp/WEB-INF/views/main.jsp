@@ -40,6 +40,15 @@ textarea {
 	resize: none;
 	height: 500px;
 }
+.hotclick {
+	overflow : hidden;
+}
+.hotclickhr {
+	margin-top : 0px;
+}
+small {
+	font-size: 7px;
+}
 </style>
 
 </head>
@@ -68,7 +77,7 @@ textarea {
 			<div class="w3-col m9">
 
 
-			<textarea id="chatbox" rows="10" cols="70"></textarea>
+			<textarea id="chatbox" rows="10" cols="75"></textarea>
 						
 			<form class="w3-margin-bottom">
 		
@@ -86,19 +95,35 @@ textarea {
 <c:if test="${empty SID}">
 			<div class="w3-col m3">
 				<div class="w3-border w3-button w230 mgb10 w3-right" id="lbtn">로그인</div>
-				<button class="w3-right member" id="jbtn">회원가입</button>
+				<button class="w3-right member w3-button" id="jbtn">회원가입</button>
 			</div>
 </c:if>
 <c:if test="${not empty SID}">
 			<div class="w3-col m3">
 				<div class="w3-border w230 mgb10 w3-right w3-left-align w3-padding">
 					<div class="w3-col m4">사진</div>
-					<div class="w3-col m8">아이디</div>
-					
+					<div class="w3-col m8">
+						<div>${SID}</div>
+						<div><small>내친구보기</small></div>
+					</div>
 				</div>
 				
 			</div>
 </c:if>
+			<div class="w3-col m3 hotclick">
+				<div class="w3-border w230 mgb10 w3-right w3-padding">
+					<form method="POST" action="/deli/boardForm.dlv" id="frm1" name="frm1">
+						<input type=hidden id="bno" name="bno">
+<c:forEach var="data" items="${HOT}">
+						<div class="w3-left-align w3-button w3-left hotbtn" id="${data.bno}">
+							<div><small>&it; ${data.marea} &gt;</small></div>
+							<div>${data.title}</div>
+						</div>
+						<hr class="hotclickhr w3-col">		
+</c:forEach>	
+					</form>		
+				</div>
+			</div>
 		</div>
 	</div>
 </body>
