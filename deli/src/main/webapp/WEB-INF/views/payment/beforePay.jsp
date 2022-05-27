@@ -72,6 +72,7 @@ $(document).ready(function(){
 				<h4>총합    : <span>${data.mtmoney}</span></h4><br>
 <c:forEach var="data" items="${MENU}" var="memb" items="${MEMBER}">
 <c:if test="${SID eq memb.id }"> 
+
 				<h4>${SID}님이 지불하실 금액  : <span id="mytmoney"></span></h4>
 </c:if>				
 </c:forEach>
