@@ -17,10 +17,10 @@ public class PaySQL {
 			break;
 		case INSERT_ODL:
 			buff.append("INSERT INTO ");
-			buff.append("    orderlist(olno, ono, rno, oprice, paym, requests) ");
+			buff.append("    orderlist(olno, ono, rno, oprice, paym, requests, gorder) ");
 			buff.append("VALUES( ");
 			buff.append("    (SELECT NVL(MAX(olno) +1, 1) FROM orderlist),  ");
-			buff.append("  ?, ?, ?, ?, ? ");
+			buff.append("  ?, ?, ?, ?, ?, 111111 ");
 			buff.append(" ) ");			
 			break;
 		case INSERT_ODM:

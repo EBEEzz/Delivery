@@ -17,12 +17,14 @@ public class PayProc implements DeliInter {
 	public String exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String view = "/payment/afterPay";
 		req.setAttribute("isRedirect", null);
+		
 		/*
 		String sid = (String) req.getSession().getAttribute("SID");
 		if(sid == null) {
 			return "/member/login.dlv";
 		}
 		*/
+		
 		String arno = (String) req.getParameter("r_rno");
 		int rno = Integer.parseInt(arno);
 		String ono = (String) req.getParameter("ono");
@@ -71,12 +73,10 @@ public class PayProc implements DeliInter {
 			System.out.println("ordermenu에 문제가 생겼습니다.");
 			return "/payment/beforePay";
 		} else {
-			System.out.println("proc성공2");
 			req.setAttribute("isRedirect", null);
 			msg = "{\"result\" : \"y\"}";
 		}
 		
-		System.out.println("proc성공");
 		
 		return msg;
 	}
