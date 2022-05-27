@@ -55,4 +55,5 @@ public class DeliDelInfo implements DeliInter {
 		return view;
 	}
 
+	
 }

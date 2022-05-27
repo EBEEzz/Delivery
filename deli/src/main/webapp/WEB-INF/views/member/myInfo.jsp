@@ -34,6 +34,7 @@
 					<h5 class="w3-center">이메일 : <span>${DATA.mail}</span></h5>
 					<h5 class="w3-center">카카오아이디 : <span>${DATA.kakaoid}</span></h5>
 					<h5 class="w3-center">전화번호 : <span>${DATA.tel}</span></h5>	
+					<h5 class="w3-center">${DATA.oriname}</h5>	
 					<div class="w3-col w3-margin-bottom">				
 						<button class="m2 w3-button w3-blue" id="ebtn">회원정보 수정</button>
 						<button class="m2 w3-button w3-red w3-right" id="dbtn">회원 탈퇴</button>

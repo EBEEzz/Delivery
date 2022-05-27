@@ -32,4 +32,5 @@ public class DeliMyInfo implements DeliInter {
 		return view;
 	}
 
+	
 }

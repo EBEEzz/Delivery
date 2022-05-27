@@ -3,10 +3,12 @@ package com.githrd.deli.sql;
 public class PcsSQL {
 	public final int SEL_LOGIN_CNT 		= 1001;
 	public final int SEL_MEMBER_INFO 	= 1002;
+	public final int SEL_ID_CNT 		= 1003;
 	
 	public final int DEL_MEMBER 		= 2001;
 	
-	public final int INSERT_PROFILE 	= 3001;
+	public final int ADD_MEMBER			= 3001;
+	public final int ADD_PROFILE 		= 3002;
 	
 	
 	
@@ -23,21 +25,14 @@ public class PcsSQL {
 			buff.append("	AND id = ? ");
 			buff.append("	AND pw = ? ");
 			break;
-		case INSERT_PROFILE:
-			buff.append("INSERT INTO IMGFILE ");
-			buff.append("VALUES ( ");
-			buff.append("    (SELECT NVL(MAX(ano) + 1, 100001) FROM imgfile), ");
-			buff.append("    '?', '?', 'Y', sysdate ");
-			buff.append("    ) ");
-			break;
 		case SEL_MEMBER_INFO:
 			buff.append("SELECT ");
-			buff.append("	mno, id, esti, mail, kakaoid, tel, m.imgfile, oriname ");
+			buff.append("	mno, id, esti, mail, kakaoid, tel, oriname ");
 			buff.append("FROM ");
 			buff.append("	member m, imgfile ");
 			buff.append("WHERE ");
 			buff.append("	m.isshow = 'Y' ");
-			buff.append("	AND m.imgfile = ano ");
+			buff.append("	AND mno = amno ");
 			buff.append("	AND id = ? ");
 			break;
 		case DEL_MEMBER:
@@ -48,6 +43,32 @@ public class PcsSQL {
 			buff.append("WHERE ");
 			buff.append("	isshow = 'Y' ");
 			buff.append("	AND mno = ? ");
+			break;
+		case ADD_MEMBER:
+			buff.append("INSERT INTO  ");
+			buff.append("    MEMBER ");
+			buff.append("VALUES( ");
+			buff.append("    (SELECT NVL(max(mno) + 1, 1001) FROM member), ");
+			buff.append("    ?, ?, ?, ?, ?, ?, ");
+			buff.append("    ?, sysdate, 'Y', 0 ");
+			buff.append("    ); ");
+			break;
+		case ADD_PROFILE:
+			buff.append("INSERT INTO ");
+			buff.append("    imgfile ");
+			buff.append("VALUES( ");
+			buff.append("    (SELECT NVL(max(ano) + 1, 100000) FROM imgfile), ");
+			buff.append("    (SELECT mno FROM member WHERE id = ?), ");
+			buff.append("    ?, ?, 'Y', sysdate, ? ");
+			buff.append("    ) ");
+			break;
+		case SEL_ID_CNT:
+			buff.append("SELECT ");
+			buff.append("	COUNT(*) cnt ");
+			buff.append("FROM ");
+			buff.append("	member ");
+			buff.append("WHERE ");
+			buff.append("	id = ? ");
 			break;
 		}
 		return buff.toString();
