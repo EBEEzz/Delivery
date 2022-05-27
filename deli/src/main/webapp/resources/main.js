@@ -52,5 +52,14 @@ $(document).ready(function(){
 	$('#lbtn').click(function(){
 		$(location).attr('href', '/deli/member/login.dlv');
 	});
+	$('#jbtn').click(function(){
+		$(location).attr('href', '/deli/member/join.dlv');
+	});
+	
+	$('.hotbtn').click(function(){
+		var bno = $(this).attr('id');
+		$('#bno').val(bno);
+		$('#frm1').submit();
+	})
 
 });

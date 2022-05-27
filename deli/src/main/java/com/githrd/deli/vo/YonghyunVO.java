@@ -8,9 +8,9 @@ import java.time.LocalTime;
 import java.util.Date;
 
 public class YonghyunVO {
-	private int rno, bno, bmno, click, end;
+	private int rno, bno, bmno, click, end, restno, mprice;
 	private double endalert;
-	private String title, body, sdate, larea, marea, sarea, category, id, endtime;
+	private String title, body, sdate, larea, marea, sarea, category, id, endtime, rname, mname;
 	private Date wdate, wenddate;
 	private Time wtime, wendtime;
 	public int getRno() {
@@ -42,6 +42,18 @@ public class YonghyunVO {
 	}
 	public void setEnd(int end) {
 		this.end = end;
+	}
+	public int getRestno() {
+		return restno;
+	}
+	public void setRestno(int restno) {
+		this.restno = restno;
+	}
+	public int getMprice() {
+		return mprice;
+	}
+	public void setMprice(int mprice) {
+		this.mprice = mprice;
 	}
 	public double getEndalert() {
 		return endalert;
@@ -112,6 +124,18 @@ public class YonghyunVO {
 		SimpleDateFormat form1 = new SimpleDateFormat("yyyy/MM/dd ");
 		SimpleDateFormat form2 = new SimpleDateFormat("HH:mm:ss");
 		endtime = form1.format(wenddate) + form2.format(wendtime);
+	}
+	public String getRname() {
+		return rname;
+	}
+	public void setRname(String rname) {
+		this.rname = rname;
+	}
+	public String getMname() {
+		return mname;
+	}
+	public void setMname(String mname) {
+		this.mname = mname;
 	}
 	public Date getWdate() {
 		return wdate;

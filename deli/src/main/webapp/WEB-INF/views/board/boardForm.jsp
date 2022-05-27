@@ -50,6 +50,7 @@
 #regimem {
 	position: relative;
 	top: -12px;
+	right: 80px;
 	display: none;
 }
 .regimember{
@@ -66,6 +67,15 @@
 </c:if>
 <c:if test="${RESULT eq 1}">
 	<input type="hidden" id="result" value="false">
+</c:if>
+<c:if test="${CRESULT eq 0}">
+	<input type="hidden" id="cancleresult" value="success">
+</c:if>
+<c:if test="${CRESULT eq 1}">
+	<input type="hidden" id="cancleresult" value="fali">
+</c:if>
+<c:if test="${CRESULT eq 2}">
+	<input type="hidden" id="cancleresult" value="false">
 </c:if>
 	<div class="mxw980 w3-content w3-center">
 		<button class="w3-right-align mg0 w3-left mg0 pdAll0 w3-button mgt10 member" id="hbtn">HOME</button>
@@ -91,11 +101,13 @@
 		<hr class="w3-col mg0 w3-card-2">
 		</div>
 		</form>
+		<!-- 접수가능 게시글 -->
 <c:if test="${MAIN.endalert > 0}">		
 		<div class="w3-col w3-padding w3-left-align w3-border w3-card-4 w3-margin-top ctdw" id="${MAIN.endtime}">
 			<div class="count" id="count">
 				<div class="w3-col">
 					<div class="w3-left maintext area"><small>&it; ${MAIN.marea} &gt;</small></div>
+					<div class="w3-col w3-button w3-border subbtn m1 w3-right" id="canclebtn">지원취소</div>
 					<div class="w3-col w3-button w3-border subbtn m1 w3-right" id="conbtn">신청현황</div>
 					<div class="w3-col w3-button w3-border subbtn m1 w3-right" id="subbtn">신청</div>
 					<div class="w3-right w3-margin-right" id="id"></div>
@@ -108,14 +120,32 @@
 			</div>
 			
 			<div class="w3-col w3-right m1 w3-margin-top" id="regimem">
-<c:forEach var="data" items="${MEMBER}">				
-				<h6 class="w3-col regimember" id="${data.id}"><small>${data.id}</small></h6>
-</c:forEach>			
+			
+			
+<c:forEach var="data" items="${MEMBER}">
+				<h6 class="w3-col regimember" id="${data.id}"><small id="alertmember">${data.id}</small></h6>
+</c:forEach>	
 			</div>
 			
+			
+			
 			<hr class="w3-col mgt0">
-			<div class="w3-col">${MAIN.body}</div>
+			<div>
+				<div class="w3-col m8">${MAIN.body}</div>
+				<div class="w3-col m4"> 
+				<div class="w3-center">식당정보</div>
+<c:forEach var="menu" items="${MENU}">	
+				<div class="w3-right">${menu.rname}</div>
+					<div>${menu.mname} : ${menu.mprice}</div>		
+</c:forEach>
+				</div>				
+			</div>
 		</div>
+
+	<c:if test="${not empty PAY}">
+		<div class="w3-col w3-button w3-border w3-margin-top">결제하기</div>
+	</c:if>
+
 </c:if>		
 <c:if test="${MAIN.endalert < 0}">		
 		<div class="w3-col w3-padding w3-left-align w3-border w3-card-4 w3-margin-top">
@@ -133,8 +163,10 @@
 			</div>
 			
 			<div class="w3-col w3-right m1 w3-margin-top" id="regimem">
-<c:forEach var="data" items="${MEMBER}">	
-				<h6 class="w3-col regimember" id="${data.id}"><small>${data.id}</small></h6>
+			
+			
+<c:forEach var="data" items="${MEMBER}">
+				<h6 class="w3-col regimember" id="${data.id}"><small id="alertmember">${data.id}</small></h6>
 </c:forEach>			
 			</div>
 			
@@ -151,6 +183,7 @@
 		<input type="hidden" name="search" id="search" value="${param.search}">
 		<input type="hidden" name="check" id="check" value="${param.check}">
 		<input type="hidden" name="bno" id="bno" value="${MAIN.bno}">
+		<input type="hidden" name="cancle" id="cancle">
 	</form>
 </body>
 </html>

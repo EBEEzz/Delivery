@@ -15,4 +15,17 @@ $(document).ready(function() {
 	$('.bbtn').click(function() {
 		$(location).attr('href',  '/deli/find/idFind.dlv');
 	});
+	
+	$('label').mouseup(function() {
+		let point = $(this).prev().val();
+		
+		$(this).siblings().first().text(point);
+		
+		$('#sbtn').click(function() {
+			$(document.frm.nesti).val(point);
+			
+			$('#frm').submit();
+		});
+	})
+
 });

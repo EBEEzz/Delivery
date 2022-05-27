@@ -864,7 +864,7 @@ alter table ordermenu modify ono not null;
 
 alter table ordermenu rename constraint om_ono_nn to om_olno_nn;
 
-alter table ordermenu rename constraint sys_c007380 to om_ono_nn;
+alter table ordermenu rename constraint sys_c007330 to om_ono_nn;
 
 --  sys_c007103 은 임시로 정해진 not null 제약조건의 이름이라 수정했습니다.
 --  rename 시 제약조건을 확인해 주세요
@@ -873,7 +873,7 @@ alter table restaurant add delpay number(6);
 
 alter table restaurant modify delpay not null;
 
-alter table restaurant rename constraint sys_c007381 to rs_del_nn;
+alter table restaurant rename constraint sys_c007332 to rs_del_nn;
 
 --  sys_c007381 은 임시로 정해진 not null 제약조건의 이름이라 수정했습니다.
 --  rename 시 제약조건을 확인해 주세요
@@ -988,3 +988,99 @@ ADD
 ;
 
 commit;
+
+alter table restaurant modify rtime VARCHAR2(20CHAR);
+
+alter table restaurant rename COLUMN rtime to rctime;
+
+alter table restaurant add rotime VARCHAR2(20CHAR) NOT NULL;
+
+ALTER TABLE restaurant rename constraint sys_c007348 to rs_rotime_nn;
+-- sys 파일은 임시파일이므로 확인 후 변경
+ALTER TABLE restaurant rename constraint rs_rtime_nn to rs_rctime_nn;
+
+alter table restaurant add (minprice NUMBER(6) default 0 not null);
+
+alter table restaurant rename constraint sys_c007349 to rs_minp_nn;
+-- sys 파일은 임시파일이므로 확인 후 변경
+commit;
+
+alter table restaurant modify delpay default 0;
+
+commit;
+
+alter table member modify esti default 2.5;
+
+UPDATE
+    member
+SET
+    esti = 2.5
+WHERE
+    isshow = 'Y'
+;
+
+commit;
+
+alter table delivery.member drop constraint member_esti_nn;
+
+UPDATE
+    member
+SET
+    esti = null
+WHERE
+    isshow = 'Y'
+;
+
+alter table member modify esti NUMBER(3,2);
+
+alter table member modify esti default 2.5;
+
+UPDATE
+    member
+SET
+    esti = 2.5
+WHERE
+    isshow = 'Y'
+;
+
+alter table member modify esti NOT NULL;
+
+alter table member rename constraint SYS_C007350 to member_esti_nn;
+-- sys 파일은 임시파일이므로 확인 후 변경
+
+commit;
+
+INSERT INTO
+    board(bno, bmno, title, body, larea, marea, sarea, end, category)
+VALUES(
+    (SELECT NVL(MAX(bno) + 1, 1) FROM board), 1001, '배고프다', '삼겹살 콜?', '서울특별시', '종로구', '사직동', 12, '고기·구이'
+);
+commit;
+
+
+ALTER TABLE regimem
+ADD(
+    isshow CHAR(1) DEFAULT 'Y'
+        CONSTRAINT REGIMEM_ISSHOW_NN NOT NULL
+        CONSTRAINT REGIMEM_ISSHOW_CK CHECK(isshow IN('Y','N'))
+);
+
+UPDATE
+    regimem
+SET
+    isshow = 'N'
+WHERE
+    isshow = 'Y'
+    AND ABNO = 1
+    AND AID = 'YHLEE';
+    
+ALTER TABLE regimem
+ADD(
+    wdate DATE DEFAULT sysdate
+        CONSTRAINT REGIMEM_wdate_NN NOT NULL
+);
+ALTER TABLE regimem
+ADD(
+    ddate DATE DEFAULT sysdate
+        CONSTRAINT REGIMEM_DDATE_NN NOT NULL
+);

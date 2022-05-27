@@ -1,0 +1,93 @@
+# main 페이지 보기 요청
+요청내용	:	/deli/main.dlv
+파라미터	:	무
+컨트롤러	:	com.githrd.deli.controller.DeliMain
+뷰			:	/WEB-INF/views/main.jsp
+----------------------------------------------------------------------------------
+# 게시판 리스트 보기 요청
+요청내용	:	/deli/boardList.dlv
+파라미터	:	무
+컨트롤러	:	com.githrd.deli.controller.board.BoardList
+뷰			:	/WEB-INF/views/board/boardList.jsp
+----------------------------------------------------------------------------------
+# 게시판 내용 보기 요청
+요청내용	:	/deli/boardForm.dlv
+파라미터	:	bno, nowPage[, city, search, check]
+컨트롤러	:	com.githrd.deli.controller.board.BoardForm
+뷰			:	/WEB-INF/views/board/boardForm.jsp
+----------------------------------------------------------------------------------
+# 게시판 신청 접수 처리 요청
+요청내용	:	/deli/applyProc.dlv
+파라미터	:	bno, nowPage[, city, search, check]
+컨트롤러	:	com.githrd.deli.controller.board.applyProc
+뷰			:	성공 / 실패 ] redirect 사용하여 본래 게시글로 이동
+----------------------------------------------------------------------------------
+
+
+
+
+SELECT
+    rno, bno, bmno, id, title, body, wdate, click, larea, marea, sarea, end, category
+FROM
+    (SELECT
+        rownum rno, bno, bmno, id, title, body, wdate, click, larea, marea, sarea, end, category
+    FROM
+        (SELECT
+            bno, bmno, id, title, body, wdate, click, larea, marea, sarea, end, category
+        FROM
+            board b, member m
+        WHERE
+            larea = '서울특별시'
+            AND b.isshow = 'Y'
+            AND bmno = mno
+        )
+    )
+WHERE
+    rno BETWEEN 1 AND 3
+    
+
+
+
+SELECT
+    rno, bno, bmno, id, title, body, wdate, click, larea, marea, sarea, end, category
+FROM
+    (SELECT
+        rownum rno, bno, bmno, id, title, body, wdate, click, larea, marea, sarea, end, category
+    FROM
+        (SELECT
+            bno, bmno, id, title, body, wdate, click, larea, marea, sarea, end, category
+        FROM
+            board b, member m
+        WHERE
+            larea = ?
+            AND b.isshow = 'Y'
+            AND bmno = mno
+            AND title LIKE '%?%'
+        ORDER BY
+            wdate desc
+        )
+    )
+WHERE
+    rno BETWEEN ? AND ?
+    
+    
+    
+    
+    
+SELECT
+    bno, bmno, id, title, body, wdate, click, larea, marea, sarea, end, category
+FROM
+    board b, member m
+WHERE
+    bmno = mno
+    AND bno = 3
+    
+    
+    
+UPDATE
+    board
+SET
+    click = click + 1
+WHERE
+    bno = 1
+;
