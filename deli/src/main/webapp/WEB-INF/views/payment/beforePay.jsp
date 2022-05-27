@@ -51,7 +51,7 @@ $(document).ready(function(){
 				<h4>가격 : <span id="mytmprice"></span></h4>
 			</div>	
 </c:if>
-<c:if test="${SID ne memb.id }"> 
+<c:if test="${SID ne memb.id }">  
 			<div class="w3-col w3-border-bottom mgl10" align="left" >
 				<h4 id="oid">${data.mid} 님이 선택하신 메뉴</h4><br>
 				<p><span id="menu">${data.menu} </span><span id="mprice" >${data.mprice}</span><span id="quantity">${data.quantity}</span></p><br>
