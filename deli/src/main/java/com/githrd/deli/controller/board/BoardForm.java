@@ -35,12 +35,9 @@ public class BoardForm implements DeliInter {
 				System.out.println("조회수 업데이트 실패");
 			}
 		}
-System.out.println("체크1");
+
 		ArrayList<YonghyunVO> list = yDao.getRegiMember(bno);
-for(YonghyunVO i : list) {
-	System.out.println(i.getId());
-}
-System.out.println("체크2");
+
 		req.setAttribute("MEMBER", list);
 		req.setAttribute("RESULT", result);
 		YonghyunVO yVO = yDao.getBoardForm(bno);

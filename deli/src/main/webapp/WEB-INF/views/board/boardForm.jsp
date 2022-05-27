@@ -108,8 +108,8 @@
 			</div>
 			
 			<div class="w3-col w3-right m1 w3-margin-top" id="regimem">
-<c:forEach var="data" items="${MEMBER}">		
-				<h6 class="w3-col regimember"><small>${data.id}</small></h6>
+<c:forEach var="data" items="${MEMBER}">				
+				<h6 class="w3-col regimember" id="${data.id}"><small>${data.id}</small></h6>
 </c:forEach>			
 			</div>
 			
@@ -133,8 +133,8 @@
 			</div>
 			
 			<div class="w3-col w3-right m1 w3-margin-top" id="regimem">
-<c:forEach var="data" items="${MEMBER}">		
-				<h6 class="w3-col regimember"><small>${data.id}</small></h6>
+<c:forEach var="data" items="${MEMBER}">	
+				<h6 class="w3-col regimember" id="${data.id}"><small>${data.id}</small></h6>
 </c:forEach>			
 			</div>
 			

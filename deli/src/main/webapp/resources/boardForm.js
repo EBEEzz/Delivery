@@ -80,9 +80,16 @@ $(document).ready(function(){
 		$('#pageFrm').submit();
 	});
 	
-	$('#conbtn').mouseup(function(){
+	$('#conbtn').mouseenter(function(){
+	alert($('#regimember').attr('id'))
+	
+	if(alert($('#regimember').attr('id')) == null)
+			$('#regimem').slideToggle();
+		
+	})
+	$('#conbtn').mouseleave(function(){
 
-		$('#regimem').css('display', 'block');
+		$('#regimem').slideToggle();
 	})
 	
 });
