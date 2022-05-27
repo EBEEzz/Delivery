@@ -21,6 +21,7 @@
 			<h1>Deli 회원 정보 수정</h1>
 			<form method="POST" action="" name="frm" id="frm" encType="multipart/form-data"
 				class="w3-col w3-margin-top w3-margin-bottom w3-padding w3-card-4">
+				<input type="hidden" name="mno" value="${DATA.mno}">
 				<div class="w3-padding mgb10">
 					<h5 class="w3-left-align">
 						<label for="name" class="w3-left mgl10" style="font-weight: bold;">회원이름</label>
@@ -53,7 +54,6 @@
 						<label for="newpw" class="w3-left mgl10" style="font-weight: bold;">새로운 비밀번호</label>
 					</h5>
 					<input type="password" name="newpw" id="newpw" class="s8 w3-magin-top mgl10 w3-input w3-border w3-center" >
-					<span class="w3-col w3-text-red w3-center" id="pwmsg" style="display: none;"></span>
 				</div>
 				<div class="w3-padding mgb10">
 					<h5 class="w3-left-align">
@@ -64,9 +64,16 @@
 				</div>
 				<div class="w3-padding mgb10">
 					<h5 class="w3-left-align">
-						<label for="mail" class="w3-left mgl10" style="font-weight: bold;">이메일</label>
+						<label for="mail" class="w3-left mgl10" style="font-weight: bold;">기존 이메일</label>
 					</h5>
-					<input type="text" name="mail" id="mail" class="s8 w3-magin-top mgl10 w3-input w3-border w3-center" >
+					<input type="text" name="mail" id="mail" 
+					class="s8 w3-magin-top mgl10 w3-input w3-border w3-center" value="${DATA.mail}" >
+				</div>
+				<div class="w3-padding mgb10">
+					<h5 class="w3-left-align">
+						<label for="newmail" class="w3-left mgl10" style="font-weight: bold;">변경할 이메일</label>
+					</h5>
+					<input type="text" name="newmail" id="newmail" class="s8 w3-magin-top mgl10 w3-input w3-border w3-center" >
 				</div>
 				<div class="w3-padding mgb10">
 					<h5 class="w3-left-align">

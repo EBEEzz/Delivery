@@ -51,7 +51,7 @@
 						<label for="repw" class="w3-left mgl10" style="font-weight: bold;">비밀번호 확인</label>
 					</h5>
 					<input type="password" name="repw" id="repw" class="s8 w3-magin-top mgl10 w3-input w3-border w3-center" >
-					<span class="w3-col w3-text-red w3-center" id="repwmsg">비밀번호가 일치하지 않습니다.</span>
+					<span class="w3-col w3-text-red w3-center" id="repwmsg" style="display: none;"></span>
 				</div>
 				<div class="w3-padding mgb10">
 					<h5 class="w3-left-align">
