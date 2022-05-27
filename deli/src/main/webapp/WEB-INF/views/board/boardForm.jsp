@@ -136,7 +136,7 @@
 				<div class="w3-center">식당정보</div>
 <c:forEach var="menu" items="${MENU}">	
 				<div class="w3-right">${menu.rname}</div>
-					<div>${menu.mname} : ${menu.mprice}</div>		
+					<div id="menu${menu.mno}">${menu.mname} : ${menu.mprice}</div>		
 </c:forEach>
 				</div>				
 			</div>

@@ -38,13 +38,20 @@
 <body>
 	<div class="mxw700 w3-content w3-center">
 		<form method="POST" action="/deli/payment/InsertInfo.dlv" id="frm" name="frm">
-			<input type="hidden" id="ono" name="ono" value="${DATA.ono}">
 			<input type="hidden" id="tel" name="tel" value="${DATA.tel}">
 		<h1 class="w3-teal w3-padding" style="margin-bottom: 5px;">Delivery Project</h1>
 		<div class="w3-col w3-light-grey">
 			<div class="w3-col w3-border-bottom mgl10" align="left">
 				<h4 class="w3-left">배달 장소 : <span id="addr">${DATA.addr}</span></h4>
 			</div>
+<c:if test="${SID eq DATA.id }">
+			<div class="w3-col w3-border-bottom mgl10" align="left" >
+				<h4 id="mid">${data.mid} 님이 선택하신 메뉴</h4><br>
+				<p><span id="menu">${data.menu} </span><span id="omprice" value="${DATA.omprice}">${DATA.omprice}</span><span id="quantity">${DATA.quantity}</span></p><br>
+				<h4 id="rq">요청 사항 : <span id="rq" name="rq" value="${DATA.rq}">${DATA.rq}</span></h4><br>
+				<h4>가격 : <span id="tmprice">${data.tmprice}</span></h4>
+			</div>	
+</c:if>
 <c:forEach var="data" items="${LIST}">
 			<div class="w3-col w3-border-bottom mgl10" align="left" >
 				<h4 id="mid">${data.mid} 님이 선택하신 메뉴</h4><br>
