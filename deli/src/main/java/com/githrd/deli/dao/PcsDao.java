@@ -91,6 +91,7 @@ public class PcsDao {
 			pVO.setKakaoid(rs.getString("kakaoid"));
 			pVO.setTel(rs.getString("tel"));
 			pVO.setOriname(rs.getString("oriname"));
+			pVO.setDir(rs.getString("dir"));
 	
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -170,8 +171,8 @@ public class PcsDao {
 			// 질의명령 완성
 			pstmt.setString(1, fVO.getId());
 			pstmt.setString(2, fVO.getOriname());
-			pstmt.setString(3, fVO.getDir());
-			pstmt.setString(4, fVO.getSavename());
+			pstmt.setString(3, fVO.getSavename());
+			pstmt.setString(4, fVO.getDir());
 			// 결과보내고 받고
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {

@@ -80,8 +80,10 @@ $(document).ready(function(){
 		var mail = $('#mail').val();
 		var tel = $('#tel').val();
 		var addr = $('#addr').val();
+		var oriname = $('input[type="file"]').val();
 		
-		var el = $('#name, #id, #kakaoid, #pw, #mail, #tel, #addr');
+		
+		var el = $('#name, #id, #kakaoid, #pw, #mail, #tel, #addr, intput[type="file"]');
 		
 		for(var i = 0; i < el.length; i++){
 			var txt = $(el).eq(i).val();

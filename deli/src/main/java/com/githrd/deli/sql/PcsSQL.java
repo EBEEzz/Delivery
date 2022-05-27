@@ -27,7 +27,7 @@ public class PcsSQL {
 			break;
 		case SEL_MEMBER_INFO:
 			buff.append("SELECT ");
-			buff.append("	mno, id, esti, mail, kakaoid, tel, oriname ");
+			buff.append("	mno, id, esti, mail, kakaoid, tel, oriname, dir ");
 			buff.append("FROM ");
 			buff.append("	member m, imgfile ");
 			buff.append("WHERE ");
@@ -46,21 +46,20 @@ public class PcsSQL {
 			break;
 		case ADD_MEMBER:
 			buff.append("INSERT INTO  ");
-			buff.append("    MEMBER ");
+			buff.append("    MEMBER(mno, name, id, kakaoid, pw, mail, tel, addr) ");
 			buff.append("VALUES( ");
 			buff.append("    (SELECT NVL(max(mno) + 1, 1001) FROM member), ");
-			buff.append("    ?, ?, ?, ?, ?, ?, ");
-			buff.append("    ?, sysdate, 'Y', 0 ");
-			buff.append("    ); ");
+			buff.append("    ?, ?, ?, ?, ?, ?, ? ");
+			buff.append("    ) ");
 			break;
 		case ADD_PROFILE:
 			buff.append("INSERT INTO ");
-			buff.append("    imgfile ");
+			buff.append("    imgfile(ano, amno, oriname, savename, dir) ");
 			buff.append("VALUES( ");
 			buff.append("    (SELECT NVL(max(ano) + 1, 100000) FROM imgfile), ");
 			buff.append("    (SELECT mno FROM member WHERE id = ?), ");
-			buff.append("    ?, ?, 'Y', sysdate, ? ");
-			buff.append("    ) ");
+			buff.append("    ?, ?, ? ");
+			buff.append(") ");
 			break;
 		case SEL_ID_CNT:
 			buff.append("SELECT ");

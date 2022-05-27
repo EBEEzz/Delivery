@@ -16,8 +16,11 @@ public class DeliJoinProc implements DeliInter {
 
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setAttribute("isredirect", true);
-		String view = "/member/login.dlv";
+		req.setAttribute("isRedirect", true);
+		String view = "/deli/main.dlv";
+		if(req.getSession().getAttribute("SID") != null) {
+			return view;
+		}
 		
 		FileUtil futil = new FileUtil(req, "/resources/upload");
 		MultipartRequest multi = futil.getMulti();
@@ -47,28 +50,12 @@ public class DeliJoinProc implements DeliInter {
 		if(cnt != 1) {
 			view = "/deli/member/join.dlv";
 		} else {
-			String oriname = multi.getParameter("oriname");
-			String dir = "/resources/pic";
-			String savename = multi.getParameter("savename");
-			
 			fVO.setId(id);
-			fVO.setOriname(oriname);
-			fVO.setDir(dir);
-			fVO.setSavename(savename);
-			
 			int pcnt = pDao.addProfile(fVO);
-			
-			if(pcnt == 0) {
-				oriname = "noimage.jpg";
-				dir = "/img/avatar/";
-				savename = "noimage.jpg";
-			}
 			// 로그인 처리
 			req.getSession().setAttribute("SID", id);
 		}
 		
 		return view;
 	}
-
-	
 }
