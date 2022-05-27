@@ -25,6 +25,7 @@ public class DeliEditProc implements DeliInter {
 		}
 		FileUtil futil = new FileUtil(req, "/resources/upload");
 		MultipartRequest multi = futil.getMulti();
+		FileVO fVO = futil.getList().get(0);
 		
 		String smno = multi.getParameter("mno");
 		int mno = Integer.parseInt(smno);
@@ -49,7 +50,7 @@ public class DeliEditProc implements DeliInter {
 		}
 		
 		if(addr != null) {
-			buff.append(" , avt = " + addr + " ");
+			buff.append(" , addr = '" + addr + "' ");
 		}
 		
 		String psql  = buff.toString().substring(3);
@@ -57,12 +58,24 @@ public class DeliEditProc implements DeliInter {
 		PcsDao pDao = new PcsDao();
 		int cnt = pDao.editMyInfo(mno, psql);
 		
-		FileVO fVO = futil.getList().get(0);
+		String oriname = multi.getParameter("oriname");
+		String savename = multi.getParameter("savename");
+		
+		StringBuffer fbuff = new StringBuffer();
+		
+		if(oriname != null) {
+			fbuff.append(" , oriname = '" + oriname + "' ");
+		}
+		if(savename != null) {
+			fbuff.append(" , savename = '" + savename + "' ");
+		}
+		
+		String fsql = fbuff.toString().substring(3);
 		fVO.setId(id);
-		int pcnt = pDao.addProfile(fVO);
+		int pcnt = pDao.editProFile(id, fsql);
 		
 		// 결과에 따라 처리하고
-		if(cnt != 1 || pcnt != 1) {
+		if(cnt != 1 && pcnt != 1) {
 			// 실패한 경우
 			view = "/deli/member/editInfo.dlv";
 		}
