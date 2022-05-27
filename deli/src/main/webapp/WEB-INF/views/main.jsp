@@ -81,7 +81,7 @@ small {
 						
 			<form class="w3-margin-bottom">
 		
-				<input id="id" type="text" value="${SID}" disabled> <!-- 여기에 로그인시 받아온 아이디 작성!!!!! -->
+				<input id="id" type="text" value="${SID}" disabled>
 		
 				<input id="textMessage" type="text">
 		
@@ -111,17 +111,21 @@ small {
 			</div>
 </c:if>
 			<div class="w3-col m3 hotclick">
+				<div class="w3-col w3-margin-top">핫 게시물
 				<div class="w3-border w230 mgb10 w3-right w3-padding">
 					<form method="POST" action="/deli/boardForm.dlv" id="frm1" name="frm1">
 						<input type=hidden id="bno" name="bno">
+						
 <c:forEach var="data" items="${HOT}">
-						<div class="w3-left-align w3-button w3-left hotbtn" id="${data.bno}">
-							<div><small>&it; ${data.marea} &gt;</small></div>
-							<div>${data.title}</div>
-						</div>
-						<hr class="hotclickhr w3-col">		
+							<div class="w3-left-align w3-button w3-left hotbtn" id="${data.bno}">
+								<div><small>&it; ${data.marea} &gt;</small></div>
+								<div>${data.title}</div>
+							</div>
+							<hr class="hotclickhr w3-col">		
 </c:forEach>	
+						
 					</form>		
+				</div>
 				</div>
 			</div>
 		</div>

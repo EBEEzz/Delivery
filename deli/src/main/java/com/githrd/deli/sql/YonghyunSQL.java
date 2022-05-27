@@ -15,6 +15,7 @@ public class YonghyunSQL {
 	public final int SEL_REGI_COUNT = 1012;
 	public final int SEL_REGI_MEMBER = 1013;
 	public final int SEL_HOT_CLICK = 1014;
+	public final int SEL_REST_TYPE = 1015;
 		
 	public final int UPDATE_CLICK = 2001;
 	public final int UPDATE_REGI = 2002;
@@ -238,6 +239,16 @@ public class YonghyunSQL {
 				buff.append("    ) ");
 				buff.append("WHERE ");
 				buff.append("    rno BETWEEN 1 AND 5 ");
+				break;
+			case SEL_REST_TYPE :
+				buff.append("SELECT ");
+				buff.append("    rname, restno, mname, mprice ");
+				buff.append("FROM ");
+				buff.append("    board b, restaurant r, menu m ");
+				buff.append("WHERE ");
+				buff.append("    b.rest = r.restno ");
+				buff.append("    AND m.rno = r.restno ");
+				buff.append("    AND bno = ? ");
 				break;
 			case UPDATE_CLICK :
 				buff.append("UPDATE ");

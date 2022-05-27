@@ -44,7 +44,7 @@ $(document).ready(function(){
 		var pno = $(this).attr('id');
 		$(document.brdfrm.bno).val(pno);
 		$('#brdfrm').submit();
-	})
+	});
 	
 
 	

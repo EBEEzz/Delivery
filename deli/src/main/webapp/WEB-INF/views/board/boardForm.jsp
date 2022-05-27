@@ -130,8 +130,22 @@
 			
 			
 			<hr class="w3-col mgt0">
-			<div class="w3-col">${MAIN.body}</div>
+			<div>
+				<div class="w3-col m8">${MAIN.body}</div>
+				<div class="w3-col m4"> 
+				<div class="w3-center">식당정보</div>
+<c:forEach var="menu" items="${MENU}">	
+				<div class="w3-right">${menu.rname}</div>
+					<div>${menu.mname} : ${menu.mprice}</div>		
+</c:forEach>
+				</div>				
+			</div>
 		</div>
+
+	<c:if test="${not empty PAY}">
+		<div class="w3-col w3-button w3-border w3-margin-top">결제하기</div>
+	</c:if>
+
 </c:if>		
 <c:if test="${MAIN.endalert < 0}">		
 		<div class="w3-col w3-padding w3-left-align w3-border w3-card-4 w3-margin-top">

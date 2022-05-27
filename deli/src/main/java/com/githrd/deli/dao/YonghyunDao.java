@@ -561,4 +561,34 @@ public class YonghyunDao {
 		return list;
 	}
 	
+	
+	// 게시글 등록시 지정한 식당 가져오는 함수
+	public ArrayList<YonghyunVO> getMenu(int bno) {
+		ArrayList<YonghyunVO> list = new ArrayList<YonghyunVO>();
+		con = db.getCon();
+		String sql = ySQL.getSQL(ySQL.SEL_REST_TYPE);
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			pstmt.setInt(1, bno);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				YonghyunVO yVO = new YonghyunVO();
+				yVO.setRname(rs.getString("rname"));
+				yVO.setRestno(rs.getInt("restno"));
+				yVO.setMname(rs.getString("mname"));
+				yVO.setMprice(rs.getInt("mprice"));
+
+				list.add(yVO);
+			}
+			
+			} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(rs);
+			db.close(pstmt);
+			db.close(con);
+		}
+		return list;
+	}
+	
 }
