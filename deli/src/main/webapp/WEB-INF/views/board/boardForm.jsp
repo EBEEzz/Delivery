@@ -227,6 +227,8 @@
 		<input type="hidden" name="check" id="check" value="${param.check}">
 		<input type="hidden" name="bno" id="bno" value="${MAIN.bno}">
 		<input type="hidden" name="cancle" id="cancle">
+		<input type="hidden" name="1mname" id="1mname">
+		<input type="hidden" name="1price" id="1price" >
 	</form>
 </body>
 </html>
