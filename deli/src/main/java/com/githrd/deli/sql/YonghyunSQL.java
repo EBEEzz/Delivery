@@ -18,12 +18,16 @@ public class YonghyunSQL {
 	public final int SEL_REST_TYPE = 1015;
 	public final int SEL_FRIEND = 1016;
 	public final int SEL_MNO = 1017;
+	public final int SEL_FRIEND_CHECK = 1018;
+	public final int SEL_FRIEND_APPLY = 1019;
+	public final int SEL_DELFRIEND_CHECK = 1020;
 		
 	public final int UPDATE_CLICK = 2001;
 	public final int UPDATE_REGI = 2002;
 	public final int UPDATE_FRIEND = 2003;
 	public final int UPDATE_FRIEND_AGREE = 2004;
 	public final int UPDATE_FRIEND_TOO = 2005;
+	public final int UPDATE_FRIEND_CANCLE = 2006;
 	
 	public final int DEL_REGI = 3001;
 	public final int DEL_FRIEND = 3002;
@@ -264,8 +268,7 @@ public class YonghyunSQL {
 				buff.append("FROM ");
 				buff.append("    friend f, member m ");
 				buff.append("WHERE ");
-				buff.append("    myno = ? ");
-				buff.append("    AND frino = ? ");
+				buff.append("    myno = (SELECT mno FROM member WHERE id = ?) ");
 				buff.append("    AND frino = mno ");
 				buff.append("    AND f.isshow = 'Y' ");
 				buff.append("    AND agree = 'Y' ");
@@ -277,6 +280,39 @@ public class YonghyunSQL {
 				buff.append("    member ");
 				buff.append("WHERE ");
 				buff.append("    id = ? ");
+				break;
+			case SEL_FRIEND_CHECK :
+				buff.append("SELECT ");
+				buff.append("    COUNT(*) cnt ");
+				buff.append("FROM ");
+				buff.append("    friend ");
+				buff.append("WHERE ");
+				buff.append("    myno = (SELECT mno FROM member WHERE id = ?) ");
+				buff.append("    AND frino = ? ");
+				buff.append("    AND isshow = 'Y' ");
+				buff.append("    AND agree = 'N' ");
+				break;
+			case SEL_FRIEND_APPLY :
+				buff.append("SELECT ");
+				buff.append("    frino, id ");
+				buff.append("FROM ");
+				buff.append("    friend f, member m ");
+				buff.append("WHERE ");
+				buff.append("    myno = (SELECT mno FROM member WHERE id = ?) ");
+				buff.append("    AND frino = mno ");
+				buff.append("    AND f.isshow = 'Y' ");
+				buff.append("    AND agree = 'N' ");
+				break;
+			case SEL_DELFRIEND_CHECK :
+				buff.append("SELECT ");
+				buff.append("    COUNT(*) cnt ");
+				buff.append("FROM ");
+				buff.append("    friend ");
+				buff.append("WHERE ");
+				buff.append("    myno = (SELECT mno FROM member WHERE id = ?) ");
+				buff.append("    AND frino = ? ");
+				buff.append("    AND isshow = 'Y' ");
+				buff.append("    AND agree = 'Y' ");
 				break;
 			case UPDATE_CLICK :
 				buff.append("UPDATE ");
@@ -297,14 +333,14 @@ public class YonghyunSQL {
 				buff.append("INSERT INTO ");
 				buff.append("    friend(fno, myno, frino) ");
 				buff.append("VALUES( ");
-				buff.append("    (SELECT NVL(MAX(fno) +1, 1) FROM friend), ?, ? ");
+				buff.append("    (SELECT NVL(MAX(fno) +1, 1) FROM friend), (SELECT mno FROM member WHERE id = ? ), ? ");
 				buff.append(") ");
 				break;
 			case UPDATE_FRIEND_AGREE : // 친구 수락시 상대방에게도 친구 추가기능 // 앞에 친구번호 뒤에 내번호
 				buff.append("INSERT INTO ");
 				buff.append("    friend(fno, myno, frino, agree, adate) ");
 				buff.append("VALUES( ");
-				buff.append("    (SELECT NVL(MAX(fno) +1, 1) FROM friend), ?, ?, 'Y', sysdate ");
+				buff.append("    (SELECT NVL(MAX(fno) +1, 1) FROM friend), ?, (SELECT mno FROM member WHERE id = ?), 'Y', sysdate ");
 				buff.append(") ");
 				break;
 			case UPDATE_FRIEND_TOO : // 친구 수락버튼 // 앞에 내번호 뒤에 친구번호
@@ -314,8 +350,19 @@ public class YonghyunSQL {
 				buff.append("    agree = 'Y', ");
 				buff.append("    adate = sysdate ");
 				buff.append("WHERE ");
-				buff.append("    myno = ? ");
+				buff.append("    myno = (SELECT mno FROM member WHERE id = ?) ");
 				buff.append("    AND frino = ? ");
+				break;
+			case UPDATE_FRIEND_CANCLE : // 친구수락 거절
+				buff.append("UPDATE ");
+				buff.append("    friend ");
+				buff.append("SET ");
+				buff.append("    isshow = 'N', ");
+				buff.append("    ddate = sysdate ");
+				buff.append("WHERE ");
+				buff.append("    myno = (SELECT mno FROM member WHERE id = ? ) ");
+				buff.append("    AND frino = ? ");
+				buff.append("    AND agree = 'N' ");
 				break;
 			case DEL_REGI :
 				buff.append("UPDATE ");
@@ -333,9 +380,10 @@ public class YonghyunSQL {
 				buff.append("    friend ");
 				buff.append("SET ");
 				buff.append("    isshow = 'N', ");
+				buff.append("    agree = 'N', ");
 				buff.append("    ddate = sysdate ");
 				buff.append("WHERE ");
-				buff.append("    myno = ? ");
+				buff.append("    myno = (SELECT mno FROM member WHERE id = ?) ");
 				buff.append("    AND frino = ? ");
 				buff.append("    AND agree = 'Y' ");
 				break;

@@ -61,5 +61,82 @@ $(document).ready(function(){
 		$('#bno').val(bno);
 		$('#frm1').submit();
 	})
-
+	
+	$('#friendbtn').click(function() {
+		$('#fribox').slideToggle();
+	});
+	$('.delbtn').click(function(){
+		if(confirm('정말 삭제하시겠습니까?')){
+			var fmno = $(this).attr('id');
+			$.ajax({
+				url: '/deli/frienddel.dlv',
+				type: 'POST',
+				dataType: 'JSON',
+				data: {fmno : fmno},
+				success: function(data){
+					if(data.result == 'OK'){
+						alert('삭제에 성공하였습니다.');
+						$(location).attr('href', '/deli/main.dlv')
+					} else if(data.result == 'AL') {
+						alert('삭제할 친구가 없습니다.');
+					} else {
+						alert('삭제에 실패하였습니다.');
+					}
+				},
+				error: function(){
+					alert('접속 에러');
+				}
+			})
+		}
+	})
+	
+		$('.agrbtn').click(function(){
+			if(confirm('친구 요청을 수락하시겠습니까?')){
+				var fmno = $(this).attr('id');
+				$.ajax({
+					url: '/deli/friendagr.dlv',
+					type: 'POST',
+					dataType: 'JSON',
+					data: {fmno : fmno},
+					success: function(data){
+						if(data.result == 'OK'){
+							alert('친구가 등록되었습니다.');
+							$(location).attr('href', '/deli/main.dlv')
+						} else {
+							alert('친구등록에 실패하였습니다.');
+						} 
+					},
+					error: function(){
+						alert('접속 에러');
+					}
+				})
+		}
+	})
+	
+		$('.canbtn').click(function(){
+			if(confirm('친구 요청을 거절하시겠습니까?')){
+				var fmno = $(this).attr('id');
+		
+				$.ajax({
+					url: '/deli/friendcan.dlv',
+					type: 'POST',
+					dataType: 'JSON',
+					data: {fmno : fmno},
+					success: function(data){
+						if(data.result == 'OK'){
+							alert('친구요청이 거절되었습니다.');
+							$(location).attr('href', '/deli/main.dlv')
+						} else {
+							alert('친구요청 거절에 실패하였습니다.');
+						} 
+					},
+					error: function(){
+						alert('접속 에러');
+					}
+				})
+		}
+	})
+	
+	
+		
 });

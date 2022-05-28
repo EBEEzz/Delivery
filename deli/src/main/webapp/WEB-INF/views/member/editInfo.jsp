@@ -40,7 +40,7 @@
 					<h5 class="w3-left-align">
 						<label for="kakaoid" class="w3-left mgl10" style="font-weight: bold;">카카오 아이디</label>
 					</h5>
-					<input type="text" name="kakaoid" id="kakaoid"" 
+					<input type="text" name="kakaoid" id="kakaoid"
 						class="s8 w3-magin-top mgl10 w3-input w3-border w3-center" value="${DATA.kakaoid}" >
 				</div>
 				<div class="w3-padding mgb10">

@@ -116,7 +116,7 @@
 		<div class="w3-col w3-padding w3-left-align w3-border w3-card-4 w3-margin-top ctdw" id="${MAIN.endtime}">
 			<div class="count" id="count">
 				<div class="w3-col">
-					<div class="w3-left maintext area"><small>&it; ${MAIN.marea} &gt;</small></div>
+					<div class="w3-left maintext area"><small>${MAIN.marea} &gt;</small></div>
 					<div class="w3-col w3-button w3-border subbtn m1 w3-right" id="canclebtn">지원취소</div>
 					<div class="w3-col w3-button w3-border subbtn m1 w3-right" id="conbtn">신청현황</div>
 					<div class="w3-col w3-button w3-border subbtn m1 w3-right" id="subbtn">신청</div>
@@ -133,7 +133,7 @@
 			
 			
 <c:forEach var="data" items="${MEMBER}">
-				<h6 class="w3-col regimember" id="${data.id}"><small id="alertmember">${data.id}<button class="w3-white w3-button fbtn" id="${data.mno}"> + </button></small></h6>
+				<h6 class="w3-col regimember" id="${data.id}"><small id="alertmember">${data.id}<c:if test="${SID ne data.id}"><button class="w3-white w3-button fbtn" id="${data.mno}"> + </button></c:if></small></h6>
 </c:forEach>	
 			</div>
 			
@@ -147,7 +147,7 @@
 <c:forEach var="menu" items="${MENU}">	
 					<div>
 						<div class="w3-right" id="restname">${menu.rname}</div>
-						<div id="${menu.mprice}">${menu.mname} : ${menu.mprice}<div class="w3-button w3-right pricebtn1" id="${menu.mprice}">-</div><div class="w3-button w3-right pricebtn2" id="${menu.mprice}">+</div></div>
+						<div class="mname" id="${menu.mname}">${menu.mname} : ${menu.mprice}<div class="w3-button w3-right pricebtn1" id="${menu.mprice}">-</div><div class="w3-button w3-right pricebtn2" id="${menu.mprice}">+</div></div>
 					</div>
 </c:forEach>	
 					<input type="hidden" id="price" name="price">
@@ -179,7 +179,9 @@
 			
 				
 <c:forEach var="data" items="${MEMBER}">
-				<h6 class="w3-col regimember" id="${data.id}"><small id="alertmember">${data.id}<button class="w3-white w3-button fbtn" id="${data.mno}"> + </button></small></h6>
+	
+				<h6 class="w3-col regimember" id="${data.id}"><small id="alertmember">${data.id}<c:if test="${SID ne data.id}"><button class="w3-white w3-button fbtn" id="${data.mno}"> + </button></c:if></small></h6>
+	
 </c:forEach>	
 						
 			</div>

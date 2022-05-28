@@ -14,10 +14,18 @@ public class DeliMain implements DeliInter {
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String view ="/main";
+		String id = (String) req.getSession().getAttribute("SID");
+		
+		
 		YonghyunDao yDao = new YonghyunDao();
 		ArrayList<YonghyunVO> list = yDao.getHotClick();
-		
 		req.setAttribute("HOT", list);
+		
+		ArrayList<YonghyunVO> friend = yDao.getFriend(id);
+		req.setAttribute("FRIEND", friend);
+
+		ArrayList<YonghyunVO> apply = yDao.getFriendApply(id);
+		req.setAttribute("APPLY", apply);
 		
 		
 		return view;

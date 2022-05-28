@@ -113,19 +113,24 @@ $(document).ready(function(){
 	});
 	
 	var price = 0;
-	var subprice = 0;
 	$('.pricebtn1').click(function(){
-		
-		if(confirm('을 빼시겠습니까?')) {
-			var mprice = 0;
-			mprice = $(this).attr('id');
+		var menu = $('.mname').attr('id');
+		var mprice = 0;
+		mprice = $(this).attr('id');
+		if(confirm(menu + '을 빼시겠습니까?')) {
+			if(price - mprice < 0) {
+				alert('해당 주문건을 취소할 수 없습니다. 주문하신 옵션을 확인해주세요.');
+				return;	
+			}
 			price = price - mprice;
 			alert(price);
 		}
 	});
 	
 	$('.pricebtn2').click(function(){
-		if(confirm('을 추가하시겠습니까?')) {
+		
+		var menu = $('.mname').attr('id');
+		if(confirm(menu + '을 추가하시겠습니까?')) {
 			var mprice = 0;
 			mprice = $(this).attr('id');
 			price = price -(- mprice);
@@ -133,5 +138,27 @@ $(document).ready(function(){
 		}
 	});
 	
+	$('.fbtn').click(function(){
+		var fmno = $(this).attr('id');
+		$.ajax({
+			url: '/deli/friend.dlv',
+			type: 'POST',
+			dataType: 'JSON',
+			data: {fmno : fmno},
+			success: function(data){
+				if(data.result == 'OK'){
+					alert('친구 신청 처리 되었습니다.');
+				} else if(data.result == 'AL') {
+					alert('이미 친구 신청 요청되었습니다.');
+				} else {
+					alert('친구 신청 요청이 처리되지 않았습니다.');
+				}
+			},
+			error: function(){
+				alert('접속 에러');
+			}
+			
+		})
+	})
 	
 });

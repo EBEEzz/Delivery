@@ -49,6 +49,17 @@ textarea {
 small {
 	font-size: 7px;
 }
+.fbtn {
+	padding: 0px 8px;
+}
+#fribox{
+	display: none;
+}
+.delbtn, .canbtn, .agrbtn{
+	border: 0px;
+	background-color: white;
+	padding: 0px;
+}
 </style>
 
 </head>
@@ -101,10 +112,21 @@ small {
 <c:if test="${not empty SID}">
 			<div class="w3-col m3">
 				<div class="w3-border w230 mgb10 w3-right w3-left-align w3-padding">
-					<div class="w3-col m4">사진</div>
-					<div class="w3-col m8">
-						<div>${SID}</div>
-						<div><small>내친구보기</small></div>
+					<div class="w3-col">
+						<div>
+							<div class="w3-col m2"> ID : </div>
+							<div class="w3-col m10">${SID}</div>
+						</div>
+						<div class="w3-button fbtn w3-right" id="friendbtn">내친구보기</div>
+						<div id="fribox">
+							<div class="w3-col w3-center"><small><strong>친구 목록</strong></small></div>
+<c:forEach var="friend" items="${FRIEND}">						
+							<div class="w3-col"><small>${friend.id}&nbsp;&nbsp;<button class="w3-button delbtn" id="${friend.frino}">&lt;삭제&gt;</button></small></div>
+</c:forEach>						
+							<div class="w3-col w3-center"><small><strong>친구 신청 대기</strong></small></div>
+<c:forEach var="apply" items="${APPLY}">						
+							<div class="w3-col"><small>${apply.id}&nbsp;&nbsp;<button class="w3-button agrbtn" id="${apply.frino}">&lt;수락&gt;</button><button class="w3-button canbtn" id="${apply.frino}">&lt;거절&gt;</button></small></div>
+</c:forEach>			</div>		
 					</div>
 				</div>
 				
@@ -118,7 +140,7 @@ small {
 						
 <c:forEach var="data" items="${HOT}">
 							<div class="w3-left-align w3-button w3-left hotbtn" id="${data.bno}">
-								<div><small>&it; ${data.marea} &gt;</small></div>
+								<div><small>&lt; ${data.marea} &gt;</small></div>
 								<div>${data.title}</div>
 							</div>
 							<hr class="hotclickhr w3-col">		
