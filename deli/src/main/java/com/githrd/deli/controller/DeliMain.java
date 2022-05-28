@@ -41,6 +41,10 @@ public class DeliMain implements DeliInter {
 
 		ArrayList<YonghyunVO> apply = yDao.getFriendApply(id);
 		req.setAttribute("APPLY", apply);
+for(YonghyunVO i : apply) {
+	System.out.println(i.getFrino());
+}
+	
 		
 /*						pcs 내정보보기 작업								 */	
 		if(id != null) {

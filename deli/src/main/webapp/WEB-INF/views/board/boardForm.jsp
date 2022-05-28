@@ -173,6 +173,7 @@
 					<div>
 						<div class="w3-right w3-padding" id="restname">${menu.rname}</div>
 						<div class="mname w3-padding" id="${menu.mname}">${menu.mname} : ${menu.mprice}<div class="w3-button w3-right pricebtn1" id="${menu.mprice}">-</div><input class="inputprice w3-right w3-center" type="text" disabled value="0"><div class="w3-button w3-right pricebtn2" id="${menu.mprice}">+</div></div>
+						<input type="hidden" id="${meun.mprice}">
 					</div>
 </c:forEach>	
 					<input type="hidden" id="price" name="price">
