@@ -26,7 +26,7 @@ public class DeliEditProc implements DeliInter {
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setAttribute("isRedirect", true);
-		String view = "/deli/member/myInfo.dlv";
+		String view = "/deli/main.dlv";
 		// 로그인 체크
 		String sid = (String) req.getSession().getAttribute("SID");
 		if(sid == null) {
