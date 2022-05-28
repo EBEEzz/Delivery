@@ -116,13 +116,13 @@ $(document).ready(function(){
 	var subprice = 0;
 	var mname= '';
 	$('.pricebtn1').click(function(){
-<<<<<<< HEAD
+
 		
 		if(confirm('을 빼시겠습니까?')) {
 			var mprice = 0;
 			mprice = $(this).parent().attr('id')
 			mname = $(this).attr('id');
-=======
+
 		var menu = $('.mname').attr('id');
 		var mprice = 0;
 		mprice = $(this).attr('id');
@@ -131,9 +131,9 @@ $(document).ready(function(){
 				alert('해당 주문건을 취소할 수 없습니다. 주문하신 옵션을 확인해주세요.');
 				return;	
 			}
->>>>>>> branch 'branch' of https://github.com/EBEEzz/Delivery.git
+
 			price = price - mprice;
-<<<<<<< HEAD
+
 			subprice = price/mprice;
 			alert('subprice = ' + subprice);
 			alert('price = ' +price);
@@ -148,47 +148,43 @@ $(document).ready(function(){
 
 			}
 			
-=======
-		
->>>>>>> branch 'branch' of https://github.com/EBEEzz/Delivery.git
+
+			}
 		}
 	});
 	
-<<<<<<< HEAD
-	$('.pricebtn2').on("click", function(){
-		if(confirm('을 추가하시겠습니까?')) {
-=======
+
+
+
 	$('.pricebtn2').click(function(){
 		
 		var menu = $('.mname').attr('id');
 		if(confirm('메뉴를 추가하시겠습니까?')) {
->>>>>>> branch 'branch' of https://github.com/EBEEzz/Delivery.git
+
 			var mprice = 0;
-			mprice = $(this).parent().attr('id')
-			mprice = parseInt(mprice);
+			mprice = $(this).attr('id');
 			price = price -(- mprice);
-<<<<<<< HEAD
+
 			subprice = price/mprice;
 			
 			mname = $(this).attr('id');
 			
-			alert('subprice = ' + subprice);
+			alert('subprice = ' + price);
 			subprice = parseInt(subprice);
 			
 			if(subprice = 1) {
 			
-				$('#abc').append('<p>'+ mname + '<span>'+ subprice +'<span>'  +'<p>');
+				$('#abc').append('<div class="w3-col w3-left-align w3-padding"">'+ mname + '<span>'+ subprice +'<span>'  +'</div>');
 				
 			} else if(subpirce > 1) {
 				$('#abc').eq(subprice).html(subprice);
 				
 			}
 			mname = mname + ' 외 ' + subprice + ' 건';
-=======
-		
->>>>>>> branch 'branch' of https://github.com/EBEEzz/Delivery.git
+
 		}
 	});
+	
 	
 	$('.fbtn').click(function(){
 		var fmno = $(this).attr('id');

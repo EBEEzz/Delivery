@@ -159,10 +159,7 @@
 <c:forEach var="menu" items="${MENU}">	
 					<div>
 						<div class="w3-right" id="restname">${menu.rname}</div>
-						<div class="mname" id="${menu.mname}">${menu.mname} : ${menu.mprice}
-							<div class="w3-button w3-right pricebtn1" id="${menu.mname}">-</div>
-							<div class="w3-button w3-right pricebtn2" id="${menu.mname}">+</div>
-						</div>
+						<div class="mname" id="${menu.mname}">${menu.mname} : ${menu.mprice}<div class="w3-button w3-right pricebtn1" id="${menu.mprice}">-</div><div class="w3-button w3-right pricebtn2" id="${menu.mprice}">+</div></div>
 					</div>
 </c:forEach>	
 					<input type="hidden" id="price" name="price">
@@ -171,7 +168,9 @@
 		</div>
 
 	<c:if test="${not empty PAY}">
-		<div class="w3-colw3-border w3-margin-top" id="abc"></div>
+		<div class="w3-col w3-border w3-margin-top" id="abc">
+			<div class="w3-col w3-left-align w3-padding">짜장</div>
+		</div>
 		<div class="w3-col w3-button w3-border w3-margin-top">결제하기</div>
 	</c:if>
 
