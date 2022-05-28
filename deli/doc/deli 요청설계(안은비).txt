@@ -30,6 +30,14 @@
 기타		: 	로그인 된 경우 ]
 					redirect : /deli/main.dlv
 ----------------------------------------------------------------------------------
+# 후기 작성 대기 리스트 보기 요청
+요청내용	:	/deli/review/rvList.dlv
+파라미터	:	무
+컨트롤러	:	com.githrd.deli.controller.eunbee.RvList
+뷰			:	/WEB-INF/views/review/rvList.jsp
+기타		: 	로그인 안 된 경우 ]
+					redirect : /deli/member/login.dlv
+----------------------------------------------------------------------------------
 # 후기 작성 페이지 보기 요청
 요청내용	:	/deli/review/rvWrite.dlv
 파라미터	:	무

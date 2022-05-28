@@ -141,7 +141,7 @@ $(document).ready(function(){
 		$('#id01').css('display', 'block');
 	})
 	$('#esti').click(function(){
-		$(location).attr('href', '/deli/review/rvWrite.dlv');
+		$(location).attr('href', '/deli/review/rvList.dlv');
 	})
 	
 		
