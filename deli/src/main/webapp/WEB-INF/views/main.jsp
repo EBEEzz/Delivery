@@ -59,6 +59,8 @@ small {
 }
 .fbtn {
 	padding: 0px 8px;
+	font-size: 11px;
+	
 }
 #fribox{
 	display: none;
@@ -125,7 +127,9 @@ small {
 							<div class="w3-col m2"> ID : </div>
 							<div class="w3-col m10">${SID}</div>
 						</div>
-						<div class="w3-button fbtn w3-right" id="friendbtn">내친구보기</div>
+						<div class="w3-col m12 w3-button fbtn w3-right" id="myinfo" >내정보보기</div>
+						<div class="w3-col m12 w3-button fbtn w3-right" id="esti">후기</div>
+						<div class="w3-col m12 w3-button fbtn w3-right" id="friendbtn">내친구보기</div>
 						<div id="fribox">
 							<div class="w3-col w3-center"><small><strong>친구 목록</strong></small></div>
 <c:forEach var="friend" items="${FRIEND}">						
@@ -161,8 +165,6 @@ small {
 		</div>
 	</div>
 </body>
-<script type="text/javascript">
 
-	
-</script>
+
 </html>

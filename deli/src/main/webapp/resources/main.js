@@ -137,6 +137,12 @@ $(document).ready(function(){
 		}
 	})
 	
+	$('#myinfo').click(function(){
+		
+	})
+	$('#esti').click(function(){
+		$(location).attr('href', '/deli/review/rvWrite.dlv');
+	})
 	
 		
 });

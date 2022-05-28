@@ -113,43 +113,17 @@ $(document).ready(function(){
 	});
 	
 	var price = 0;
-	var subprice = 0;
-	var mname= '';
+	
 	$('.pricebtn1').click(function(){
-
-		
-		if(confirm('을 빼시겠습니까?')) {
-			var mprice = 0;
-			mprice = $(this).parent().attr('id')
-			mname = $(this).attr('id');
-
-		var menu = $('.mname').attr('id');
-		var mprice = 0;
-		mprice = $(this).attr('id');
-		if(confirm('메뉴를 제외하시겠습니까?')) {
-			if(price - mprice < 0) {
-				alert('해당 주문건을 취소할 수 없습니다. 주문하신 옵션을 확인해주세요.');
-				return;	
+		var count = parseInt($(this).parent().find('.inputprice').val());
+		var menu = $(this).parent().attr('id');
+		if(confirm(menu + ' 을/를 제외하시겠습니까?')) {
+			count -= 1;
+			if(count < 0) {
+				alert('구매하신 수량이 없습니다.');
+				return;
 			}
-
-			price = price - mprice;
-
-			subprice = price/mprice;
-			alert('subprice = ' + subprice);
-			alert('price = ' +price);
-			subprice = parseInt(subprice);
-			
-			if(subprice = 0) {
-				$('#abc *').remove();
-			} else {
-				$('#abc *').remove();
-				
-				$('#abc').append('<p>'+ mname + '<span>'+ subprice +'<span>'  +'<p>');
-
-			}
-			
-
-			}
+			$(this).parent().find('.inputprice').val(count);
 		}
 	});
 	
@@ -158,30 +132,17 @@ $(document).ready(function(){
 
 	$('.pricebtn2').click(function(){
 		
-		var menu = $('.mname').attr('id');
-		if(confirm('메뉴를 추가하시겠습니까?')) {
+		var count = parseInt($(this).parent().find('.inputprice').val());
 
-			var mprice = 0;
-			mprice = $(this).attr('id');
+		var menu = $(this).parent().attr('id');
+		if(confirm(menu + ' 을/를 추가하시겠습니까?')) {
+			count += 1;
+			mprice = $(this).attr('id')
 			price = price -(- mprice);
-
-			subprice = price/mprice;
 			
 			mname = $(this).attr('id');
-			
-			alert('subprice = ' + price);
-			subprice = parseInt(subprice);
-			
-			if(subprice = 1) {
-			
-				$('#abc').append('<div class="w3-col w3-left-align w3-padding"">'+ mname + '<span>'+ subprice +'<span>'  +'</div>');
-				
-			} else if(subpirce > 1) {
-				$('#abc').eq(subprice).html(subprice);
-				
-			}
-			mname = mname + ' 외 ' + subprice + ' 건';
-
+			$(this).parent().find('.inputprice').val(count);
+			$('#abc').append('<div class="w3-col w3-left-align w3-padding pri">'+ menu + ' : ' + '<span>'+ count+'개<span>'  +'</div>');
 		}
 	});
 	
@@ -217,4 +178,10 @@ $(document).ready(function(){
 		$('#pageFrm').attr('action','/deli/payment/beforePay.dlv');
 		$('#pageFrm').submit();
 	});
+	
+	$('#decide').click(function(){
+		
+	})
+		
+	
 });

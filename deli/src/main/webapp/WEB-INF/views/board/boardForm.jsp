@@ -77,6 +77,16 @@
 .pricebtn2 {
 	padding: 0px 10px;
 }
+.inputprice {
+	width: 20px;
+	padding: 0px;
+	background-color: white;
+	border: 1px solid;
+}
+#decide {
+	position: relative;
+	top: 80px;
+}
 
 </style>
 </head>
@@ -140,6 +150,9 @@
 				<div class="w3-col maintext">${MAIN.id}</div>
 				<div class="w3-col maintext"><small>${MAIN.sdate}&nbsp;&nbsp;&nbsp;조회수 : ${MAIN.click}</small></div>
 			</div>
+			<div class="w3-col m4">
+				<div class="w3-button w3-right subbtn w3-border" id="decide">구매확정</div>
+			</div>
 			
 			<div class="w3-col w3-right m1 w3-margin-top" id="regimem">
 			
@@ -158,8 +171,8 @@
 					<div class="w3-center">식당정보</div>
 <c:forEach var="menu" items="${MENU}">	
 					<div>
-						<div class="w3-right" id="restname">${menu.rname}</div>
-						<div class="mname" id="${menu.mname}">${menu.mname} : ${menu.mprice}<div class="w3-button w3-right pricebtn1" id="${menu.mprice}">-</div><div class="w3-button w3-right pricebtn2" id="${menu.mprice}">+</div></div>
+						<div class="w3-right w3-padding" id="restname">${menu.rname}</div>
+						<div class="mname w3-padding" id="${menu.mname}">${menu.mname} : ${menu.mprice}<div class="w3-button w3-right pricebtn1" id="${menu.mprice}">-</div><input class="inputprice w3-right w3-center" type="text" disabled value="0"><div class="w3-button w3-right pricebtn2" id="${menu.mprice}">+</div></div>
 					</div>
 </c:forEach>	
 					<input type="hidden" id="price" name="price">
@@ -169,13 +182,12 @@
 
 	<c:if test="${not empty PAY}">
 		<div class="w3-col w3-border w3-margin-top" id="abc">
-			<div class="w3-col w3-left-align w3-padding">짜장</div>
 		</div>
 		<div class="w3-col w3-button w3-border w3-margin-top">결제하기</div>
 	</c:if>
 
 </c:if>		
-<c:if test="${MAIN.endalert < 0}">		
+<c:if test="${MAIN.endalert < 0}">
 		<div class="w3-col w3-padding w3-left-align w3-border w3-card-4 w3-margin-top">
 			<div>
 				<div class="w3-col">
