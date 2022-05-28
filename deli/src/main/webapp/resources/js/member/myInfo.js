@@ -18,6 +18,17 @@ $(document).ready(function(){
 			// form 태그가 완성이 됐으니 전송한다.
 			$('#frm').submit();
 		}
-
 	});
+	
+	$('#x').click(function(){
+		$('#id01').css('display', 'none');
+	});
+	$('#cbth').click(function(){
+		$('#id01').css('display', 'none');
+	});
+	$('#ibtn').click(function(){
+		$('#id01').css('display', 'block');
+	});
+	
+	
 });

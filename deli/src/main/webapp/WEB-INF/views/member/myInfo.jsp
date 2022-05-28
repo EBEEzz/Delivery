@@ -11,18 +11,18 @@
 <body>
 	 <form method="POST" action="" id="frm" name="frm">
 	 	<input type="hidden" name="mno" id="smno">
-	 	<input type="hidden" name="id" id="sid">
+	 	<input type="hidden" name="id" id="sid">wp
 	 </form>
 
 <div class="w3-container">
 		<!-- 회원정보 버튼 -->
-		<button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-green w3-large">Info</button>
+		<button id="ibtn" class="w3-button w3-green w3-large">Info</button>
 
  	<div id="id01" class="w3-modal">
 		<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:500px">
 			
 			<div class="w3-center"><br>
-        		<span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Close Modal">×</span>
+        		<span class="w3-button w3-xlarge w3-transparent w3-display-topright" id="x" title="Close Modal">×</span>
         		<img src="/deli${DATA.dir}/${DATA.oriname}" alt="profile" style="width:30%" class="w3-circle w3-margin-top w3-border">
       		</div>
       
@@ -42,7 +42,7 @@
 			</div>
 	
 			<div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
-				<button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-black">Cancel</button>
+				<button id="cbth" type="button" class="w3-button w3-black">Cancel</button>
 			</div>
 	
 		</div>
