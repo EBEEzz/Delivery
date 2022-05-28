@@ -58,7 +58,7 @@ $(document).ready(function(){
 				<div><span>${data.mname} </span><span>${data.mprice}</span><span></span></div>
 				<h4>가격 : <span>${data.mprice}</span></h4>
 			</div>
-</c:if>
+</c:if> 
 </c:forEach>
 			<div class="w3-col w3-border-bottom mgl10" align="left" >
 <c:forEach var="data" items="${MENU}" varStatus="status"  >

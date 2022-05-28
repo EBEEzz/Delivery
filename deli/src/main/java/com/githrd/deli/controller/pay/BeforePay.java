@@ -51,7 +51,7 @@ public class BeforePay implements DeliInter {
 		int myprice = Integer.parseInt(tmyprice);		
 		
 		System.out.println(amname);
-		
+		 
 		int cnt = pDao.getAbnoCnt(bno);
 		
 		pVO.setMyprice(myprice);
