@@ -39,7 +39,7 @@ public class AfterPay implements DeliInter {
 			return "/member/login";
 		}
 		String reqeust = req.getParameter("rq");
-		
+		 
 		YonghyunDao yDao = new YonghyunDao();
 		PayDao pDao = new PayDao();
 		

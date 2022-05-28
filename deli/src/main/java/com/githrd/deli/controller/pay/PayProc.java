@@ -87,7 +87,7 @@ public class PayProc implements DeliInter {
 			return "/payment/beforePay";
 		} else {
 
-			System.out.println("proc성공2");
+			System.out.println("proc성공2"); 
 
 			req.setAttribute("isRedirect", null);
 			msg = "{\"result\" : \"y\"}";

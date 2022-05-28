@@ -61,7 +61,7 @@ $(document).ready(function(){
 				<h4>요청 사항 : </h4><br>
 				<input id="rq" name="rq" class="w3-col w3-border m11">
 				<h4 class="w3-col">가격 : <span >${PO.myprice}</span></h4>
-			</div>	
+			</div>	 
 </c:if>
 <c:if test="${SID ne memb.id && memb.id != null}">
 			<div class="w3-col w3-border-bottom mgl10" align="left" >

@@ -97,7 +97,7 @@ $(document).ready(function(){
 								alert('proc 성공!!!');
 								$('#pageFrm').attr('action','/deli/payment/afterPay.dlv');
 								$('#pageFrm').submit();
-							}else{
+							}else{ 
 								alert("디비입력실패" + result.result);
 								return false;
 							}

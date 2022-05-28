@@ -53,7 +53,7 @@ public class PaySQL {
 			buff.append("SELECT ");
 			buff.append("    mno, id, tel, addr, mail, name ");
 			buff.append("FROM ");
-			buff.append("    member ");
+			buff.append("    member "); 
 			buff.append("WHERE ");
 			buff.append("    isshow = 'Y' ");
 			buff.append("    AND id = ? ");

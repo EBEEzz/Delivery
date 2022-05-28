@@ -170,7 +170,7 @@ public class PayDao {
 			rs = pstmt.executeQuery();
 			
 			rs.next();
-			
+			 
 			pVO.setMembmno(rs.getInt("mno"));
 			pVO.setId(rs.getString("id"));
 			pVO.setMembtel(rs.getString("tel"));

@@ -50,7 +50,7 @@
 				<div id="rq" class="w3-col  m11"> ${RQ} </div>
 				<h4 class="w3-col">가격 : <span >${PO.myprice}</span></h4>
 			</div>	
-</c:if>
+</c:if> 
 <c:if test="${SID ne memb.id && memb.id != null}">
 			<div class="w3-col w3-border-bottom mgl10" align="left" >
 				<h4>${memb.id} 님이 선택하신 메뉴</h4><br>
