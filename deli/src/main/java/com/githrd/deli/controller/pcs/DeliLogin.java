@@ -17,6 +17,7 @@ public class DeliLogin implements DeliInter {
 			req.setAttribute("isRedirect", true);
 			view = "/deli/main.dlv";
 		}
+
 		return view;
 	}
 

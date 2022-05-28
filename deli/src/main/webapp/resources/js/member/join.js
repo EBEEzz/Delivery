@@ -4,6 +4,10 @@ $(document).ready(function(){
 	});
 	$('#rbtn').click(function(){
 		document.frm.reset();
+		if($('#newpw').css('background-color', 'lightgray').prop('readonly', true)){
+			$('#newpw').css('background-color', 'white').prop('readonly', false);
+			$('#repwmsg').parent().stop().slideUp(500).stop().slideDown(500);
+		}
 	});
 
 	
@@ -58,15 +62,20 @@ $(document).ready(function(){
 			$('#repwmsg').html('# 비밀번호가 일치하지 않습니다.');
 			$('#repwmsg').removeClass('w3-text-green w3-text-red').addClass('w3-text-red')
 			$('#repwmsg').css('display', 'block');
-		} else {
+		} else if(newpw == repw && newpw == "") {
 			$('#repwmsg').css('display', 'block');
 			$('#repwmsg').html('* # 비밀번호가 일치합니다. *');
 			$('#repwmsg').removeClass('w3-text-green w3-text-red').addClass('w3-text-green');
-			$('#repwmsg').parent().stop().slideDown(300).stop().slideUp(300);
+			$('#repwmsg').parent().stop().slideDown(500).stop().slideUp(500);
 			$('#pw').css('background-color', 'lightgray').prop('readonly', true);
 		}
 	});
 	
+	$('#newpw').click(function(){
+		$('#newpw').css('background-color', 'white').prop('readonly', false);
+		$('#repwmsg').parent().stop().slideUp(500).stop().slideDown(500);
+		return;
+	});
 	
 	$('#proimg').change(function(e){
 		var sfile = $(this).val();

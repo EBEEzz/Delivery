@@ -22,6 +22,9 @@
 </style>
 </head>
 <body>
+<c:if test="${not empty FAIL}">
+	<input type="hidden" id="fail" value="${FAIL}">
+</c:if>
 	<div class="w3-content w3-center mx650">
 		<h1 class="w3-blue w3-padding w3-card-4">Login</h1>
 		<form method="POST" action="" class="w3-col w3-padding w3-card-4 w3-margin-top" id="frm" name="frm">

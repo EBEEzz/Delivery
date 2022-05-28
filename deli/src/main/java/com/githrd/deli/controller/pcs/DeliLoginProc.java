@@ -21,12 +21,19 @@ public class DeliLoginProc implements DeliInter {
 	String id = req.getParameter("id");
 	String pw = req.getParameter("pw");
 	PcsDao mDao = new PcsDao();
+	
+	String spage = req.getParameter("nowPage");
+	
 	int cnt = mDao.getLogin(id, pw);
 	if(cnt == 1) {
 		req.getSession().setAttribute("SID", id);
 	} else {
-		view = "/deli/member/login.dlv";
+		req.setAttribute("isRedirect", false);
+		req.setAttribute("FAIL", 1);
+		
+		view = "/member/login";
 	}
+	
 	
 	return view;
 }

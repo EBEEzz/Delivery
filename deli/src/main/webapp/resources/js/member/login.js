@@ -1,4 +1,9 @@
 $(document).ready(function(){
+	var fail = $('#fail').val();
+	if(fail == 1){
+		alert('아이디 또는 비밀번호가 다릅니다.');
+	}
+	
 	$('#lbtn').click(function(){
 		var sid = $('#id').val();
 		var spw = $('#pw').val();
