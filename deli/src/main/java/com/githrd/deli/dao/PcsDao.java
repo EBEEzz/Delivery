@@ -247,7 +247,7 @@ public class PcsDao {
 		return cnt;
 	}
 	
-	public int editProFile(String id, String fsql) {
+	public int editProFile(String id,  String fsql) {
 		// 반환값 변수
 		int cnt = 0;
 		// 커넥션

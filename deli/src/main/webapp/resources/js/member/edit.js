@@ -29,7 +29,7 @@ $(document).ready(function(){
 
 	$('#proimg').change(function(e){
 		var sfile = $(this).val();
-		var path = '/deli/resources/upload/noimage.jpg';
+		var path = '/deli${DATA.dir}/${DATA.oriname}';
 		if(sfile){
 			var path = URL.createObjectURL(e.target.files[0]);
 		}
@@ -40,7 +40,7 @@ $(document).ready(function(){
 		// 할 일
 		// 수정된 데이터를 알아낸다.
 		// 받은 데이터를 꺼내온다.
-		var npw = $('newpw').val();
+		var npw = $('#newpw').val();
 		var nmail = $('#newmail').val();
 		var ntel = $('#newtel').val();
 		var naddr = $('#newaddr').val();
@@ -50,20 +50,21 @@ $(document).ready(function(){
 			$('#repw').css('display', 'none');
 		};
 		
-		if(nmail == mail){
+		if(!nmail){
 			// 메일이 수정 안된경우
 			$('#newmail').prop('disabled', true);
+		/*	$('#newmail').val($('#mail').val());*/
 		}
 		
-		if(ntel == tel){
+		if(!ntel){
 			$('#newtel').prop('disabled', true);
 		}
 		
-		if(naddr == addr){
+		if(!naddr){
 			$('#newaddr').prop('disabled', true);
 		}
 		
-		if(!pw && (nmail == mail) && (ntel == tel) && (naddr == addr)){
+		if(!npw && (nmail == mail) && (ntel == tel) && (naddr == addr)){
 			// 수정을 한개도 하지 않는 경우..
 			alert('아무것도 수정안함...');
 			return;

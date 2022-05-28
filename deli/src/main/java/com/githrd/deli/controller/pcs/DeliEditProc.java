@@ -1,6 +1,7 @@
 package com.githrd.deli.controller.pcs;
 
-import java.io.IOException;
+import java.io.*;
+import java.util.* ;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -25,23 +26,21 @@ public class DeliEditProc implements DeliInter {
 		}
 		FileUtil futil = new FileUtil(req, "/resources/upload");
 		MultipartRequest multi = futil.getMulti();
-		FileVO fVO = futil.getList().get(0);
 		
 		String smno = multi.getParameter("mno");
 		int mno = Integer.parseInt(smno);
 		String id = multi.getParameter("id");
-		String pw = multi.getParameter("pw");
-		String mail = multi.getParameter("mail");
-		String tel = multi.getParameter("tel");
-		String addr = multi.getParameter("addr");
-		
+		String pw = multi.getParameter("newpw");
+		String mail = multi.getParameter("newmail");
+		String tel = multi.getParameter("newtel");
+		String addr = multi.getParameter("newaddr");
 		StringBuffer buff = new StringBuffer();
 		
-		if(pw != null) {
+		if(pw != null && !pw.isEmpty()) {
 			buff.append(" , pw = '" + pw + "' ");
 		}
 		
-		if(mail != null) {
+		if(mail != null ) {
 			buff.append(" , mail = '" + mail + "' ");
 		}
 		
@@ -52,27 +51,35 @@ public class DeliEditProc implements DeliInter {
 		if(addr != null) {
 			buff.append(" , addr = '" + addr + "' ");
 		}
-		
-		String psql  = buff.toString().substring(3);
-		
+
 		PcsDao pDao = new PcsDao();
-		int cnt = pDao.editMyInfo(mno, psql);
+		int cnt = 0;
+		if((buff.toString() != null) && (!buff.toString().isEmpty())) {
+		String esql  = buff.toString().substring(3);
 		
-		String oriname = multi.getParameter("oriname");
-		String savename = multi.getParameter("savename");
-		
-		StringBuffer fbuff = new StringBuffer();
-		
-		if(oriname != null) {
-			fbuff.append(" , oriname = '" + oriname + "' ");
-		}
-		if(savename != null) {
-			fbuff.append(" , savename = '" + savename + "' ");
+		cnt = pDao.editMyInfo(mno, esql);
 		}
 		
-		String fsql = fbuff.toString().substring(3);
-		fVO.setId(id);
-		int pcnt = pDao.editProFile(id, fsql);
+		int pcnt = 0;
+		if (futil.getList().size() != 0) {
+			FileVO fVO = futil.getList().get(0);
+			
+			String oriname = fVO.getOriname();
+			String savename = fVO.getSavename();
+			
+			StringBuffer fbuff = new StringBuffer();
+			
+			if(oriname != null) {
+				fbuff.append(" , oriname = '" + oriname + "' ");
+			}
+			if(savename != null) {
+				fbuff.append(" , savename = '" + savename + "' ");
+			}
+			String fsql = fbuff.toString().substring(3);
+			fVO.setId(id);
+			pcnt = pDao.editProFile(id, fsql);
+		}
+		
 		
 		// 결과에 따라 처리하고
 		if(cnt != 1 && pcnt != 1) {

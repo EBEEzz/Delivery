@@ -26,6 +26,7 @@ public class DeliJoinProc implements DeliInter {
 		MultipartRequest multi = futil.getMulti();
 		
 		FileVO fVO = futil.getList().get(0);
+		
 		PcsVO pVO = new PcsVO();
 		// 파라미터 받고
 		String name = multi.getParameter("name");
@@ -46,6 +47,7 @@ public class DeliJoinProc implements DeliInter {
 		
 		PcsDao pDao = new PcsDao();
 		int cnt = pDao.addMember(pVO);
+		
 		// 결과값에 따라 처리하고
 		if(cnt != 1) {
 			view = "/deli/member/join.dlv";

@@ -39,9 +39,7 @@ public class FileUtil {
 	// MultipartRequest 셋팅함수
 	public void setMulti() {
 		path = this.getClass().getResource("/").getPath();
-		System.out.println("########### fileutil path : " + path);
 		path = path.substring(0, path.lastIndexOf("/WEB-INF")) + dir;
-		System.out.println("******************** path : " + path );
 		/*
 			path 경로
 				==> 첨부하는 파일을 이 프로젝트에서 서비스 하는 경우에는
@@ -125,9 +123,7 @@ public class FileUtil {
 	public void saveBackup(File file) {
 		// 작업 경로를 만든다.
 		bPath = this.getClass().getResource("/").getPath();
-		System.out.println("********************* bPath : " + bPath);
 		bPath = bPath.substring(0, bPath.indexOf("/source")) + "/git/Delivery/deli/src/main/webapp" + dir;
-		System.out.println("********************* bPath : " + bPath);
 		File devFile = new File(bPath, file.getName());
 		FileInputStream fin = null;
 		PrintStream ps = null;

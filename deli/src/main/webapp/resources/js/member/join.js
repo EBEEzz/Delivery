@@ -59,12 +59,14 @@ $(document).ready(function(){
 			$('#repwmsg').removeClass('w3-text-green w3-text-red').addClass('w3-text-red')
 			$('#repwmsg').css('display', 'block');
 		} else {
+			$('#repwmsg').css('display', 'block');
 			$('#repwmsg').html('* # 비밀번호가 일치합니다. *');
 			$('#repwmsg').removeClass('w3-text-green w3-text-red').addClass('w3-text-green');
 			$('#repwmsg').parent().stop().slideDown(300).stop().slideUp(300);
 			$('#pw').css('background-color', 'lightgray').prop('readonly', true);
 		}
 	});
+	
 	
 	$('#proimg').change(function(e){
 		var sfile = $(this).val();
