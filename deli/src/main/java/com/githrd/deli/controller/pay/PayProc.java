@@ -15,14 +15,14 @@ public class PayProc implements DeliInter {
 
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-<<<<<<< HEAD
+
 		// String view = "/payment/afterPay";
 		req.setAttribute("isRedirect", null);
-=======
+
 		String view = "/payment/afterPay";
 		req.setAttribute("isRedirect", null);
 		
->>>>>>> branch 'branch' of https://github.com/EBEEzz/Delivery.git
+
 		/*
 		String sid = (String) req.getSession().getAttribute("SID");
 		if(sid == null) {
@@ -86,18 +86,16 @@ public class PayProc implements DeliInter {
 			System.out.println("ordermenu에 문제가 생겼습니다.");
 			return "/payment/beforePay";
 		} else {
-<<<<<<< HEAD
+
 			System.out.println("proc성공2");
-=======
->>>>>>> branch 'branch' of https://github.com/EBEEzz/Delivery.git
+
 			req.setAttribute("isRedirect", null);
 			msg = "{\"result\" : \"y\"}";
 		}
 		
-<<<<<<< HEAD
+
 		System.out.println("proc성공");
-=======
->>>>>>> branch 'branch' of https://github.com/EBEEzz/Delivery.git
+
 		
 		return msg;
 	}

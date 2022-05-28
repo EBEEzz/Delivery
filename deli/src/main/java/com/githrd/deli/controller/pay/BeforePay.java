@@ -44,6 +44,7 @@ public class BeforePay implements DeliInter {
 		PayDao pDao = new PayDao();
 		
 		PayVO pVO = pDao.getPay(bno);
+		PayVO pVO1 = pDao.getMINFO(sid);
 		
 		String amname = (String)req.getParameter("1mname");
 		
@@ -55,6 +56,8 @@ public class BeforePay implements DeliInter {
 		int cnt = pDao.getAbnoCnt(bno);
 		
 		pVO.setMyprice(myprice);
+		pVO.setBno(bno);
+		
 		
 		System.out.println(pVO);
 		
@@ -66,6 +69,7 @@ public class BeforePay implements DeliInter {
 		pVO.setAmname(amname);
 		
 		
+		
 		ArrayList<YonghyunVO> list = yDao.getRegiMember(bno);
 		
 		ArrayList<YonghyunVO> menu = yDao.getMenu(bno);
@@ -73,7 +77,7 @@ public class BeforePay implements DeliInter {
 		req.setAttribute("MEMBER", list);
 		req.setAttribute("MENU", menu);
 		req.setAttribute("PO", pVO);
-		
+		req.setAttribute("MPO", pVO1);
 		return view;
 	}
 

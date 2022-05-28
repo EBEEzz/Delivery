@@ -160,5 +160,32 @@ public class PayDao {
 		return cnt;
 	}
 	
-	
+	public PayVO getMINFO(String id) {
+		PayVO pVO = new PayVO();
+		con = db.getCon();
+		String sql = pSQL.getSQL(pSQL.SEL_MINFO);
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			rs.next();
+			
+			pVO.setMembmno(rs.getInt("mno"));
+			pVO.setId(rs.getString("id"));
+			pVO.setMembtel(rs.getString("tel"));
+			pVO.setMembaddr(rs.getString("addr"));
+			pVO.setMembmail(rs.getString("mail"));
+			pVO.setMembname(rs.getString("name"));
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(rs);
+			db.close(pstmt);
+			db.close(con);
+		}
+		
+		return pVO;
+	}
 }

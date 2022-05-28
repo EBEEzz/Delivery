@@ -5,8 +5,22 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class PayVO {
-	private int mno, rno, mimg, mprice, mino, olno,  oprice, omprice, quantity, esti, cname, omno, gorder, delpay, cnt, mtprice, myprice;
-	private String mname, mintro, miname, sname, dir, omenu, rname, addr, tel, stime, ono, sdate, paym, request, amname;
+	private int membmno, mno, rno, mimg, mprice, mino, olno,  oprice, omprice, quantity, esti, cname, omno, gorder, delpay, cnt, mtprice, myprice, bno, restno;
+	private String membname, membmail, mname, mintro, miname, sname, dir, omenu, rname, addr, tel, stime, ono, sdate, paym, request, amname, id, membaddr, membtel;
+	public String getMembname() {
+		return membname;
+	}
+	public void setMembname(String membname) {
+		this.membname = membname;
+	}
+	public String getMembmail() {
+		return membmail;
+	}
+	public void setMembmail(String membmail) {
+		this.membmail = membmail;
+	}
+
+
 	private Time rtime;
 	private Date rdate;
 	
@@ -39,6 +53,37 @@ public class PayVO {
 	}
 	public void setMino(int mino) {
 		this.mino = mino;
+	}
+	
+	public int getMembmno() {
+		return membmno;
+	}
+	public void setMembmno(int membmno) {
+		this.membmno = membmno;
+	}
+	public String getMembaddr() {
+		return membaddr;
+	}
+	public void setMembaddr(String membaddr) {
+		this.membaddr = membaddr;
+	}
+	public String getMembtel() {
+		return membtel;
+	}
+	public void setMembtel(String membtel) {
+		this.membtel = membtel;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public int getRestno() {
+		return restno;
+	}
+	public void setRestno(int restno) {
+		this.restno = restno;
 	}
 	public int getOlno() {
 		return olno;
@@ -188,6 +233,12 @@ public class PayVO {
 	}
 	
 	
+	public int getBno() {
+		return bno;
+	}
+	public void setBno(int bno) {
+		this.bno = bno;
+	}
 	public int getGorder() {
 		return gorder;
 	}
@@ -236,23 +287,27 @@ public class PayVO {
 	
 	@Override
 	public String toString() {
-		return "PayVO [mno=" + mno + ", rno=" + rno + ", mimg=" + mimg + ", mprice=" + mprice + ", mino=" + mino
-				+ ", olno=" + olno + ", oprice=" + oprice + ", omprice=" + omprice + ", quantity=" + quantity
-				+ ", esti=" + esti + ", cname=" + cname + ", omno=" + omno + ", gorder=" + gorder + ", delpay=" + delpay
-				+ ", cnt=" + cnt + ", mtprice=" + mtprice + ", myprice=" + myprice + ", mname=" + mname + ", mintro="
-				+ mintro + ", miname=" + miname + ", sname=" + sname + ", dir=" + dir + ", omenu=" + omenu + ", rname="
-				+ rname + ", addr=" + addr + ", tel=" + tel + ", stime=" + stime + ", ono=" + ono + ", sdate=" + sdate
-				+ ", paym=" + paym + ", request=" + request + ", amname=" + amname + ", rtime=" + rtime + ", rdate="
-				+ rdate + ", getMno()=" + getMno() + ", getRno()=" + getRno() + ", getMimg()=" + getMimg()
-				+ ", getMprice()=" + getMprice() + ", getMino()=" + getMino() + ", getOlno()=" + getOlno()
-				+ ", getOno()=" + getOno() + ", getOprice()=" + getOprice() + ", getOmprice()=" + getOmprice()
-				+ ", getQuantity()=" + getQuantity() + ", getEsti()=" + getEsti() + ", getCname()=" + getCname()
-				+ ", getMname()=" + getMname() + ", getMintro()=" + getMintro() + ", getMiname()=" + getMiname()
-				+ ", getSname()=" + getSname() + ", getDir()=" + getDir() + ", getOmenu()=" + getOmenu()
-				+ ", getRname()=" + getRname() + ", getAddr()=" + getAddr() + ", getTel()=" + getTel() + ", getRtime()="
-				+ getRtime() + ", getStime()=" + getStime() + ", getSdate()=" + getSdate() + ", getRdate()="
-				+ getRdate() + ", getPaym()=" + getPaym() + ", getRequest()=" + getRequest() + ", getOmno()="
-				+ getOmno() + ", getGorder()=" + getGorder() + ", getDelpay()=" + getDelpay() + ", getCnt()=" + getCnt()
+		return "PayVO [membmno=" + membmno + ", mno=" + mno + ", rno=" + rno + ", mimg=" + mimg + ", mprice=" + mprice
+				+ ", mino=" + mino + ", olno=" + olno + ", oprice=" + oprice + ", omprice=" + omprice + ", quantity="
+				+ quantity + ", esti=" + esti + ", cname=" + cname + ", omno=" + omno + ", gorder=" + gorder
+				+ ", delpay=" + delpay + ", cnt=" + cnt + ", mtprice=" + mtprice + ", myprice=" + myprice + ", bno="
+				+ bno + ", restno=" + restno + ", membmail=" + membmail + ", mname=" + mname + ", mintro=" + mintro
+				+ ", miname=" + miname + ", sname=" + sname + ", dir=" + dir + ", omenu=" + omenu + ", rname=" + rname
+				+ ", addr=" + addr + ", tel=" + tel + ", stime=" + stime + ", ono=" + ono + ", sdate=" + sdate
+				+ ", paym=" + paym + ", request=" + request + ", amname=" + amname + ", id=" + id + ", membaddr="
+				+ membaddr + ", membtel=" + membtel + ", rtime=" + rtime + ", rdate=" + rdate + ", getMembmail()="
+				+ getMembmail() + ", getMno()=" + getMno() + ", getRno()=" + getRno() + ", getMimg()=" + getMimg()
+				+ ", getMprice()=" + getMprice() + ", getMino()=" + getMino() + ", getMembmno()=" + getMembmno()
+				+ ", getMembaddr()=" + getMembaddr() + ", getMembtel()=" + getMembtel() + ", getId()=" + getId()
+				+ ", getRestno()=" + getRestno() + ", getOlno()=" + getOlno() + ", getOno()=" + getOno()
+				+ ", getOprice()=" + getOprice() + ", getOmprice()=" + getOmprice() + ", getQuantity()=" + getQuantity()
+				+ ", getEsti()=" + getEsti() + ", getCname()=" + getCname() + ", getMname()=" + getMname()
+				+ ", getMintro()=" + getMintro() + ", getMiname()=" + getMiname() + ", getSname()=" + getSname()
+				+ ", getDir()=" + getDir() + ", getOmenu()=" + getOmenu() + ", getRname()=" + getRname()
+				+ ", getAddr()=" + getAddr() + ", getTel()=" + getTel() + ", getRtime()=" + getRtime() + ", getStime()="
+				+ getStime() + ", getSdate()=" + getSdate() + ", getRdate()=" + getRdate() + ", getPaym()=" + getPaym()
+				+ ", getRequest()=" + getRequest() + ", getOmno()=" + getOmno() + ", getBno()=" + getBno()
+				+ ", getGorder()=" + getGorder() + ", getDelpay()=" + getDelpay() + ", getCnt()=" + getCnt()
 				+ ", getMyprice()=" + getMyprice() + ", getMtprice()=" + getMtprice() + ", getAmname()=" + getAmname()
 				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
 				+ "]";

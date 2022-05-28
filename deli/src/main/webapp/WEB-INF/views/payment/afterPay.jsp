@@ -45,35 +45,35 @@
 <c:if test="${SID eq memb.id}">
 			<div class="w3-col w3-border-bottom mgl10" align="left" >
 				<h4>${SID} 님이 선택하신 메뉴</h4><br>
-				<div>${data.mname} : ${data.mprice}</div>
+				<div>${PO.amname} : ${PO.myprice}</div>
 				<h4>요청 사항 : </h4><br>
-				<h4>가격 : <span >${data.mprice}</span></h4>
+				<div id="rq" class="w3-col  m11"> ${RQ} </div>
+				<h4 class="w3-col">가격 : <span >${PO.myprice}</span></h4>
 			</div>	
 </c:if>
 <c:if test="${SID ne memb.id && memb.id != null}">
 			<div class="w3-col w3-border-bottom mgl10" align="left" >
 				<h4>${memb.id} 님이 선택하신 메뉴</h4><br>
-				<div><span>${MY.amname} </span><span>${PO.mtprice}</span><span></span></div>
-				<h4>가격 : <span>${PO.mtprice}</span></h4>
+				<div><span id="abcdef">${data.mname} : </span><span>${data.mprice}</span><span></span></div>
+				<h4>가격 : <span>${data.mprice}</span></h4>
 			</div>
-</c:if>
+</c:if> 
 </c:forEach>
 			<div class="w3-col w3-border-bottom mgl10" align="left" >
 <c:forEach var="data" items="${MENU}" varStatus="status"  >
 <c:set var="memb" value="${MEMBER[status.index]}" />
 <c:if test="${SID eq memb.id}">
-				<h4>${SID} 님 금 액 :<span>${data.mprice}</span></h4><br>
+				<h4>${SID} 님 금 액 : <span>${PO.myprice}</span></h4><br>
 </c:if>
 <c:if test="${SID ne memb.id && memb.id != null}">		
 				<h4>${memb.id} 님 금 액 :<span>${data.mprice}</span></h4><br>
 </c:if>
 </c:forEach>
 				<h4>배달비  : <span>${PO.delpay}</span></h4><br>
-				<h4>총합    : <span>${data.mprice}</span></h4><br>
 <c:forEach var="data" items="${MENU}" varStatus="status"  >
 <c:set var="memb" value="${MEMBER[status.index]}" />
 <c:if test="${SID eq memb.id }"> 
-				<h4>${SID}님이 지불하신 금액  : ${PO.mtprice}<span></span></h4>
+				<h4>${SID}님이 지불하실 금액  : <span>${PO.mtprice}</span></h4>
 </c:if>				
 </c:forEach>
 			</div>

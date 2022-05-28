@@ -34,20 +34,19 @@ $(document).ready(function(){
 		let request = $('#rq').val();
 		*/
 		
-		let m_email = 'aaa@aaa.com';
-		let s_name = 'aaa';
-		let s_id = 'aaa';
-		let menu = '짜장면';
-		let price = 6000;
-		let s_addr = 'aaaaaa222aaa';
-		let s_phone = '123-4567-8910';
-		let s_zipNo = '12345';
-		let rno = 1;
-		let mno = 1001;
-		let omprice = 6000;
-		let omenu = '짜장면';
+		let m_email = $('#mail').val();
+		let s_name = $('#name').val();;
+		let s_id = $('#myid').val();
+		let menu = $('#mymenu').val();
+		let price = $('#amount').val();
+		let s_addr = $('#addr').val();
+		let s_phone = $('#tel').val();
+		let rno = $('#restno').val();
+		let mno = $('#mymno').val();
+		let omprice = $('#amount').val();
+		let omenu = $('#mymenu').val();
 		let quantity = 1;
-		let request = '반반무많이';
+		let request = $('#rq').val();
 		
 		//alert(m_email +s_name +s_addr +s_phone +s_msg +s_zipNo);
 			
@@ -64,7 +63,6 @@ $(document).ready(function(){
 			buyer_name: s_name,
 			buyer_tel: s_phone,
 			buyer_addr: s_addr,
-			buyer_postcode: s_zipNo,
 			m_redirect_url: '/payment/afterPay'
 			}, function (rsp) {
 				console.log(rsp);
@@ -97,8 +95,8 @@ $(document).ready(function(){
 						success : function(result){
 							if(result.result == "y") {
 								alert('proc 성공!!!');
-								$('#frm').attr('action','/deli/payment/afterPay.dlv');
-								$('#frm').submit();
+								$('#pageFrm').attr('action','/deli/payment/afterPay.dlv');
+								$('#pageFrm').submit();
 							}else{
 								alert("디비입력실패" + result.result);
 								return false;
