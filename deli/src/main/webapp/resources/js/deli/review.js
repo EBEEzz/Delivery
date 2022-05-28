@@ -23,9 +23,12 @@ $(document).ready(function() {
 		
 		$('#sbtn').click(function() {
 			$(document.frm.nesti).val(point);
-			
 			$('#frm').submit();
 		});
 	})
+	
+	$('#sbtn').click(function() {
+		alert('후기가 제출되었습니다!');
+	});
 
 });
