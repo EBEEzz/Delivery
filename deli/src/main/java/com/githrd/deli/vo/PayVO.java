@@ -19,7 +19,7 @@ public class PayVO {
 	public void setMembmail(String membmail) {
 		this.membmail = membmail;
 	}
- 
+    
 
 	private Time rtime;
 	private Date rdate;

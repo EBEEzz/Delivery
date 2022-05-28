@@ -57,7 +57,7 @@ public class BeforePay implements DeliInter {
 		
 		pVO.setMyprice(myprice);
 		pVO.setBno(bno);
-		
+	
 		
 		System.out.println(pVO);
 		
