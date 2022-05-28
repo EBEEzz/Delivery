@@ -113,28 +113,54 @@ $(document).ready(function(){
 	});
 	
 	var price = 0;
+	var subprice = 0;
+	var mname= '';
 	$('.pricebtn1').click(function(){
-		var menu = $('.mname').attr('id');
-		var mprice = 0;
-		mprice = $(this).attr('id');
-		if(confirm(menu + '을 빼시겠습니까?')) {
-			if(price - mprice < 0) {
-				alert('해당 주문건을 취소할 수 없습니다. 주문하신 옵션을 확인해주세요.');
-				return;	
-			}
+		
+		if(confirm('을 빼시겠습니까?')) {
+			var mprice = 0;
+			mprice = $(this).parent().attr('id')
+			mname = $(this).attr('id');
 			price = price - mprice;
-			alert(price);
+			subprice = price/mprice;
+			alert('subprice = ' + subprice);
+			alert('price = ' +price);
+			subprice = parseInt(subprice);
+			
+			if(subprice = 0) {
+				$('#abc *').remove();
+			} else {
+				$('#abc *').remove();
+				
+				$('#abc').append('<p>'+ mname + '<span>'+ subprice +'<span>'  +'<p>');
+
+			}
+			
 		}
 	});
 	
-	$('.pricebtn2').click(function(){
-		
-		var menu = $('.mname').attr('id');
-		if(confirm(menu + '을 추가하시겠습니까?')) {
+	$('.pricebtn2').on("click", function(){
+		if(confirm('을 추가하시겠습니까?')) {
 			var mprice = 0;
-			mprice = $(this).attr('id');
+			mprice = $(this).parent().attr('id')
+			mprice = parseInt(mprice);
 			price = price -(- mprice);
-			alert(price);
+			subprice = price/mprice;
+			
+			mname = $(this).attr('id');
+			
+			alert('subprice = ' + subprice);
+			subprice = parseInt(subprice);
+			
+			if(subprice = 1) {
+			
+				$('#abc').append('<p>'+ mname + '<span>'+ subprice +'<span>'  +'<p>');
+				
+			} else if(subpirce > 1) {
+				$('#abc').eq(subprice).html(subprice);
+				
+			}
+			mname = mname + ' 외 ' + subprice + ' 건';
 		}
 	});
 	
@@ -161,4 +187,12 @@ $(document).ready(function(){
 		})
 	})
 	
+	
+	$('#paybtn').click(function(){
+		$('#1mname').val(mname);
+		$('#1price').val(price);
+		alert(price);
+		$('#pageFrm').attr('action','/deli/payment/beforePay.dlv');
+		$('#pageFrm').submit();
+	});
 });

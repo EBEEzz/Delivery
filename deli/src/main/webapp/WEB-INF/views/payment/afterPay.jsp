@@ -40,27 +40,42 @@
 				<h3>결제가 완료되었습니다.</h3>
 				<h4 class="w3-left">배달 장소 : <span id="addr">${DATA.addr}</span></h4>
 			</div>
-<c:forEach var="data" items="${LIST}">
+<c:forEach var="data" items="${MENU}" varStatus="status"  >
+<c:set var="memb" value="${MEMBER[status.index]}" />
+<c:if test="${SID eq memb.id}">
 			<div class="w3-col w3-border-bottom mgl10" align="left" >
-				<h4 id="mid">${data.mid} 님이 선택하신 메뉴</h4><br>
-				<p><span id="menu">${data.menu} </span><span id="omprice" value="${data.omprice}">${data.omprice}</span><span id="quantity">${data.quantity}</span></p><br>
-				<h4 id="rq">요청 사항 : <span id="rq" name="rq" value="${data.rq}">${data.rq}</span></h4><br>
-				<h4>가격 : <span id="tmprice">${data.tmprice}</span></h4>
+				<h4>${SID} 님이 선택하신 메뉴</h4><br>
+				<div>${data.mname} : ${data.mprice}</div>
+				<h4>요청 사항 : </h4><br>
+				<h4>가격 : <span >${data.mprice}</span></h4>
+			</div>	
+</c:if>
+<c:if test="${SID ne memb.id && memb.id != null}">
+			<div class="w3-col w3-border-bottom mgl10" align="left" >
+				<h4>${memb.id} 님이 선택하신 메뉴</h4><br>
+				<div><span>${MY.amname} </span><span>${PO.mtprice}</span><span></span></div>
+				<h4>가격 : <span>${PO.mtprice}</span></h4>
 			</div>
+</c:if>
 </c:forEach>
 			<div class="w3-col w3-border-bottom mgl10" align="left" >
-				<h4>B님이 선택하신 메뉴</h4><br>
-				<h4><span>B </span><span> : 2만원</span></h4><br>
-				<h4>요청 사항 : <span></span></h4><br>
-				<h4>가격 : <span>2만원</span></h4>
-			</div>
-			<div class="w3-col w3-border-bottom mgl10" align="left" >
-<c:forEach var="data" items="${LIST}">			
-				<h4>${data.member} 님 금 액 :<span>${data.tmprice}</span></h4><br>
+<c:forEach var="data" items="${MENU}" varStatus="status"  >
+<c:set var="memb" value="${MEMBER[status.index]}" />
+<c:if test="${SID eq memb.id}">
+				<h4>${SID} 님 금 액 :<span>${data.mprice}</span></h4><br>
+</c:if>
+<c:if test="${SID ne memb.id && memb.id != null}">		
+				<h4>${memb.id} 님 금 액 :<span>${data.mprice}</span></h4><br>
+</c:if>
 </c:forEach>
-				<h4>배달비  : <span id="dc"> ${data.dc} </span></h4><br>
-				<h4>총합    : <span>${data.mtmoney}</span></h4><br>
-				<h4 >A님이 지불하실 금액  : <span id="tmoney" value="${data.tmoney}">${data.tmoney}</span></h4>
+				<h4>배달비  : <span>${PO.delpay}</span></h4><br>
+				<h4>총합    : <span>${data.mprice}</span></h4><br>
+<c:forEach var="data" items="${MENU}" varStatus="status"  >
+<c:set var="memb" value="${MEMBER[status.index]}" />
+<c:if test="${SID eq memb.id }"> 
+				<h4>${SID}님이 지불하신 금액  : ${PO.mtprice}<span></span></h4>
+</c:if>				
+</c:forEach>
 			</div>
 		</div>
 		</form>

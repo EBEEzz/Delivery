@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import com.githrd.deli.db.DeliDBCP;
 import com.githrd.deli.sql.PaySQL;
@@ -106,4 +107,58 @@ public class PayDao {
 				
 		return cnt;
 	}
+	
+	public PayVO getPay(int bno) {
+		PayVO pVO = new PayVO();
+		con = db.getCon();
+		String sql = pSQL.getSQL(pSQL.SEL_PAYS);
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			pstmt.setInt(1, bno);
+			rs = pstmt.executeQuery();
+			
+			rs.next();
+			
+			pVO.setRno(rs.getInt("restno"));
+			pVO.setDelpay(rs.getInt("delpay"));
+			pVO.setMprice(rs.getInt("mprice"));
+			pVO.setMname(rs.getString("mname"));
+			
+			
+	} catch(Exception e) {
+		e.printStackTrace();
+	} finally {
+		db.close(rs);
+		db.close(pstmt);
+		db.close(con);
+	}
+		
+		
+		return pVO;
+	}
+	
+	public int getAbnoCnt(int abno) {
+		int cnt = 0;
+		con = db.getCon();
+		String sql = pSQL.getSQL(pSQL.ABNO_CNT);
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			pstmt.setInt(1, abno);
+			rs = pstmt.executeQuery();
+			
+			rs.next();
+			
+			cnt = rs.getInt("cnt");
+			
+	} catch(Exception e) {
+		e.printStackTrace();
+	} finally {
+		db.close(rs);
+		db.close(pstmt);
+		db.close(con);
+	}
+		return cnt;
+	}
+	
+	
 }

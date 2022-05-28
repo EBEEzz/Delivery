@@ -5,8 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class PayVO {
-	private int mno, rno, mimg, mprice, mino, olno,  oprice, omprice, quantity, esti, cname, omno, gorder;
-	private String mname, mintro, miname, sname, dir, omenu, rname, addr, tel, stime, ono, sdate, paym, request;
+	private int mno, rno, mimg, mprice, mino, olno,  oprice, omprice, quantity, esti, cname, omno, gorder, delpay, cnt, mtprice, myprice;
+	private String mname, mintro, miname, sname, dir, omenu, rname, addr, tel, stime, ono, sdate, paym, request, amname;
 	private Time rtime;
 	private Date rdate;
 	
@@ -194,15 +194,55 @@ public class PayVO {
 	public void setGorder(int gorder) {
 		this.gorder = gorder;
 	}
+	public int getDelpay() {
+		return delpay;
+	}
+	public void setDelpay(int delpay) {
+		this.delpay = delpay;
+	}
+	public int getCnt() {
+		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
+	
+	
+	
+	
+	
+	public int getMyprice() {
+		return myprice;
+	}
+	public void setMyprice(int myprice) {
+		this.myprice = myprice;
+	}
+	
+	
+	public int getMtprice() {
+		return mtprice;
+	}
+	public void setMtprice(int mtprice) {
+		this.mtprice = mtprice;
+	}
+	
+	public String getAmname() {
+		return amname;
+	}
+	public void setAmname(String amname) {
+		this.amname = amname;
+	}
+	
 	
 	@Override
 	public String toString() {
 		return "PayVO [mno=" + mno + ", rno=" + rno + ", mimg=" + mimg + ", mprice=" + mprice + ", mino=" + mino
 				+ ", olno=" + olno + ", oprice=" + oprice + ", omprice=" + omprice + ", quantity=" + quantity
-				+ ", esti=" + esti + ", cname=" + cname + ", omno=" + omno + ", gorder=" + gorder + ", mname=" + mname
-				+ ", mintro=" + mintro + ", miname=" + miname + ", sname=" + sname + ", dir=" + dir + ", omenu=" + omenu
-				+ ", rname=" + rname + ", addr=" + addr + ", tel=" + tel + ", stime=" + stime + ", ono=" + ono
-				+ ", sdate=" + sdate + ", paym=" + paym + ", request=" + request + ", rtime=" + rtime + ", rdate="
+				+ ", esti=" + esti + ", cname=" + cname + ", omno=" + omno + ", gorder=" + gorder + ", delpay=" + delpay
+				+ ", cnt=" + cnt + ", mtprice=" + mtprice + ", myprice=" + myprice + ", mname=" + mname + ", mintro="
+				+ mintro + ", miname=" + miname + ", sname=" + sname + ", dir=" + dir + ", omenu=" + omenu + ", rname="
+				+ rname + ", addr=" + addr + ", tel=" + tel + ", stime=" + stime + ", ono=" + ono + ", sdate=" + sdate
+				+ ", paym=" + paym + ", request=" + request + ", amname=" + amname + ", rtime=" + rtime + ", rdate="
 				+ rdate + ", getMno()=" + getMno() + ", getRno()=" + getRno() + ", getMimg()=" + getMimg()
 				+ ", getMprice()=" + getMprice() + ", getMino()=" + getMino() + ", getOlno()=" + getOlno()
 				+ ", getOno()=" + getOno() + ", getOprice()=" + getOprice() + ", getOmprice()=" + getOmprice()
@@ -212,9 +252,14 @@ public class PayVO {
 				+ ", getRname()=" + getRname() + ", getAddr()=" + getAddr() + ", getTel()=" + getTel() + ", getRtime()="
 				+ getRtime() + ", getStime()=" + getStime() + ", getSdate()=" + getSdate() + ", getRdate()="
 				+ getRdate() + ", getPaym()=" + getPaym() + ", getRequest()=" + getRequest() + ", getOmno()="
-				+ getOmno() + ", getGorder()=" + getGorder() + ", getClass()=" + getClass() + ", hashCode()="
-				+ hashCode() + ", toString()=" + super.toString() + "]";
+				+ getOmno() + ", getGorder()=" + getGorder() + ", getDelpay()=" + getDelpay() + ", getCnt()=" + getCnt()
+				+ ", getMyprice()=" + getMyprice() + ", getMtprice()=" + getMtprice() + ", getAmname()=" + getAmname()
+				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
+				+ "]";
 	}
+	
+	
+	
 	
 	
 	
