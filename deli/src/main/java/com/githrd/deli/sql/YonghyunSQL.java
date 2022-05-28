@@ -1,5 +1,16 @@
 package com.githrd.deli.sql;
 
+
+/**
+ * @author	이용현
+ * @since	2022/05/25
+ * @version	v.1.0
+ * 
+ * 			작업이력 ]
+ * 				2022.05.25	-	클래스제작
+ * 								담당자 : 이용현
+ */
+
 public class YonghyunSQL {
 	public final int SEL_BOARD = 1001;
 	public final int SEL_TOTALCOUNT = 1002;

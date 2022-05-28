@@ -1,3 +1,15 @@
+<%-- 
+
+/**
+ * @author	이용현
+ * @since	2022/05/27
+ * @version	v.1.0
+ * 
+ * 			작업이력 ]
+ * 				2022.05.27	-	클래스제작
+ * 								담당자 : 이용현
+ */
+ --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
