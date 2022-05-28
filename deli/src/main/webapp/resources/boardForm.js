@@ -117,24 +117,24 @@ $(document).ready(function(){
 		var menu = $('.mname').attr('id');
 		var mprice = 0;
 		mprice = $(this).attr('id');
-		if(confirm(menu + '을 빼시겠습니까?')) {
+		if(confirm('메뉴를 제외하시겠습니까?')) {
 			if(price - mprice < 0) {
 				alert('해당 주문건을 취소할 수 없습니다. 주문하신 옵션을 확인해주세요.');
 				return;	
 			}
 			price = price - mprice;
-			alert(price);
+		
 		}
 	});
 	
 	$('.pricebtn2').click(function(){
 		
 		var menu = $('.mname').attr('id');
-		if(confirm(menu + '을 추가하시겠습니까?')) {
+		if(confirm('메뉴를 추가하시겠습니까?')) {
 			var mprice = 0;
 			mprice = $(this).attr('id');
 			price = price -(- mprice);
-			alert(price);
+		
 		}
 	});
 	

@@ -1,5 +1,16 @@
 package com.githrd.deli.controller.board;
 
+
+/**
+ * @author	이용현
+ * @since	2022/05/28
+ * @version	v.1.0
+ * 
+ * 			작업이력 ]
+ * 				2022.05.28	-	클래스제작
+ * 								담당자 : 이용현
+ */
+
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -34,8 +45,7 @@ public class FriendAgrProc implements DeliInter {
 		}
 		
 		buff.append("\" }");
-
-		System.out.println(buff.toString());		
+	
 		return buff.toString();
 	}
 
