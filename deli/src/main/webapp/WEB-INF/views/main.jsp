@@ -75,6 +75,11 @@ small {
 	background-color: white;
 	padding: 0px;
 }
+#spoon{
+	font-size: 1em;
+	color: transparent;
+	text-shadow: 0 0 0 grey;
+}
 </style>
 
 </head>
@@ -190,7 +195,7 @@ small {
 			<div class="w3-container">
 	        	<div class="w3-section">
 					<h3 class="w3-center" id="id">${DATA.id}</h3>
-					<h5 class="w3-center">추천수 : <span> ${DATA.esti}</span></h5>
+					<h5 class="w3-center">추천도 : <span><span id="spoon">🥄</span>${DATA.esti} / 5</span></h5>
 					<h5 class="w3-center" style="display: none;"><span id="mno">${DATA.mno}</span></h5>
 					<h5 class="w3-center">이메일 : <span>${DATA.mail}</span></h5>
 					<h5 class="w3-center">카카오아이디 : <span>${DATA.kakaoid}</span></h5>
