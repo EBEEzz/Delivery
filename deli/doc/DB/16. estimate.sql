@@ -13,16 +13,4 @@ CREATE TABLE estimate(
         CONSTRAINT ESTI_SHOW_CK CHECK(isshow IN('Y','N'))
 );
 
-SELECT
-    spts, cpts
-FROM
-    estimate, (
-        SELECT
-            SUM(epoint) spts, count(epoint) cpts
-        FROM
-            estimate
-        WHERE
-            eidb = 'gildong'
-            AND isshow = 'N'
-    )
-;
+
