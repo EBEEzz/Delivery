@@ -176,7 +176,7 @@ public class EunbeeDao {
 	}
 	
 	public EunbeeVO getNewEsti(String id) {
-		EunbeeVO eVOp = new EunbeeVO();
+		EunbeeVO eVO = new EunbeeVO();
 		con = db.getCon();
 		String sql = eSQL.getSQL(eSQL.SEL_NEWESTI);
 		pstmt = db.getPSTMT(con, sql);
@@ -185,8 +185,8 @@ public class EunbeeDao {
 			rs = pstmt.executeQuery();
 			rs.next();
 			
-			eVOp.setSpts(rs.getDouble("spts"));
-			eVOp.setCpts(rs.getInt("cpts"));
+			eVO.setSpts(rs.getDouble("spts"));
+			eVO.setCpts(rs.getInt("cpts"));
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -194,7 +194,26 @@ public class EunbeeDao {
 			db.close(pstmt);
 			db.close(con);
 		}
-		return eVOp;
+		return eVO;
+	}
+	
+	public int updateEsti(double esti, String id) {
+		int cnt = 0;
+		con = db.getCon();
+		String sql = eSQL.getSQL(eSQL.UPDATE_ESTI);
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			pstmt.setDouble(1, esti);
+			pstmt.setString(2, id);
+			
+			cnt = pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(pstmt);
+			db.close(con);
+		}
+		return cnt;
 	}
 	
 	

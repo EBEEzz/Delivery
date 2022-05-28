@@ -28,7 +28,7 @@ $(document).ready(function() {
 		$('#sbtn').click(function() {
 			alert('후기가 제출되었습니다!');
 		});
-	})
+	});
 	
 	$('#sbtn').click(function() {
 		$('#frm').submit();

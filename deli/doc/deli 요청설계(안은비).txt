@@ -40,18 +40,24 @@
 ----------------------------------------------------------------------------------
 # 후기 제출 처리 요청
 요청내용	:	/deli/review/rvWriteProc.dlv
-파라미터	:	
+파라미터	:	bno, ida, idb, nesti
 컨트롤러	:	com.githrd.deli.controller.eunbee.RvWriteProc
 뷰			:	
 			 	redirect ]
-					성공 : /deli/main.dlv
+					성공 : /deli/review/estiProc.dlv
 					실패 : /deli/review/rvWrite.dlv
+기타		: 	로그인 안 된 경우 ]
+					redirect : /deli/member/login.dlv
 ----------------------------------------------------------------------------------
 # 평가 반영 처리 요청
 요청내용	:	/deli/review/estiProc.dlv
 파라미터	:	bno, ida, idb, nesti
 컨트롤러	:	com.githrd.deli.controller.eunbee.EstiProc
-뷰			:	/WEB-INF/views/review/main.jsp
+뷰			:	redirect ]
+					성공 : /deli/main.dlv
+					실패 : /deli/review/rvWrite.dlv
+기타		: 	로그인 안 된 경우 ]
+					redirect : /deli/member/login.dlv
 
 
 

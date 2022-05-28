@@ -29,6 +29,7 @@ public class EunbeeSQL {
 	public final int EDIT_PASSWORD	= 2001;
 
 	public final int ADD_ESTIINFO	= 3001;
+	public final int UPDATE_ESTI	= 3002;
 	
 	public String getSQL(int code) {
 		StringBuffer buff = new StringBuffer();
@@ -103,6 +104,14 @@ public class EunbeeSQL {
 			buff.append("            eidb = ? ");
 			buff.append("            AND isshow = 'N' ");
 			buff.append("    ) ");
+			break;
+		case UPDATE_ESTI:
+			buff.append("UPDATE ");
+			buff.append("    member ");
+			buff.append("SET ");
+			buff.append("    esti = ? ");
+			buff.append("WHERE ");
+			buff.append("    id = ? ");
 			break;
 		}
 		return buff.toString();

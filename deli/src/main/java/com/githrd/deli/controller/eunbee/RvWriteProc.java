@@ -15,7 +15,7 @@ public class RvWriteProc implements DeliInter {
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setAttribute("isRedirect", true);
-		String view = "/deli/main.dlv";
+		String view = "/deli/review/estiProc.dlv";
 		
 		if(req.getSession().getAttribute("SID") == null) {
 			view = "/deli/member/login.dlv";
@@ -28,6 +28,9 @@ public class RvWriteProc implements DeliInter {
 		int abno = eDao.getAbno(ida);
 		
 		String idb = req.getParameter("idb");
+		if(idb != null) {
+			req.getSession().setAttribute("EID", idb);
+		}
 		
 		String nesti = req.getParameter("nesti");
 		int pts = Integer.parseInt(nesti);
