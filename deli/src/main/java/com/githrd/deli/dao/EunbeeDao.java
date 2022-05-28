@@ -131,8 +131,8 @@ public class EunbeeDao {
 			while(rs.next()) {
 				EunbeeVO eVO = new EunbeeVO();
 				eVO.setId(rs.getString("aid"));
-				eVO.setAno(rs.getInt("avt"));
 				eVO.setEsti(rs.getDouble("esti"));
+				eVO.setDir(rs.getString("dir"));
 				eVO.setSavename(rs.getString("savename"));
 				
 				list.add(eVO);

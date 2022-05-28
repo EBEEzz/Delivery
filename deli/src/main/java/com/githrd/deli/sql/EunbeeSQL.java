@@ -49,14 +49,15 @@ public class EunbeeSQL {
 			break;
 		case SEL_ESTIINFO:
 			buff.append("SELECT ");
-			buff.append("    aid, avt, esti, savename ");
+			buff.append("    aid, esti, dir, savename ");
 			buff.append("FROM ");
-			buff.append("    regimem r, member m, avatar a ");
+			buff.append("    regimem r, member m, imgfile i ");
 			buff.append("WHERE ");
 			buff.append("    r.aid = m.id ");
-			buff.append("    AND m.avt = a.ano ");
+			buff.append("    AND m.mno = i.amno ");
 			buff.append("    AND r.isshow = 'Y' ");
 			buff.append("    AND m.isshow = 'Y' ");
+			buff.append("    AND i.isshow = 'Y' ");
 			buff.append("    AND abno = ? ");
 			buff.append("    AND aid != ? ");
 			break;

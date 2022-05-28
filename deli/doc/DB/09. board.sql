@@ -1,6 +1,6 @@
 --delivery
 CREATE TABLE board(
-    bno number(6)
+    bno number(4)
         CONSTRAINT BOARD_BNO_PK PRIMARY KEY,
     bmno number(4)
         CONSTRAINT BOARD_BMNO_NN NOT NULL
@@ -33,7 +33,6 @@ CREATE TABLE board(
     rest NUMBER(6)
         CONSTRAINT BOARD_REST_FK REFERENCES restaurant(restno)
 );
-
 
 INSERT INTO
     board(bno, bmno, title, body, larea, marea, sarea, end, category)

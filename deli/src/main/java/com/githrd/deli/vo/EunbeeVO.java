@@ -3,7 +3,7 @@ package com.githrd.deli.vo;
 public class EunbeeVO {
 	private int bno, ano;
 	private double esti;
-	private String id, mail, pw, savename;
+	private String id, mail, pw, dir, savename;
 	
 	public int getBno() {
 		return bno;
@@ -53,6 +53,14 @@ public class EunbeeVO {
 		this.pw = pw;
 	}
 	
+	public String getDir() {
+		return dir;
+	}
+
+	public void setDir(String dir) {
+		this.dir = dir;
+	}
+
 	public String getSavename() {
 		return savename;
 	}
@@ -60,11 +68,13 @@ public class EunbeeVO {
 	public void setSavename(String savename) {
 		this.savename = savename;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "EunbeeVO [bno=" + bno + ", ano=" + ano + ", esti=" + esti + ", id=" + id + ", mail=" + mail + ", pw="
-				+ pw + ", savename=" + savename + "]";
+				+ pw + ", dir=" + dir + ", savename=" + savename + "]";
 	}
+	
+	
 
 }
