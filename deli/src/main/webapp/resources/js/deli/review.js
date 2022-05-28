@@ -18,17 +18,20 @@ $(document).ready(function() {
 	
 	$('label').mouseup(function() {
 		let point = $(this).prev().val();
+		let idb = $(this).siblings().first().attr('id');
 		
 		$(this).siblings().first().text(point);
 		
+		$('#nesti').val(point);
+		$('#idb').val(idb);
+		
 		$('#sbtn').click(function() {
-			$(document.frm.nesti).val(point);
-			$('#frm').submit();
+			alert('후기가 제출되었습니다!');
 		});
 	})
 	
 	$('#sbtn').click(function() {
-		alert('후기가 제출되었습니다!');
+		$('#frm').submit();
 	});
 
 });

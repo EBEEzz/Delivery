@@ -1,9 +1,9 @@
 package com.githrd.deli.vo;
 
 public class EunbeeVO {
-	private int bno, ano;
-	private double esti;
-	private String id, mail, pw, dir, savename;
+	private int bno, ano, cpts;
+	private double esti, point, spts;
+	private String id, idb, mail, pw, dir, savename;
 	
 	public int getBno() {
 		return bno;
@@ -29,6 +29,14 @@ public class EunbeeVO {
 		this.esti = esti;
 	}
 	
+	public double getPoint() {
+		return point;
+	}
+
+	public void setPoint(double point) {
+		this.point = point;
+	}
+
 	public String getId() {
 		return id;
 	}
@@ -37,6 +45,14 @@ public class EunbeeVO {
 		this.id = id;
 	}
 	
+	public String getIdb() {
+		return idb;
+	}
+
+	public void setIdb(String idb) {
+		this.idb = idb;
+	}
+
 	public String getMail() {
 		return mail;
 	}
@@ -69,12 +85,28 @@ public class EunbeeVO {
 		this.savename = savename;
 	}
 
+	public int getCpts() {
+		return cpts;
+	}
+
+	public void setCpts(int cpts) {
+		this.cpts = cpts;
+	}
+
+	public double getSpts() {
+		return spts;
+	}
+
+	public void setSpts(double spts) {
+		this.spts = spts;
+	}
+
 	@Override
 	public String toString() {
-		return "EunbeeVO [bno=" + bno + ", ano=" + ano + ", esti=" + esti + ", id=" + id + ", mail=" + mail + ", pw="
-				+ pw + ", dir=" + dir + ", savename=" + savename + "]";
+		return "EunbeeVO [bno=" + bno + ", ano=" + ano + ", cpts=" + cpts + ", esti=" + esti + ", point=" + point
+				+ ", spts=" + spts + ", id=" + id + ", idb=" + idb + ", mail=" + mail + ", pw=" + pw + ", dir=" + dir
+				+ ", savename=" + savename + "]";
 	}
-	
-	
+
 
 }
