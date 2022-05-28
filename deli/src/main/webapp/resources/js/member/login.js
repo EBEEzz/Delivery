@@ -24,4 +24,13 @@ $(document).ready(function(){
 	$('#hbtn').click(function(){
 		$(location).attr('href', '/deli/main.dlv');
 	});
+	$('#jbtn').click(function(){
+		$(location).attr('href', '/deli/member/join.dlv');
+	});
+	$('#idbtn').click(function(){
+		$(location).attr('href', '/deli/find/idFind.dlv');
+	});
+	$('#pwbtn').click(function(){
+		$(location).attr('href', '/deli/find/pwFind.dlv');
+	});
 });

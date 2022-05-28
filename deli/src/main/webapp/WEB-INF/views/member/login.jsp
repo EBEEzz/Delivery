@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="/deli/resources/css/w3.css">
 <link rel="stylesheet" type="text/css" href="/deli/resources/css/base.css">
+<link rel="stylesheet" type="text/css" href="/deli/resources/css/user.css">
 <script type="text/javascript" src="/deli/resources/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="/deli/resources/js/member/login.js"></script>
 <style type="text/css">
@@ -25,9 +26,10 @@
 <c:if test="${not empty FAIL}">
 	<input type="hidden" id="fail" value="${FAIL}">
 </c:if>
-	<div class="w3-content w3-center mx650">
-		<h1 class="w3-blue w3-padding w3-card-4">Login</h1>
-		<form method="POST" action="" class="w3-col w3-padding w3-card-4 w3-margin-top" id="frm" name="frm">
+	<div class="w3-content w3-center mxw500">
+		<h1 class="w3-black w3-padding w3-card-4" id="hbtn">Delivery</h1>
+		<div class="w3-col w3-padding w3-card-4 w3-margin-top">
+		<form method="POST" action="" id="frm" name="frm">
 			<div class="w3-col w3-margin-top">
 				<label for="id" class="w3-col s2 w3-right-align w3-text-grey">I D : &nbsp;</label>
 				<div class="w3-col m9 pdl10">
@@ -43,9 +45,14 @@
 				</div>
 			</div>
 		</form>
-		<div class="w3-col w3-margin-top w3-card-4">
-			<div class="w3-half w3-button w3-red w3-hover-orange" id="hbtn">Home</div>
-			<div class="w3-half m2 w3-button w3-blue w3-hover-aqua" id="lbtn">Login</div>
+			<div class="w3-button w3-black w3-hover-aqua w3-border" id="lbtn">로그인</div>
+		</div>
+		<div class="w3-col w3-margin-top">
+			<div class="w3-button w3-hover-aqua" id="idbtn">아이디 찾기 </div>
+			<span>|</span>
+			<div class="w3-button w3-hover-aqua" id="pwbtn">비밀번호 찾기 </div>
+			<span>|</span>
+			<div class="w3-button w3-hover-aqua" id="jbtn">회원가입</div>
 		</div>
 		<div class="w3-col w3-padding w3-card-4 w3-hide"><span id="msg">${SID} 님은 이미 로그인했습니다!!!</span></div>
 	</div>
