@@ -138,7 +138,7 @@ $(document).ready(function(){
 	})
 	
 	$('#myinfo').click(function(){
-		
+		$('#id01').css('display', 'block');
 	})
 	$('#esti').click(function(){
 		$(location).attr('href', '/deli/review/rvWrite.dlv');

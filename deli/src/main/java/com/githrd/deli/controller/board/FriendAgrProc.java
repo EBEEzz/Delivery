@@ -29,14 +29,14 @@ public class FriendAgrProc implements DeliInter {
 		
 		String frimno = req.getParameter("fmno");
 		int fmno = Integer.parseInt(frimno);
-	
+System.out.println(fmno);
 		YonghyunDao yDao = new YonghyunDao();
 
 		StringBuffer buff = new StringBuffer();
 		buff.append("{ \"result\" : \"");
 
-		int agree = yDao.UpFriendAgree(fmno, id);
-		int update = yDao.UpFriendToo(id, fmno);
+		int agree = yDao.UpFriendAgree(id, fmno);
+		int update = yDao.UpFriendToo(fmno, id);
 	
 		if(agree == 1 && update == 1) {
 			buff.append("OK");

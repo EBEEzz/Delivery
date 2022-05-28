@@ -305,12 +305,12 @@ public class YonghyunSQL {
 				break;
 			case SEL_FRIEND_APPLY :
 				buff.append("SELECT ");
-				buff.append("    frino, id ");
+				buff.append("    myno, id ");
 				buff.append("FROM ");
 				buff.append("    friend f, member m ");
 				buff.append("WHERE ");
-				buff.append("    myno = (SELECT mno FROM member WHERE id = ?) ");
-				buff.append("    AND frino = mno ");
+				buff.append("    myno = mno ");
+				buff.append("    AND frino = (SELECT mno FROM member WHERE id = ?) ");
 				buff.append("    AND f.isshow = 'Y' ");
 				buff.append("    AND agree = 'N' ");
 				break;
@@ -351,18 +351,18 @@ public class YonghyunSQL {
 				buff.append("INSERT INTO ");
 				buff.append("    friend(fno, myno, frino, agree, adate) ");
 				buff.append("VALUES( ");
-				buff.append("    (SELECT NVL(MAX(fno) +1, 1) FROM friend), ?, (SELECT mno FROM member WHERE id = ?), 'Y', sysdate ");
+				buff.append("    (SELECT NVL(MAX(fno) +1, 1) FROM friend), (SELECT mno FROM member WHERE id = ?), ?, 'Y', sysdate ");
 				buff.append(") ");
 				break;
-			case UPDATE_FRIEND_TOO : // 친구 수락버튼 // 앞에 내번호 뒤에 친구번호
+			case UPDATE_FRIEND_TOO : // 친구 수락버튼 // 뒤에 내번호 앞에 친구번호
 				buff.append("UPDATE ");
 				buff.append("    friend ");
 				buff.append("SET ");
 				buff.append("    agree = 'Y', ");
 				buff.append("    adate = sysdate ");
 				buff.append("WHERE ");
-				buff.append("    myno = (SELECT mno FROM member WHERE id = ?) ");
-				buff.append("    AND frino = ? ");
+				buff.append("    myno = ? ");
+				buff.append("    AND frino = (SELECT mno FROM member WHERE id = ?) ");
 				break;
 			case UPDATE_FRIEND_CANCLE : // 친구수락 거절
 				buff.append("UPDATE ");
@@ -371,8 +371,8 @@ public class YonghyunSQL {
 				buff.append("    isshow = 'N', ");
 				buff.append("    ddate = sysdate ");
 				buff.append("WHERE ");
-				buff.append("    myno = (SELECT mno FROM member WHERE id = ? ) ");
-				buff.append("    AND frino = ? ");
+				buff.append("    myno = ? ");
+				buff.append("    AND frino = (SELECT mno FROM member WHERE id = ? ) ");
 				buff.append("    AND agree = 'N' ");
 				break;
 			case DEL_REGI :

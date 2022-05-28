@@ -35,7 +35,7 @@ public class FriendCanProc implements DeliInter {
 		buff.append("{ \"result\" : \"");
 
 
-		int cancle = yDao.getFriendCancle(id, fmno);
+		int cancle = yDao.getFriendCancle(fmno, id);
 		
 		if(cancle == 1) {
 			buff.append("OK");

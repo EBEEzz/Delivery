@@ -126,7 +126,6 @@ $(document).ready(function(){
 			$(this).parent().find('.inputprice').val(count);
 		}
 	});
-	
 
 
 
@@ -142,7 +141,9 @@ $(document).ready(function(){
 			
 			mname = $(this).attr('id');
 			$(this).parent().find('.inputprice').val(count);
-			$('#abc').append('<div class="w3-col w3-left-align w3-padding pri">'+ menu + ' : ' + '<span>'+ count+'개<span>'  +'</div>');
+			
+			
+			//var i = '<div class="w3-col w3-left-align w3-padding pri">'+ menu + ' : ' + '<span>'+ count+'개<span>'  +'</div>';
 		}
 	});
 	

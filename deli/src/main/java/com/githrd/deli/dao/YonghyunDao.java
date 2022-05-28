@@ -659,14 +659,15 @@ public class YonghyunDao {
 	}
 	
 	// 친구 수락시 상대방에게도 친구 추가기능
-	public int UpFriendAgree(int fno, String id) {
+	public int UpFriendAgree(String id, int fno) {
 		int cnt = 0;
 		con = db.getCon();
 		String sql = ySQL.getSQL(ySQL.UPDATE_FRIEND_AGREE);
 		pstmt = db.getPSTMT(con, sql);
 		try {
-			pstmt.setInt(1, fno);
-			pstmt.setString(2, id);
+			pstmt.setString(1, id);
+			pstmt.setInt(2, fno);
+			
 			
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
@@ -678,14 +679,14 @@ public class YonghyunDao {
 		return cnt;
 	}
 	// 친구 수락 함수
-	public int UpFriendToo(String id, int fno) {
+	public int UpFriendToo(int fno, String id) {
 		int cnt = 0;
 		con = db.getCon();
 		String sql = ySQL.getSQL(ySQL.UPDATE_FRIEND_TOO);
 		pstmt = db.getPSTMT(con, sql);
 		try {
-			pstmt.setString(1, id);
-			pstmt.setInt(2, fno);
+			pstmt.setInt(1, fno);
+			pstmt.setString(2, id);
 			
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
@@ -754,7 +755,7 @@ public class YonghyunDao {
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				YonghyunVO yVO = new YonghyunVO();
-				yVO.setFrino(rs.getInt("frino"));
+				yVO.setFrino(rs.getInt("myno"));
 				yVO.setId(rs.getString("id"));
 
 				list.add(yVO);
@@ -793,14 +794,14 @@ public class YonghyunDao {
 	}
 	
 	// 친구 수락 거절
-	public int getFriendCancle(String id, int fno) {
+	public int getFriendCancle(int fno, String id) {
 		int cnt = 0;
 		con = db.getCon();
 		String sql = ySQL.getSQL(ySQL.UPDATE_FRIEND_CANCLE);
 		pstmt = db.getPSTMT(con, sql);
 		try {
-			pstmt.setString(1, id);
-			pstmt.setInt(2, fno);
+			pstmt.setInt(1, fno);
+			pstmt.setString(2, id);
 			
 		
 			cnt = pstmt.executeUpdate();
