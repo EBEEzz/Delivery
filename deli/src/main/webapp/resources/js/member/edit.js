@@ -7,6 +7,9 @@ $(document).ready(function(){
 			$('#newpw').css('background-color', 'white').prop('readonly', false);
 			$('#repwmsg').parent().stop().slideUp(500).stop().slideDown(500);
 		}
+		if($('#newpw, #repw, #newmail, #newtel, #newaddr').prop('disabled', true)){
+			$('#newpw, #repw, #newmail, #newtel, #newaddr').prop('disabled', false);
+		}
 	});
 	// 홈버튼 클릭이벤트
 	$('#hbtn').click(function(){
@@ -32,6 +35,9 @@ $(document).ready(function(){
 	});
 	
 	$('#newpw').click(function(){
+		if($('#npwmsg').css('display', 'block')){
+			$('#npwmsg').css('display', 'none');
+		}
 		$('#newpw').css('background-color', 'white').prop('readonly', false);
 		$('#repwmsg').parent().stop().slideUp(500).stop().slideDown(500);
 		return;
@@ -55,6 +61,8 @@ $(document).ready(function(){
 		var ntel = $('#newtel').val();
 		var naddr = $('#newaddr').val();
 		var repw = $('#repw').val();
+		var spw = $('#pw').val();
+		var spwck = $('#pwck').val();
 
 		if(repw != npw){
 			$('#newpw').focus();
@@ -64,8 +72,8 @@ $(document).ready(function(){
 			return;
 		}
 		if(!npw){
-			$('#pw').prop('disabled', true);
-			$('#repw').css('display', 'none');
+			$('#newpw').prop('disabled', true);
+			$('#repw').prop('disabled', true);
 		};
 		
 		if(!nmail){
@@ -82,15 +90,13 @@ $(document).ready(function(){
 			$('#newaddr').prop('disabled', true);
 		}
 		
-		if(!npw && (nmail == mail) && (ntel == tel) && (naddr == addr)){
+		if(!npw && !nmail && !ntel && !naddr){
 			// 수정을 한개도 하지 않는 경우..
-			alert('아무것도 수정안함...');
+			alert('수정한 내용이 없습니다.');
 			return;
 		}
 		
 		// 기존 비밀번호 확인 처리
-		var spw = $('#pw').val();
-		
 		if(!spw){
 			// 입력내용이 없는 경우
 			$('#pw').focus();
@@ -98,35 +104,26 @@ $(document).ready(function(){
 			$('#pwmsg').addClass('w3-text-red');
 			$('#pwmsg').html('기존 비밀번호를 입력하세요!');
 			return;
+		} else if(spw != spwck){
+			// 기존 비밀번호와 다른 경우
+			$('#pw').focus();
+			$('#pwmsg').css('display', 'block');
+			$('#pwmsg').addClass('w3-text-red');
+			$('#pwmsg').html('기존 비밀번호와 다릅니다!');
+			return;
+		} else if(npw == spwck){
+			$('#newpw').focus();
+			$('#npwmsg').css('display', 'block');
+			$('#npwmsg').addClass('w3-text-red');
+			$('#npwmsg').html('기존 비밀번호와 같은 비밀번호는 입력할 수 없습니다');
+			return;
 		}
-		// 전달해서 사용가능 유무 판단하고
-		$.ajax({
-			url:'/deli/member/pwCheck.dlv',
-			type: 'post',
-			dataType: 'json',
-			data: {
-				pw: spw
-			},
-			success: function(data){
-				var result = data.result;
-				$('#pwmsg').removeClass('w3-text-green w3-text-red');
-				
-				// 뷰에 보여주고
-				if(result == 'OK'){
-					// 입력한 아이디가 사용가능한 경우
-					$('#pwmsg').html('* 사용 가능한 비밀번호 입니다! *');
-					$('#pwmsg').addClass('w3-text-green');
-				} else {
-					// 입력한 아이디가 사용불가능한 경우
-					$('#pwmsg').html('* 사용 불가능한 비밀번호 입니다! *');
-					$('#pwmsg').addClass('w3-text-red');
-				}
-				$('#pwmsg').css('display', 'block');
-			},
-			error: function(){
-				alert('### 통신 에러 ###');
-			}
-		});
+		
+		// 정규 표현식 검사
+/*		var telPattern = /\d{2,3}[- ]?\d{3,4}[- ]?\d{4}/g;
+		var teltest = telPattern.match(ntel);
+		alert(teltest);*/
+
 		// 보낼 주소 설정하고
 		$('#frm').attr('action', '/deli/member/editProc.dlv');
 		$('#frm').submit();

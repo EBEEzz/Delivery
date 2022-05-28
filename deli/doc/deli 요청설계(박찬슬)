@@ -60,13 +60,6 @@
 				redirect ]
 					성공 :	/deli/member/myInfo.dlv
 					실패 :  /deli/member/editInfo.dlv
-					
---------------------------------------------------------------
-# 비밀번호체크 처리 요청 
-요청내용	: 	/deli/member/pwCheck.dlv
-파라미터	:	id
-컨트롤러	: 	com.githrd.deli.controller.member.DeliPwCheck
-뷰			:	json
 --------------------------------------------------------------
 # 아이디체크 처리 요청 
 요청내용	: 	/deli/member/idCheck.dlv
