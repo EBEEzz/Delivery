@@ -59,28 +59,35 @@
         	<div class="w3-row-padding" style="margin:0 -16px;">
           		<div class="w3-margin-bottom pb20">
           			<div class="w3-col w3-white w3-round-large pd15">
+<c:if test="${ldata.id ne null}">
 						<div class="w3-col w3-grey w3-center w3-border">
 							<div class="w3-col">
-								<div class="w3-col m4"><b>닉네임</b></div>
+								<div class="w3-col m4"><b>아이디</b></div>
 								<div class="w3-col m4 w3-border-left w3-border-right"><b>별  점</b></div>
 								<div class="w3-col m4"><b>코멘트</b></div>
 							</div>
 						</div>
-<c:forEach var="data" items="${LIST}">
+</c:if>
+<c:if test="${ldata.id eq null}">
+								<div class="w3-center w3-padding">
+									<b class="txt16">더이상 작성할 후기가<br>남아있지 않아요 <span style="font-size: 1.2em;">🍳</span></b>
+								</div>
+</c:if>
+<c:forEach var="ldata" items="${LLIST}">
 						<div class="w3-col w3-white w3-center w3-border">
 							<div class="w3-col mgt10 mgb10">
 								<div class="w3-col m4">
-									<img src="/deli/resources/img/avatar/${data.savename}" class="inblock w3-left avtround w3-border w3-border-grey">
-									<b style="position: relative; top: 10px;">${data.id}</b>
+									<img src="/deli/resources/upload/${ldata.savename}" class="inblock w3-left avtround w3-border w3-border-grey">
+									<b style="position: relative; top: 10px;">${ldata.id}</b>
 								</div>
 								<fieldset class="w3-col m4 mg0 pd0 w3-border-left w3-border-right">
-									<legend id="${data.id}li">
-									 	<span class="spanft" id="${data.id}">&nbsp;&nbsp;</span>
-										<input type="radio" name="${data.id}rating" value="5" id="${data.id}rate5"><label for="${data.id}rate5">🥄</label><!--
-									 --><input type="radio" name="${data.id}rating" value="4" id="${data.id}rate4"><label for="${data.id}rate4">🥄</label><!--
-									 --><input type="radio" name="${data.id}rating" value="3" id="${data.id}rate3"><label for="${data.id}rate3">🥄</label><!--
-									 --><input type="radio" name="${data.id}rating" value="2" id="${data.id}rate2"><label for="${data.id}rate2">🥄</label><!--
-									 --><input type="radio" name="${data.id}rating" value="1" id="${data.id}rate1"><label for="${data.id}rate1">🥄</label>
+									<legend id="${ldata.id}li">
+									 	<span class="spanft" id="${ldata.id}">&nbsp;&nbsp;</span>
+										<input type="radio" name="${ldata.id}rating" value="5" id="${ldata.id}rate5"><label for="${ldata.id}rate5">🥄</label><!--
+									 --><input type="radio" name="${ldata.id}rating" value="4" id="${ldata.id}rate4"><label for="${ldata.id}rate4">🥄</label><!--
+									 --><input type="radio" name="${ldata.id}rating" value="3" id="${ldata.id}rate3"><label for="${ldata.id}rate3">🥄</label><!--
+									 --><input type="radio" name="${ldata.id}rating" value="2" id="${ldata.id}rate2"><label for="${ldata.id}rate2">🥄</label><!--
+									 --><input type="radio" name="${ldata.id}rating" value="1" id="${ldata.id}rate1"><label for="${ldata.id}rate1">🥄</label>
 									 </legend>
 								</fieldset>
 								<input class="w3-col m4 w3-input w3-border w3-round-large w3-light-grey"
@@ -91,9 +98,11 @@
 					</div>
           		</div>
         	</div>
+<c:if test="${ldata.id ne null}">
        		<div class="h20 ft12">
         		<div class="w3-quarter w3-right w3-button w3-round-large w3-dark-grey w3-margin-top" id="sbtn">제출</div>
        		</div>
+</c:if>
     	</div>
   	</div>
 </body>

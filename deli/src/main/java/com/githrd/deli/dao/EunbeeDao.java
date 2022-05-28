@@ -105,16 +105,22 @@ public class EunbeeDao {
 		return cnt;
 	}
 	
-	public int getAbno(String id) {
-		int mbno = 0;
+	public ArrayList<EunbeeVO> getAbInfo(String id) {
+		ArrayList<EunbeeVO> list = new ArrayList<EunbeeVO>();
 		con = db.getCon();
-		String sql = eSQL.getSQL(eSQL.SEL_ABNO);
+		String sql = eSQL.getSQL(eSQL.SEL_ABINFO);
 		pstmt = db.getPSTMT(con, sql);
 		try {
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
-			if(rs.next()) {
-				mbno = rs.getInt("abno");
+			while(rs.next()) {
+				EunbeeVO eVO = new EunbeeVO();
+				eVO.setBno(rs.getInt("abno"));
+				eVO.setTitle(rs.getString("title"));
+				eVO.setWdate(rs.getDate("wd"));
+				eVO.setSdate();
+				
+				list.add(eVO);
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -123,7 +129,7 @@ public class EunbeeDao {
 			db.close(pstmt);
 			db.close(con);
 		}
-		return mbno;
+		return list;
 	}
 	
 	public ArrayList<EunbeeVO> getAid(int bno, String id) {
@@ -163,7 +169,6 @@ public class EunbeeDao {
 			pstmt.setInt(1, eVO.getBno());
 			pstmt.setString(2, eVO.getId());
 			pstmt.setString(3, eVO.getIdb());
-			pstmt.setDouble(4, eVO.getPoint());
 			
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
@@ -172,6 +177,28 @@ public class EunbeeDao {
 			db.close(pstmt);
 			db.close(con);
 		}
+		return cnt;
+	}
+	
+	public int addEsti(EunbeeVO eVO) {
+		int cnt = 0;
+		con = db.getCon();
+		String sql = eSQL.getSQL(eSQL.ADD_ESTI);
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			pstmt.setDouble(1, eVO.getPoint());
+			pstmt.setInt(2, eVO.getBno());
+			pstmt.setString(3, eVO.getId());
+			pstmt.setString(4, eVO.getIdb());
+			
+			cnt = pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(pstmt);
+			db.close(con);
+		}
+		
 		return cnt;
 	}
 	

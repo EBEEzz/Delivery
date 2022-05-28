@@ -33,5 +33,12 @@ $(document).ready(function() {
 	$('#sbtn').click(function() {
 		$('#frm').submit();
 	});
+	
+	$('.rlist').click(function() {
+		let bid = $(this).attr('id');
+		
+		$('#ridb').val(bid);
+		$('#rfrm').submit();
+	});
 
 });

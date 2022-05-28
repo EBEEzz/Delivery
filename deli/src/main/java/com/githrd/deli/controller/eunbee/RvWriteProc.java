@@ -25,7 +25,9 @@ public class RvWriteProc implements DeliInter {
 		
 		EunbeeDao eDao = new EunbeeDao();
 		
-		int abno = eDao.getAbno(ida);
+		ArrayList<EunbeeVO> list = eDao.getAbInfo(ida);
+		
+		int abno = (Integer)req.getSession().getAttribute("ABNO");
 		
 		String idb = req.getParameter("idb");
 		if(idb != null) {
@@ -36,12 +38,12 @@ public class RvWriteProc implements DeliInter {
 		int pts = Integer.parseInt(nesti);
 		
 		EunbeeVO eVO = new EunbeeVO();
+		eVO.setPoint(pts);
 		eVO.setBno(abno);
 		eVO.setId(ida);
 		eVO.setIdb(idb);
-		eVO.setPoint(pts);
 		
-		int cnt = eDao.addEstiInfo(eVO);
+		int cnt = eDao.addEsti(eVO);
 		
 		if(cnt != 1) {
 			view = "/deli/review/rvWrite.dlv";

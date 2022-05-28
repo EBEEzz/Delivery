@@ -10,7 +10,9 @@
 <script type="text/javascript" src="/deli/resources/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="/deli/resources/js/deli/review.js"></script>
 <style type="text/css">
-
+	.rlist {
+		cursor: pointer;
+	}
 </style>
 <script type="text/javascript">
 
@@ -41,9 +43,8 @@
 	<div class="w85p w3-display-middle border3px" style="position: relative; top: 95px;">
 		<h1 class="w3-center"><b>Delivery Project</b></h1>
 	</div>
-	<form method="POST" action="/deli/review/rvWriteProc.dlv" name="frm" id="frm">
-		<input type="hidden" name="nesti" id="nesti">
-		<input type="hidden" name="idb" id="idb">
+	<form method="POST" action="/deli/review/rvWrite.dlv" name="rfrm" id="rfrm">
+		<input type="hidden" name="ridb" id="ridb">
 	</form>
 	<div class="w3-display-middle w3-border w3-padding w3-col m8">
     	<div class="w3-container mgt10 mgb20 w3-black">
@@ -55,39 +56,29 @@
           			<div class="w3-col w3-white w3-round-large pd15">
 						<div class="w3-col w3-grey w3-center w3-border">
 							<div class="w3-col">
-								<div class="w3-col m4"><b>닉네임</b></div>
-								<div class="w3-col m4 w3-border-left w3-border-right"><b>별  점</b></div>
-								<div class="w3-col m4"><b>코멘트</b></div>
+								<div class="w3-col m2"><b>글번호</b></div>
+								<div class="w3-col m7 w3-border-left w3-border-right"><b>제목</b></div>
+								<div class="w3-col m3"><b>등록일자</b></div>
 							</div>
 						</div>
-<c:forEach var="data" items="${LIST}">
-						<div class="w3-col w3-white w3-center w3-border">
+<c:forEach var="rdata" items="${RLIST}">
+						<div class="w3-col w3-white w3-center w3-border w3-hover-lime rlist" id="${rdata.bno}">
 							<div class="w3-col mgt10 mgb10">
-								<div class="w3-col m4">
-									<img src="/deli/resources/img/avatar/${data.savename}" class="inblock w3-left avtround w3-border w3-border-grey">
-									<b style="position: relative; top: 10px;">${data.id}</b>
+								<div class="w3-col m2">
+									<b>${rdata.bno}</b>
 								</div>
-								<fieldset class="w3-col m4 mg0 pd0 w3-border-left w3-border-right">
-									<legend id="${data.id}li">
-									 	<span class="spanft" id="${data.id}">&nbsp;&nbsp;</span>
-										<input type="radio" name="${data.id}rating" value="5" id="${data.id}rate5"><label for="${data.id}rate5">🥄</label><!--
-									 --><input type="radio" name="${data.id}rating" value="4" id="${data.id}rate4"><label for="${data.id}rate4">🥄</label><!--
-									 --><input type="radio" name="${data.id}rating" value="3" id="${data.id}rate3"><label for="${data.id}rate3">🥄</label><!--
-									 --><input type="radio" name="${data.id}rating" value="2" id="${data.id}rate2"><label for="${data.id}rate2">🥄</label><!--
-									 --><input type="radio" name="${data.id}rating" value="1" id="${data.id}rate1"><label for="${data.id}rate1">🥄</label>
-									 </legend>
-								</fieldset>
-								<input class="w3-col m4 w3-input w3-border w3-round-large w3-light-grey"
-										type="text" placeholder="">
+								<div class="w3-col m7 w3-border-left w3-border-right">
+									<b>${rdata.title}</b>
+								</div>
+								<div class="w3-col m3">
+									<b>${rdata.sdate}</b>
+								</div>
 							</div>
 						</div>
 </c:forEach>
 					</div>
           		</div>
         	</div>
-       		<div class="h20 ft12">
-        		<div class="w3-quarter w3-right w3-button w3-round-large w3-dark-grey w3-margin-top" id="sbtn">제출</div>
-       		</div>
     	</div>
   	</div>
 </body>

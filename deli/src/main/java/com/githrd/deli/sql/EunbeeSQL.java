@@ -22,14 +22,15 @@ package com.githrd.deli.sql;
 public class EunbeeSQL {
 	public final int SEL_ID			= 1001;
 	public final int SEL_MAIL		= 1002;
-	public final int SEL_ABNO		= 1003;
+	public final int SEL_ABINFO		= 1003;
 	public final int SEL_ESTIINFO	= 1004;
 	public final int SEL_NEWESTI	= 1005;
 	
 	public final int EDIT_PASSWORD	= 2001;
 
 	public final int ADD_ESTIINFO	= 3001;
-	public final int UPDATE_ESTI	= 3002;
+	public final int ADD_ESTI		= 3002;
+	public final int UPDATE_ESTI	= 3003;
 	
 	public String getSQL(int code) {
 		StringBuffer buff = new StringBuffer();
@@ -62,34 +63,53 @@ public class EunbeeSQL {
 			buff.append("	isshow = 'Y' ");
 			buff.append("	AND id = ? ");
 			break;
-		case SEL_ABNO:
+		case SEL_ABINFO:
 			buff.append("SELECT ");
-			buff.append("    abno ");
+			buff.append("    abno, title, wd ");
 			buff.append("FROM ");
-			buff.append("    regimem ");
-			buff.append("WHERE ");
-			buff.append("    aid = ? ");
+			buff.append("    ( ");
+			buff.append("        SELECT ");
+			buff.append("            abno, title, b.wdate wd ");
+			buff.append("        FROM ");
+			buff.append("           regimem r, board b ");
+			buff.append("        WHERE ");
+			buff.append("            r.abno = b.bno ");
+			buff.append("            AND r.isshow = 'Y' ");
+			buff.append("            AND aid = ? ");
+			buff.append("    ) ");
 			break;
 		case SEL_ESTIINFO:
 			buff.append("SELECT ");
 			buff.append("    aid, esti, dir, savename ");
 			buff.append("FROM ");
-			buff.append("    regimem r, member m, imgfile i ");
+			buff.append("    regimem r, member m, imgfile i, estimate e ");
 			buff.append("WHERE ");
 			buff.append("    r.aid = m.id ");
 			buff.append("    AND m.mno = i.amno ");
+			buff.append("    AND e.ebno = r.abno ");
 			buff.append("    AND r.isshow = 'Y' ");
 			buff.append("    AND m.isshow = 'Y' ");
-			buff.append("    AND i.isshow = 'Y' ");
+			buff.append("    AND e.isshow = 'Y' ");
 			buff.append("    AND abno = ? ");
 			buff.append("    AND aid != ? ");
 			break;
 		case ADD_ESTIINFO:
 			buff.append("INSERT INTO ");
-			buff.append("    estimate ");
+			buff.append("    estimate(ebno, eida, eidb) ");
 			buff.append("VALUES( ");
-			buff.append("    ?, ?, ?, ?, 'N' ");
+			buff.append("    ?, ?, ? ");
 			buff.append(") ");
+			break;
+		case ADD_ESTI:
+			buff.append("UPDATE ");
+			buff.append("    estimate ");
+			buff.append("SET ");
+			buff.append("    epoint = ?, ");
+			buff.append("    isshow = 'N' ");
+			buff.append("WHERE ");
+			buff.append("    ebno = ? ");
+			buff.append("    AND eida = ? ");
+			buff.append("    AND eidb = ? ");
 			break;
 		case SEL_NEWESTI:
 			buff.append("SELECT ");

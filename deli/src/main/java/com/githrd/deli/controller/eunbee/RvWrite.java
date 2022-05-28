@@ -23,11 +23,16 @@ public class RvWrite implements DeliInter {
 		String id = (String)req.getSession().getAttribute("SID");
 		
 		EunbeeDao eDao = new EunbeeDao();
-		int abno = eDao.getAbno(id);
+		ArrayList<EunbeeVO> rlist = eDao.getAbInfo(id);
+		
+		String ridb = req.getParameter("ridb");
+		int abno = Integer.parseInt(ridb);
+		
+		req.getSession().setAttribute("ABNO", abno);
 		
 		ArrayList<EunbeeVO> list = eDao.getAid(abno, id);
 
-		req.setAttribute("LIST", list);
+		req.setAttribute("LLIST", list);		
 		
 		return view;
 	}

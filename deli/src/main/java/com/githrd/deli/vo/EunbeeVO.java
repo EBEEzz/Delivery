@@ -1,9 +1,13 @@
 package com.githrd.deli.vo;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+
 public class EunbeeVO {
 	private int bno, ano, cpts;
 	private double esti, point, spts;
-	private String id, idb, mail, pw, dir, savename;
+	private String id, idb, mail, pw, dir, savename, title, sdate;
+	private Date wdate;
 	
 	public int getBno() {
 		return bno;
@@ -85,6 +89,14 @@ public class EunbeeVO {
 		this.savename = savename;
 	}
 
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
 	public int getCpts() {
 		return cpts;
 	}
@@ -101,12 +113,34 @@ public class EunbeeVO {
 		this.spts = spts;
 	}
 
+	public Date getWdate() {
+		return wdate;
+	}
+	
+	public void setWdate(Date wdate) {
+		this.wdate = wdate;
+	}
+
+	public String getSdate() {
+		return sdate;
+	}
+
+	public void setSdate() {
+		SimpleDateFormat form1 = new SimpleDateFormat("yyyy/MM/dd");
+		sdate = form1.format(wdate);
+	}
+	
+	public void setSdate(String sdate) {
+		this.sdate = sdate;
+	}
+
 	@Override
 	public String toString() {
 		return "EunbeeVO [bno=" + bno + ", ano=" + ano + ", cpts=" + cpts + ", esti=" + esti + ", point=" + point
 				+ ", spts=" + spts + ", id=" + id + ", idb=" + idb + ", mail=" + mail + ", pw=" + pw + ", dir=" + dir
-				+ ", savename=" + savename + "]";
+				+ ", savename=" + savename + ", title=" + title + ", sdate=" + sdate + ", wdate=" + wdate + "]";
 	}
+
 
 
 }
