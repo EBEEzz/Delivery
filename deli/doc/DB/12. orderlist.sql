@@ -14,8 +14,5 @@ CREATE TABLE orderlist(
         CONSTRAINT OL_PR_NN NOT NULL,
     paym VARCHAR2(10CHAR)
         CONSTRAINT OL_PM_NN NOT NULL,
-    requests VARCHAR2(100CHAR),
-    gorder NUMBER(6)
-        CONSTRAINT OL_GR_FK REFERENCES grouporder(gno)
-        CONSTRAINT OL_GR_NN NOT NULL
+    requests VARCHAR2(100CHAR)
 );

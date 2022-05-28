@@ -4,6 +4,7 @@ public class PcsSQL {
 	public final int SEL_LOGIN_CNT 		= 1001;
 	public final int SEL_MEMBER_INFO 	= 1002;
 	public final int SEL_ID_CNT 		= 1003;
+	public final int SEL_PW_CNT 		= 1004;
 	
 	public final int DEL_MEMBER 		= 2001;
 	public final int EDIT_MEMBER		= 2002;
@@ -70,6 +71,14 @@ public class PcsSQL {
 			buff.append("	member ");
 			buff.append("WHERE ");
 			buff.append("	id = ? ");
+			break;
+		case SEL_PW_CNT:
+			buff.append("SELECT ");
+			buff.append("	COUNT(*) cnt ");
+			buff.append("FROM ");
+			buff.append("	member ");
+			buff.append("WHERE ");
+			buff.append("	PW = ? ");
 			break;
 		case EDIT_MEMBER:
 			buff.append("UPDATE ");

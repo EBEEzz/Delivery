@@ -1,12 +1,3 @@
-/**
- * @author	박찬슬
- * @since	2022/05/28
- * @version	v.1.0
- * 
- * 			작업이력 ]
- * 				2022.05.28	-	클래스제작
- * 								담당자 : 박찬슬
- */
 package com.githrd.deli.controller.pcs;
 
 import java.io.IOException;
@@ -18,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.githrd.deli.controller.DeliInter;
 import com.githrd.deli.dao.PcsDao;
 
-public class DeliIdCheck implements DeliInter {
+public class DeliPwCheck implements DeliInter {
 
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -26,10 +17,10 @@ public class DeliIdCheck implements DeliInter {
 		
 		StringBuffer buff = new StringBuffer();
 		
-		String id = req.getParameter("id");
+		String pw = req.getParameter("pw");
 		PcsDao pDao = new PcsDao();
 		
-		int cnt = pDao.getIdCount(id);
+		int cnt = pDao.getPwCount(pw);
 		buff.append("{");
 		buff.append("\"result\" : \"");
 		if(cnt == 0) {
@@ -45,5 +36,4 @@ public class DeliIdCheck implements DeliInter {
 		return buff.toString();
 	}
 
-	
 }

@@ -26,7 +26,7 @@ $(document).ready(function(){
 	$('#cbth').click(function(){
 		$('#id01').css('display', 'none');
 	});
-	$('#ibtn').click(function(){
+	$('#myinfo').click(function(){
 		$('#id01').css('display', 'block');
 	});
 	

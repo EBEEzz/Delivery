@@ -32,10 +32,10 @@
 				redirect ] /deli/main.dlv
 --------------------------------------------------------------
 # 내정보 폼보기 요청 
-요청내용	: 	/deli/member/myInfo.dlv
+요청내용	: 	/deli/main.dlv
 파라미터	:	무
 컨트롤러	: 	com.githrd.deli.controller.pcs.DeliMyInfo
-뷰			:	/WEB-INF/views/deli/member/memberInfo.jsp
+뷰			:	/WEB-INF/views/deli/mein.jsp
 --------------------------------------------------------------
 # 회원 탈퇴 처리 요청 
 요청내용	: 	/deli/member/dleInfo.dlv
@@ -61,4 +61,16 @@
 					성공 :	/deli/member/myInfo.dlv
 					실패 :  /deli/member/editInfo.dlv
 					
+--------------------------------------------------------------
+# 비밀번호체크 처리 요청 
+요청내용	: 	/deli/member/pwCheck.dlv
+파라미터	:	id
+컨트롤러	: 	com.githrd.deli.controller.member.DeliPwCheck
+뷰			:	json
+--------------------------------------------------------------
+# 아이디체크 처리 요청 
+요청내용	: 	/deli/member/idCheck.dlv
+파라미터	:	id
+컨트롤러	: 	com.githrd.deli.controller.pcs.DeliIdCheck
+뷰			:	json
 --------------------------------------------------------------

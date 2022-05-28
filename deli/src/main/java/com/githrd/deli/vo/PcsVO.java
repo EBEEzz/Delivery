@@ -5,7 +5,8 @@ import java.sql.Time;
 import java.util.Date;
 
 public class PcsVO {
-	private int mno, esti;
+	private int mno;
+	private double esti;
 	private String id, name, kakaoid, pw, mail, tel, addr, sdate, oriname, dir, savename;
 	private Date jdate;
 	private Time jtime;
@@ -15,10 +16,10 @@ public class PcsVO {
 	public void setMno(int mno) {
 		this.mno = mno;
 	}
-	public int getEsti() {
+	public double getEsti() {
 		return esti;
 	}
-	public void setEsti(int esti) {
+	public void setEsti(double esti) {
 		this.esti = esti;
 	}
 	public String getId() {
@@ -112,5 +113,6 @@ public class PcsVO {
 				+ ", oriname=" + oriname + ", dir=" + dir + ", savename=" + savename + ", jdate=" + jdate + ", jtime="
 				+ jtime + "]";
 	}
+
 
 }

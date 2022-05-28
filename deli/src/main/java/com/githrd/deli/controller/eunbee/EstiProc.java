@@ -1,4 +1,4 @@
-package com.githrd.deli.controller.pcs;
+package com.githrd.deli.controller.eunbee;
 
 import java.io.IOException;
 
@@ -8,13 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.githrd.deli.controller.DeliInter;
 
-public class DeliProFile implements DeliInter {
+public class EstiProc implements DeliInter {
 
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String view = "/member/profile";
-		return view;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	
 }

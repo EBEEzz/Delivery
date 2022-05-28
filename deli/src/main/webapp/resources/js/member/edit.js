@@ -54,7 +54,15 @@ $(document).ready(function(){
 		var nmail = $('#newmail').val();
 		var ntel = $('#newtel').val();
 		var naddr = $('#newaddr').val();
-		
+		var repw = $('#repw').val();
+
+		if(repw != npw){
+			$('#newpw').focus();
+			$('#repwmsg').html('변경될 비밀번호가 일치하지 않습니다.');
+			$('#repwmsg').removeClass('w3-text-green w3-text-red').addClass('w3-text-red')
+			$('#repwmsg').css('display', 'block');
+			return;
+		}
 		if(!npw){
 			$('#pw').prop('disabled', true);
 			$('#repw').css('display', 'none');
@@ -80,6 +88,45 @@ $(document).ready(function(){
 			return;
 		}
 		
+		// 기존 비밀번호 확인 처리
+		var spw = $('#pw').val();
+		
+		if(!spw){
+			// 입력내용이 없는 경우
+			$('#pw').focus();
+			$('#pwmsg').css('display', 'block');
+			$('#pwmsg').addClass('w3-text-red');
+			$('#pwmsg').html('기존 비밀번호를 입력하세요!');
+			return;
+		}
+		// 전달해서 사용가능 유무 판단하고
+		$.ajax({
+			url:'/deli/member/pwCheck.dlv',
+			type: 'post',
+			dataType: 'json',
+			data: {
+				pw: spw
+			},
+			success: function(data){
+				var result = data.result;
+				$('#pwmsg').removeClass('w3-text-green w3-text-red');
+				
+				// 뷰에 보여주고
+				if(result == 'OK'){
+					// 입력한 아이디가 사용가능한 경우
+					$('#pwmsg').html('* 사용 가능한 비밀번호 입니다! *');
+					$('#pwmsg').addClass('w3-text-green');
+				} else {
+					// 입력한 아이디가 사용불가능한 경우
+					$('#pwmsg').html('* 사용 불가능한 비밀번호 입니다! *');
+					$('#pwmsg').addClass('w3-text-red');
+				}
+				$('#pwmsg').css('display', 'block');
+			},
+			error: function(){
+				alert('### 통신 에러 ###');
+			}
+		});
 		// 보낼 주소 설정하고
 		$('#frm').attr('action', '/deli/member/editProc.dlv');
 		$('#frm').submit();

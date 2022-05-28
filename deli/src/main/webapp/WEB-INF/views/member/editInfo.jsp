@@ -1,3 +1,15 @@
+<%-- 
+
+/**
+ * @author	박찬슬
+ * @since	2022/05/28
+ * @version	v.1.0
+ * 
+ * 			작업이력 ]
+ * 				2022.05.28	-	클래스제작
+ * 								담당자 : 박찬슬
+ */
+ --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -48,6 +60,7 @@
 						<label for="pw" class="w3-left mgl10" style="font-weight: bold;">기존 비밀번호</label>
 					</h5>
 					<input type="password" name="pw" id="pw" class="s8 w3-magin-top mgl10 w3-input w3-border w3-center" >
+					<span class="w3-col w3-center" id="pwmsg" style="display: none;"></span>
 				</div>
 				<div class="w3-padding mgb10">
 					<h5 class="w3-left-align">

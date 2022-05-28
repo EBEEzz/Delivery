@@ -17,7 +17,7 @@ public class RvWrite implements DeliInter {
 		String view = "/review/rvWrite";
 		if(req.getSession().getAttribute("SID") == null) {
 			req.setAttribute("isRedirect", true);
-			view = "/deli/main.dlv";
+			view = "/deli/member/login.dlv";
 		}
 		
 		String id = (String)req.getSession().getAttribute("SID");

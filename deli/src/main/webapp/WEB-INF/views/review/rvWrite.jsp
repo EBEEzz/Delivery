@@ -48,7 +48,8 @@
 		<h1 class="w3-center"><b>Delivery Project</b></h1>
 	</div>
 	<form method="POST" action="/deli/review/rvWriteProc.dlv" name="frm" id="frm">
-		<input type="hidden" name="nesti">
+		<input type="hidden" name="nesti" id="nesti">
+		<input type="hidden" name="idb" id="idb">
 	</form>
 	<div class="w3-display-middle w3-border w3-padding w3-col m8">
     	<div class="w3-container mgt10 mgb20 w3-black">
