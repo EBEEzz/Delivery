@@ -28,6 +28,11 @@
 컨트롤러	:	com.githrd.deli.controller.eunbee.RvWrite
 뷰			:	/WEB-INF/views/review/rvWrite.jsp
 ----------------------------------------------------------------------------------
+# 후기 제출 처리 요청
+요청내용	:	/deli/review/rvWriteProc.dlv
+파라미터	:	
+컨트롤러	:	com.githrd.deli.controller.eunbee.RvWriteProc
+뷰			:	/WEB-INF/views/review/main.jsp
 
 
 
