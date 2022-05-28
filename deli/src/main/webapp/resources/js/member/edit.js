@@ -54,7 +54,15 @@ $(document).ready(function(){
 		var nmail = $('#newmail').val();
 		var ntel = $('#newtel').val();
 		var naddr = $('#newaddr').val();
-		
+		var repw = $('#repw').val();
+
+		if(repw != npw){
+			$('#newpw').focus();
+			$('#repwmsg').html('변경될 비밀번호가 일치하지 않습니다.');
+			$('#repwmsg').removeClass('w3-text-green w3-text-red').addClass('w3-text-red')
+			$('#repwmsg').css('display', 'block');
+			return;
+		}
 		if(!npw){
 			$('#pw').prop('disabled', true);
 			$('#repw').css('display', 'none');
@@ -79,6 +87,7 @@ $(document).ready(function(){
 			alert('아무것도 수정안함...');
 			return;
 		}
+		
 		// 기존 비밀번호 확인 처리
 		var spw = $('#pw').val();
 		
@@ -100,24 +109,16 @@ $(document).ready(function(){
 			},
 			success: function(data){
 				var result = data.result;
-				alert(result);
 				$('#pwmsg').removeClass('w3-text-green w3-text-red');
 				
-				if(spw != result){
-					$('#pw').focus();
-					$('#pwmsg').css('display', 'block');
-					$('#pwmsg').addClass('w3-text-red');
-					$('#pwmsg').html('기존 비밀번호와 다릅니다!');
-					return;
-				}
 				// 뷰에 보여주고
 				if(result == 'OK'){
 					// 입력한 아이디가 사용가능한 경우
-					$('#pwmsg').html('* 사용 가능한 아이디 입니다! *');
+					$('#pwmsg').html('* 사용 가능한 비밀번호 입니다! *');
 					$('#pwmsg').addClass('w3-text-green');
 				} else {
 					// 입력한 아이디가 사용불가능한 경우
-					$('#pwmsg').html('* 사용 불가능한 아이디 입니다! *');
+					$('#pwmsg').html('* 사용 불가능한 비밀번호 입니다! *');
 					$('#pwmsg').addClass('w3-text-red');
 				}
 				$('#pwmsg').css('display', 'block');

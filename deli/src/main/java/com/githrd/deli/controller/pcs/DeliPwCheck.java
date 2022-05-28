@@ -20,7 +20,7 @@ public class DeliPwCheck implements DeliInter {
 		String pw = req.getParameter("pw");
 		PcsDao pDao = new PcsDao();
 		
-		int cnt = pDao.getIdCount(pw);
+		int cnt = pDao.getPwCount(pw);
 		buff.append("{");
 		buff.append("\"result\" : \"");
 		if(cnt == 0) {
