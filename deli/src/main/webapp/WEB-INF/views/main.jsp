@@ -22,6 +22,7 @@
 <link rel="stylesheet" type="text/css" href="/deli/resources/css/base.css">
 <link rel="stylesheet" type="text/css" href="/deli/resources/css/user.css">
 <link rel="stylesheet" type="text/css" href="/deli/resources/css/w3.css">
+<script type="text/javascript" src="/deli/resources/js/member/myInfo.js"></script>
 
 <script type="text/javascript" src="/deli/resources/js/member/myInfo.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -177,7 +178,6 @@ small {
 
 <div class="w3-container">
 		<!-- 회원정보 버튼 -->
-		<button id="ibtn" class="w3-button w3-green w3-large">Info</button>
 
  	<div id="id01" class="w3-modal">
 		<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:500px">

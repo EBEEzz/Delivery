@@ -9,6 +9,8 @@ package com.githrd.deli.controller;
  * 			작업이력 ]
  * 				2022.05.24	-	클래스제작
  * 								담당자 : 이용현
+ *   			2022.05.28	-	내정보보기 추가
+ * 								담당자 : 박찬슬
  */
 
 import java.io.*;
@@ -17,7 +19,9 @@ import java.util.ArrayList;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
+import com.githrd.deli.dao.PcsDao;
 import com.githrd.deli.dao.YonghyunDao;
+import com.githrd.deli.vo.PcsVO;
 import com.githrd.deli.vo.YonghyunVO;
 
 public class DeliMain implements DeliInter {
@@ -38,7 +42,12 @@ public class DeliMain implements DeliInter {
 		ArrayList<YonghyunVO> apply = yDao.getFriendApply(id);
 		req.setAttribute("APPLY", apply);
 		
-		
+/*						pcs 내정보보기 작업								 */	
+		if(id != null) {
+			PcsDao mDao = new PcsDao();
+			PcsVO pVO = mDao.getIdInfo(id);
+			req.setAttribute("DATA", pVO);
+		}
 		return view;
 	}
 
