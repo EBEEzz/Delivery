@@ -113,10 +113,12 @@ $(document).ready(function(){
 	});
 	
 	var price = 0;
-	
+
+/*
 	$('.pricebtn1').click(function(){
 		var count = parseInt($(this).parent().find('.inputprice').val());
 		var menu = $(this).parent().attr('id');
+		price = $(this).attr('id');
 		if(confirm(menu + ' 을/를 제외하시겠습니까?')) {
 			count -= 1;
 			if(count < 0) {
@@ -125,23 +127,48 @@ $(document).ready(function(){
 			}
 			$(this).parent().find('.inputprice').val(count);
 		}
+		var i = parseInt($(this).parent().find('.inputprice').val()) * price;
+		var m = $(this).parent().attr('id');
+		var k = $('#abc > input').attr('name');
+		if(k = m){
+			var j = $('#abc > input').val(i);
+			alert(j);
+		}
+		
+	});
+*/
+	
+	let i = 0;
+	let o = 0;
+	$('.pricebtn1').click(function(){
+		var count = parseInt($(this).parent().find('.inputprice').val()); // 수량
+		var menu = $(this).parent().attr('id'); // 메뉴
+		price = $(this).attr('id'); // 가격
+		if(confirm(menu + ' 을/를 제외하시겠습니까?')) {
+			count -= 1;
+			if(count < 0) {
+				alert('구매하신 수량이 없습니다.');
+				return;
+			}
+			$(this).parent().find('.inputprice').val(count);
+			o = parseInt($(this).parent().find('.inputprice').val()) * price; // 누적금액
+				$('#abc > div > [name="' + menu + '"]').val(o);
+		
+			return o;
+		}
 	});
 
-
-
 	$('.pricebtn2').click(function(){
-		
 		var count = parseInt($(this).parent().find('.inputprice').val());
-
 		var menu = $(this).parent().attr('id');
+		price = $(this).attr('id'); // 가격
 		if(confirm(menu + ' 을/를 추가하시겠습니까?')) {
 			count += 1;
-			mprice = $(this).attr('id')
-			price = price -(- mprice);
-			
-			mname = $(this).attr('id');
 			$(this).parent().find('.inputprice').val(count);
-			
+			i = parseInt($(this).parent().find('.inputprice').val()) * price; // 누적금액
+			$('#abc > div > [name="' + menu + '"]').val(i);
+
+			return i;
 			
 			//var i = '<div class="w3-col w3-left-align w3-padding pri">'+ menu + ' : ' + '<span>'+ count+'개<span>'  +'</div>';
 		}
@@ -171,7 +198,7 @@ $(document).ready(function(){
 		})
 	})
 	
-	
+
 	$('#paybtn').click(function(){
 		$('#1mname').val(mname);
 		$('#1price').val(price);
@@ -179,10 +206,11 @@ $(document).ready(function(){
 		$('#pageFrm').attr('action','/deli/payment/beforePay.dlv');
 		$('#pageFrm').submit();
 	});
+
 	
-	$('#decide').click(function(){
-		
-	})
+
+	
+
 		
 	
 });

@@ -12,6 +12,9 @@ package com.githrd.deli.controller.board;
  */
 
 import javax.websocket.server.ServerEndpoint;
+
+import com.githrd.deli.dao.YonghyunDao;
+
 import java.util.ArrayList;
 import java.util.regex.*;
 import javax.websocket.*;
@@ -30,7 +33,7 @@ public class Chat {
 
 	@OnMessage
 	public void handleMessage(String message, Session userSession) throws Exception {
-		System.out.println(message);
+		//System.out.println(message);
 		String name = "";
 		Matcher matcher = pattern.matcher(message);
 		if (matcher.find()) {
@@ -38,16 +41,23 @@ public class Chat {
 		}
 		final String msg = message.replaceAll(pattern.pattern(), "");
 		final String username = name.replaceFirst("^\\{\\{", "").replaceFirst("\\}\\}$", "");
+		YonghyunDao yDao = new YonghyunDao();
+		int cnt = yDao.UpChat(username, msg);
+		if(cnt == 1) {
+			System.out.println("# 데이터 기록 성공 #");
+		} else {
+			System.out.println("# 데이터 기록 실패 #");
+		}
 		sessionUsers.forEach(session -> {
-		if (session == userSession) {
-			return;
-		}
-		try {
-		session.getBasicRemote().sendText(username + " : " + msg);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-			});
+			if (session == userSession) {
+				return;
+			}
+			try {
+			session.getBasicRemote().sendText(username + " : " + msg);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		});
 	}
 
 	@OnClose

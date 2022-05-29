@@ -39,6 +39,7 @@ public class YonghyunSQL {
 	public final int UPDATE_FRIEND_AGREE = 2004;
 	public final int UPDATE_FRIEND_TOO = 2005;
 	public final int UPDATE_FRIEND_CANCLE = 2006;
+	public final int UPDATE_CHAT = 2007;
 	
 	public final int DEL_REGI = 3001;
 	public final int DEL_FRIEND = 3002;
@@ -374,6 +375,14 @@ public class YonghyunSQL {
 				buff.append("    myno = ? ");
 				buff.append("    AND frino = (SELECT mno FROM member WHERE id = ? ) ");
 				buff.append("    AND agree = 'N' ");
+				break;
+			case UPDATE_CHAT :
+				buff.append("INSERT INTO ");
+				buff.append("    chat(cno, cmno, cbody) ");
+				buff.append("VALUES( ");
+				buff.append("    (SELECT NVL(MAX(cno) + 1, 1) FROM chat), ");
+				buff.append("    (SELECT mno FROM member WHERE id = ? ), ? ");
+				buff.append(") ");
 				break;
 			case DEL_REGI :
 				buff.append("UPDATE ");

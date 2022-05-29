@@ -813,5 +813,26 @@ public class YonghyunDao {
 		}
 		return cnt;
 	}
+	
+	
+	// 채팅 기록 함수
+	public int UpChat(String id, String body) {
+		int cnt = 0;
+		con = db.getCon();
+		String sql = ySQL.getSQL(ySQL.UPDATE_CHAT);
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			pstmt.setString(1, id);
+			pstmt.setString(2, body);
+			
+			cnt = pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(pstmt);
+			db.close(con);
+		}
+		return cnt;
+	}
 
 }

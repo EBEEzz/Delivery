@@ -88,6 +88,13 @@
 	top: 80px;
 }
 
+#abc > input {
+	text-align: center;
+}
+.menuinputfrm {
+	margin: 5px;
+}
+
 </style>
 </head>
 <body>
@@ -150,9 +157,7 @@
 				<div class="w3-col maintext">${MAIN.id}</div>
 				<div class="w3-col maintext"><small>${MAIN.sdate}&nbsp;&nbsp;&nbsp;조회수 : ${MAIN.click}</small></div>
 			</div>
-			<div class="w3-col m4">
-				<div class="w3-button w3-right subbtn w3-border" id="decide">구매확정</div>
-			</div>
+
 			
 			<div class="w3-col w3-right m1 w3-margin-top" id="regimem">
 			
@@ -172,8 +177,7 @@
 <c:forEach var="menu" items="${MENU}">	
 					<div>
 						<div class="w3-right w3-padding" id="restname">${menu.rname}</div>
-						<div class="mname w3-padding" id="${menu.mname}">${menu.mname} : ${menu.mprice}<div class="w3-button w3-right pricebtn1" id="${menu.mprice}">-</div><input class="inputprice w3-right w3-center" type="text" disabled value="0"><div class="w3-button w3-right pricebtn2" id="${menu.mprice}">+</div></div>
-						<input type="hidden" id="${meun.mprice}">
+						<div class="mname w3-padding pricebtn" id="${menu.mname}">${menu.mname} : ${menu.mprice}<div class="w3-button w3-right pricebtn1" id="${menu.mprice}">-</div><input class="inputprice w3-right w3-center" type="text" disabled value="0"><div class="w3-button w3-right pricebtn2" id="${menu.mprice}">+</div></div>
 					</div>
 </c:forEach>	
 					<input type="hidden" id="price" name="price">
@@ -182,9 +186,17 @@
 		</div>
 
 	<c:if test="${not empty PAY}">
-		<div class="w3-col w3-border w3-margin-top" id="abc">
+		<div class="w3-col w3-border w3-margin-top w3-left w3-padding" id="abc">
+<c:forEach var="remenu" items="${MENU}">
+		<div class="w3-col menuinputfrm">
+			<div class="w3-col m4 w3-right-align">${remenu.mname} : &nbsp;&nbsp;</div>
+			<input class="w3-col m5 w3-center valueck" type="text" name="${remenu.mname}" disabled>
+		</div>	
+</c:forEach>
 		</div>
-		<div class="w3-col w3-button w3-border w3-margin-top">결제하기</div>
+		<div class="w3-col">
+		</div>
+		<div class="w3-col w3-button w3-border w3-margin-top" id="paybtn">결제하기</div>
 	</c:if>
 
 </c:if>		
