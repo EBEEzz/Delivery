@@ -32,7 +32,6 @@ public class MessageProc implements DeliInter {
 		String body = req.getParameter("body");
 		YonghyunDao yDao = new YonghyunDao();
 		int cnt = yDao.UpMessage(id, fid, title, body);
-System.out.println(cnt);
 		if(cnt != 1) {
 			req.setAttribute("SENDTEST", 1);
 			return "/deli/msform.dlv";

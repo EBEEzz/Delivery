@@ -29,7 +29,6 @@ public class FriendAgrProc implements DeliInter {
 		
 		String frimno = req.getParameter("fmno");
 		int fmno = Integer.parseInt(frimno);
-System.out.println(fmno);
 		YonghyunDao yDao = new YonghyunDao();
 
 		StringBuffer buff = new StringBuffer();

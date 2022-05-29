@@ -876,8 +876,7 @@ public class YonghyunDao {
 			pstmt.setString(1, id);
 			pstmt.setString(2, fid);
 			pstmt.setString(3, title);
-			pstmt.setString(4, body);
-System.out.println("작동테스트");			
+			pstmt.setString(4, body);		
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
