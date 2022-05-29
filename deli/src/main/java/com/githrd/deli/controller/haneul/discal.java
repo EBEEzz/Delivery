@@ -1,11 +1,11 @@
-package calc;
+package controller.haneul;
 
 import java.text.NumberFormat;
 
 public class discal {
 
-	//지도상 위도, 경도 거리 계산해주는 클래스
-	
+	// 지도상 위도, 경도 거리 계산해주는 클래스
+
 	public double disCal(double lat1, double lon1, double lat2, double lon2) {
 
 		double theta = lon1 - lon2;
