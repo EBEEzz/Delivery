@@ -53,7 +53,7 @@ $(document).ready(function(){
 				<h4 class="w3-center w3-col">식당 이름 : <span id="rsname">${PO.rname}</span></h4><br><br>
 			</div>
 			<div class="w3-col w3-border-bottom mgl10" align="left">
-				<h4 class="w3-left w3-col">배달 장소 : <span id="addr"></span></h4>
+				<h4 class="w3-left w3-col">배달 장소 : <span id="addr">${MPO.membaddr}</span></h4>
 			</div>
 <c:forEach var="data" items="${MENU}" varStatus="status"  >
 <c:set var="memb" value="${MEMBER[status.index]}" />
