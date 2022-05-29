@@ -19,19 +19,21 @@ $(document).ready(function() {
 	$('label').mouseup(function() {
 		let point = $(this).prev().val();
 		let idb = $(this).siblings().first().attr('id');
+		let abno = $(this).parent().attr('id');
 		
 		$(this).siblings().first().text(point);
 		
 		$('#nesti').val(point);
 		$('#idb').val(idb);
+		$('#abno').val(abno);
 		
-		$('#sbtn').click(function() {
+		$('.sbtn').click(function() {
 			alert('후기가 제출되었습니다!');
+			$('#frm').submit();
 		});
 	});
 	
-	$('#sbtn').click(function() {
-		$('#frm').submit();
+	$('.sbtn').click(function() {
 	});
 	
 	$('.rlist').click(function() {

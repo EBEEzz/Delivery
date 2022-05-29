@@ -148,6 +148,7 @@ public class EunbeeDao {
 				eVO.setEshow(rs.getString("eshow"));
 				eVO.setDir(rs.getString("dir"));
 				eVO.setSavename(rs.getString("savename"));
+				eVO.setBno(rs.getInt("abno"));
 				
 				list.add(eVO);
 			}
@@ -162,7 +163,7 @@ public class EunbeeDao {
 	}
 	
 	public int updateEshow(int bno, String idb) {
-		int cnt = 0;
+		int cnt2 = 0;
 		con = db.getCon();
 		String sql = eSQL.getSQL(eSQL.UPDATE_ESHOW);
 		pstmt = db.getPSTMT(con, sql);
@@ -170,14 +171,14 @@ public class EunbeeDao {
 			pstmt.setInt(1, bno);
 			pstmt.setString(2, idb);
 			
-			cnt = pstmt.executeUpdate();
+			cnt2 = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
 			db.close(pstmt);
 			db.close(con);
 		}
-		return cnt;
+		return cnt2;
 	}
 	
 	public int addEsti(EunbeeVO eVO) {

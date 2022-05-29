@@ -83,11 +83,11 @@ public class EunbeeSQL {
 			break;
 		case SEL_ESTIINFO:
 			buff.append("SELECT ");
-			buff.append("    aid, show, eshow, dir, savename ");
+			buff.append("    aid, show, eshow, dir, savename, abno ");
 			buff.append("FROM ");
 			buff.append("    imgfile i, member m, ( ");
 			buff.append("        SELECT ");
-			buff.append("            aid, isshow show, estishow eshow ");
+			buff.append("            aid, isshow show, estishow eshow, abno ");
 			buff.append("        FROM ");
 			buff.append("            regimem ");
 			buff.append("        WHERE ");
@@ -108,6 +108,7 @@ public class EunbeeSQL {
 			buff.append("WHERE ");
 			buff.append("    abno = ? ");
 			buff.append("    AND aid = ? ");
+			break;
 		case ADD_ESTI:
 			buff.append("INSERT INTO ");
 			buff.append("    estimate(ebno, eida, eidb, epoint) ");
