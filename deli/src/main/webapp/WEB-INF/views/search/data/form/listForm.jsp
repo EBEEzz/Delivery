@@ -3,10 +3,10 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
-	delipDAO dao = new delipDAO();
+/* 	delipDAO dao = new delipDAO();
 	delipVO vo  = new delipVO();
-	List<delipVO> list = dao.select();
-	request.setAttribute("list", list);
+	List<delipVO> list = dao.select(); 
+	request.setAttribute("list", list);*/
 %>
 
 
