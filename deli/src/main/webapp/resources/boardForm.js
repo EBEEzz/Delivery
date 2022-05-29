@@ -144,7 +144,7 @@ $(document).ready(function(){
 	var subprice = 0;
 	$('.pricebtn1').click(function(){
 		var count = parseInt($(this).parent().find('.inputprice').val()); // 수량
-		var menu = $(this).parent().attr('id'); // 메뉴
+		menu = $(this).parent().attr('id'); // 메뉴
 		price = $(this).attr('id'); // 가격
 		if(confirm(menu + ' 을/를 제외하시겠습니까?')) {
 			count -= 1;
@@ -165,7 +165,7 @@ $(document).ready(function(){
 
 	$('.pricebtn2').click(function(){
 		var count = parseInt($(this).parent().find('.inputprice').val());
-		var menu = $(this).parent().attr('id');
+		menu = $(this).parent().attr('id');
 		price = $(this).attr('id'); // 가격
 		if(confirm(menu + ' 을/를 추가하시겠습니까?')) {
 			count += 1;
