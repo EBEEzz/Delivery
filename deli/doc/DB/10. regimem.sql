@@ -103,5 +103,10 @@ INSERT INTO
 VALUES(
     18, 'YHLEE'
 );
+INSERT INTO
+    regimem(abno, aid)
+VALUES(
+    19, 'YHLEE'
+);
 
 commit;
