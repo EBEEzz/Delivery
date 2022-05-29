@@ -213,7 +213,19 @@ small {
 	
 		</div>
 	</div>
-</div>	
+</div>
+
+<form action="/deli/mapplace.dlv" method="POST" id="mapsearch">
+	<input type="text" name="cusid" placeholder="아이디입력">
+	<input type="submit" value="제출"><br>
+	<input type="hidden" value="37.499855465771" name="pickuplat">
+	<input type="hidden" value="126.92060923706" name="pickuplon">
+	<input type="hidden" value="37.50064696263" name="cus_lat">
+	<input type="hidden" value="126.91951962334" name="cus_lon">
+	<input type="hidden" value="YHLEE" name="보라매역">
+	<input type="hidden" value="YHLEE" name="cusid">
+</form>
+
 	
 	
 </body>
