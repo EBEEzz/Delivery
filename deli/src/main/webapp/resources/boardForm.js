@@ -49,7 +49,7 @@ $(document).ready(function(){
 
 	
 		
-		function CountDownTimer(dt, id) {
+	function CountDownTimer(dt, id) {
 	    var end = new Date(dt);
 	    var _second = 1000;
 	    var _minute = _second * 60;
@@ -193,9 +193,6 @@ $(document).ready(function(){
 		$('#pageFrm').submit();
 	});
 
-	
-
-	
 
 		
 	

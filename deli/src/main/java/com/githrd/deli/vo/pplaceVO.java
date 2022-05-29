@@ -1,4 +1,4 @@
-package vo;
+package com.githrd.deli.vo;
 
 public class pplaceVO {
 	private String cusname, cusid;
