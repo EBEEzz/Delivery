@@ -30,34 +30,24 @@ public class BeforePay implements DeliInter {
 		
 		String no = req.getParameter("bno");
 		int bno = Integer.parseInt(no);
-		
-		
-		
 		String sid = (String)req.getSession().getAttribute("SID");
 		
 		if(sid == null) {
 			return "/member/login";
 		}
-		
-		 
 		YonghyunDao yDao = new YonghyunDao();
 		PayDao pDao = new PayDao();
-		
 		PayVO pVO = pDao.getPay(bno);
 		PayVO pVO1 = pDao.getMINFO(sid);
-		
 		String amname = (String)req.getParameter("1mname");
-		
 		String tmyprice = (String) req.getParameter("1price");
 		int myprice = Integer.parseInt(tmyprice);		
-		
 		System.out.println(amname);
 		 
 		int cnt = pDao.getAbnoCnt(bno);
 		
 		pVO.setMyprice(myprice);
 		pVO.setBno(bno);
-		
 		
 		System.out.println(pVO);
 		
@@ -67,8 +57,6 @@ public class BeforePay implements DeliInter {
 		
 		pVO.setMtprice(mtprice);
 		pVO.setAmname(amname);
-		
-		
 		ArrayList<YonghyunVO> list = yDao.getRegiMember(bno);
 		
 		ArrayList<YonghyunVO> menu = yDao.getMenu(bno);

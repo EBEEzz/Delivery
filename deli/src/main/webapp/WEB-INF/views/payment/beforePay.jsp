@@ -50,23 +50,26 @@ $(document).ready(function(){
 		<h1 class="w3-teal w3-padding" style="margin-bottom: 5px;">Delivery Project</h1>
 		<div class="w3-col w3-light-grey">
 			<div class="w3-col w3-border-bottom mgl10" align="left">
-				<h4 class="w3-left">배달 장소 : <span id="addr"></span></h4>
+				<h4 class="w3-center w3-col">식당 이름 : <span id="rsname">${PO.rname}</span></h4><br><br>
+			</div>
+			<div class="w3-col w3-border-bottom mgl10" align="left">
+				<h4 class="w3-left w3-col">배달 장소 : <span id="addr"></span></h4>
 			</div>
 <c:forEach var="data" items="${MENU}" varStatus="status"  >
 <c:set var="memb" value="${MEMBER[status.index]}" />
 <c:if test="${SID eq memb.id}">
 			<div class="w3-col w3-border-bottom mgl10" align="left" >
-				<h4>${SID} 님이 선택하신 메뉴</h4><br>
-				<div>${PO.amname} : ${PO.myprice}</div>
-				<h4>요청 사항 : </h4><br>
+				<h4>${SID} 님이 선택하신 메뉴</h4>
+				<h4>${PO.amname} : ${PO.myprice}</h4>
+				<h4>요청 사항 : </h4>
 				<input id="rq" name="rq" class="w3-col w3-border m11">
 				<h4 class="w3-col">가격 : <span >${PO.myprice}</span></h4>
 			</div>
 </c:if>
 <c:if test="${SID ne memb.id && memb.id != null}">
 			<div class="w3-col w3-border-bottom mgl10" align="left" >
-				<h4>${memb.id} 님이 선택하신 메뉴</h4><br>
-				<div><span id="abcdef">${data.mname} : </span><span>${data.mprice}</span><span></span></div>
+				<h4>${memb.id} 님이 선택하신 메뉴</h4>
+				<h4><span id="abcdef">${data.mname} : </span><span>${data.mprice}</span><span></span></h4>
 				<h4>가격 : <span>${data.mprice}</span></h4>
 			</div>
 </c:if> 
@@ -78,7 +81,7 @@ $(document).ready(function(){
 				<h4>${SID} 님 금 액 : <span>${PO.myprice}</span></h4><br>
 </c:if>
 <c:if test="${SID ne memb.id && memb.id != null}">		
-				<h4>${memb.id} 님 금 액 :<span>${data.mprice}</span></h4><br>
+				<h4>${memb.id} 님 금 액 : <span>${data.mprice}</span></h4><br>
 </c:if>
 </c:forEach>
 				<h4>배달비  : <span>${PO.delpay}</span></h4><br>

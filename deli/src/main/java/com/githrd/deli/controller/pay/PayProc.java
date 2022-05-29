@@ -15,20 +15,13 @@ public class PayProc implements DeliInter {
 
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		// String view = "/payment/afterPay";
-		req.setAttribute("isRedirect", null);
-
 		String view = "/payment/afterPay";
 		req.setAttribute("isRedirect", null);
 		
-
-		/*
 		String sid = (String) req.getSession().getAttribute("SID");
 		if(sid == null) {
 			return "/member/login.dlv";
 		}
-		*/
 		
 		String arno = (String) req.getParameter("r_rno");
 		int rno = Integer.parseInt(arno);
@@ -46,15 +39,7 @@ public class PayProc implements DeliInter {
 		String request = (String) req.getParameter("request");
 		String omenu = (String) req.getParameter("omenu");
 		
-		System.out.println("arno :" + arno);
-		System.out.println("aoprice : " + aoprice);
-		System.out.println("aomprice : " + aomprice);
-		System.out.println("amno : " + amno);
-		System.out.println("aqt : " + aqt);
-		
-		
 		PayDao pDao = new PayDao();
-		
 		PayVO pVO = new PayVO();
 		pVO.setRno(rno);
 		pVO.setOno(ono);
@@ -67,12 +52,8 @@ public class PayProc implements DeliInter {
 		pVO.setOmenu(omenu);
 		pVO.setOlno(mno);
 		
-		
 		int odtcnt = pDao.InsertOdt(ono, mno);
-		
 		int odlcnt = pDao.InsertOdl(pVO);
-		
-		
 		int odmcnt = pDao.InsertOdm(pVO);
 		
 		String msg = "{\"result\" : \"y\"}";
@@ -86,17 +67,9 @@ public class PayProc implements DeliInter {
 			System.out.println("ordermenu에 문제가 생겼습니다.");
 			return "/payment/beforePay";
 		} else {
-
-			System.out.println("proc성공2"); 
-
 			req.setAttribute("isRedirect", null);
 			msg = "{\"result\" : \"y\"}";
 		}
-		
-
-		System.out.println("proc성공");
-
-		
 		return msg;
 	}
 

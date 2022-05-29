@@ -123,7 +123,7 @@ public class PayDao {
 			pVO.setDelpay(rs.getInt("delpay"));
 			pVO.setMprice(rs.getInt("mprice"));
 			pVO.setMname(rs.getString("mname"));
-			
+			pVO.setRname(rs.getString("rname"));
 			
 	} catch(Exception e) {
 		e.printStackTrace();

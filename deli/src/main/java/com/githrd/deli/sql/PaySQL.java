@@ -40,7 +40,7 @@ public class PaySQL {
 			break;
 		case SEL_PAYS:
 			buff.append("SELECT ");
-			buff.append("    restno, delpay, mprice, mname ");
+			buff.append("    restno, delpay, mprice, mname, rname ");
 			buff.append("FROM ");
 			buff.append("    board b, restaurant r, menu m ");
 			buff.append("WHERE ");

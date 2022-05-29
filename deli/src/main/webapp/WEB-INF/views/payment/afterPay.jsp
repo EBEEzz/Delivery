@@ -15,7 +15,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>BeforePay</title>
+<title>AfterPay</title>
 <link rel="stylesheet" type="text/css" href="/deli/resources/css/user.css">
 <link rel="stylesheet" type="text/css" href="/deli/resources/css/w3.css">
 <script type="text/javascript" src="/deli/resources/js/jquery-3.6.0.min.js"></script>
@@ -37,23 +37,28 @@
 		<h1 class="w3-teal w3-padding" style="margin-bottom: 5px;">Delivery Project</h1>
 		<div class="w3-col w3-light-grey">
 			<div class="w3-col w3-border-bottom mgl10" align="left">
-				<h3>결제가 완료되었습니다.</h3>
-				<h4 class="w3-left">배달 장소 : <span id="addr">${DATA.addr}</span></h4>
+				<h3 class="w3-center w3-col">결제가 완료되었습니다.</h3>
+			</div>
+			<div class="w3-col w3-border-bottom mgl10" align="left">
+				<h4 class="w3-center w3-col">식당 이름 : <span id="rsname">${PO.rname}</span></h4><br><br>
+			</div>
+			<div class="w3-col w3-border-bottom mgl10" align="left">
+				<h4 class="w3-left w3-col">배달 장소 : <span id="addr"></span></h4>
 			</div>
 <c:forEach var="data" items="${MENU}" varStatus="status"  >
 <c:set var="memb" value="${MEMBER[status.index]}" />
 <c:if test="${SID eq memb.id}">
 			<div class="w3-col w3-border-bottom mgl10" align="left" >
-				<h4>${SID} 님이 선택하신 메뉴</h4><br>
+				<h4>${SID} 님이 선택하신 메뉴</h4>
 				<div>${PO.amname} : ${PO.myprice}</div>
-				<h4>요청 사항 : </h4><br>
+				<h4>요청 사항 : </h4>
 				<div id="rq" class="w3-col  m11"> ${RQ} </div>
 				<h4 class="w3-col">가격 : <span >${PO.myprice}</span></h4>
 			</div>	
 </c:if>
 <c:if test="${SID ne memb.id && memb.id != null}">
 			<div class="w3-col w3-border-bottom mgl10" align="left" >
-				<h4>${memb.id} 님이 선택하신 메뉴</h4><br>
+				<h4>${memb.id} 님이 선택하신 메뉴</h4>
 				<div><span id="abcdef">${data.mname} : </span><span>${data.mprice}</span><span></span></div>
 				<h4>가격 : <span>${data.mprice}</span></h4>
 			</div>
@@ -80,8 +85,7 @@
 		</div>
 		</form>
 		<div class="w3-col w3-margin-top w3-card-4 w3-center" >
-			<div class="w3-half w3-button w3-green" id="pbtn">결제</div>
-			<div class="w3-half w3-button w3-deep-orange" id="cbtn">취소</div>
+			<div class="w3-col w3-button w3-deep-orange" id="cbtn">돌아가기</div>
 		</div>
 		</div>
 	
