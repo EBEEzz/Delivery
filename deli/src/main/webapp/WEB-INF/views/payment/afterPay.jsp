@@ -73,7 +73,7 @@
 <c:forEach var="data" items="${MENU}" varStatus="status"  >
 <c:set var="memb" value="${MEMBER[status.index]}" />
 <c:if test="${SID eq memb.id }"> 
-				<h4>${SID}님이 지불하실 금액  : <span>${PO.mtprice}</span></h4>
+				<h4>${SID}님이 지불하신 금액  : <span>${PO.mtprice}</span></h4>
 </c:if>				
 </c:forEach>
 			</div>

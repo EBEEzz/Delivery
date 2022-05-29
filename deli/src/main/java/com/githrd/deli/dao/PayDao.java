@@ -188,4 +188,32 @@ public class PayDao {
 		
 		return pVO;
 	}
+	
+	public ArrayList<PayVO> getRest(int bno) {
+		 ArrayList<PayVO> list = new  ArrayList<PayVO>();
+		 con = db.getCon();
+		 String sql = pSQL.getSQL(pSQL.SEL_REST);
+		 pstmt = db.getPSTMT(con, sql);
+		 try {
+			 pstmt.setInt(1, bno);
+			 rs = pstmt.executeQuery();
+			 while(rs.next()) {
+				 PayVO pVO = new PayVO();
+				 pVO.setRname(rs.getString("rname"));
+				 pVO.setRestno(rs.getInt("restno"));
+				 pVO.setMname(rs.getString("mname"));
+				 pVO.setMprice(rs.getInt("mprice"));
+				 pVO.setQuantity(rs.getInt("quantity"));
+				 
+				 list.add(pVO);
+			 }
+		 } catch(Exception e) {
+				e.printStackTrace();
+			} finally {
+				db.close(rs);
+				db.close(pstmt);
+				db.close(con);
+			}
+		 return list;
+	}
 }

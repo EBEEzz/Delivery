@@ -12,15 +12,14 @@ import com.githrd.deli.dao.PayDao;
 import com.githrd.deli.dao.YonghyunDao;
 import com.githrd.deli.vo.PayVO;
 import com.githrd.deli.vo.YonghyunVO;
+
 /**
  * 
  * @author 이형준
- * @since  2022.05.24
- * @version  v.1.0
- * 		
- * 					작업이력 )
- * 						2022.05.24	-	담당자 : 이형준
- * 										내용   : 클래스 제작
+ * @since 2022.05.24
+ * @version v.1.0
+ * 
+ *          작업이력 ) 2022.05.24 - 담당자 : 이형준 내용 : 클래스 제작
  */
 public class BeforePay implements DeliInter {
 
@@ -32,7 +31,7 @@ public class BeforePay implements DeliInter {
 		String no = req.getParameter("bno");
 		int bno = Integer.parseInt(no);
 		
-	
+		
 		
 		String sid = (String)req.getSession().getAttribute("SID");
 		
@@ -40,6 +39,7 @@ public class BeforePay implements DeliInter {
 			return "/member/login";
 		}
 		
+		 
 		YonghyunDao yDao = new YonghyunDao();
 		PayDao pDao = new PayDao();
 		
@@ -57,7 +57,7 @@ public class BeforePay implements DeliInter {
 		
 		pVO.setMyprice(myprice);
 		pVO.setBno(bno);
-	
+		
 		
 		System.out.println(pVO);
 		
@@ -67,7 +67,6 @@ public class BeforePay implements DeliInter {
 		
 		pVO.setMtprice(mtprice);
 		pVO.setAmname(amname);
-		
 		
 		
 		ArrayList<YonghyunVO> list = yDao.getRegiMember(bno);

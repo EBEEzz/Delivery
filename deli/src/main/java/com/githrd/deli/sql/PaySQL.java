@@ -7,6 +7,7 @@ public class PaySQL {
 	
 	public final int SEL_PAYS			=	2001;
 	public final int SEL_MINFO			=	2002;
+	public final int SEL_REST			=	2003;
 	
 	public final int ABNO_CNT			=	3001;
 			
@@ -66,6 +67,18 @@ public class PaySQL {
 			buff.append("WHERE ");
 			buff.append("    isshow = 'Y' ");
 			buff.append("    AND abno = ? ");
+			break;
+		case SEL_REST:
+			buff.append("SELECT ");
+			buff.append("    rname, restno, mname, mprice, quantity ");
+			buff.append("FROM ");
+			buff.append("    board b, restaurant r, menu m, orderlist ol, ordermenu om ");
+			buff.append("WHERE ");
+			buff.append("    b.rest = r.restno ");
+			buff.append("    AND m.rno = r.restno ");
+			buff.append("    AND r.restno = ol.rno ");
+			buff.append("    AND ol.olno = om.olno ");
+			buff.append("    AND bno = ? ");
 			break;
 		}
 		return buff.toString();
