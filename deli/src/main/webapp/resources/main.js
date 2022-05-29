@@ -144,5 +144,7 @@ $(document).ready(function(){
 		$(location).attr('href', '/deli/review/rvList.dlv');
 	})
 	
-		
+	$('#msgbtn').click(function(){
+		$(location).attr('href', '/deli/message.dlv');
+	});
 });

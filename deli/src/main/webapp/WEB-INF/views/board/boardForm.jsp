@@ -187,6 +187,7 @@
 		</div>
 
 	<c:if test="${not empty PAY}">
+		<form method="POST" action="/deli/payment/beforePay.dlv" id="payfrm" name="payfrm">
 		<div class="w3-col w3-border w3-margin-top w3-left w3-padding" id="abc">
 <c:forEach var="remenu" items="${MENU}">
 		<div class="w3-col menuinputfrm">
@@ -195,6 +196,7 @@
 		</div>	
 </c:forEach>
 		</div>
+		</form>
 		<div class="w3-col">
 		</div>
 		<div class="w3-col w3-button w3-border w3-margin-top" id="paybtn">결제하기</div>

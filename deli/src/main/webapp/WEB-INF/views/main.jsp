@@ -136,6 +136,7 @@ small {
 							<div class="w3-col m2"> ID : </div>
 							<div class="w3-col m10">${SID}</div>
 						</div>
+						<div class="w3-col m12 w3-button fbtn w3-right" id="msgbtn" >메세지보내기</div>
 						<div class="w3-col m12 w3-button fbtn w3-right" id="myinfo" >내정보보기</div>
 						<div class="w3-col m12 w3-button fbtn w3-right" id="esti">후기</div>
 						<div class="w3-col m12 w3-button fbtn w3-right" id="friendbtn">내친구보기</div>
