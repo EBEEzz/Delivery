@@ -125,9 +125,9 @@ VALUES(
 );
 
 INSERT INTO
-    board(bno, bmno, title, body, larea, marea, sarea, end, category)
+    board(bno, bmno, title, body, larea, marea, sarea, end, category, rest)
 VALUES(
-    (SELECT NVL(MAX(bno) + 1, 1) FROM board), 1006, 'ㅋㅋㅋㅋㅋㅋㅋㅋ', '좀더 빨리 해라', '서울특별시', '종로구', '사직동', 2, '도시락'
+    (SELECT NVL(MAX(bno) + 1, 1) FROM board), 1006, 'ㅋㅋㅋㅋㅋㅋㅋㅋ', '좀더 빨리 해라', '서울특별시', '종로구', '사직동', 2, '도시락', 1
 );
 
 INSERT INTO
@@ -142,4 +142,11 @@ VALUES(
     (SELECT NVL(MAX(bno) + 1, 1) FROM board), 1001, '배고프다', '삼겹살 콜?', '서울특별시', '종로구', '사직동', 12, '고기·구이'
 );
 
+INSERT INTO
+    board(bno, bmno, title, body, larea, marea, sarea, end, category, rest)
+VALUES(
+    (SELECT NVL(MAX(bno) + 1, 1) FROM board), 1001, '빨리요', '중국음식 먹고싶어요.', '서울특별시', '종로구', '사직동', 12, '중식', 2
+);
+
 commit;
+
