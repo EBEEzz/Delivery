@@ -1,4 +1,4 @@
-package dao;
+package com.githrd.deli.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,10 +6,10 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import com.githrd.deli.sql.pplaceSQL;
-import com.githrd.deli.util.DButil;
-
-import vo.pplaceVO;
+import com.githrd.deli.sql.*;
+import com.githrd.deli.util.*;
+import com.githrd.deli.dao.*;
+import com.githrd.deli.vo.*;
 
 public class pplaceDAO {
 	private DButil util = new DButil();

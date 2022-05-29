@@ -1,4 +1,4 @@
-package dao;
+package com.githrd.deli.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,8 +8,7 @@ import java.util.ArrayList;
 
 import com.githrd.deli.sql.rcoordiDB;
 import com.githrd.deli.util.DButil;
-
-import vo.rcoordiVO;
+import com.githrd.deli.vo.rcoordiVO;
 
 /**
  * 이 클래스는 데이터베이스 작업을 전담해서 처리하는 클래스
