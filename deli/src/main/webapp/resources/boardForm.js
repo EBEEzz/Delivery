@@ -158,7 +158,7 @@ $(document).ready(function(){
 		
 			var mprice = 0;
 			mprice = $(this).attr('id');
-			subprice = subprice - (-mprice);
+			subprice = subprice - mprice;
 			return o;
 		}
 	});
@@ -174,8 +174,11 @@ $(document).ready(function(){
 			$('#abc > div > [name="' + menu + '"]').val(i);
 
 			if(count > 1) {
-				menu = menu + '외' + count -1 + '건';
+				menu = menu + '외' + count + '건';
 			}
+			var mprice = 0;
+	         mprice = $(this).attr('id');
+	         subprice = subprice - (-mprice);
 			return i;
 			
 		}
