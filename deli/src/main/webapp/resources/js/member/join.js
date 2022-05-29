@@ -88,7 +88,7 @@ $(document).ready(function(){
 	
 	// 정규 표현식 검사
 	var telPattern = /^([0-9]{2,3}(-))-?([0-9]{3,4}(-))-?([0-9]{4})$/;
-	$('#newtel').change(function(){
+	$('#tel').change(function(){
 		var ttel = $('#tel').val();
 		if(!telPattern.test(ttel)){
 			$('#telmsg').html('올바른 전화번호 형식이 아닙니다.');
@@ -123,11 +123,15 @@ $(document).ready(function(){
 		var mail = $('#mail').val();
 		var tel = $('#tel').val();
 		var addr = $('#addr').val();
-		var oriname = $('input[type="file"]').val();
-		alert(oriname);
-		// 선택된 사진이 없을경우
-		if(oriname == null){
-			var oriname = $('input[type="file"]').val('/deli/resources/upload/noimage.jpg');
+		var oriname = $('#proimg').val();
+		
+		
+		if(!oriname){
+			$('#imgmsg').html('파일을 선택하세요!');
+			$('#imgmsg').removeClass('w3-text-green w3-text-red').addClass('w3-text-red');
+			$('#imgmsg').css('display', 'block');
+			$('#imgmsg').focus();
+			return;
 		}
 		
 		// 정규식 표현에 맞지 않은 경우

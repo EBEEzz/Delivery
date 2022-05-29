@@ -90,6 +90,7 @@
 						<label for="proimg" class="w3-left mgl10" style="font-weight: bold;">프로필사진</label>
 					</h5>
 					<input type="file" name="proimg" id="proimg" class="s8 w3-magin-top mgl10 w3-input w3-border w3-center" >
+					<span class="w3-col w3-text-green w3-center" id="imgmsg" style="display: none;" ></span>
 					<img id ="img" src="/deli/resources/img/avatar/noimage.jpg" class="w3-border w3-margin-top" style="whith: 200px; height: 200px;">
 				</div>
 			</form>

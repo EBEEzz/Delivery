@@ -196,7 +196,7 @@ small {
 	        	<div class="w3-section">
 					<h3 class="w3-center" id="infoid">${DATA.id}</h3>
 					<h5 class="w3-center">추천도 : <span><span id="spoon">🥄</span>${DATA.esti} / 5</span></h5>
-					<h5 class="w3-center"><span id="infomno">${DATA.mno}</span></h5>
+					<h5 class="w3-center" style="display: none;"><span id="infomno">${DATA.mno}</span></h5>
 					<h5 class="w3-center">이메일 : <span>${DATA.mail}</span></h5>
 					<h5 class="w3-center">카카오아이디 : <span>${DATA.kakaoid}</span></h5>
 					<h5 class="w3-center">전화번호 : <span>${DATA.tel}</span></h5>	
