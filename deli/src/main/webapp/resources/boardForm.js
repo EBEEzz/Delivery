@@ -114,29 +114,6 @@ $(document).ready(function(){
 	
 	var price = 0;
 
-/*
-	$('.pricebtn1').click(function(){
-		var count = parseInt($(this).parent().find('.inputprice').val());
-		var menu = $(this).parent().attr('id');
-		price = $(this).attr('id');
-		if(confirm(menu + ' 을/를 제외하시겠습니까?')) {
-			count -= 1;
-			if(count < 0) {
-				alert('구매하신 수량이 없습니다.');
-				return;
-			}
-			$(this).parent().find('.inputprice').val(count);
-		}
-		var i = parseInt($(this).parent().find('.inputprice').val()) * price;
-		var m = $(this).parent().attr('id');
-		var k = $('#abc > input').attr('name');
-		if(k = m){
-			var j = $('#abc > input').val(i);
-			alert(j);
-		}
-		
-	});
-*/
 	
 	let i = 0;
 	let o = 0;
