@@ -46,8 +46,6 @@ $(document).ready(function(){
 		$('#brdfrm').submit();
 	});
 	
-
-	
 		
 	function CountDownTimer(dt, id) {
 	    var end = new Date(dt);
