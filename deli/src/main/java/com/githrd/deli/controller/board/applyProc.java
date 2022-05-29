@@ -36,9 +36,12 @@ public class applyProc implements DeliInter {
 		String no = req.getParameter("bno");
 		int bno = Integer.parseInt(no);
 		
-		String spage = req.getParameter("nowPage");
-		int nowPage = Integer.parseInt(spage);
+		int nowPage = 1;
+
+
+
 		
+
 		String city = req.getParameter("city");
 		String search = req.getParameter("search");
 		String check = req.getParameter("check");

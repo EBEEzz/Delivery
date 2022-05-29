@@ -1153,7 +1153,7 @@ VALUES(
 INSERT INTO
     board(bno, bmno, title, body, larea, marea, sarea, end, category, rest)
 VALUES(
-    (SELECT NVL(MAX(bno) + 1, 1) FROM board), 1001, '배고프다', '삼겹살 콜?', '서울특별시', '종로구', '사직동', 12, '고기·구이', 4
+    (SELECT NVL(MAX(bno) + 1, 1) FROM board), 1001, '배고프다', '삼겹살 콜?', '서울특별시', '종로구', '사직동', 0, '고기·구이', 4
 );
 
 INSERT INTO
