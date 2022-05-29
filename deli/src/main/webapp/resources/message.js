@@ -33,4 +33,7 @@ $(document).ready(function(){
 	$('#sendmessage').click(function(){
 		$('#frm').submit();
 	});
+	$('.messbtn').click(function(){
+		
+	});
 });

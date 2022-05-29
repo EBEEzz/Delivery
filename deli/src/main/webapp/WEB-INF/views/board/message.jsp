@@ -33,6 +33,9 @@
 .messbtn {
 	padding: 0px;
 }
+.messbtn > div {
+	overflow: hidden;
+}
 </style>
 </head>
 <body>
