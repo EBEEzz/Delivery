@@ -13,7 +13,7 @@ package com.githrd.deli.sql;
  * 				2022.05.26	-	EDIT_PASSWORD
  * 				2022.05.27	-	SEL_ABNO
  * 				2022.05.27	-	SEL_NEWESTI
- * 				2022.05.28	-	ADD_ESTIINFO
+ * 				2022.05.28	-	ADD_ESTIINFO	-오류
  * 				2022.05.28	-	ADD_ESTI
  * 				2022.05.28	-	SEL_NEWESTI
  * 				2022.05.28	-	UPDATE_ESTI
@@ -32,7 +32,7 @@ public class EunbeeSQL {
 	
 	public final int EDIT_PASSWORD	= 2001;
 
-	public final int ADD_ESTIINFO	= 3001;
+	//public final int ADD_ESTIINFO	= 3001;
 	public final int ADD_ESTI		= 3002;
 	public final int UPDATE_ESTI	= 3003;
 	
@@ -84,17 +84,22 @@ public class EunbeeSQL {
 			break;
 		case SEL_ESTIINFO:
 			buff.append("SELECT ");
-			buff.append("    eidb, dir, savename ");
+			buff.append("    DISTINCT ");
+			buff.append("        ebno, eida, eidb, epoint, show, dir, savename ");
 			buff.append("FROM ");
-			buff.append("    estimate e, member m, imgfile i ");
+			buff.append("    estimate e, imgfile i, member m, ( ");
+			buff.append("		SELECT ");
+			buff.append("			e.isshow show ");
+			buff.append("		FROM ");
+			buff.append("			estimate e ");
+			buff.append("	) ");
 			buff.append("WHERE ");
-			buff.append("    e.eidb = m.id ");
-			buff.append("    AND m.mno = i.amno ");
-			buff.append("    AND e.isshow = 'Y' ");
-			buff.append("    AND ebno = ? ");
+			buff.append("    e.isshow = 'Y' ");
 			buff.append("    AND eida = ? ");
 			buff.append("    AND eidb != ? ");
+			buff.append("    AND ebno = ? ");
 			break;
+		/*
 		case ADD_ESTIINFO:
 			buff.append("INSERT INTO ");
 			buff.append("    estimate(ebno, eida, eidb) ");
@@ -102,6 +107,7 @@ public class EunbeeSQL {
 			buff.append("    ?, ?, ? ");
 			buff.append(") ");
 			break;
+		*/
 		case ADD_ESTI:
 			buff.append("UPDATE ");
 			buff.append("    estimate ");
@@ -144,6 +150,7 @@ public class EunbeeSQL {
 			buff.append("    abno = ? ");
 			buff.append("    AND isshow = 'Y' ");
 			break;
+		
 		}
 		return buff.toString();
 	}

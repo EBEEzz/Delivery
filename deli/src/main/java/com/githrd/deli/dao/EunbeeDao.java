@@ -132,19 +132,23 @@ public class EunbeeDao {
 		return list;
 	}
 	
-	public ArrayList<EunbeeVO> getAid(int bno, String id) {
+	public ArrayList<EunbeeVO> getAid(String id, int bno) {
 		ArrayList<EunbeeVO> list = new ArrayList<EunbeeVO>();
 		con = db.getCon();
 		String sql = eSQL.getSQL(eSQL.SEL_ESTIINFO);
 		pstmt = db.getPSTMT(con, sql);
 		try {
-			pstmt.setInt(1, bno);
+			pstmt.setString(1, id);
 			pstmt.setString(2, id);
-			pstmt.setString(3, id);
+			pstmt.setInt(3, bno);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				EunbeeVO eVO = new EunbeeVO();
+				eVO.setBno(rs.getInt("ebno"));
+				eVO.setId(rs.getString("eida"));
 				eVO.setIdb(rs.getString("eidb"));
+				eVO.setPoint(rs.getDouble("epoint"));
+				eVO.setShow(rs.getString("show"));
 				eVO.setDir(rs.getString("dir"));
 				eVO.setSavename(rs.getString("savename"));
 				
@@ -160,6 +164,7 @@ public class EunbeeDao {
 		return list;
 	}
 	
+	/*
 	public int addEstiInfo(EunbeeVO eVO) {
 		int cnt = 0;
 		con = db.getCon();
@@ -178,7 +183,7 @@ public class EunbeeDao {
 			db.close(con);
 		}
 		return cnt;
-	}
+	}*/
 	
 	public int addEsti(EunbeeVO eVO) {
 		int cnt = 0;

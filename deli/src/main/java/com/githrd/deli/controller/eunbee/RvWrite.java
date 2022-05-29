@@ -32,8 +32,10 @@ public class RvWrite implements DeliInter {
 		
 		
 		EunbeeVO eVO = new EunbeeVO();
-		ArrayList<EunbeeVO> list = eDao.getAid(abno, id);
+		ArrayList<EunbeeVO> list = eDao.getAid(id, abno);
+		req.setAttribute("LLIST", list);
 		
+		/*
 		ArrayList<EunbeeVO> reglist = eDao.getRegmem(abno);
 		for(int i = 0; i < reglist.size(); i++) {
 			String eidb = reglist.get(i).getId();
@@ -46,9 +48,8 @@ public class RvWrite implements DeliInter {
 				view = "/review/rvList";
 			}
 			
-		}
+		}*/
 		
-		req.setAttribute("LLIST", list);
 		
 		return view;
 	}
