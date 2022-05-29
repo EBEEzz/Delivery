@@ -17,11 +17,14 @@ import com.githrd.deli.vo.*;
  * 				2022.05.24	-	클래스제작
  * 				2022.05.24	-	getId()
  * 				2022.05.25	-	getMail()
- * 				2022.05.26	-	editPw()
- * 				2022.05.27	-	getAbno()
+ * 				2022.05.25	-	editPw()
+ * 				2022.05.26	-	getAbInfo()
  * 				2022.05.27	-	getAid()
- * 				2022.05.28	-	addEstiInfo()
+ * 				2022.05.28	-	updateEshow()
+ * 				2022.05.28	-	addEsti()
  * 				2022.05.28	-	getNewEsti()
+ * 				2022.05.28	-	updateEsti()
+ * 				2022.05.28	-	getRegmen()
  * 									담당자 ] 안은비
  *
  */

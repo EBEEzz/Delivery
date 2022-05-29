@@ -2,6 +2,9 @@ package com.githrd.deli.controller.eunbee;
 
 import java.util.*;
 
+import javax.mail.*;
+import javax.mail.internet.*;
+
 /**
  * 메일 보내기 연습 클래스
  * @author	안은비
@@ -13,9 +16,6 @@ import java.util.*;
  * 									담당자 ] 안은비
  *
  */
-
-import javax.mail.*;
-import javax.mail.internet.*;
 
 public class Sendgmail {
 	

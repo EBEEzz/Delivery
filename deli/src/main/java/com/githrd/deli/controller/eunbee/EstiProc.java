@@ -11,6 +11,18 @@ import com.githrd.deli.controller.DeliInter;
 import com.githrd.deli.dao.EunbeeDao;
 import com.githrd.deli.vo.EunbeeVO;
 
+/**
+ * 새로운 추천도와 기존 추천도를 평균내서 추천도 업데이트
+ * @author	안은비
+ * @since	2022.05.28
+ * @version	v.1.0
+ * 
+ * 			작업이력 ]
+ * 				2022.05.28	-	클래스제작
+ * 									담당자 ] 안은비
+ *
+ */
+
 public class EstiProc implements DeliInter {
 
 	@Override

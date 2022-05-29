@@ -10,6 +10,18 @@ import com.githrd.deli.controller.*;
 import com.githrd.deli.dao.*;
 import com.githrd.deli.vo.*;
 
+/**
+ * 후기에 작성한 추천도 데이터 넘기기
+ * @author	안은비
+ * @since	2022.05.28
+ * @version	v.1.0
+ * 
+ * 			작업이력 ]
+ * 				2022.05.28	-	클래스제작
+ * 									담당자 ] 안은비
+ *
+ */
+
 public class RvWriteProc implements DeliInter {
 
 	@Override

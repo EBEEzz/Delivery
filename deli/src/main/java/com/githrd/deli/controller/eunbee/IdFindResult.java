@@ -2,6 +2,12 @@ package com.githrd.deli.controller.eunbee;
 
 import java.io.IOException;
 
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+import com.githrd.deli.controller.*;
+import com.githrd.deli.dao.*;
+
 /**
  * 아이디 찾기 결과 요청
  * @author	안은비
@@ -13,12 +19,6 @@ import java.io.IOException;
  * 									담당자 ] 안은비
  *
  */
-
-import javax.servlet.*;
-import javax.servlet.http.*;
-
-import com.githrd.deli.controller.*;
-import com.githrd.deli.dao.*;
 
 public class IdFindResult implements DeliInter {
 

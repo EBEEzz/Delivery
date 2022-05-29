@@ -10,6 +10,19 @@ import com.githrd.deli.controller.*;
 import com.githrd.deli.dao.*;
 import com.githrd.deli.vo.*;
 
+/**
+ * 후기 작성 페이지
+ * @author	안은비
+ * @since	2022.05.26
+ * @version	v.1.0
+ * 
+ * 			작업이력 ]
+ * 				2022.05.26	-	클래스제작
+ * 				2022.05.27	-	함께공구한사람불러오기
+ * 									담당자 ] 안은비
+ *
+ */
+
 public class RvWrite implements DeliInter {
 
 	@Override

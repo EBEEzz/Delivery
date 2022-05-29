@@ -11,6 +11,18 @@ import com.githrd.deli.controller.DeliInter;
 import com.githrd.deli.dao.EunbeeDao;
 import com.githrd.deli.vo.EunbeeVO;
 
+/**
+ * 공동구매 참여 내역 리스트
+ * @author	안은비
+ * @since	2022.05.28
+ * @version	v.1.0
+ * 
+ * 			작업이력 ]
+ * 				2022.05.28	-	클래스제작
+ * 									담당자 ] 안은비
+ *
+ */
+
 public class RvList implements DeliInter {
 
 	@Override

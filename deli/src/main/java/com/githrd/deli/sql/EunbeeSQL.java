@@ -10,9 +10,10 @@ package com.githrd.deli.sql;
  * 				2022.05.24	-	클래스제작
  * 				2022.05.24	-	SEL_ID
  * 				2022.05.25	-	SEL_MAIL
- * 				2022.05.26	-	EDIT_PASSWORD
- * 				2022.05.27	-	SEL_ABNO
- * 				2022.05.27	-	SEL_NEWESTI
+ * 				2022.05.25	-	EDIT_PASSWORD
+ * 				2022.05.26	-	SEL_ABINFO
+ * 				2022.05.27	-	SEL_ESTIINFO
+ * 				2022.05.28	-	UPDATE_ESHOW
  * 				2022.05.28	-	ADD_ESTI
  * 				2022.05.28	-	SEL_NEWESTI
  * 				2022.05.28	-	UPDATE_ESTI
