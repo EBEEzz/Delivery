@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function(){	
 	$('.w33').click(function(){
 		
 		var city = $(this).val();
@@ -23,5 +23,14 @@ $(document).ready(function(){
 	$('#hbtn').click(function(){
 		$(location).attr('href', '/deli/main.dlv');
 	});
-
+	
+	$('#mymess').click(function(){
+		$(location).attr('href', '/deli/message.dlv');
+	})
+	$('#send').click(function(){
+		$(location).attr('href', '/deli/msform.dlv');
+	});
+	$('#sendmessage').click(function(){
+		$('#frm').submit();
+	});
 });

@@ -46,9 +46,21 @@
 컨트롤러	:	com.githrd.deli.controller.board.FriendCanProc
 뷰			:	-
 ----------------------------------------------------------------------------------
-# 메세지 폼보기 요청
+# 메세지 리스트보기 요청
 요청내용	:	/deli/message.dlv
 파라미터	:	-
-컨트롤러	:	com.githrd.deli.controller.board.message
+컨트롤러	:	com.githrd.deli.controller.board.Message
 뷰			:	/WEB-INF/views/board/message.jsp
+----------------------------------------------------------------------------------
+# 메세지 작성 폼보기 요청
+요청내용	:	/deli/msform.dlv
+파라미터	:	-
+컨트롤러	:	com.githrd.deli.controller.board.MessageForm
+뷰			:	/WEB-INF/views/board/messageForm.jsp
+----------------------------------------------------------------------------------
+# 메세지 전송 처리 요청
+요청내용	:	/deli/msProc.dlv
+파라미터	:	title, body
+컨트롤러	:	com.githrd.deli.controller.board.MessageProc
+뷰			:	-
 ----------------------------------------------------------------------------------

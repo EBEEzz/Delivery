@@ -834,5 +834,57 @@ public class YonghyunDao {
 		}
 		return cnt;
 	}
+	
+	
+	// 받은 메세지 확인 함수
+	public ArrayList<YonghyunVO> getMessage(String id) {
+		ArrayList<YonghyunVO> list = new ArrayList<YonghyunVO>();
+		con = db.getCon();
+		String sql = ySQL.getSQL(ySQL.SEL_MESSAGE);
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+			YonghyunVO yVO = new YonghyunVO();
+			yVO.setId(rs.getString("id"));
+			yVO.setTitle(rs.getString("mstitle"));
+			yVO.setBody(rs.getString("msbody"));
+			yVO.setWdate(rs.getDate("wdate"));
+			yVO.setWtime(rs.getTime("wdate"));
+			yVO.setSdate();
+			list.add(yVO);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(rs);
+			db.close(pstmt);
+			db.close(con);
+		}
+		return list;
+	}
 
+	
+	// 메세지 전송 함수
+	public int UpMessage(String id, String fid, String title, String body) {
+		int cnt = 0;
+		con = db.getCon();
+		String sql = ySQL.getSQL(ySQL.UPDATE_MESSAGE);
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			pstmt.setString(1, id);
+			pstmt.setString(2, fid);
+			pstmt.setString(3, title);
+			pstmt.setString(4, body);
+System.out.println("작동테스트");			
+			cnt = pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(pstmt);
+			db.close(con);
+		}
+		return cnt;
+	}
 }

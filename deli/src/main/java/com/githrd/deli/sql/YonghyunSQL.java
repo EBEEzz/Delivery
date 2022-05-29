@@ -32,6 +32,7 @@ public class YonghyunSQL {
 	public final int SEL_FRIEND_CHECK = 1018;
 	public final int SEL_FRIEND_APPLY = 1019;
 	public final int SEL_DELFRIEND_CHECK = 1020;
+	public final int SEL_MESSAGE = 1021;
 		
 	public final int UPDATE_CLICK = 2001;
 	public final int UPDATE_REGI = 2002;
@@ -40,6 +41,7 @@ public class YonghyunSQL {
 	public final int UPDATE_FRIEND_TOO = 2005;
 	public final int UPDATE_FRIEND_CANCLE = 2006;
 	public final int UPDATE_CHAT = 2007;
+	public final int UPDATE_MESSAGE = 2008;
 	
 	public final int DEL_REGI = 3001;
 	public final int DEL_FRIEND = 3002;
@@ -326,6 +328,16 @@ public class YonghyunSQL {
 				buff.append("    AND isshow = 'Y' ");
 				buff.append("    AND agree = 'Y' ");
 				break;
+			case SEL_MESSAGE :
+				buff.append("SELECT ");
+				buff.append("   id, mstitle, msbody, wdate  ");
+				buff.append("FROM ");
+				buff.append("    message s, member m ");
+				buff.append("WHERE ");
+				buff.append("    s.isshow = 'Y' ");
+				buff.append("    AND s.myno = (SELECT mno FROM member WHERE id = ?) ");
+				buff.append("    AND writerno = mno ");
+				break;
 			case UPDATE_CLICK :
 				buff.append("UPDATE ");
 				buff.append("    board ");
@@ -382,6 +394,16 @@ public class YonghyunSQL {
 				buff.append("VALUES( ");
 				buff.append("    (SELECT NVL(MAX(cno) + 1, 1) FROM chat), ");
 				buff.append("    (SELECT mno FROM member WHERE id = ? ), ? ");
+				buff.append(") ");
+				break;
+			case UPDATE_MESSAGE :
+				buff.append("INSERT INTO ");
+				buff.append("    message(msno, writerno, myno, mstitle, msbody) ");
+				buff.append("VALUES( ");
+				buff.append("    (SELECT NVL(MAX(msno) + 1, 1) FROM message),  ");
+				buff.append("    (SELECT mno FROM member WHERE id = ? ),  ");
+				buff.append("    (SELECT mno FROM member WHERE id = ? ), ");
+				buff.append("    ? , ? ");
 				buff.append(") ");
 				break;
 			case DEL_REGI :

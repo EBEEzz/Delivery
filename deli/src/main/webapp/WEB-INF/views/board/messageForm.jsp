@@ -10,7 +10,7 @@
 <link rel="stylesheet" type="text/css" href="/deli/resources/css/base.css">
 <link rel="stylesheet" type="text/css" href="/deli/resources/css/user.css">
 <link rel="stylesheet" type="text/css" href="/deli/resources/css/w3.css">
-<script type="text/javascript" src="/deli/resources/message.js"></script>
+<script type="text/javascript" src="/deli/resources/messageForm.js"></script>
 <style type="text/css">
 .w33 {
 	width: 14.285%;
@@ -33,9 +33,16 @@
 .messbtn {
 	padding: 0px;
 }
+textarea {
+	resize: none;
+}
 </style>
 </head>
 <body>
+<c:if test="${not empty SENDTEST}">
+	<input type="hidden" value="${SENDTEST}" id="sendtest">
+</c:if>
+
 	<div class="mxw800 w3-content w3-center">
 		<button class="w3-right-align mg0 w3-left mg0 pdAll0 w3-button mgt10 member" id="hbtn">HOME</button>
 <c:if test="${not empty SID}">
@@ -58,29 +65,27 @@
 			</div>
 		</form>
 		
-		
-		<div>
-			<div class="w3-col m2 w3-margin w3-border">
-				<div class="w3-button w3-border-bottom" id="mymess">받은 쪽지</div>
-				<div class="w3-button" id="send">쪽지 보내기</div>
-			</div>
-			<div class="w3-col m9 w3-margin-top w3-border w3-right w3-light-gray">
-				<div class="w3-col m1 w3-border-right">보낸사람</div>
-				<div class="w3-col m3 w3-border-right">제목</div>
-				<div class="w3-col m4 w3-border-right">내용</div>
-				<div class="w3-col m4">보낸날짜</div>
-			</div>
-<c:forEach var="data" items="${MESSAGE}">			
-			<div class="w3-col m9 w3-border w3-right w3-button messbtn" id="${data.id}">
-				<div class="w3-col m1 w3-border-right">${data.id}</div>
-				<div class="w3-col m3 w3-border-right">${data.title}</div>
-				<div class="w3-col m4 w3-border-right">${data.body}</div>
-				<div class="w3-col m4">${data.sdate}</div>
-			</div>
-</c:forEach>
+		<div class="w3-col m2 w3-margin w3-border">
+			<div class="w3-button w3-border-bottom" id="mymess">받은 쪽지</div>
+			<div class="w3-button" id="send">쪽지 보내기</div>
 		</div>
-		
-		
+		<form method="POST" action="/deli/msProc.dlv" id="mesfrm" name="mesfrm">
+			<div class="w3-col w3-border w3-padding m9 w3-margin-top">
+				<div class="w3-col w3-margin-top w3-right">
+					<div class="w3-col m2">받는사람</div>
+					<input class="w3-col m9" name="fid">
+				</div>
+				<div class="w3-col w3-margin-top w3-right">
+					<div class="w3-col m2">제목</div>
+					<input class="w3-col m9" name="title">
+				</div>
+				<div class="w3-col w3-margin-top w3-right">
+					<div class="w3-col m2">내용</div>
+					<textarea class="w3-col m9" rows="6" name="body"></textarea>
+				</div>
+				<div class="w3-col w3-button w3-right w3-margin-top" id="sendmessage">전송</div>
+			</div>
+		</form>
 		
 	</div>
 </body>
