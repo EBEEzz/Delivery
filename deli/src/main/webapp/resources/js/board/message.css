@@ -1,0 +1,24 @@
+.w33 {
+	width: 14.285%;
+}
+.h500 {
+	height: 500px;
+	padding-left: 10px;
+	padding-right: 10px;
+	overflow: auto;
+}
+.member {
+	text-size: 8px;
+	border: 0px;
+	background-color: white;
+}
+.w230 {
+	width: 230px;
+	margin-bottom: 3px;
+}
+.messbtn {
+	padding: 0px;
+}
+.messbtn > div {
+	overflow: hidden;
+}

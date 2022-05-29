@@ -1,3 +1,13 @@
+/**
+ * @author	이용현
+ * @since	2022/05/28
+ * @version	v.1.0
+ * 
+ * 			작업이력 ]
+ * 				2022.05.28	-	클래스제작
+ * 								담당자 : 이용현
+ */
+
 $(document).ready(function(){
 	
 	$('#hbtn').click(function(){
