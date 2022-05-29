@@ -140,6 +140,8 @@ $(document).ready(function(){
 	
 	let i = 0;
 	let o = 0;
+	var menu = '';
+	var subprice = 0;
 	$('.pricebtn1').click(function(){
 		var count = parseInt($(this).parent().find('.inputprice').val()); // 수량
 		var menu = $(this).parent().attr('id'); // 메뉴
