@@ -38,10 +38,10 @@ public class RvWriteProc implements DeliInter {
 		int pts = Integer.parseInt(nesti);
 		
 		EunbeeVO eVO = new EunbeeVO();
-		eVO.setPoint(pts);
 		eVO.setBno(abno);
 		eVO.setId(ida);
 		eVO.setIdb(idb);
+		eVO.setPoint(pts);
 		
 		int cnt = eDao.addEsti(eVO);
 		

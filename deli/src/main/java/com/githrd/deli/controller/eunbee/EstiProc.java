@@ -24,6 +24,7 @@ public class EstiProc implements DeliInter {
 		
 		String ida = (String)req.getSession().getAttribute("SID");
 		String idb = (String)req.getSession().getAttribute("EID");
+		int abno = (Integer)req.getSession().getAttribute("ABNO");
 		
 		EunbeeDao eDao = new EunbeeDao();
 		EunbeeVO eVO = eDao.getNewEsti(idb);
@@ -37,6 +38,11 @@ public class EstiProc implements DeliInter {
 		
 		if(cnt != 1) {
 			view = "/deli/review/rvWrite.dlv";
+		} else if(cnt == 1) {
+			int cnt2 = eDao.updateEshow(abno, idb);
+			if(cnt2 != 1) {
+				view = "/deli/review/rvWrite.dlv";
+			}
 		}
 		
 		return view;

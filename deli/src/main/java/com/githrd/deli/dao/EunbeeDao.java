@@ -132,23 +132,20 @@ public class EunbeeDao {
 		return list;
 	}
 	
-	public ArrayList<EunbeeVO> getAid(String id, int bno) {
+	public ArrayList<EunbeeVO> getAid(int bno, String id) {
 		ArrayList<EunbeeVO> list = new ArrayList<EunbeeVO>();
 		con = db.getCon();
 		String sql = eSQL.getSQL(eSQL.SEL_ESTIINFO);
 		pstmt = db.getPSTMT(con, sql);
 		try {
-			pstmt.setString(1, id);
+			pstmt.setInt(1, bno);
 			pstmt.setString(2, id);
-			pstmt.setInt(3, bno);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				EunbeeVO eVO = new EunbeeVO();
-				eVO.setBno(rs.getInt("ebno"));
-				eVO.setId(rs.getString("eida"));
-				eVO.setIdb(rs.getString("eidb"));
-				eVO.setPoint(rs.getDouble("epoint"));
+				eVO.setIdb(rs.getString("aid"));
 				eVO.setShow(rs.getString("show"));
+				eVO.setEshow(rs.getString("eshow"));
 				eVO.setDir(rs.getString("dir"));
 				eVO.setSavename(rs.getString("savename"));
 				
@@ -164,16 +161,14 @@ public class EunbeeDao {
 		return list;
 	}
 	
-	/*
-	public int addEstiInfo(EunbeeVO eVO) {
+	public int updateEshow(int bno, String idb) {
 		int cnt = 0;
 		con = db.getCon();
-		String sql = eSQL.getSQL(eSQL.ADD_ESTIINFO);
+		String sql = eSQL.getSQL(eSQL.UPDATE_ESHOW);
 		pstmt = db.getPSTMT(con, sql);
 		try {
-			pstmt.setInt(1, eVO.getBno());
-			pstmt.setString(2, eVO.getId());
-			pstmt.setString(3, eVO.getIdb());
+			pstmt.setInt(1, bno);
+			pstmt.setString(2, idb);
 			
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
@@ -183,7 +178,7 @@ public class EunbeeDao {
 			db.close(con);
 		}
 		return cnt;
-	}*/
+	}
 	
 	public int addEsti(EunbeeVO eVO) {
 		int cnt = 0;
@@ -191,10 +186,10 @@ public class EunbeeDao {
 		String sql = eSQL.getSQL(eSQL.ADD_ESTI);
 		pstmt = db.getPSTMT(con, sql);
 		try {
-			pstmt.setDouble(1, eVO.getPoint());
-			pstmt.setInt(2, eVO.getBno());
-			pstmt.setString(3, eVO.getId());
-			pstmt.setString(4, eVO.getIdb());
+			pstmt.setInt(1, eVO.getBno());
+			pstmt.setString(2, eVO.getId());
+			pstmt.setString(3, eVO.getIdb());
+			pstmt.setDouble(4, eVO.getPoint());
 			
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
@@ -203,17 +198,16 @@ public class EunbeeDao {
 			db.close(pstmt);
 			db.close(con);
 		}
-		
 		return cnt;
 	}
 	
-	public EunbeeVO getNewEsti(String id) {
+	public EunbeeVO getNewEsti(String idb) {
 		EunbeeVO eVO = new EunbeeVO();
 		con = db.getCon();
 		String sql = eSQL.getSQL(eSQL.SEL_NEWESTI);
 		pstmt = db.getPSTMT(con, sql);
 		try {
-			pstmt.setString(1, id);
+			pstmt.setString(1, idb);
 			rs = pstmt.executeQuery();
 			rs.next();
 			
@@ -229,14 +223,14 @@ public class EunbeeDao {
 		return eVO;
 	}
 	
-	public int updateEsti(double esti, String id) {
+	public int updateEsti(double esti, String idb) {
 		int cnt = 0;
 		con = db.getCon();
 		String sql = eSQL.getSQL(eSQL.UPDATE_ESTI);
 		pstmt = db.getPSTMT(con, sql);
 		try {
 			pstmt.setDouble(1, esti);
-			pstmt.setString(2, id);
+			pstmt.setString(2, idb);
 			
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
