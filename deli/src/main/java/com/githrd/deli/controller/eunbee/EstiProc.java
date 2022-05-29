@@ -16,7 +16,7 @@ public class EstiProc implements DeliInter {
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setAttribute("isRedirect", true);
-		String view = "/deli/main.dlv";
+		String view = "/deli/review/rvWrite.dlv";
 		
 		if(req.getSession().getAttribute("SID") == null) {
 			view = "/deli/member/login.dlv";
@@ -24,7 +24,8 @@ public class EstiProc implements DeliInter {
 		
 		String ida = (String)req.getSession().getAttribute("SID");
 		String idb = (String)req.getSession().getAttribute("EID");
-		int abno = (Integer)req.getSession().getAttribute("ABNO");
+		String abno = (String)req.getSession().getAttribute("ABNO");
+		int bno = Integer.parseInt(abno);
 		
 		EunbeeDao eDao = new EunbeeDao();
 		EunbeeVO eVO = eDao.getNewEsti(idb);
@@ -34,16 +35,21 @@ public class EstiProc implements DeliInter {
 		
 		double esti = (2.5 + spts) / (1 + cpts);
 		
+		System.out.println(idb);
+		System.out.println(bno);
+		System.out.println(spts);
+		System.out.println(cpts);
+		
 		int cnt = eDao.updateEsti(esti, idb);
+		int cnt2 = eDao.updateEshow(bno, idb);
 		
 		if(cnt != 1) {
-			view = "/deli/review/rvWrite.dlv";
-		} else if(cnt == 1) {
-			int cnt2 = eDao.updateEshow(abno, idb);
-			if(cnt2 != 1) {
-				view = "/deli/review/rvWrite.dlv";
-			}
+			view = "/deli/review/rvList.dlv";
 		}
+		if(cnt2 != 1) {
+			view = "/deli/review/rvList.dlv";
+		}
+		
 		
 		return view;
 	}
