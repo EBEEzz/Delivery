@@ -168,9 +168,11 @@ $(document).ready(function(){
 			i = parseInt($(this).parent().find('.inputprice').val()) * price; // 누적금액
 			$('#abc > div > [name="' + menu + '"]').val(i);
 
+			if(count > 1) {
+				menu = menu + '외' + count -1 + '건';
+			}
 			return i;
 			
-			//var i = '<div class="w3-col w3-left-align w3-padding pri">'+ menu + ' : ' + '<span>'+ count+'개<span>'  +'</div>';
 		}
 	});
 	
@@ -200,9 +202,8 @@ $(document).ready(function(){
 	
 
 	$('#paybtn').click(function(){
-		$('#1mname').val(mname);
-		$('#1price').val(price);
-		alert(price);
+		$('#1mname').val(menu);
+		$('#1price').val(subprice);
 		$('#pageFrm').attr('action','/deli/payment/beforePay.dlv');
 		$('#pageFrm').submit();
 	});
