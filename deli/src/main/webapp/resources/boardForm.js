@@ -156,6 +156,9 @@ $(document).ready(function(){
 			o = parseInt($(this).parent().find('.inputprice').val()) * price; // 누적금액
 				$('#abc > div > [name="' + menu + '"]').val(o);
 		
+			var mprice = 0;
+			mprice = $(this).attr('id');
+			subprice = subprice - (-mprice);
 			return o;
 		}
 	});
