@@ -43,14 +43,6 @@ $(document).ready(function(){
 		return;
 	});
 
-	$('#proimg').change(function(e){
-		var sfile = $(this).val();
-		var path = '/deli${DATA.dir}/${DATA.oriname}';
-		if(sfile){
-			var path = URL.createObjectURL(e.target.files[0]);
-		}
-		$('#img').attr('src', path);
-	});
 	
 	// 정규 표현식 검사
 	var telPattern = /^([0-9]{2,3}(-))-?([0-9]{3,4}(-))-?([0-9]{4})$/;
@@ -78,6 +70,16 @@ $(document).ready(function(){
 			$('#newmailmsg').html('형식에 알맞은 이메일 입니다.');
 			$('#newmailmsg').removeClass('w3-text-green w3-text-red').addClass('w3-text-green');
 		}
+	});
+	
+	
+	$('#proimg').change(function(e){
+		var sfile = $(this).val();
+		var path = '/deli${DATA.dir}/${DATA.oriname}';
+		if(sfile){
+			var path = URL.createObjectURL(e.target.files[0]);
+		}
+		$('#img').attr('src', path);
 	});
 	
 	// 수정버튼 클릭이벤트

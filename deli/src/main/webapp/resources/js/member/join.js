@@ -77,15 +77,6 @@ $(document).ready(function(){
 		return;
 	});
 	
-	$('#proimg').change(function(e){
-		var sfile = $(this).val();
-		var path = '/deli/resources/upload/noimage.jpg';
-		if(sfile){
-			var path = URL.createObjectURL(e.target.files[0]);
-		}
-		$('#img').attr('src', path);
-	});
-	
 	// 정규 표현식 검사
 	var telPattern = /^([0-9]{2,3}(-))-?([0-9]{3,4}(-))-?([0-9]{4})$/;
 	$('#tel').change(function(){
@@ -113,7 +104,17 @@ $(document).ready(function(){
 			$('#mailmsg').removeClass('w3-text-green w3-text-red').addClass('w3-text-green');
 		}
 	});
+	// 파일 업로드
+	$('#proimg').change(function(e){
+		var sfile = $(this).val();
+		var path = '';
+		if(sfile){
+			path = URL.createObjectURL(e.target.files[0]);
+		}
+		$('#img').attr('src', path);
+	});
 	
+	// 회원가입 버튼 클릭이벤트
 	$('#jbtn').click(function(){
 		// 데이터 유효성 검사
 		var name = $('#name').val();
