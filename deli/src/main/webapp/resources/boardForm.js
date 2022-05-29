@@ -46,10 +46,8 @@ $(document).ready(function(){
 		$('#brdfrm').submit();
 	});
 	
-
-	
 		
-		function CountDownTimer(dt, id) {
+	function CountDownTimer(dt, id) {
 	    var end = new Date(dt);
 	    var _second = 1000;
 	    var _minute = _second * 60;
@@ -114,29 +112,6 @@ $(document).ready(function(){
 	
 	var price = 0;
 
-/*
-	$('.pricebtn1').click(function(){
-		var count = parseInt($(this).parent().find('.inputprice').val());
-		var menu = $(this).parent().attr('id');
-		price = $(this).attr('id');
-		if(confirm(menu + ' 을/를 제외하시겠습니까?')) {
-			count -= 1;
-			if(count < 0) {
-				alert('구매하신 수량이 없습니다.');
-				return;
-			}
-			$(this).parent().find('.inputprice').val(count);
-		}
-		var i = parseInt($(this).parent().find('.inputprice').val()) * price;
-		var m = $(this).parent().attr('id');
-		var k = $('#abc > input').attr('name');
-		if(k = m){
-			var j = $('#abc > input').val(i);
-			alert(j);
-		}
-		
-	});
-*/
 	
 	let i = 0;
 	let o = 0;
@@ -144,7 +119,7 @@ $(document).ready(function(){
 	var subprice = 0;
 	$('.pricebtn1').click(function(){
 		var count = parseInt($(this).parent().find('.inputprice').val()); // 수량
-		var menu = $(this).parent().attr('id'); // 메뉴
+		menu = $(this).parent().attr('id'); // 메뉴
 		price = $(this).attr('id'); // 가격
 		if(confirm(menu + ' 을/를 제외하시겠습니까?')) {
 			count -= 1;
@@ -165,7 +140,7 @@ $(document).ready(function(){
 
 	$('.pricebtn2').click(function(){
 		var count = parseInt($(this).parent().find('.inputprice').val());
-		var menu = $(this).parent().attr('id');
+		menu = $(this).parent().attr('id');
 		price = $(this).attr('id'); // 가격
 		if(confirm(menu + ' 을/를 추가하시겠습니까?')) {
 			count += 1;
@@ -216,9 +191,6 @@ $(document).ready(function(){
 		$('#pageFrm').submit();
 	});
 
-	
-
-	
 
 		
 	
