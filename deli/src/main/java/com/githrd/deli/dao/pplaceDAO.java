@@ -6,10 +6,9 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import com.githrd.deli.sql.*;
-import com.githrd.deli.util.*;
-import com.githrd.deli.dao.*;
-import com.githrd.deli.vo.*;
+import com.githrd.deli.sql.pplaceSQL;
+import com.githrd.deli.util.DButil;
+import com.githrd.deli.vo.pplaceVO;
 
 public class pplaceDAO {
 	private DButil util = new DButil();

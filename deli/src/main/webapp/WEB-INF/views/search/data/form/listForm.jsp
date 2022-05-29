@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import = "dao.*,vo.*,java.util.*"%>
+    pageEncoding="UTF-8" import = "com.githrd.deli.dao.*,com.githrd.deli.dao.*,java.util.*"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<jsp:useBean id = "dao" class = "dao.delipDAO"/>
-<jsp:useBean id = "vo" class = "vo.delipVO"/>
+
 <%
+	delipDAO dao = new delipDAO();
+	delipVO vo  = new delipVO();
 	List<delipVO> list = dao.select();
 	request.setAttribute("list", list);
 %>

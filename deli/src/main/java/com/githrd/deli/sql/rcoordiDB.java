@@ -1,10 +1,10 @@
-package sql;
+package com.githrd.deli.sql;
 
 public class rcoordiDB {
 	public final int SELECT = 1000;
 	public final int SELONE = 1001;
 	public final int INSERT = 1002;
-	
+
 	public String setString(int code) {
 		StringBuffer buff = new StringBuffer();
 		switch (code) {
@@ -18,13 +18,13 @@ public class rcoordiDB {
 			buff.append("from rcoordi ");
 			buff.append("where resname = ? ");
 			break;
-			
+
 		case INSERT:
 			buff.append("insert into rcoordi ");
 			buff.append("values (rcoordi_seq.nextval, ? , ? , ? , ? , ? , ? , ?, ? ) ");
 			break;
-		
+
 		}
-		return buff.toString();	
+		return buff.toString();
 	}
 }

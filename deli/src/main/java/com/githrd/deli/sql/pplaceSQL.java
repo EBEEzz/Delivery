@@ -1,4 +1,4 @@
-package sql;
+package com.githrd.deli.sql;
 
 public class pplaceSQL {
 	public final int SELECT = 1000;
