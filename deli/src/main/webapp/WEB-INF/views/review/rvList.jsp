@@ -48,7 +48,7 @@
 	</form>
 	<div class="w3-display-middle w3-border w3-padding w3-col m8">
     	<div class="w3-container mgt10 mgb20 w3-black">
-      		<h3 class="w3-margin-right"><strong>Delivery 경험을 공유해주세요!</strong></h3>
+      		<h3 class="w3-margin-right"><strong>Delivery 참여 기록</strong></h3>
     	</div>
     	<div class="w3-container w3-padding-16 mgt20">
         	<div class="w3-row-padding" style="margin:0 -16px;">
@@ -78,6 +78,9 @@
 </c:forEach>
 					</div>
           		</div>
+          		<div class="h20 ft12">
+					<div class="w3-center w3-left w3-button w3-round-large w3-black w3-margin lbbtn">Back</div>
+				</div>
         	</div>
     	</div>
   	</div>

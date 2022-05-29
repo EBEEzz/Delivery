@@ -35,11 +35,6 @@ public class EstiProc implements DeliInter {
 		
 		double esti = (2.5 + spts) / (1 + cpts);
 		
-		System.out.println(idb);
-		System.out.println(bno);
-		System.out.println(spts);
-		System.out.println(cpts);
-		
 		int cnt = eDao.updateEsti(esti, idb);
 		int cnt2 = eDao.updateEshow(bno, idb);
 		

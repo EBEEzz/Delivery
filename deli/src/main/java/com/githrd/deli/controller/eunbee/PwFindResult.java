@@ -56,7 +56,7 @@ public class PwFindResult implements DeliInter {
 			
 			String host = "smtp.naver.com"; 
 			String user = "320aeb@naver.com";	// 네이버 계정
-			String password = "xlswmdhsxkq0710";	// 네이버 패스워드
+			String password = "dms3ql2dks0!";	// 네이버 패스워드
 			
 			// SMTP 서버 정보를 설정한다.
 			Properties props = new Properties();

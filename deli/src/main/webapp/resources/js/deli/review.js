@@ -28,12 +28,12 @@ $(document).ready(function() {
 		$('#abno').val(abno);
 		
 		$('.sbtn').click(function() {
-			alert('후기가 제출되었습니다!');
 			$('#frm').submit();
 		});
 	});
 	
 	$('.sbtn').click(function() {
+		alert('후기가 제출되었습니다!');
 	});
 	
 	$('.rlist').click(function() {
@@ -42,5 +42,12 @@ $(document).ready(function() {
 		$('#ridb').val(bid);
 		$('#rfrm').submit();
 	});
+	
+	$('.bbtn').click(function() {
+		$(location).attr('href',  '/deli/review/rvList.dlv');
+	});
 
+	$('.lbbtn').click(function() {
+		$(location).attr('href',  '/deli/main.dlv');
+	});
 });
