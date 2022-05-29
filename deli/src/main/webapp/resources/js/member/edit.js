@@ -77,7 +77,7 @@ $(document).ready(function(){
 		var sfile = $(this).val();
 		var path = '/deli${DATA.dir}/${DATA.oriname}';
 		if(sfile){
-			var path = URL.createObjectURL(e.target.files[0]);
+			path = URL.createObjectURL(e.target.files[0]);
 		}
 		$('#img').attr('src', path);
 	});
