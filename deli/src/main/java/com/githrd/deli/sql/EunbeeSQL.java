@@ -14,7 +14,10 @@ package com.githrd.deli.sql;
  * 				2022.05.27	-	SEL_ABNO
  * 				2022.05.27	-	SEL_NEWESTI
  * 				2022.05.28	-	ADD_ESTIINFO
+ * 				2022.05.28	-	ADD_ESTI
  * 				2022.05.28	-	SEL_NEWESTI
+ * 				2022.05.28	-	UPDATE_ESTI
+ * 				2022.05.28	-	SEL_REGMEM
  * 									담당자 ] 안은비
  *
  */
@@ -25,6 +28,7 @@ public class EunbeeSQL {
 	public final int SEL_ABINFO		= 1003;
 	public final int SEL_ESTIINFO	= 1004;
 	public final int SEL_NEWESTI	= 1005;
+	public final int SEL_REGMEM		= 1006;
 	
 	public final int EDIT_PASSWORD	= 2001;
 
@@ -80,18 +84,16 @@ public class EunbeeSQL {
 			break;
 		case SEL_ESTIINFO:
 			buff.append("SELECT ");
-			buff.append("    aid, esti, dir, savename ");
+			buff.append("    eidb, dir, savename ");
 			buff.append("FROM ");
-			buff.append("    regimem r, member m, imgfile i, estimate e ");
+			buff.append("    estimate e, member m, imgfile i ");
 			buff.append("WHERE ");
-			buff.append("    r.aid = m.id ");
+			buff.append("    e.eidb = m.id ");
 			buff.append("    AND m.mno = i.amno ");
-			buff.append("    AND e.ebno = r.abno ");
-			buff.append("    AND r.isshow = 'Y' ");
-			buff.append("    AND m.isshow = 'Y' ");
 			buff.append("    AND e.isshow = 'Y' ");
-			buff.append("    AND abno = ? ");
-			buff.append("    AND aid != ? ");
+			buff.append("    AND ebno = ? ");
+			buff.append("    AND eida = ? ");
+			buff.append("    AND eidb != ? ");
 			break;
 		case ADD_ESTIINFO:
 			buff.append("INSERT INTO ");
@@ -132,6 +134,15 @@ public class EunbeeSQL {
 			buff.append("    esti = ? ");
 			buff.append("WHERE ");
 			buff.append("    id = ? ");
+			break;
+		case SEL_REGMEM:
+			buff.append("SELECT ");
+			buff.append("    aid ");
+			buff.append("FROM ");
+			buff.append("    regimem ");
+			buff.append("WHERE ");
+			buff.append("    abno = ? ");
+			buff.append("    AND isshow = 'Y' ");
 			break;
 		}
 		return buff.toString();

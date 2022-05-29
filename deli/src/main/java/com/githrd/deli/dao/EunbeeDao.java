@@ -140,11 +140,11 @@ public class EunbeeDao {
 		try {
 			pstmt.setInt(1, bno);
 			pstmt.setString(2, id);
+			pstmt.setString(3, id);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				EunbeeVO eVO = new EunbeeVO();
-				eVO.setId(rs.getString("aid"));
-				eVO.setEsti(rs.getDouble("esti"));
+				eVO.setIdb(rs.getString("eidb"));
 				eVO.setDir(rs.getString("dir"));
 				eVO.setSavename(rs.getString("savename"));
 				
@@ -243,6 +243,28 @@ public class EunbeeDao {
 		return cnt;
 	}
 	
+	public ArrayList<EunbeeVO> getRegmem(int bno) {
+		ArrayList<EunbeeVO> list = new ArrayList<EunbeeVO>();
+		con = db.getCon();
+		String sql = eSQL.getSQL(eSQL.SEL_REGMEM);
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			pstmt.setInt(1, bno);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				EunbeeVO eVO = new EunbeeVO();
+				eVO.setId(rs.getString("aid"));
+				list.add(eVO);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(rs);
+			db.close(pstmt);
+			db.close(con);
+		}
+		return list;
+	}
 	
 
 }
