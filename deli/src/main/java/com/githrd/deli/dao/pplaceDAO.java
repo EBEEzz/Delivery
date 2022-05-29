@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import com.githrd.deli.db.DeliDBCP;
 import com.githrd.deli.sql.pplaceSQL;
 import com.githrd.deli.util.DButil;
 import com.githrd.deli.vo.pplaceVO;
@@ -13,8 +14,15 @@ import com.githrd.deli.vo.pplaceVO;
 public class pplaceDAO {
 	private DButil util = new DButil();
 	private pplaceSQL sql;
-
+	private pplaceSQL psql;
+	private DeliDBCP db;
+	private Connection con;
+	private PreparedStatement pstmt;
+	private ResultSet rs;
+	
 	public pplaceDAO() {
+		db = new DeliDBCP();
+		psql = new pplaceSQL();
 	}
 
 	public ArrayList<pplaceVO> select() {
@@ -50,6 +58,34 @@ public class pplaceDAO {
 
 		}
 		return list;
+	}
+	public pplaceVO selectLocation(String id) {
+		pplaceVO pVO = new pplaceVO();
+		con = db.getCon();
+		String sql = psql.setString(psql.SELECT_MYLOCATION);
+		pstmt = db.getPSTMT(con, sql);
+		try {
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+
+				pVO.setPickuplat(rs.getDouble("pickuplat"));
+				pVO.setPickuplon(rs.getDouble("pickuplon"));
+				pVO.setCus_lat(rs.getDouble("cus_lat"));
+				pVO.setCus_lon(rs.getDouble("cus_lon"));
+
+			
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		finally {
+			close(rs);
+			close(pstmt);
+			close(con);
+			
+		}
+		return pVO;
 	}
 
 	public ArrayList<pplaceVO> seleID(String id) {

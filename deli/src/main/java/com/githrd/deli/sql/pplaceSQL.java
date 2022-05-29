@@ -5,6 +5,8 @@ public class pplaceSQL {
 	public final int SELONE = 1001;
 	public final int INSERT = 1002;
 	public final int SELID = 1003;
+	public final int SELECT_MYLOCATION = 1004;
+	
 
 	public String setString(int code) {
 		StringBuffer buff = new StringBuffer();
@@ -31,6 +33,15 @@ public class pplaceSQL {
 		case INSERT:
 			buff.append("insert into pickupPlace ");
 			buff.append("values ( ? , ? , ? , ? , ? , ? , ?  ) ");
+			break;
+			
+		case SELECT_MYLOCATION:
+			buff.append("SELECT ");
+			buff.append("    pickuplat, pickuplon, cus_lat, cus_lon ");
+			buff.append("FROM ");
+			buff.append("    pickupplace ");
+			buff.append("WHERE ");
+			buff.append("    cusid = ? ");
 			break;
 
 		}

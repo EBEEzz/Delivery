@@ -147,4 +147,9 @@ $(document).ready(function(){
 	$('#msgbtn').click(function(){
 		$(location).attr('href', '/deli/message.dlv');
 	});
+	$('#locbtn').click(function(){
+		var k = $('#memberid').html();
+		$('#cusid').val(k);
+		$('#mapsearch').submit();
+	});
 });

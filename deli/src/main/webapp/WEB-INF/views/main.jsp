@@ -134,12 +134,13 @@ small {
 					<div class="w3-col">
 						<div>
 							<div class="w3-col m2"> ID : </div>
-							<div class="w3-col m10">${SID}</div>
+							<div class="w3-col m10" id="memberid">${SID}</div>
 						</div>
 						<div class="w3-col m12 w3-button fbtn w3-right" id="msgbtn" >메세지보내기</div>
 						<div class="w3-col m12 w3-button fbtn w3-right" id="myinfo" >내정보보기</div>
 						<div class="w3-col m12 w3-button fbtn w3-right" id="esti">후기</div>
 						<div class="w3-col m12 w3-button fbtn w3-right" id="friendbtn">내친구보기</div>
+						<div class="w3-col m12 w3-button fbtn w3-right" id="locbtn">나의 기본수령지 보기</div>
 						<div id="fribox">
 							<div class="w3-col w3-center"><small><strong>친구 목록</strong></small></div>
 <c:forEach var="friend" items="${FRIEND}">						
@@ -214,18 +215,11 @@ small {
 		</div>
 	</div>
 </div>
-
-<form action="/deli/mapplace.dlv" method="POST" id="mapsearch">
-	<input type="text" name="cusid" placeholder="아이디입력">
-	<input type="submit" value="제출"><br>
-	<input type="hidden" value="37.499855465771" name="pickuplat">
-	<input type="hidden" value="126.92060923706" name="pickuplon">
-	<input type="hidden" value="37.50064696263" name="cus_lat">
-	<input type="hidden" value="126.91951962334" name="cus_lon">
-	<input type="hidden" value="YHLEE" name="보라매역">
-	<input type="hidden" value="YHLEE" name="cusid">
-</form>
-
+<div class="w3-center">
+	<form action="/deli/mapplace.dlv" method="POST" id="mapsearch">
+		<input type="hidden" name="cusid" id="cusid">
+	</form>
+</div>
 	
 	
 </body>
