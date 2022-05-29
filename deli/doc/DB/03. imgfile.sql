@@ -15,3 +15,52 @@ CREATE TABLE IMGFILE(
     savename VARCHAR2(4000)
         CONSTRAINT IMGFILE_SAVENAME_NN NOT NULL
 );
+
+INSERT INTO
+    imgfile(ano, amno, oriname, dir, savename)
+VALUES(
+    (SELECT NVL(MAX(ano) + 1, 100000) FROM imgfile), 1001,
+    'img_avatar2.png', '/resources/upload', 'img_avatar2.png'
+);
+
+INSERT INTO
+    imgfile(ano, amno, oriname, dir, savename)
+VALUES(
+    (SELECT NVL(MAX(ano) + 1, 100000) FROM imgfile), 1002,
+    'img_avatar2.png', '/resources/upload', 'img_avatar1.png'
+);
+
+INSERT INTO
+    imgfile(ano, amno, oriname, dir, savename)
+VALUES(
+    (SELECT NVL(MAX(ano) + 1, 100000) FROM imgfile), 1003,
+    'img_avatar2.png', '/resources/upload', 'img_avatar4.png'
+);
+
+INSERT INTO
+    imgfile(ano, amno, oriname, dir, savename)
+VALUES(
+    (SELECT NVL(MAX(ano) + 1, 100000) FROM imgfile), 1004,
+    'img_avatar2.png', '/resources/upload', 'img_avatar1.png'
+);
+
+INSERT INTO
+    imgfile(ano, amno, oriname, dir, savename)
+VALUES(
+    (SELECT NVL(MAX(ano) + 1, 100000) FROM imgfile), 1005,
+    'img_avatar2.png', '/resources/upload', 'img_avatar5.png'
+);
+
+INSERT INTO
+    imgfile(ano, amno, oriname, dir, savename)
+VALUES(
+    (SELECT NVL(MAX(ano) + 1, 100000) FROM imgfile), 1006,
+    'img_avatar2.png', '/resources/upload', 'img_avatar2.png'
+);
+
+INSERT INTO
+    imgfile(ano, amno, oriname, dir, savename)
+VALUES(
+    (SELECT NVL(MAX(ano) + 1, 100000) FROM imgfile), 1007,
+    'img_avatar2.png', '/resources/upload', 'img_avatar6.png'
+);
