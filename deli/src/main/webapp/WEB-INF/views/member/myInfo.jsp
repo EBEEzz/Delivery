@@ -21,14 +21,14 @@
 <script type="text/javascript" src="/deli/resources/js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="/deli/resources/js/member/myInfo.js"></script>
 <body>
-	 <form method="POST" action="" id="frm" name="frm">
-	 	<input type="hidden" name="mno" id="smno">
-	 	<input type="hidden" name="id" id="sid">wp
+	 <form method="POST" action="" id="delfrm" name="delfrm">
+	 	<input type="hidden" name="mno" id="delmno">
+	 	<input type="hidden" name="id" id="delid">
 	 </form>
 
 <div class="w3-container">
 		<!-- 회원정보 버튼 -->
-		<button id="ibtn" class="w3-button w3-green w3-large">Info</button>
+		<button id="myinfo" class="w3-button w3-green w3-large">Info</button>
 
  	<div id="id01" class="w3-modal">
 		<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:500px">
@@ -40,9 +40,9 @@
       
 			<div class="w3-container">
 	        	<div class="w3-section">
-					<h3 class="w3-center" id="id">${DATA.id}</h3>
+					<h3 class="w3-center" id="infoid">${DATA.id}</h3>
 					<h5 class="w3-center">추천수 : <span> ${DATA.esti}</span></h5>
-					<h5 class="w3-center" style="display: none;"><span id="mno">${DATA.mno}</span></h5>
+					<h5 class="w3-center" style="display: none;"><span id="infomno">${DATA.mno}</span></h5>
 					<h5 class="w3-center">이메일 : <span>${DATA.mail}</span></h5>
 					<h5 class="w3-center">카카오아이디 : <span>${DATA.kakaoid}</span></h5>
 					<h5 class="w3-center">전화번호 : <span>${DATA.tel}</span></h5>	

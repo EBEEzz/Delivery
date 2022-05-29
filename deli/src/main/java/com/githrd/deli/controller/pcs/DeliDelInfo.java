@@ -42,7 +42,7 @@ public class DeliDelInfo implements DeliInter {
 		String id = req.getParameter("id");
 		if(!sid.equals(id)) {
 			// 세션에 기억한 아이디와 전달받은 아이디가 다른 경우
-			view = "/deli/member/myInfo";
+			view = "/deli/main.dlv";
 			return view;
 		}
 		
@@ -52,7 +52,7 @@ public class DeliDelInfo implements DeliInter {
 		// 결과에 따라서 처리하고
 		if(cnt != 1) {
 			// 실패한 경우
-			view = "/deli/member/myInfo.dlv";
+			view = "/deli/main.dlv";
 		} else {
 			// 로그아웃 처리하고
 			session.removeAttribute("SID");

@@ -24,7 +24,6 @@
 <link rel="stylesheet" type="text/css" href="/deli/resources/css/w3.css">
 <script type="text/javascript" src="/deli/resources/js/member/myInfo.js"></script>
 
-<script type="text/javascript" src="/deli/resources/js/member/myInfo.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script type="text/javascript" src="/deli/resources/main.js"></script>
@@ -176,9 +175,9 @@ small {
 	</div>
 	
 	
-	 <form method="POST" action="" id="frm" name="frm">
-	 	<input type="hidden" name="mno" id="smno">
-	 	<input type="hidden" name="id" id="sid">
+	 <form method="POST" action="" id="delfrm" name="delfrm">
+	 	<input type="hidden" name="mno" id="delmno">
+	 	<input type="hidden" name="id" id="delid">
 	 </form>
 
 <div class="w3-container">
@@ -194,9 +193,9 @@ small {
       
 			<div class="w3-container">
 	        	<div class="w3-section">
-					<h3 class="w3-center" id="id">${DATA.id}</h3>
+					<h3 class="w3-center" id="infoid">${DATA.id}</h3>
 					<h5 class="w3-center">추천도 : <span><span id="spoon">🥄</span>${DATA.esti} / 5</span></h5>
-					<h5 class="w3-center" style="display: none;"><span id="mno">${DATA.mno}</span></h5>
+					<h5 class="w3-center"><span id="infomno">${DATA.mno}</span></h5>
 					<h5 class="w3-center">이메일 : <span>${DATA.mail}</span></h5>
 					<h5 class="w3-center">카카오아이디 : <span>${DATA.kakaoid}</span></h5>
 					<h5 class="w3-center">전화번호 : <span>${DATA.tel}</span></h5>	

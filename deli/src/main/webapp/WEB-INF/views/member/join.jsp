@@ -70,12 +70,14 @@
 						<label for="mail" class="w3-left mgl10" style="font-weight: bold;">이메일</label>
 					</h5>
 					<input type="text" name="mail" id="mail" class="s8 w3-magin-top mgl10 w3-input w3-border w3-center" >
+					<span class="w3-col w3-text-green w3-center" id="mailmsg">"@ | .com" 를 포함한 이메일 형식에 맞게 입력하세요.</span>
 				</div>
 				<div class="w3-padding mgb10">
 					<h5 class="w3-left-align">
 						<label for="tel" class="w3-left mgl10" style="font-weight: bold;">전화번호</label>
 					</h5>
 					<input type="text" name="tel" id="tel" class="s8 w3-magin-top mgl10 w3-input w3-border w3-center" >
+					<span class="w3-col w3-text-green w3-center" id="telmsg" >전화번호는 "-"를 포함해서 입력하세요.</span>
 				</div>
 				<div class="w3-padding mgb10">
 					<h5 class="w3-left-align">

@@ -51,6 +51,35 @@ $(document).ready(function(){
 		}
 		$('#img').attr('src', path);
 	});
+	
+	// 정규 표현식 검사
+	var telPattern = /^([0-9]{2,3}(-))-?([0-9]{3,4}(-))-?([0-9]{4})$/;
+	$('#newtel').change(function(){
+		var ttel = $('#newtel').val();
+		if(!telPattern.test(ttel)){
+			$('#newtelmsg').html('올바른 전화번호 형식이 아닙니다.');
+			$('#newtelmsg').removeClass('w3-text-green w3-text-red').addClass('w3-text-red');
+			$('#newtel').focus();
+			return;
+		} else {
+			$('#newtelmsg').html('형식에 알맞은 전화번호 입니다.');
+			$('#newtelmsg').removeClass('w3-text-green w3-text-red').addClass('w3-text-green');
+		}
+	});
+	var mailPattern = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+	$('#newmail').change(function(){
+		var tmail = $('#newmail').val();
+		if(!mailPattern.test(tmail)){
+			$('#newmailmsg').html('올바른 이메일 형식이 아닙니다.');
+			$('#newmailmsg').removeClass('w3-text-green w3-text-red').addClass('w3-text-red');
+			$('#newmail').focus();
+			return;
+		} else {
+			$('#newmailmsg').html('형식에 알맞은 이메일 입니다.');
+			$('#newmailmsg').removeClass('w3-text-green w3-text-red').addClass('w3-text-green');
+		}
+	});
+	
 	// 수정버튼 클릭이벤트
 	$('#ebtn').click(function(){
 		// 할 일
@@ -79,11 +108,12 @@ $(document).ready(function(){
 		if(!nmail){
 			// 메일이 수정 안된경우
 			$('#newmail').prop('disabled', true);
-		/*	$('#newmail').val($('#mail').val());*/
+			$('#newmailmsg').css('display', 'none');
 		}
 		
 		if(!ntel){
 			$('#newtel').prop('disabled', true);
+			$('#newtelmsg').css('display', 'none');
 		}
 		
 		if(!naddr){
@@ -119,10 +149,19 @@ $(document).ready(function(){
 			return;
 		}
 		
-		// 정규 표현식 검사
-/*		var telPattern = /\d{2,3}[- ]?\d{3,4}[- ]?\d{4}/g;
-		var teltest = telPattern.match(ntel);
-		alert(teltest);*/
+		// 정규식 표현에 맞지 않은 경우
+		if(!telPattern.test(ntel) && ntel != ""){
+			$('#newtelmsg').html('형식에 맞지 않은 전화번호 입니다.');
+			$('#newtelmsg').removeClass('w3-text-green w3-text-red').addClass('w3-text-red');
+			$('#newtel').focus();
+			return;
+		}
+		if(!mailPattern.test(nmail) && nmail != ""){
+			$('#newmailmsg').html('올바른 이메일 형식이 아닙니다.');
+			$('#newmailmsg').removeClass('w3-text-green w3-text-red').addClass('w3-text-red');
+			$('#newmail').focus();
+			return;
+		}
 
 		// 보낼 주소 설정하고
 		$('#frm').attr('action', '/deli/member/editProc.dlv');

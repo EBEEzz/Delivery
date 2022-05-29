@@ -86,6 +86,34 @@ $(document).ready(function(){
 		$('#img').attr('src', path);
 	});
 	
+	// 정규 표현식 검사
+	var telPattern = /^([0-9]{2,3}(-))-?([0-9]{3,4}(-))-?([0-9]{4})$/;
+	$('#newtel').change(function(){
+		var ttel = $('#tel').val();
+		if(!telPattern.test(ttel)){
+			$('#telmsg').html('올바른 전화번호 형식이 아닙니다.');
+			$('#telmsg').removeClass('w3-text-green w3-text-red').addClass('w3-text-red');
+			$('#tel').focus();
+			return;
+		} else {
+			$('#telmsg').html('형식에 알맞은 전화번호 입니다.');
+			$('#telmsg').removeClass('w3-text-green w3-text-red').addClass('w3-text-green');
+		}
+	});
+	var mailPattern = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+	$('#mail').change(function(){
+		var tmail = $('#mail').val();
+		if(!mailPattern.test(tmail)){
+			$('#mailmsg').html('올바른 이메일 형식이 아닙니다.');
+			$('#mailmsg').removeClass('w3-text-green w3-text-red').addClass('w3-text-red');
+			$('#mail').focus();
+			return;
+		} else {
+			$('#mailmsg').html('형식에 알맞은 이메일 입니다.');
+			$('#mailmsg').removeClass('w3-text-green w3-text-red').addClass('w3-text-green');
+		}
+	});
+	
 	$('#jbtn').click(function(){
 		// 데이터 유효성 검사
 		var name = $('#name').val();
@@ -96,7 +124,25 @@ $(document).ready(function(){
 		var tel = $('#tel').val();
 		var addr = $('#addr').val();
 		var oriname = $('input[type="file"]').val();
+		alert(oriname);
+		// 선택된 사진이 없을경우
+		if(oriname == null){
+			var oriname = $('input[type="file"]').val('/deli/resources/upload/noimage.jpg');
+		}
 		
+		// 정규식 표현에 맞지 않은 경우
+		if(!telPattern.test(tel) && tel != ""){
+			$('#telmsg').html('형식에 맞지 않은 전화번호 입니다.');
+			$('#telmsg').removeClass('w3-text-green w3-text-red').addClass('w3-text-red');
+			$('#tel').focus();
+			return;
+		}
+		if(!mailPattern.test(mail) && mail != ""){
+			$('#mailmsg').html('올바른 이메일 형식이 아닙니다.');
+			$('#mailmsg').removeClass('w3-text-green w3-text-red').addClass('w3-text-red');
+			$('#mail').focus();
+			return;
+		}
 		
 		var el = $('#name, #id, #kakaoid, #pw, #mail, #tel, #addr, intput[type="file"]');
 		
@@ -108,6 +154,7 @@ $(document).ready(function(){
 				return;
 			}
 		}
+		
 		
 		$('#frm').attr('action', '/deli/member/joinProc.dlv').submit();
 	});
