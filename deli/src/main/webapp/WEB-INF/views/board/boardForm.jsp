@@ -19,6 +19,7 @@
 <meta charset="EUC-KR">
 <title>Board Form</title>
 <script type="text/javascript" src="/deli/resources/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/deli/resources/js/board/boardForm.css">
 <link rel="stylesheet" type="text/css" href="/deli/resources/css/base.css">
 <link rel="stylesheet" type="text/css" href="/deli/resources/css/user.css">
 <link rel="stylesheet" type="text/css" href="/deli/resources/css/w3.css">
@@ -27,73 +28,7 @@
 
 </script>
 <style type="text/css">
-.mxw980 {
-	max-width: 980px;
-	min-width: 980px;
-}
-.w33 {
-	width: 14.285%;
-}
-.h500 {
-	height: 500px;
-	padding-left: 10px;
-	padding-right: 10px;
-	overflow: auto;
-}
-.member {
-	text-size: 8px;
-	border: 0px;
-	background-color: white;
-}
-.w230 {
-	width: 230px;
-	margin-bottom: 3px;
-}
-.maintext {
-	margin : 0px;
-}
-.area {
-	color: green;
-}
-.subbtn {
-	padding : 0px;
-	margin : 0px 5px 0px 0px;
-}
-#regimem {
-	position: relative;
-	top: -12px;
-	right: 80px;
-	display: none;
-}
-.regimember{
-	margin: 0px;
-}
-.fbtn {
-	padding: 4px;  
-}
-.pricebtn1 {
-	padding: 0px 10px;
-}
-.pricebtn2 {
-	padding: 0px 10px;
-}
-.inputprice {
-	width: 20px;
-	padding: 0px;
-	background-color: white;
-	border: 1px solid;
-}
-#decide {
-	position: relative;
-	top: 80px;
-}
 
-#abc > input {
-	text-align: center;
-}
-.menuinputfrm {
-	margin: 5px;
-}
 
 </style>
 </head>

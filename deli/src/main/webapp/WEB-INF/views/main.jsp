@@ -19,6 +19,7 @@
 <meta charset="UTF-8">
 <title>Delivery Project Main</title>
 <script type="text/javascript" src="/deli/resources/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/deli/resources/js/board/main.css">
 <link rel="stylesheet" type="text/css" href="/deli/resources/css/base.css">
 <link rel="stylesheet" type="text/css" href="/deli/resources/css/user.css">
 <link rel="stylesheet" type="text/css" href="/deli/resources/css/w3.css">

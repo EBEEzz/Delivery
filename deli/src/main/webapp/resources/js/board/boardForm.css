@@ -1,3 +1,13 @@
+/**
+ * @author	이용현
+ * @since	2022/05/27
+ * @version	v.1.0
+ * 
+ * 			작업이력 ]
+ * 				2022.05.27	-	클래스제작
+ * 								담당자 : 이용현
+ */
+
 .mxw980 {
 	max-width: 980px;
 	min-width: 980px;
@@ -7,12 +17,12 @@
 }
 .h500 {
 	height: 500px;
-	padding-left: 10px;
-	padding-right: 10px;
+	padding-left: 10px!important;
+	padding-right: 10px!important;
 	overflow: auto;
 }
 .member {
-	text-size: 8px;
+	font-size: 8px;
 	border: 0px;
 	background-color: white;
 }
@@ -27,7 +37,7 @@
 	color: green;
 }
 .subbtn {
-	padding : 0px;
+	padding : 0px!important;
 	margin : 0px 5px 0px 0px;
 }
 #regimem {
@@ -40,17 +50,17 @@
 	margin: 0px;
 }
 .fbtn {
-	padding: 4px;  
+	padding: 4px!important;  
 }
 .pricebtn1 {
-	padding: 0px 10px;
+	padding: 0px 10px!important;
 }
 .pricebtn2 {
-	padding: 0px 10px;
+	padding: 0px 10px!important;
 }
 .inputprice {
 	width: 20px;
-	padding: 0px;
+	padding: 0px!important;
 	background-color: white;
 	border: 1px solid;
 }

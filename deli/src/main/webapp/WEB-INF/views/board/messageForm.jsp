@@ -26,30 +26,7 @@
 <link rel="stylesheet" type="text/css" href="/deli/resources/css/w3.css">
 <script type="text/javascript" src="/deli/resources/messageForm.js"></script>
 <style type="text/css">
-.w33 {
-	width: 14.285%;
-}
-.h500 {
-	height: 500px;
-	padding-left: 10px;
-	padding-right: 10px;
-	overflow: auto;
-}
-.member {
-	text-size: 8px;
-	border: 0px;
-	background-color: white;
-}
-.w230 {
-	width: 230px;
-	margin-bottom: 3px;
-}
-.messbtn {
-	padding: 0px;
-}
-textarea {
-	resize: none;
-}
+
 </style>
 </head>
 <body>

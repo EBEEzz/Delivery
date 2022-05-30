@@ -20,35 +20,13 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="/deli/resources/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/deli/resources/js/board/message.css">
+<link rel="stylesheet" type="text/css" href="/deli/resources/js/board/message.css">
 <link rel="stylesheet" type="text/css" href="/deli/resources/css/base.css">
 <link rel="stylesheet" type="text/css" href="/deli/resources/css/user.css">
 <link rel="stylesheet" type="text/css" href="/deli/resources/css/w3.css">
 <script type="text/javascript" src="/deli/resources/message.js"></script>
 <style type="text/css">
-.w33 {
-	width: 14.285%;
-}
-.h500 {
-	height: 500px;
-	padding-left: 10px;
-	padding-right: 10px;
-	overflow: auto;
-}
-.member {
-	text-size: 8px;
-	border: 0px;
-	background-color: white;
-}
-.w230 {
-	width: 230px;
-	margin-bottom: 3px;
-}
-.messbtn {
-	padding: 0px;
-}
-.messbtn > div {
-	overflow: hidden;
-}
+
 </style>
 </head>
 <body>

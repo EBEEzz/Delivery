@@ -21,8 +21,9 @@ $(document).ready(function(){
 	
 
 
-	var webSocket = new WebSocket('ws:80://localhost/deli/main.dlv');
+	var webSocket = new WebSocket('ws://180.228.75.2/deli/main.dlv');
 	var chatbox = document.getElementById('chatbox');
+	
 	
 	webSocket.onopen = function(chat) {
 		chatbox.value += '채팅하실 수 있습니다.\n';
