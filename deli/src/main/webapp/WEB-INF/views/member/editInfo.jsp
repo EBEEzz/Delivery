@@ -57,14 +57,6 @@
 				</div>
 				<div class="w3-padding mgb10">
 					<h5 class="w3-left-align">
-						<label for="pw" class="w3-left mgl10" style="font-weight: bold;">기존 비밀번호</label>
-					</h5>
-					<input type="password" name="pw" id="pw" class="s8 w3-magin-top mgl10 w3-input w3-border w3-center" >
-					<input type="hidden" id="pwck" value="${DATA.pw}">
-					<span class="w3-col w3-center" id="pwmsg" style="display: none;"></span>
-				</div>
-				<div class="w3-padding mgb10">
-					<h5 class="w3-left-align">
 						<label for="newpw" class="w3-left mgl10" style="font-weight: bold;">새로운 비밀번호</label>
 					</h5>
 					<input type="password" name="newpw" id="newpw" class="s8 w3-magin-top mgl10 w3-input w3-border w3-center" >

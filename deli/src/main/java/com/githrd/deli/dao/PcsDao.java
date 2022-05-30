@@ -87,7 +87,6 @@ public class PcsDao {
 			pVO.setMno(rs.getInt("mno"));
 			pVO.setName(rs.getString("name"));
 			pVO.setId(rs.getString("id"));
-			pVO.setPw(rs.getString("pw"));
 			pVO.setEsti(rs.getDouble("esti"));
 			pVO.setMail(rs.getString("mail"));
 			pVO.setKakaoid(rs.getString("kakaoid"));
@@ -145,7 +144,6 @@ public class PcsDao {
 			pstmt.setString(1, pVO.getName());
 			pstmt.setString(2, pVO.getId());
 			pstmt.setString(3, pVO.getKakaoid());
-			pstmt.setString(4, pVO.getPw());
 			pstmt.setString(5, pVO.getMail());
 			pstmt.setString(6, pVO.getTel());
 			pstmt.setString(7, pVO.getAddr());
@@ -220,6 +218,7 @@ public class PcsDao {
 		// 데이터 반환하고
 		return cnt;
 	}
+	
 	
 	// 회원정보수정 데이터베이스 작업 전담 처리함수
 	public int editMyInfo(int mno, String esql) {

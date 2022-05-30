@@ -92,8 +92,8 @@ $(document).ready(function(){
 		var ntel = $('#newtel').val();
 		var naddr = $('#newaddr').val();
 		var repw = $('#repw').val();
-		var spw = $('#pw').val();
-		var spwck = $('#pwck').val();
+		var sid = $('#id').val();
+		var sfile = $('#proimg').val();
 
 		if(repw != npw){
 			$('#newpw').focus();
@@ -122,32 +122,9 @@ $(document).ready(function(){
 			$('#newaddr').prop('disabled', true);
 		}
 		
-		if(!npw && !nmail && !ntel && !naddr){
+		if(!npw && !nmail && !ntel && !naddr && !sfile){
 			// 수정을 한개도 하지 않는 경우..
 			alert('수정한 내용이 없습니다.');
-			return;
-		}
-		
-		// 기존 비밀번호 확인 처리
-		if(!spw){
-			// 입력내용이 없는 경우
-			$('#pw').focus();
-			$('#pwmsg').css('display', 'block');
-			$('#pwmsg').addClass('w3-text-red');
-			$('#pwmsg').html('기존 비밀번호를 입력하세요!');
-			return;
-		} else if(spw != spwck){
-			// 기존 비밀번호와 다른 경우
-			$('#pw').focus();
-			$('#pwmsg').css('display', 'block');
-			$('#pwmsg').addClass('w3-text-red');
-			$('#pwmsg').html('기존 비밀번호와 다릅니다!');
-			return;
-		} else if(npw == spwck){
-			$('#newpw').focus();
-			$('#npwmsg').css('display', 'block');
-			$('#npwmsg').addClass('w3-text-red');
-			$('#npwmsg').html('기존 비밀번호와 같은 비밀번호는 입력할 수 없습니다');
 			return;
 		}
 		

@@ -30,7 +30,7 @@ public class PcsSQL {
 			break;
 		case SEL_MEMBER_INFO:
 			buff.append("SELECT ");
-			buff.append("	mno, name, id, esti, mail, kakaoid, tel, oriname, dir, addr, pw ");
+			buff.append("	mno, name, id, esti, mail, kakaoid, tel, oriname, dir, addr ");
 			buff.append("FROM ");
 			buff.append("	member m, imgfile ");
 			buff.append("WHERE ");
