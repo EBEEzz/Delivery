@@ -21,7 +21,7 @@ $(document).ready(function(){
 	
 
 
-	var webSocket = new WebSocket('ws://localhost/deli/main.dlv');
+	var webSocket = new WebSocket('ws:80://localhost/deli/main.dlv');
 	var chatbox = document.getElementById('chatbox');
 	
 	webSocket.onopen = function(chat) {
