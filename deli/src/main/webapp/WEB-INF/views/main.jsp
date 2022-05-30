@@ -31,55 +31,7 @@
 <script type="text/javascript">
 </script>
 <style type="text/css">
-.w33 {
-	width: 14.285%;
-}
-.h500 {
-	height: 500px;
-	padding-left: 10px;
-	padding-right: 10px;
-	overflow: auto;
-}
-.member {
-	text-size: 8px;
-	border: 0px;
-	background-color: white;
-}
-.w230 {
-	width: 230px;
-	margin-bottom: 3px;
-}
-textarea {
-	resize: none;
-	height: 500px;
-}
-.hotclick {
-	overflow : hidden;
-}
-.hotclickhr {
-	margin-top : 0px;
-}
-small {
-	font-size: 7px;
-}
-.fbtn {
-	padding: 0px 8px;
-	font-size: 11px;
-	
-}
-#fribox{
-	display: none;
-}
-.delbtn, .canbtn, .agrbtn{
-	border: 0px;
-	background-color: white;
-	padding: 0px;
-}
-#spoon{
-	font-size: 1em;
-	color: transparent;
-	text-shadow: 0 0 0 grey;
-}
+
 </style>
 
 </head>
